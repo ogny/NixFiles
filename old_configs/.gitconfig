@@ -1,0 +1,58 @@
+[user]
+	name = Orkun Gunay
+	email = ogunay@beyaz.net
+[core]
+	editor = vim
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	excludesfile = /home/orkung/.gitignore
+[remote "origin"]
+	fetch = +refs/heads/*:refs/remotes/origin/*
+	#url = ssh://gitolite@merkez.beyaz.net:30022/2012_doc_beyaz_secret
+	#url = https://github.com/ogny/NixFiles.git
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
+[web]
+	browser = chromium
+[color]
+	ui = true
+[color "branch"]
+	current = yellow bold
+	local = green bold
+	remote = cyan bold
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = green bold
+	changed = yellow bold
+	untracked = red bold
+[github]
+	user = Orkun Gunay
+	token = ogny
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan

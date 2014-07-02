@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# a shell wrapper to make 'antiword' usage reasonable on UTF-8 systems.
+#
+# Michal Jaegermann, michal@harddata.com, 2004/Nov/03
+#    - simplify and we may be printing on a Postcript printer, 2006/May/08
+
+echo "$@" | egrep -q -w -- '-p|-a' && lang="tr_TR.UTF-8"
+LANG=$lang /usr/bin/antiword "$@"
+exit

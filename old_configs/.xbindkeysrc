@@ -1,0 +1,24 @@
+"amixer -q set Master 2- unmute"
+XF86AudioLowerVolume
+
+"amixer -q set Master 2+ unmute"
+XF86AudioRaiseVolume
+
+"amixer -q set Master toggle"
+XF86AudioMute
+
+"mocp -f"
+#XF86Forward NoSymbol XF86Forward
+keycode 69
+
+"mocp -r"
+#XF86Back NoSymbol XF86Back
+keycode 70
+"mocp -p"
+XF86Launch9
+
+"mocp -P"
+XF86AudioPlay
+
+"tpdwn"
+XF86Tools
