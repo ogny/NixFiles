@@ -1,0 +1,202 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+
+urxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+URxvt.urgentOnBell:         true
+URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            7777
+URxvt.internalBorder:       3
+URxvt.lineSpace:            0
+
+! Fonts
+URxvt.allow_bold:           false
+!URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
+!URxvt.font: xft:DejaVu Sans Mono:antialias=true:pixelsize=12
+!URxvt.boldFont: xft:DejaVu Sans Mono:style=bold:antialias=true:pixelsize=12
+URxvt.font: xft:Monaco:antialias=true:size=11
+URxvt.boldFont: xft:Monaco:style=bold:antialias=true:size=11
+! Fix font space
+URxvt*letterSpace: -1
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Perl extensions
+!URxvt.perl-ext-common:      default,matcher
+!URxvt.matcher.button:       1
+!URxvt.urlLauncher:          firefox
+
+! Cursor
+URxvt.cursorBlink:          false
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+!!Source http://github.com/altercation/solarized
+
+!!*fading: 40
+URxvt*fadeColor: #002b36
+URxvt*cursorColor: #93a1a1
+URxvt*pointerColorBackground: #586e75
+URxvt*pointerColorForeground: #93a1a1
+
+URxvt*background: #002b36
+URxvt*foreground: #657b83
+
+!! black dark/light
+URxvt*color0: #073642
+URxvt*color8: #002b36
+
+!! red dark/light
+URxvt*color1: #dc322f
+URxvt*color9: #cb4b16
+
+!! green dark/light
+URxvt*color2: #859900
+URxvt*color10: #586e75
+
+!! yellow dark/light
+URxvt*color3: #b58900
+URxvt*color11: #657b83
+
+!! blue dark/light
+!!URxvt*color4: #002b36
+URxvt*color4: #268bd2
+URxvt*color12: #839496
+
+!! magenta dark/light
+URxvt*color5: #d33682
+URxvt*color13: #6c71c4
+
+!! cyan dark/light
+URxvt*color6: #2aa198
+URxvt*color14: #93a1a1
+
+!! white dark/light
+URxvt*color7: #eee8d5
+URxvt*color15: #fdf6e3
+
+XTerm*cursorColor:                      darkorange1
+XTerm*scrollBar:                        false
+XTterm*utf8:                            2
+XTerm*termName:                         xterm-256color
+XTerm*faceName: xft:Monaco:antialias=true:size=11
+XTerm.VT100.geometry:                   89x29
+XTerm*saveLines:                        7777
+XTerm*metaSendsEscape:                  true
+XTerm*highlightSelection:               true
+XTerm*trimSelection:                    true
+XTerm*cutNewline:                       false
+XTerm*colorBDMode:                      true
+XTerm*colorBD:                          khaki
+XTerm*charClass: 3:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
+!! black dark/light
+XTerm*color0: #073642
+XTerm*color8: #002b36
+
+!! red dark/light
+XTerm*color1: #dc322f
+XTerm*color9: #cb4b16
+
+!! green dark/light
+XTerm*color2: #859900
+XTerm*color10: #586e75
+
+!! yellow dark/light
+XTerm*color3: #b58900
+XTerm*color11: #657b83
+
+!! blue dark/light
+!!XTerm*color4: #002b36
+Term*color4: #268bd2
+XTerm*color12: #839496
+
+!! magenta dark/light
+XTerm*color5: #d33682
+XTerm*color13: #6c71c4
+
+!! cyan dark/light
+XTerm*color6: #2aa198
+XTerm*color14: #93a1a1
+
+!! white dark/light
+XTerm*color7: #eee8d5
+XTerm*color15: #fdf6e3
+
+XTerm*background: #002b36
+XTerm*foreground: #657b83
+
+PS1="\[\033[1;34m\][\$(date +%H%M)][\u@\h:\w]$\[\033[0m\] "
+
+!aterm
+!settings-------------------------------------------------------------     
+!
+!aterm*background:               black
+!aterm*foreground:               white
+!aterm*transparent:              true
+!aterm*shading:                  30
+!aterm*cursorColor:              gray
+!aterm*saveLines:                2000
+!!aterm*tinting:                 gray
+!aterm*scrollBar:                false
+!!aterm*scrollBar_right:          true
+!aterm*transpscrollbar:          true
+!aterm*borderwidth:              0
+!aterm*font:                     -*-terminus-*-*-*-*-*-*-*-*-*-*-*-*
+!aterm*geometry:                 80x25
+!aterm*fading:                  70  
+!aterm.font: 
+!aterm.boldFont: 
+!
+!Aterm*background:		#000000
+! Aterm*foreground:		#ffffff
+! Aterm*transparent:		true
+! Aterm*shading:			80
+! Aterm*cursorColor:		#d8d8d8
+! Aterm*scrollbars:		false
+! Aterm*saveLines:		2000
+! Aterm*tinting:			gray
+! Aterm*scrollBar:		false
+! Aterm*scrollBar_right:	true
+! Aterm*transpscrollbar:		true
+! Aterm*borderwidth:		0
+! Aterm*font:
+! -lfp-gamow-medium-r-normal-*-*-90-*-*-c-*-iso8859-5
+! Aterm*geometry:                80x25
+! Aterm*fading:			70  
+
+! mark-and-yank ve  mark-yank-urls ayarları
+!URxvt.keysym.M-u: perl:mark-and-yank-urls:activate_mark_mode
+!URxvt.reverseVideo: true
+!URxvt.perl-lib: /home/orkung/.urxvt/
+!URxvt.perl-ext: selection
+!URxvt.perl-ext: mark-yank-urls
+
+URxvt.keysym.M-y: perl:mark-and-yank:activate_mark_mode
+URxvt.keysym.M-u: perl:mark-and-yank:activate_mark_url_mode
+URxvt.perl-lib: /home/orkung/.urxvt/
+URxvt.perl-ext: mark-yank-urls
+!URxvt.perl-ext: mark-and-yank
+URxvt.urlLauncher: chromium 
+URxvt.reverseVideo: false

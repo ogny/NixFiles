@@ -1,0 +1,50 @@
+server {
+        listen   80;
+        root /var/www/ttrss/;
+        index index.html index.htm index.php;
+        server_name ozetler.orkungunay.com;
+ 	rewrite ^(.*) https://$host$1 permanent;
+}
+
+server {
+        listen   443;
+        root /var/www/ttrss/;
+        index index.html index.htm index.php;
+        server_name ozetler.orkungunay.com;
+
+    ## SSL settings
+        ssl on;
+	ssl_certificate /etc/ssl/certs/ozetler.orkungunay.com.crt;
+	ssl_certificate_key  /etc/ssl/private/ozetler.orkungunay.com.key;
+
+    ## SSL caching/optimization
+        ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+        ssl_ciphers RC4:HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers on;
+        keepalive_timeout    60;
+        ssl_session_cache    shared:SSL:10m;
+        ssl_session_timeout  10m;
+
+    ## SSL log files
+        access_log /var/log/nginx/ozetler.orkungunay.com/ssl_ozetler.orkungunay.com_access.log;
+        error_log /var/log/nginx/ozetler.orkungunay.com/ssl_ozetler.orkungunay.com_error.log;
+
+
+	access_log /var/log/nginx/ozetler.orkungunay.com/ozetler.orkungunay.com_access.log;
+	error_log /var/log/nginx/ozetler.orkungunay.com/ozetler.orkungunay.com_error.log;
+
+        #location / {
+        #                try_files $uri $uri/ /index.html;
+        #}
+
+        location ~ \.php$ {
+    			try_files $uri =404;
+                        fastcgi_pass unix:/var/run/php5-fpm.sock;
+            		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            		fastcgi_intercept_errors on;
+			fastcgi_read_timeout 300s;
+                        fastcgi_index index.php;
+			fastcgi_param  SCRIPT_FILENAME  /var/www/ttrss$fastcgi_script_name;
+                        include fastcgi_params;
+        }
+}

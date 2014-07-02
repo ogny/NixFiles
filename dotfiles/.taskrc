@@ -1,0 +1,41 @@
+# [Created by task 2.2.0 6/19/2014 09:39:24]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-faq',
+# 'man task-tutorial', 'man task-color', 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=simple   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=simple  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+#include /usr/share/task/light-16.theme
+#include /usr/share/task/light-256.theme
+#include /usr/share/task/dark-16.theme
+#include /usr/share/task/dark-256.theme
+#include /usr/share/task/dark-red-256.theme
+#include /usr/share/task/dark-green-256.theme
+#include /usr/share/task/dark-blue-256.theme
+#include /usr/share/task/dark-violets-256.theme
+#include /usr/share/task/dark-yellow-green.theme
+#include /usr/share/task/dark-gray-256.theme
+#include ~/.task/themes/solarized-light-256.theme
+
+taskd.certificate=/home/orkung/.task/homeogny.cert.pem
+taskd.key=/home/orkung/.task/homeogny.key.pem
+taskd.ca=/home/orkung/.task/ca.cert.pem
+taskd.server=107.170.59.61:53589
+taskd.credentials=home\/ogny\/25313f8a-3b65-464a-8aec-08bb10a8539a
+regex=on
+confirmation=off
+
+report.simple.description=simple list of open tasks by project
+report.simple.columns=id,due,priority,tags,description.count
+report.simple.labels=ID,Due,Pri,Tags,Desc
+report.simple.sort=priority-,description+
+report.simple.filter=status:pending
