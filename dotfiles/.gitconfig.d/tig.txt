@@ -1,0 +1,26 @@
+[tig]
+show-date = no
+
+# Unbind unnecessary views. I only use the main view and view diffs of
+# commits.
+bind generic m none
+bind generic d none
+bind generic l none
+bind generic t none
+bind generic f none
+bind generic B none
+bind generic H none
+bind generic p none
+bind generic S none
+bind generic c none
+# Unbind commands which may change the repository. I use tig only as a
+# viewer.
+bind generic C none
+bind generic u none
+bind generic ! none
+bind generic M none
+bind generic 1 none
+bind generic @ none
+bind generic e none
+bind generic G none
+

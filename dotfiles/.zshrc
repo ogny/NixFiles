@@ -133,8 +133,8 @@ find $1 -maxdepth 1 -type f -printf '%f\n'
 }
 export PATH="$PATH:/home/orkung/bin:/usr/local/bin"
 export VAGRANT_HOME=/home/orkung/.vagrant.d
-export SSH_AGENT_SOCK=`sshag.sh`
-source ~/bin/sshag.sh; sshag >/dev/null 2>&1
+export SSH_AGENT_SOCK=`~/bin/sshag.sh`
+source ~/bin/sshag.sh >/dev/null 2>&1
 eval "$(fasd --init auto)"
 export MANPAGER=/home/orkung/bin/manpager.sh
 alias top10="history | awk {'print $2'} | sort | uniq -c | sort -nr | head -n 10"
@@ -149,6 +149,8 @@ export GPG_TTY=$(tty)
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath) 
 alias t='task'
-alias passo='tree ~/.password-store '
 compdef _task t='task'
- 
+alias wrk='task work pro:work'
+alias cmp='task comp pro:comp'
+alias cmpad='task add pro:comp pri:M'
+alias wrkad='task add pro:work pri:M'
