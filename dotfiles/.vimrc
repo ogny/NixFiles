@@ -161,3 +161,97 @@ nmap <Leader>ls :ls<CR>
 nmap <Leader>bw :bw<CR>
 "map <leader>f :FufFileWithCurrentBufferDir **/<C-M> 
 "map <leader>b :FufBuffer<C-M>
+"autocmd BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufEnter,BufRead,BufNewFile *.md syntax off
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+if has('vim_starting')
+   set nocompatible               " Be iMproved
+
+   " Required:
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+ endif
+
+ " Required:
+ call neobundle#begin(expand('~/.vim/bundle/'))
+
+ " Let NeoBundle manage NeoBundle
+ " Required:
+ NeoBundleFetch 'Shougo/neobundle.vim'
+
+ " My Bundles here:
+ " Refer to |:NeoBundle-examples|.
+ " Note: You don't set neobundle setting in .gvimrc!
+
+ call neobundle#end()
+
+ " Required:
+ filetype plugin indent on
+
+ " If there are uninstalled bundles found on startup,
+ " this will conveniently prompt you to install them.
+ NeoBundleCheck
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Unite
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:unite_enable_start_insert = 1
+"let g:unite_split_rule = "botright"
+"let g:unite_force_overwrite_statusline = 0
+"let g:unite_winheight = 10
+"
+"call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+"      \ 'ignore_pattern', join([
+"      \ '\.git/',
+"      \ ], '\|'))
+"
+"call unite#filters#matcher_default#use(['matcher_fuzzy'])
+"call unite#filters#sorter_default#use(['sorter_rank'])
+"
+"nnoremap <C-P> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
+"
+"autocmd FileType unite call s:unite_settings()
+"
+"function! s:unite_settings()
+"  let b:SuperTabDisabled=1
+""  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+""  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+"  imap <silent><buffer><expr> <C-x> unite#do_action('split')
+"  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+"  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+"
+"  nmap <buffer> <ESC> <Plug>(unite_exit)
+"endfunction

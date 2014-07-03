@@ -1,0 +1,3 @@
+[github]
+  user = ogny
+  token = ogny-token
