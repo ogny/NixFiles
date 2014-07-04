@@ -19,6 +19,7 @@ Plugin 'amix/vim-zenroom2'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jeetsukumaran/vim-buffergator'
 call vundle#end()            " required
 filetype plugin indent on
 "_______________________________________________________________________________
@@ -99,6 +100,8 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
  cnoreabbrev Q! q!
  cnoreabbrev W w
  cnoreabbrev Q q
+ nnoremap <C-n> :bNext<CR>
+ nnoremap <C-p> :bprevious<CR>
 
 "_______________________________________________________________________________
 " => emrah .vimrc 								|
@@ -295,83 +298,15 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-"________________________________________________________________________________________________
-" => Unite											|
-" Vim Ctrlp Behaviour With Unite								|
-" eblundell.com/thoughts/2013/08/15/Vim-CtrlP-behaviour-with-Unite.html 			|
-"												|
-"let g:unite_enable_start_insert = 1								|
-"let g:unite_split_rule = "botright"								|
-"let g:unite_force_overwrite_statusline = 0							|
-"let g:unite_winheight = 10									|
-"												|
-"call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',			|
-"      \ 'ignore_pattern', join([								|
-"      \ '\.git/',										|
-"      \ ], '\|'))										|
-"												|
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])					|
-"call unite#filters#sorter_default#use(['sorter_rank'])						|
-"												|
-"nnoremap <C-P> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>	|
-"												|
-"autocmd FileType unite call s:unite_settings()							|
-"												|
-"function! s:unite_settings()									|
-"  let b:SuperTabDisabled=1									|	
-"  imap <buffer> <C-j>   <Plug>(unite_select_next_line)						|
-"  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)					|
-"  imap <silent><buffer><expr> <C-x> unite#do_action('split')					|
-"  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')					|
-"  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')					|
-"												|
-"  nmap <buffer> <ESC> <Plug>(unite_exit)							|
-"endfunction											|
-"_______________________________________________________________________________________________|
- 
+
 "_______________________________________________________________________________
-" => Unite
+" => NERDTREE 									|
 "_______________________________________________________________________________|
-"call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"call unite#filters#sorter_default#use(['sorter_rank'])
-"call unite#custom#source('file_rec/async','sorters','sorter_rank')
-nnoremap <silent> <C-p> :Unite -start-insert -buffer-name=files -winheight=10 file_rec/async<cr>
-
-nnoremap <leader>ff :<C-u>Unite grep:.<CR>
-
-nnoremap <leader>o :Unite-vertical buffer file<cr>
-"nnoremap <leader>b :Unite -auto-preview buffer<cr>
-
-"nnoremap <silent> <leader>o :<C-u>Unite -no-split -auto-preview -buffer-name=outline -start-insert outline<cr>
-
-nnoremap <silent> <leader>; :Unite -buffer-name=commands -start-insert history/command command<cr>
-
-nnoremap <silent> <space><space> :<C-u>Unite -toggle -auto-resize -start-insert -buffer-name=mixed file_rec:! buffer file_mru bookmark<cr><c-u>
-
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-  nmap <buffer> <ESC>   <Plug>(unite_exit)
-  imap <buffer> <ESC>   <Plug>(unite_exit)
-
-  inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-  inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
-endfunction
-let g:unite_split_rule = "botright"
-let g:unite_source_history_yank_enable = 1
-nnoremap <silent> <leader>u :Unite history/yank<cr>
-
-" if executable('ack-grep')
-"   let g:unite_source_grep_command = 'ack-grep'
-"   " Match whole word only. This might/might not be a good idea
-"   let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-"   let g:unite_source_grep_recursive_opt = ''
-" elseif executable('ack')
-"   let g:unite_source_grep_command = 'ack'
-"   let g:unite_source_grep_default_opts = '--no-heading --no-color -a -w'
-"   let g:unite_source_grep_recursive_opt = ''
-
+" Yapilandirma Kaynak: https://github.com/scrooloose/nerdtree
+" Bos vim buffer'i acildiginda baslatma
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Leader key ile acma
+map <Leader>n :NERDTreeToggle<CR>
+" Sadece NERDTREE penceresi aciksa Vim'i otomatik kapat;
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
