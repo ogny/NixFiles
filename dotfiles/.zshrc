@@ -143,8 +143,9 @@ export WORKON_HOME=$HOME/Envs
 export PROJECT_HOME=$HOME/Devel
 eval `dircolors ~/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
-export GPGKEY=2D8400B5
-export GPG_TTY=$(tty)
+#export PASSWORD_STORE_DIR=$HOME/Git_Repolari/kisisel/private
+#export GPGKEY=2D8400B5
+#export GPG_TTY=$(tty)
 # COMPLETION SETTINGS
 # add custom completion scripts
 fpath=(~/.zsh/completion $fpath) 
