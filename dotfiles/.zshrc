@@ -53,9 +53,11 @@ esac
 HISTCONTROL=ignoreboth
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
+#case "$TERM" in
+#    xterm-color) color_prompt=yes;;
+#esac
+export TERM=rxvt-unicode-256color
+#export TERM=xterm-256color
 
 
 # enable color support of ls and also add handy aliases
@@ -151,9 +153,10 @@ alias x='ssh-agent startx'
 fpath=(~/.zsh/completion $fpath) 
 alias t='task'
 compdef _task t='task'
-alias wrk='task work pro:work'
+alias wrk='task work pro:work.genel'
 alias ans='task ansible pro:work.ansible'
 alias cmp='task comp pro:comp'
 alias cmpad='task add pro:comp pri:M'
 alias wrkad='task add pro:work pri:M'
 alias ansad='task add pro:work.ansible pri:H'
+alias ofsad='task add pro:work.ofis pri:M'
