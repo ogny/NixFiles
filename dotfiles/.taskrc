@@ -34,7 +34,7 @@ taskd.credentials=home\/ogny\/25313f8a-3b65-464a-8aec-08bb10a8539a
 regex=on
 confirmation=off
 
-report.work.description=list of open tasks by work project
+report.work.description=list of open tasks by work.genel project
 report.work.columns=id,due,priority,tags,description.count
 report.work.labels=ID,Due,Pri,Tags,Desc
 report.work.sort=priority-,description+
@@ -55,5 +55,13 @@ report.ansible.columns=id,due,priority,tags,description.count
 report.ansible.labels=ID,Due,Pri,Tags,Desc
 report.ansible.sort=priority-,description+
 report.ansible.filter=status:pending
+journal.time=on
+dateformat.annotation=d\/m\/Y H:N
+
+report.ofis.description=list of open tasks by work.ofis project
+report.ofis.columns=id,due,priority,tags,description.count
+report.ofis.labels=ID,Due,Pri,Tags,Desc
+report.ofis.sort=priority-,description+
+report.ofis.filter=status:pending
 journal.time=on
 dateformat.annotation=d\/m\/Y H:N
