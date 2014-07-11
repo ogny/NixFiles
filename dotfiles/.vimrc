@@ -6,6 +6,7 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "Plugin 'Shougo/unite.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet-snippets'
@@ -17,13 +18,13 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
-Plugin 'scrooloose/nerdtree'
 Plugin 'jeetsukumaran/vim-buffergator'
 "Plugin 'amix/vim-zenroom2'
 Plugin 'junegunn/limelight.vim'
 "Plugin 'jamestomasino/vim-writeroom'
 call vundle#end()            " required
 filetype plugin indent on
+
 "_______________________________________________________________________
 " => genel ayarlar 							|
 "_______________________________________________________________________|
@@ -58,6 +59,7 @@ set noautoindent
 set indentexpr=
 set clipboard=unnamed
 set go+=a
+
 "_______________________________________________________________________
 " => Gorunum 								|
 "_______________________________________________________________________|
@@ -75,7 +77,6 @@ command! -range -nargs=0 Overline        call s:CombineSelection(<line1>, <line2
 command! -range -nargs=0 Underline       call s:CombineSelection(<line1>, <line2>, '0332')
 command! -range -nargs=0 DoubleUnderline call s:CombineSelection(<line1>, <line2>, '0333')
 command! -range -nargs=0 Strikethrough   call s:CombineSelection(<line1>, <line2>, '0336')
-
 function! s:CombineSelection(line1, line2, cp)
   execute 'let char = "\u'.a:cp.'"'
   execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
@@ -90,8 +91,8 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "_______________________________________________________________________|
  map t i <ESC>r
  noremap gr gT
- noremap s <C-b>
- noremap f <C-f>
+ :map f })
+ :map s {(
  nnoremap <S-q> :quit!<CR>
  noremap <Leader>p "*p	
  vnoremap <Leader>p "*p
@@ -109,7 +110,7 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "_______________________________________________________________________
 " => emrah .vimrc 							|
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md call CodingSet1()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml call CodingSet1()
  autocmd BufNewFile,BufRead *.sql call CodingSet2()
  
  function CodingSet1()
@@ -184,24 +185,20 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
         \ }
-
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
 inoremap <expr><C-l>     neocomplete#complete_common_string()
-
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -217,43 +214,16 @@ inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
 inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
@@ -266,6 +236,7 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
+" map <Leader>n :NERDTreeMapToggleHidden<CR>
 map <Leader>n :NERDTreeToggle<CR>
 " Sadece NERDTREE penceresi aciksa Vim'i otomatik kapat;
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -273,13 +244,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 "_______________________________________________________________________
 " => Vim Indent Color 							|
 "_______________________________________________________________________|
-
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
-
-
+"_______________________________________________________________________
+" => Limelight!								|
+"_______________________________________________________________________|
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'Black'
 let g:limelight_conceal_ctermfg = 0
@@ -287,6 +258,13 @@ let g:limelight_conceal_ctermfg = 0
 " Color name (:help gui-colors) or RGB color
 let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
-
 " Default: 0.5
 let g:limelight_default_coefficient = 1
+" Goyo Integration
+function! GoyoBefore()
+  Limelight
+endfunction
+function! GoyoAfter()
+  Limelight!
+endfunction
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
