@@ -56,17 +56,13 @@ HISTCONTROL=ignoreboth
 #case "$TERM" in
 #    xterm-color) color_prompt=yes;;
 #esac
-export TERM=rxvt-unicode-256color
-#export TERM=xterm-256color
 
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     #alias dir='dir --color=auto'
-    alias ls='ls --color=auto'
     #alias vdir='vdir --color=auto'
-
     #alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
@@ -82,8 +78,13 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.zsh/zsh_aliases ]; then
+    . ~/.zsh/zsh_aliases
+fi
+
+# load exports
+if [ -f ~/.zsh/zsh_exports ]; then
+  source ~/.zsh/zsh_exports
 fi
 
 #zargan
@@ -107,56 +108,12 @@ man() {
 uncomment() {
 sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 }
-genpasswd() {
-        local l=$1
-        [ "$l" == "" ] && l=16
-        /usr/bin/tr -dc A-Za-z0-9_ < /dev/urandom | head -c ${l} | xargs
-}
-diig () {
-dig NS `echo "$1" |sed 's/\.hosts//g' `
-}
-dg () {
-dig +nocmd $1 any +multiline +noall +answer `echo "$1" |sed 's/\.hosts//g' `
-}
-dgg () {
-dig +nocmd $1 any +multiline +noall +answer `echo "$1" |sed 's/pri\.//g' `
-}
-whoz () {
-whois `echo "$1" |sed 's/pri\.//g' ` |grep "Registrant Name:" 
-}
-whos () {
-whois `echo "$1" |sed 's/pri\.//g' ` |grep "Name Server:"
-}
-digg () {
-dig +nocmd $1 any +multiline +noall +answer `echo "$1" `
-}
 lm () {
 find $1 -maxdepth 1 -type f -printf '%f\n'
 }
-export PATH="$PATH:/home/orkung/bin:/usr/local/bin"
-export VAGRANT_HOME=/home/orkung/.vagrant.d
-export SSH_AGENT_SOCK=`~/bin/sshag.sh`
-source ~/bin/sshag.sh >/dev/null 2>&1
+source $HOME/bin/sshag.sh >/dev/null 2>&1
 eval "$(fasd --init auto)"
-export MANPAGER=/home/orkung/bin/manpager.sh
-alias top10="history | awk {'print $2'} | sort | uniq -c | sort -nr | head -n 10"
-#source /usr/local/bin/virtualenvwrapper.sh
-export WORKON_HOME=$HOME/Envs
-export PROJECT_HOME=$HOME/Devel
 eval `dircolors ~/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
-#export PASSWORD_STORE_DIR=$HOME/Git_Repolari/kisisel/private
-#export GPGKEY=2D8400B5
-#export GPG_TTY=$(tty)
-# COMPLETION SETTINGS
-# add custom completion scripts
-fpath=(~/.zsh/completion $fpath) 
-alias t='task'
+fpath=($HOME/.zsh/completion $fpath) 
 compdef _task t='task'
-alias wrk='task work pro:work.genel'
-alias ans='task ansible pro:work.ansible'
-alias cmp='task comp pro:comp'
-alias cmpad='task add pro:comp pri:M'
-alias wrkad='task add pro:work pri:M'
-alias ansad='task add pro:work.ansible pri:H'
-alias ofsad='task add pro:work.ofis pri:M'
