@@ -1,0 +1,16 @@
+{
+  "default_hour": 9, 
+  "linewrap": 79, 
+  "encrypt": false, 
+  "default_minute": 0, 
+  "tagsymbols": "@", 
+  "editor": "vim", 
+  "timeformat": "%d-%m-%Y %H:%M", 
+  "highlight": true, 
+  "journals": {
+    "default": "/home/orkung/Git_Repolari/kisisel/private/gunluk/journal.txt", 
+    "work": "/home/orkung/Git_Repolari/kisisel/private/gunluk/work.txt", 
+    "bahis": "/home/orkung/Git_Repolari/kisisel/private/gunluk/bahis.txt", 
+      "encrypt": false
+    }
+}

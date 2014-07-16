@@ -19,7 +19,7 @@ alias upd="sudo aptitude update"
 alias upg="sudo aptitude upgrade"
 alias api="sudo aptitude install"
 alias se="sudo dpkg --get-selections"
-alias aps="sudo apt-cache --names-only search"
+alias aps="apt-cache --names-only search"
 alias sht='vagrant halt server1 ; vagrant halt server2 ; sudo shutdown -h now'
 alias vr='sudo vim'
 alias enable_alert='PS1="$PS1\a"'
@@ -37,9 +37,10 @@ alias t='task'
 alias wrk='task work pro:work'
 alias ans='task ansible pro:work.ansible'
 alias cmp='task comp pro:comp'
+alias ofs='task ofis pro:work.ofis'
 alias cmpad='task add pro:comp pri:M'
-alias wrkad='task add pro:work pri:M'
+alias wrkad='task add pro:work pri:H'
 alias ansad='task add pro:work.ansible pri:H'
-alias ofsad='task add pro:work.ofis pri:M'
+alias ofsad='task add pro:work.ofis pri:L'
 alias ls='ls --color=auto'
 alias g='git'

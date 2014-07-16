@@ -212,7 +212,7 @@ client.urgent           #2f343a 	#900000 	#ffffff
 #Assign X terminals to workspace X
 assign [class="feh"] 2
 assign [class="xterm"] 2
-assign [class="URxvt"] 2
+assign [class="URxvt"] 1
 assign [class="^Skype$"] 3
 assign [class="rdesktop"] 1
 assign [class="^Chromium$" instance="accounts.google.com__ServiceLogin"] 2

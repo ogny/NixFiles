@@ -91,8 +91,10 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "_______________________________________________________________________|
  map t i <ESC>r
  noremap gr gT
- :map f })
- :map s {(
+ :nnoremap f }) \| zz
+ :nnoremap s {( \| zz
+" :map f }) 
+" :map s {(
  nnoremap <S-q> :quit!<CR>
  noremap <Leader>p "*p	
  vnoremap <Leader>p "*p
