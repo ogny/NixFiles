@@ -95,7 +95,8 @@ sudo apt-get install chromium scrot feh zathura redshift suckless-tools wodim
 fontconfig-infinality pepperflashplugin-nonfree   
 ```  
 * ubuntu kurulduysa kaldirilacak paketler;
-whoopsie
+whoopsie, apport
+Ubuntu icin ekstra kurulacaklar; python-software-properties
   
 * makinanin dis ip'den cikisi varsa nagios-nrpe-server (--with-recommends ile)  
 * pass ve gnupg organize et (http://www.passwordstore.org/)  
