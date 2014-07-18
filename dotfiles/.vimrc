@@ -19,6 +19,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'joom/turkish-deasciifier.vim'
 "Plugin 'amix/vim-zenroom2'
 Plugin 'junegunn/limelight.vim'
 "Plugin 'jamestomasino/vim-writeroom'
@@ -270,3 +271,10 @@ function! GoyoAfter()
   Limelight!
 endfunction
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
+"_______________________________________________________________________
+" => turkish-deasciifier.						|
+"_______________________________________________________________________|
+vmap <Leader>tr :<c-u>call Turkish_Deasciify()<CR>
+vmap <Leader>rt :<c-u>call Turkish_Asciify()<CR>
+let g:turkish_deasciifier_path = '~/Git_Repolari/diger/turkish-deasciifier/turkish-deasciify'
