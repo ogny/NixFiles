@@ -163,7 +163,7 @@ exec xrandr --output DP1 --mode 1920x1080_60.00 --pos 1360x0 --output eDP1 --mod
 #exec ssh-agent /bin/zsh
 #exec setxkbmap tr -variant alt 
 exec 'xmodmap /home/orkung/.Xmodmap'
-exec synclient TouchpadOff=1
+#exec synclient TouchpadOff=1
 #exec gitk
 #exec 'synergys --config ~/.synergy.conf'
 #exec ~/bin/autostart-i3-simple
@@ -179,7 +179,8 @@ exec skype
 #exec firefox
 #exec autojump 
 #exec feh ~/Downloads/regular_expressions_cheat_sheet.png
-bindsym Mod1+q exec xterm -g 53x38  
+bindsym Mod1+w exec xterm -g 53x38  
+bindsym Mod1+q exec urxvt -g 53x38  
 bindsym Mod1+a exec urxvt -g 53x38 -e tmux new-session
 #bindsym Mod1+w exec uxterm -g 71x51 -e tmux new-session
 bindsym Mod1+s exec chromium-browser
@@ -197,22 +198,24 @@ bindsym $mod+Shift+p move workspace prev
 bindsym $mod+Shift+n move workspace next
 #for_window [instance="xterm_scratchpad"] move to scratchpad, 
 #for_window [instance="urxvt"] floating enable 
+for_window [class="URxvt" title="^[^:]+:(?<!x200:)"] border 1pixel
 #for_window [instance="chromium"] floating enable 
 #for_window [instance="^Chromium$"] floating enable 
 for_window [instance="xterm"] floating enable 
+for_window [class="Uzbl-core"] focus child, layout tabbed, focus
 #new_window 1pixel
 new_window none
 # class                 border  	backgr. 	text    
-client.focused          #111111 	#002b36		#111111
-client.focused_inactive #111111 	#002b36 	#111111
-client.unfocused        #111111 	#002b36 	#111111
+client.focused          #111111 	#002b36		#ffffff 
+client.focused_inactive #111111 	#002b36 	#ffffff
+client.unfocused        #111111 	#002b36 	#ffffff
 
 client.urgent           #2f343a 	#900000 	#ffffff
 #exec xsetroot -solid "#e1dce0"
 #Assign X terminals to workspace X
 assign [class="feh"] 2
 assign [class="xterm"] 2
-assign [class="URxvt"] 1
+assign [class="URxvt"] 2
 assign [class="^Skype$"] 3
 assign [class="rdesktop"] 1
 assign [class="^Chromium$" instance="accounts.google.com__ServiceLogin"] 2
