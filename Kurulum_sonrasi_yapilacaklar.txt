@@ -94,9 +94,12 @@ coreutils gnupg pass sshpass git-flow git-extras apache2-utils (ab icin)
 sudo apt-get install chromium scrot feh zathura redshift suckless-tools wodim  
 fontconfig-infinality pepperflashplugin-nonfree   
 ```  
-* ubuntu kurulduysa kaldirilacak paketler;
-whoopsie, apport
-Ubuntu icin ekstra kurulacaklar; python-software-properties
+* ubuntu kurulduysa 
+    ** kaldirilacaklar;
+       whoopsie, apport
+    ** kurulacaklar; 
+       python-software-properties
+       acpi
   
 * makinanin dis ip'den cikisi varsa nagios-nrpe-server (--with-recommends ile)  
 * pass ve gnupg organize et (http://www.passwordstore.org/)  
