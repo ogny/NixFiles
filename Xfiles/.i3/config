@@ -198,7 +198,7 @@ bindsym $mod+Shift+p move workspace prev
 bindsym $mod+Shift+n move workspace next
 #for_window [instance="xterm_scratchpad"] move to scratchpad, 
 #for_window [instance="urxvt"] floating enable 
-for_window [class="URxvt" title="^[^:]+:(?<!x200:)"] border 1pixel
+#for_window [class="URxvt" title="^[^:]+:(?<!x200:)"] border 1pixel
 #for_window [instance="chromium"] floating enable 
 #for_window [instance="^Chromium$"] floating enable 
 for_window [instance="xterm"] floating enable 
@@ -206,9 +206,9 @@ for_window [class="Uzbl-core"] focus child, layout tabbed, focus
 #new_window 1pixel
 new_window none
 # class                 border  	backgr. 	text    
-client.focused          #111111 	#002b36		#ffffff 
-client.focused_inactive #111111 	#002b36 	#ffffff
-client.unfocused        #111111 	#002b36 	#ffffff
+client.focused          #111111 	#002b36		#111111 
+client.focused_inactive #111111 	#002b36 	#111111
+client.unfocused        #111111 	#002b36 	#111111
 
 client.urgent           #2f343a 	#900000 	#ffffff
 #exec xsetroot -solid "#e1dce0"
@@ -234,7 +234,8 @@ assign [class="^Chromium$"  instance="play.spotify.com"] 4
 assign [class="^Chromium$"  instance="rss.orkungunay.com"] 4
 #assign [class="^Chromium$"  instance="posta.beyaz.net"] 3
 #exec --no-startup-id  nitrogen --set-zoom-fill /home/orkung/backgrounds/taskwarrior_cheat.png
-exec --no-startup-id  nitrogen --restore
+exec --no-startup-id xsetroot -solid "#002b36"	
+#exec --no-startup-id  nitrogen --restore
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 #	tray_output    primary
