@@ -15,7 +15,7 @@ Xft.hintstyle:              hintslight
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-urxvt.depth:                32
+URxvt.depth:                32
 URxvt.geometry:             90x30
 URxvt.transparent:          false
 URxvt.fading:               0
@@ -29,10 +29,11 @@ URxvt.lineSpace:            0
 ! Fonts
 URxvt.allow_bold:           false
 !URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1
-!URxvt.font: xft:DejaVu Sans Mono:antialias=true:pixelsize=12
-!URxvt.boldFont: xft:DejaVu Sans Mono:style=bold:antialias=true:pixelsize=12
-URxvt.font: xft:Monaco:antialias=true:size=11
-URxvt.boldFont: xft:Monaco:style=bold:antialias=true:size=11
+URxvt.font: xft:Monaco:antialias=false:pixelsize=12
+!URxvt.font: xft:Input Sans:antialias=true:pixelsize=12
+!URxvt.boldFont: xft:Input Sans:style=bold:antialias=true:pixelsize=12
+!URxvt.font: xft:Monaco:antialias=true:size=11
+URxvt.boldFont: xft:Monaco:style=bold:antialias=false:size=12
 ! Fix font space
 URxvt*letterSpace: -1
 
@@ -198,5 +199,5 @@ URxvt.keysym.M-u: perl:mark-and-yank:activate_mark_url_mode
 URxvt.perl-lib: /home/orkung/.urxvt/
 URxvt.perl-ext: mark-yank-urls
 !URxvt.perl-ext: mark-and-yank
-URxvt.urlLauncher: chromium 
+URxvt.urlLauncher: chromium-browser
 URxvt.reverseVideo: false
