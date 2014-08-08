@@ -93,7 +93,7 @@ coreutils gnupg pass sshpass git-flow git-extras apache2-utils python-pelican
 autofs
 * X11 kuruluysa yukaridakilere ek olarak;  
 sudo apt-get install chromium scrot feh zathura redshift suckless-tools wodim  
-fontconfig-infinality pepperflashplugin-nonfree unclutter   
+fontconfig-infinality pepperflashplugin-nonfree unclutter imagemagick
 ```  
 * ubuntu kurulduysa 
     ** kaldirilacaklar;
