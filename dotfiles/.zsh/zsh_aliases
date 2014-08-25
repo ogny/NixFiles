@@ -45,5 +45,8 @@ alias ansad='task add pro:work.ansible pri:H'
 alias ofsad='task add pro:work.ofis pri:L'
 alias kerad='task add pro:work.kerim pri:L'
 alias ls='ls --color=auto'
+alias ll='ls -alh --color=auto'
 alias gad='git add -A && git status'
 #alias ssh='i3-msg border normal && ssh'
+alias dpg='dpkg -l |grep $1'
+alias psd="watch --differences -n 2  'ps -e -o pid,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15'"

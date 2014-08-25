@@ -156,6 +156,8 @@ bindsym $mod+r mode "resize"
 
 # my config
 exec unclutter -display :0 -root -idle 1 &
+exec firefox -new-tab http://151.236.216.175:2002/#/dashboard/elasticsearch/Overview%20Web
+exec  gtk-redshift -l 52.5:13.4
 #exec xrandr --output LVDS-1 --auto --output VGA-1 --auto --right-of LVDS-1
 #exec xrandr --output DP1 --auto --output eDP1 --auto --left-of DP1
 #exec xrandr --output DP1 --auto --output eDP1 --auto --left-of DP1
