@@ -50,3 +50,12 @@ alias gad='git add -A && git status'
 #alias ssh='i3-msg border normal && ssh'
 alias dpg='dpkg -l |grep $1'
 alias psd="watch --differences -n 2  'ps -e -o pid,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15'"
+alias dmesgg="dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
+alias kilc="sudo kill $(pgrep chromium)"
+alias bagla="encfs ~/Git_Repolari/kisisel/private/parolalar/.sifreli ~/Git_Repolari/kisisel/private/parolalar/.acik"
+alias x='ssh-agent startx'
+alias web='tmux attach-session -t web'
+alias api='tmux attach-session -t api'
+alias diger='tmux attach-session -t diger'
+alias lb='tmux attach-session -t lb'
+alias genel='tmux attach-session -t genel'
