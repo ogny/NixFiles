@@ -8,10 +8,12 @@ set recolor true
 
 set default-bg "#002b36"
 set default-fg "#93A1A1"
+
 set recolor-lightcolor  "#002b36"
 set recolor-darkcolor "#93A1A1"
 
 set recolor-darkcolor  "#93A1A1"
+#set recolor-darkcolor "#111111"
 set recolor-lightcolor "#002b36"
 
 set statusbar-bg "#002b36"
@@ -29,5 +31,7 @@ map [index] q quit
 map [normal] t toggle_statusbar
 unmap <C-r>
 map [normal] <C-r> reload
-
-
+unmap d
+map [normal] d zoom in
+unmap a
+map [normal] a zoom out
