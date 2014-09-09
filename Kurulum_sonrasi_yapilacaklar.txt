@@ -105,6 +105,20 @@ dpkg-reconfigure x11-common
   
 * makinanin dis ip'den cikisi varsa nagios-nrpe-server (--with-recommends ile)  
 * pass ve gnupg organize et (http://www.passwordstore.org/)  
+
+* ascii screen saver;
+```
+cd /tmp
+wget http://www.robobunny.com/projects/asciiquarium/asciiquarium.tar.gz
+tar -zxvf asciiquarium.tar.gz
+cd asciiquarium_1.1/
+sudo su
+cp asciiquarium /usr/local/bin
+chmod 0755 /usr/local/bin/asciiquarium
+perl -MCPAN -e shell
+install Term::Animation
+```
+
 #### task sync ozelligiyle kullanilacaksa  
 ```  
 sudo apt-get install cmake uuid-dev libgnutls-dev build-essential -y  
