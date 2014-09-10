@@ -184,7 +184,7 @@ exec urxvt
 bindsym Mod1+w exec xterm -g 53x38  
 bindsym Mod1+q exec urxvt -g 53x38  
 bindsym Mod1+a exec urxvt -g 53x38 -e tmux new-session
-bindsym Mod1+s exec chromium-browser
+bindsym Mod1+s exec google-chrome
 bindsym Mod1+4 exec pavucontrol
 bindsym Mod1+z exec "setxkbmap tr ; xmodmap /home/orkung/.Xmodmap"
 bindsym Mod1+x exec "setxkbmap us ; xmodmap /home/orkung/.Xmodmap"
