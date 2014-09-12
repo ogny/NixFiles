@@ -135,6 +135,10 @@ sudo vim /etc/fstab
 :wq
 sudo mount -a
 ```  
+
+#### akilli telefon baglama
+```
+mtpfs libfuse-dev libmad0-dev jmtpfs
   
 #### github'tan kurulacak uygulamalar  
 * ansible
