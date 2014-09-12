@@ -1,0 +1,793 @@
+#!/usr/bin/lua
+
+local function loadconf(x)
+    local ok,e = pcall(dofile,x)
+    if not ok and not string.match(e,"^cannot open ") then
+        error(e)
+    end
+end
+
+loadconf("/etc/curlpaste.conf")
+loadconf(os.getenv("HOME").."/.curlpaste.conf")
+
+--some people don't have a config file...
+DEFAULT_DESCRIPTION = DEFAULT_DESCRIPTION or ""
+DEFAULT_NICK = DEFAULT_NICK or os.getenv("USER")
+DEFAULT_LANGUAGE = DEFAULT_LANGUAGE or "Plain"
+DEFAULT_SERVICE = DEFAULT_SERVICE or "codepad"
+DEFAULT_EXPIRY = DEFAULT_EXPIRY or "1 day"
+
+
+local function cleanup(tbl)
+    os.remove(tbl.tmpfilename)
+end
+
+local function checkXclip()
+    local x = os.execute("which xclip >&/dev/null")
+    if x == 0 then
+        return true
+    else
+        return false
+    end
+end
+
+local function str__mod(lhs, rhs)
+    if type(rhs) == "table" then
+        return lhs:format(unpack(rhs))
+    else
+        return lhs:gsub('%%', '%%%%'):gsub('%%%%', '%%', 1):format(rhs)
+    end
+end
+
+getmetatable("").__mod = str__mod
+
+local LP =  {
+    service = DEFAULT_SERVICE,
+    language =  DEFAULT_LANGUAGE,
+    services = {},
+    options = {},
+    files = {},
+    description = DEFAULT_DESCRIPTION,
+    run = false,
+    private = false,
+    nick = DEFAULT_NICK,
+    concat = false,
+    file = "",
+    tmpfilename = "/tmp/curlpaste.tmp",
+    stdin = false,
+    cont = true,
+    command = false,
+    expires = DEFAULT_EXPIRY,
+    returnurl = "",
+    xpaste = false,
+    xcut = false,
+}
+cleanup(LP)
+
+local function fdata(tbl, file)
+    if file:match("^~") then
+        file = file:gsub("^~", os.getenv("HOME"))
+    end
+    local fd = assert(io.open(file, "rb"))
+    local buf = fd:read("*a")
+    fd:close()
+    local tmpfile = io.open(tbl.tmpfilename, "w")
+    tmpfile:write(buf)
+    tmpfile:close()
+    tbl.file = file
+end
+
+local function fdataConcat(tbl)
+    local fd
+    local buf = ""
+    for k, file in ipairs(tbl.files) do
+        fd = assert(io.open(file, "rb"))
+        buf = buf..file.."\n"..fd:read("*a")
+        fd:close()
+    end
+    local tmpfile = io.open(tbl.tmpfilename, "w")
+    tmpfile:write(buf)
+    tmpfile:close()
+    tbl.file = "Multiple files"
+end
+
+local function addService(tbl, service_name, service_url, languages_tbl, body_func, url_match, expires_tbl)
+    tbl.services[service_name] = {
+    url = service_url,
+    languages = languages_tbl,
+    expires = expires_tbl or {},
+    matcher = url_match,
+    curl_args = body_func,
+  }
+end
+
+----LANGUAGES----
+
+local CODEPAD_LANGUAGES = {
+  "C", "C++", "D", "Haskell", "Lua", "OCaml", "PHP", "Perl", ["Plain"] = "Plain Text",
+  "Python", "Ruby", "Scheme", "Tcl",
+}
+local CA_LANGUAGES = {
+    ["ASP"] = "22";
+    ["Action Script"] = "18";
+    ["Ada"] = "19";
+    ["Apache Configuration"] = "20";
+    ["Assembl (NASM)"] = "21";
+    ["Asterisk Configuration"] = "2";
+    ["BASH"] = "23";
+    ["C"] = "3";
+    ["C#"] = "9";
+    ["C++"] = "4";
+    ["CSS"] = "24";
+    ["Delphi"] = "25";
+    ["HTML 4.0 Strict"] = "26";
+    ["Java"] = "7";
+    ["JavaScript"] = "27";
+    ["LISP"] = "28";
+    ["Lua"] = "29";
+    ["Microprocessor ASM"] = "30";
+    ["Objective C"] = "31";
+    ["PHP"] = "5";
+    ["PL/I"] = "14";
+    ["Pascal"] = "12";
+    ["Perl"] = "6";
+    ["Python"] = "11";
+    ["Plain"] = "1";
+    ["Ruby"] = "10";
+    ["SQL Statement"] = "16";
+    ["Scheme"] = "17";
+    ["Visual Basic .NET"] = "32";
+    ["Visual Basic"] = "8";
+    ["XML Document"] = "15";
+    ["mIRC Script"] = "13";
+}
+
+local DPASTE_LANGUAGES = {
+    "Python", "PythonConsole", "Sql", "DjangoTemplate", "JScript", "Css", "XmL",
+    "Diff", "Ruby", "Rhtml", "Haskell", "Apache", "Bash", ["Plain"] = "";
+}
+
+local FPASTE_LANGUAGES = {
+    "apacheconf", "bash", "bat", "bbcode", "befunge", "boo", "brainfuck", "c",
+    "cpp", "csharp", "css", "css+django", "css+erb", "css+genshitext", "css+mako",
+    "css+myghty", "css+php", "css+smarty", "d", "delphi", "diff", "django", "dylan",
+    "erb", "genshi", "genshitext", "groff", "haskell", "html", "html+django",
+    "html+genshi", "html+mako", "html+myghty", "html+php", "html+smarty", "ini",
+    "irc", "java", "js", "js+django", "js+erb", "js+genshitext", "js+mako",
+    "js+myghty", "js+php", "js+smarty", "jsp", "lua", "make", "mako", "minid",
+    "mupad", "myghty", "objective-c", "ocaml", "perl", "php", "pycon", "pytb",
+    "python", ["plain"] = "raw", "rb", "rbcon", "redcode", "rhtml", "rst", "scheme", "smarty",
+    "sourceslist", "sql", "tex", "text", "trac-wiki", "vb.net", "vim", "xml",
+    "xml+django", "xml+erb", "xml+mako", "xml+myghty", "xml+php", "xml+smarty",
+}
+
+local GHOST_LANGUAGES = {
+    ["plain"] = "text"; "actionscript", "ada", "apache", "applescript", "asm", "asp", "bash",
+    "c", "c_mac", "caddcl", "cadlisp", "cpp", "csharp", "cfm", "css", "d", "delphi", "diff",
+    "dos", "eiffel", "fortran", "freebasic", "gml", "html4strict", "ini", "java", "javascript",
+    "lisp", "lua", "matlab", "mpasm", "mysql", "nsis", "objc", "ocaml", "oobas", "oracle8",
+    "pascal", "perl", "php", "python", "qbasic", "robots", "ruby", "scheme", "smarty", "sql",
+    "tcl", "vb", "vbnet", "visualfoxpro", "xml"
+}
+
+local LODGEIT_LANGUAGES = {
+    "apache", "bash", "bat", "boo", "c", "csharp", "cpp", "clojure", "creole", "css", "csv",
+    "d", "control", "html+django", "dylan", "erlang", "rhtml", "gas", "gcc-messages",
+    "html+genshi", "gettext", "glsl", "haskell", "html", "ini", "irb", "io", "irc", "java",
+    "javac-messages", "js", "jsp", "lighttpd", "literate-haskell", "llvm", "lua", "html+mako",
+    "matlab", "matlabsession", "minid", "multi", "html+myghty", "mysql", "nasm", "nginx",
+    "objectpascal", "ocaml", "perl", "html+php", "php", "povray", "python", "pycon", "pytb",
+    "rst", "ruby", "scala", "scheme", "smalltalk", "smarty", "sourceslist", "sql", "squidconf",
+    "tex", ["plain"] = "text", "diff", "vim", "xml", "xslt", "yaml",
+}
+
+
+-----EXPIRES----
+
+local CA_EXPIRES = { ["Never"] = "", "5 minutes", "10 minutes", "15 minutes", "30 minutes", "45 minutes",
+    "1 hour", "2 hours", "4 hours", "8 hours", "12 hours", "1 day", "2 days", "3 days",
+    "1 week", "2 weeks", "3 weeks", "1 month", "2 months", "3 months", "4 months",
+    "5 months", "6 months", "1 year",
+}
+
+local FPASTE_EXPIRES = {["1 day"] = "86400"; ["12 hours"] = "43200"; ["3 hours"] = "10800"; ["1 hour"] = "3600";}
+
+local GHOST_EXPIRES = {["1 day"] = "d"; ["1 month"] = "m"; ["forever"] = "f";}
+
+------ARGS-----
+
+local function CODEPAD_ARGS(tbl, file)
+    local lang = tbl.services[tbl.service].languages[tbl.language] or tbl.language
+    local run = tbl.run
+    local private = tbl.private
+    if run then run = "True" else run = "False" end
+    if private then private = "True" else private = "False" end
+    local args = {
+        "'client=curlpaste'",
+        "'run=%s'" % run,
+        "'lang=%s'" % lang,
+        "'private=%s'" % private,
+        "'code@%s'" % file,
+        "'submit=Submit'",
+    }
+    return args
+end
+
+local function CA_ARGS(tbl, file)
+    local lang = tbl.services[tbl.service].languages[tbl.language] or tbl.language
+    local args = {
+        "'client=curlpaste'",
+        "'s=Submit Post'",
+        "'name=%s'" % tbl.nick,
+        "'description=%s'" % tbl.description,
+        "'type=%s'" % lang,
+        "'expiry=%s'" % tbl.expires,
+        "'content@%s'" % file,
+    }
+    return args
+end
+
+local function DPASTE_ARGS(tbl, file)
+    local lang = tbl.services[tbl.service].languages[tbl.language] or tbl.language
+    local args = {
+        "'client=curlpaste'",
+        "'content@%s'" % file,
+        "'title=%s'" % tbl.description,
+        "'poster=%s'" % tbl.nick,
+        "'language=%s'" % lang,
+    }
+    return args
+end
+
+local function FPASTE_ARGS(tbl, file)
+    local lang = tbl.services[tbl.service].languages[tbl.language] or tbl.language
+    local expires = tbl.services[tbl.service].expires[tbl.expires] or tbl.expires
+    local args = {
+        "'content@%s'" % file,
+        "'title=%s'" % tbl.description,
+        "'lexer=%s'" % lang,
+        "'submit=Paste it!'",
+        "'author=%s'" % tbl.nick,
+        "'expire_options=%s'" % expires,
+    }
+    return args
+end
+
+local function GHOST_ARGS(tbl, file)
+    local lang = tbl.services[tbl.service].languages[tbl.language] or tbl.language
+    local expires = tbl.services[tbl.service].expires[tbl.expires] or tbl.expires
+    local private = tbl.private
+    if private then private = "1" else private = "0" end
+    local args = {
+        "'code2@%s'" % file,
+        "'poster=%s'" % tbl.nick,
+        "'format=%s'" % lang,
+        "'private=%s'" % private,
+        "'expiry=%s'" % expires,
+        "'paste=PasteIt!'",
+    }
+    return args
+end
+
+local function LODGEIT_ARGS(tbl, file)
+    local lang = tbl.services[tbl.service].languages[tbl.language] or tbl.language
+    local private = tbl.private
+    if private then private = "on" else private = nil end
+    local args = {}
+    if private == "on" then
+        args = {
+            "'code@%s'" % file,
+            "'language=%s'" % lang,
+            "'private=%s'" % private,
+            "'submit=Paste!'",
+        }
+    else
+        args = {
+            "'code@%s'" % file,
+            "'language=%s'" % lang,
+            "'submit=Paste!'",
+        }
+    end
+    return args
+end
+
+----URL MATCHERS----
+
+local function CODEPAD_MATCHER(response)
+    local url = response:match('The resource was found at <a href="(.*)">')
+    if url then
+        return url
+    else
+        print("Error retrieving url.")
+--        return
+    end
+end
+
+local function CA_MATCHER(response)
+   local url = response:match('SUCCESS:(.*)')
+   if url then
+        return "http://pastebin.ca/"..url
+    else
+        print("Error retrieving url.")
+--        return
+    end
+end
+
+local function DPASTE_MATCHER(response)
+    local url = response:match('Location: (.*)')
+    if url then
+        return url:match("http://dpaste.com/%d*/")
+    else
+        print("Error retrieving url.")
+--        return
+    end
+end
+
+local function FPASTE_MATCHER(response)
+    local url = response:match('Location: (.*)')
+    if url then
+        return url:match("http://fpaste.org/%w*/")
+    else
+        print("Error retrieving url.")
+--        return
+    end
+end
+
+local function GHOST_MATCHER(response)
+    local url = response:match('Location: (.*)')
+    if url then
+        return url:match("http://pasteit.ghost1227.com/%w*")
+    else
+        print("Error retrieving url.")
+--        return
+    end
+end
+
+local function LODGEIT_MATCHER(response)
+    local url = response:match('Location: (.*)')
+    if url then
+        return url:match("http://paste.pocoo.org/show/%w*/")
+    else
+        print("Error retrieving url.")
+--        return
+    end
+end
+
+addService(LP, "codepad", "http://codepad.org/", CODEPAD_LANGUAGES, CODEPAD_ARGS, CODEPAD_MATCHER)
+addService(LP, "ca", "http://pastebin.ca/quiet-paste.php?api=moFXXusXQpQ3zlOyYgsXuG74HzYErXkx", CA_LANGUAGES, CA_ARGS, CA_MATCHER, CA_EXPIRES)
+addService(LP, "dpaste", "http://dpaste.com", DPASTE_LANGUAGES, DPASTE_ARGS, DPASTE_MATCHER)
+addService(LP, "fpaste", "http://fpaste.org/", FPASTE_LANGUAGES, FPASTE_ARGS, FPASTE_MATCHER, FPASTE_EXPIRES)
+addService(LP, "ghost", "http://pasteit.ghost1227.com/pastebin.php", GHOST_LANGUAGES, GHOST_ARGS, GHOST_MATCHER, GHOST_EXPIRES)
+addService(LP, "lodgeit", "http://paste.pocoo.org/", LODGEIT_LANGUAGES, LODGEIT_ARGS, LODGEIT_MATCHER)
+
+local function addOption(tbl, required_opt, option_name, func_name, secondary_name)
+  tbl.options[option_name] = {on = false, params = {}, func = func_name, required = required_opt}
+  if secondary_name and secondary_name ~= option_name then
+    tbl.options[secondary_name] = {on = false, params = tbl.options[option_name].params, func = func_name, required = required_opt}
+  end
+end
+
+local function getOptions(options)
+    local function resetFlags()
+        for k in pairs(options) do
+            options[k].on = false
+        end
+    end
+    local cur_opt, required_opt
+    for i = 1, #arg do
+        if string.match(arg[i], "^%-%-") then
+            s = string.gsub(arg[i], "^%-%-", "")
+            if options[s] and #s > 1 then
+                options[s].on = true
+                cur_opt = s
+                required_opt = options[s].required
+            else
+                print("--"..s.." is an invalid option")
+                resetFlags()
+            end
+
+        elseif string.match(arg[i], "^%-%a+") then
+            for j = 1, #arg[i]-1 do
+                s = string.sub(arg[i], j+1, j+1)
+                if options[s] then
+                    options[s].on = true
+                    cur_opt = s
+                    required_opt = options[s].required
+                else
+                    print("-"..s.." is an invalid option")
+                    resetFlags()
+                end
+            end
+
+        elseif cur_opt then
+            if required_opt then
+                table.insert(options[cur_opt].params, arg[i])
+                cur_opt = nil
+                required_opt = false
+            else
+                table.insert(options["f"].params, arg[i])
+                options["f"].on = true
+            end
+        else
+            table.insert(options["f"].params, arg[i])
+            options["f"].on = true
+        end
+    end
+end
+
+local function fileList(tbl, params)
+    if #params > 0 then
+        for k, v in ipairs(params) do
+            table.insert(tbl.files, v)
+        end
+    else
+        print("Usage: curlpaste -f foo bar baz ...")
+        tbl.cont = false
+    end
+end
+
+addOption(LP, true, "f", fileList, "file")
+
+local function pickService(tbl, params)
+    if params[1] then
+        tbl.service = params[1]
+    else
+        print("Usage: curlpaste -s SERVICE")
+        tbl.cont = false
+    end
+end
+
+addOption(LP, true, "s", pickService, "service")
+
+local function pickLanguage(tbl, params)
+    if params[1] then
+        tbl.language = params[1]
+    else
+        print("Usage: curlpaste -l LANGUAGE")
+        tbl.cont = false
+    end
+end
+
+addOption(LP, true, "l", pickLanguage, "language")
+
+local function private(tbl, params)
+    tbl.private = true
+end
+
+addOption(LP, false, "p", private, "private")
+
+local function run(tbl, params)
+    tbl.run = true
+end
+
+addOption(LP, false, "r", run, "run")
+
+local function concat(tbl, params)
+    tbl.concat = true
+end
+
+addOption(LP, false, "c", concat, "concat")
+
+local function description(tbl, params)
+    if params[1] then
+        tbl.description = params[1]
+        DEFAULT_DESCRIPTION = params[1]
+    else
+        print("Usage: curlpaste -d DESCRIPTION")
+        tbl.cont = false
+    end
+end
+
+addOption(LP, true, "d", description, "description")
+
+local function nick(tbl, params)
+    if params[1] then
+        tbl.nick = params[1]
+    else
+        print("Usage: curlpaste -n NICK")
+        tbl.cont = false
+    end
+end
+
+addOption(LP, true, "n", nick, "nick")
+
+local function listServices(tbl, params)
+    for k in pairs(tbl.services) do
+        print(k)
+    end
+    tbl.cont = false
+end
+
+addOption(LP, false, "S", listServices, "list-services")
+
+local function listLanguages(tbl, params)
+    if tbl.services[params[1]] then
+        for k, v in pairs(tbl.services[params[1]].languages) do
+            if type(k) == "number"  then print(v) else print(k) end
+        end
+    else
+        print("Usage: curlpaste -L SERVICE")
+    end
+    tbl.cont = false
+end
+
+addOption(LP, true, "L", listLanguages, "list-languages")
+
+local function stdin(tbl, params)
+    tbl.stdin = true
+end
+
+addOption(LP, false, "stdin", stdin)
+
+local function setExpiry(tbl, params)
+    if params[1] then
+        tbl.expires = params[1]
+    else
+        print("Usage: curlpaste -e EXPIRATION")
+    end
+end
+
+addOption(LP, true, "e", setExpiry, "expiration")
+
+local function listExpiry(tbl, params)
+    if tbl.services[params[1]] then
+        for k, v in pairs(tbl.services[params[1]].expires) do
+            if type(k) == "number" then print(v) else print(k) end
+        end
+    else
+        print("Usage: curlpaste -E SERVICE")
+    end
+    tbl.cont = false
+end
+
+addOption(LP, true, "E", listExpiry, "list-expiration")
+
+math.randomseed(os.time())
+local function vista(tbl, params)
+    local questions = {
+        "Are you sure?",
+        "God kills a kitten every time you upload, continue?",
+        "Really? Surely you are joking.",
+        "Your code will be visible to anyone, are you sure?",
+        "Opensource is the devil, really upload?",
+        "You want to flood moar e-space with your nonsense?",
+        "Every time you upload, a linux fanboy dies. Are you sure?",
+        "Text is complete crap, upload anyway?",
+        "Uploading might compromise your security and could inflict a serious mental injury, continue?",
+    }
+    local r = math.random(1, 10)
+    local input = ""
+    local function loop()
+        for i=1, r do
+        print(questions[math.random(1, #questions)])
+        input = tostring(io.read())
+        if input:lower() == "n" or input:lower() == "no"  then
+            print("Ok")
+            tbl.cont = false
+            return
+        elseif input:lower() == "y" or input:lower() == "yes" then
+            print("Ok")
+        else
+            print("yes/no or y/n")
+            return loop()
+        end
+    end
+end
+loop()
+end
+
+addOption(LP, false, "V", vista, "vista")
+
+local function xcut(tbl, params)
+    if checkXclip() then
+        local fd = io.popen("xclip -o")
+        local tmpfile = io.open(tbl.tmpfilename, "w")
+        for line in fd:lines() do
+            tmpfile:write(line.."\n")
+        end
+        tmpfile:close()
+        tbl.file = "X clipboard selection"
+        tbl.xcut = true
+    else
+        print("xclip must be installed to use this option.")
+    end
+end
+
+addOption(LP, false, "x", xcut, "xcut")
+
+local function xpaste(tbl, params)
+    if checkXclip() then
+        tbl.xpaste = true
+    else
+        print("xclip must be installed to use this option.")
+        tbl.cont = false
+    end
+end
+
+addOption(LP, false, "X", xpaste, "xpaste")
+
+local function help(tbl, params)
+print([=[
+Usage: curlpaste [options] [file[s]]
+
+Options:
+    -f, --file FILE(s)              list of files to upload
+    -s, --service SERVICE           set service to use
+    -l, --language LANG             set what language to use
+    -e, --expiration EXPIRATION     set when to expire (defaults to 1 day)
+    -C, --command COMMAND           run COMMAND and paste the output
+    -p, --private                   set private flag if available
+    -r, --run                       set run flag (codepad)
+    -c, --concat                    concat multiple files into a single upload
+                                    default is a separate paste for each file
+    -x, --xcut                      read input from clipboard (requires xclip)
+    -X, --xpaste                    write url to X primary selection buffer (requires xclip)
+    -V, --vista                     Asks a random number of times for confirmation in amusing ways
+    -d, --description DESC          set description of paste
+    -n, --nick NICK                 set the name to use for a paste
+    -h, --help                      show this help info
+
+    -E, --list-expiration SERVICE   list supported expiration times for a service
+    -S, --list-services             list supported services
+    -L, --list-languages SERVICE    list supported languages for a service
+        --stdin                     pipe data into the program
+]=])
+tbl.cont = false
+end
+
+addOption(LP, false, "h", help, "help")
+
+local function runCommand(tbl, params)
+    if params[1] then
+        local fd = assert(io.popen(params[1]))
+        local buf = fd:read("*a")
+        local tmpfile = io.open(tbl.tmpfilename, "w")
+        tmpfile:write(buf)
+        tmpfile:close()
+        tbl.file = params[1]
+        tbl.command = true
+    else
+        print("Usage: -C COMMAND")
+    end
+end
+
+addOption(LP, true, "C", runCommand, "command")
+
+local function post(tbl, filename)
+    local file = tbl.file
+    if DEFAULT_DESCRIPTION  == "" then
+        tbl.description = file
+    elseif DEFAULT_DESCRIPTION == tbl.description then
+        --do nothing because --description flag was used
+    else
+        tbl.description = DEFAULT_DESCRIPTION .." ("..file..")"
+    end
+    local s_url = tbl.services[tbl.service].url
+    local curl_args = tbl.services[tbl.service].curl_args(tbl, filename)
+    local matcher = tbl.services[tbl.service].matcher
+    curl_command = "curl -is -H 'Expect:'"
+    for k, v in ipairs(curl_args) do
+        curl_command = curl_command .. " --data-urlencode " .. v
+    end
+    curl_command = curl_command .. " " .. string.format("%q", s_url)
+    local response = io.popen(curl_command)
+    response = response:read("*a")
+    tbl.returnurl = matcher(response)
+--    print(curl_command)
+    return tbl.returnurl
+--    return matcher(response)
+end
+
+
+local function post1(tbl)
+    if tbl.concat and #tbl.files > 0 and tbl.stdin ~= true then
+        fdataConcat(tbl)
+        print(post(tbl, tbl.tmpfilename))
+    elseif #tbl.files > 0 and tbl.stdin ~= true then
+        for k, v in ipairs(tbl.files) do
+            fdata(tbl, v)
+            print(post(tbl, tbl.tmpfilename))
+        end
+    elseif #arg == 0 or #tbl.files == 0 and tbl.stdin == true then
+        local buf = io.stdin:read("*a")
+        local tmpfile = io.open(tbl.tmpfilename, "w")
+        tmpfile:write(buf)
+        tmpfile:close()
+        print(post(tbl, tbl.tmpfilename))
+    elseif tbl.command == true and #tbl.files == 0 and tbl.stdin ~= true then
+        print(post(tbl, tbl.tmpfilename))
+    elseif tbl.xcut == true and #tbl.files == 0 and tbl.stdin ~= true then
+        print(post(tbl, tbl.tmpfilename))
+    end
+    if tbl.xpaste == true then
+        os.execute("echo "..tbl.returnurl.." | xclip -i >&/dev/null")
+    end
+end
+
+getOptions(LP.options)
+
+local function setOptions(tbl)
+    for k in pairs(tbl.options) do
+        if tbl.options[k].on == true then
+            tbl.options[k].func(tbl, tbl.options[k].params)
+        end
+    end
+end
+
+setOptions(LP)
+
+
+--sanity checks to decide if the program should continue to upload
+
+local function checkService(tbl)
+    if not tbl.services[tbl.service] then
+        print("Invalid service.")
+        tbl.cont = false
+    end
+end
+
+checkService(LP)
+
+if not LP.cont then
+    cleanup(LP)
+    return
+end
+
+local function checkLanguage(tbl)
+    if not (function()
+        for k, v in pairs(tbl.services[tbl.service].languages) do
+            if type(k) == "number" then
+                if v:lower() == tbl.language:lower() then
+                    tbl.language = v
+                    return true
+                end
+            elseif k:lower() == tbl.language:lower() then
+                tbl.language = k
+                return true
+            end
+        end
+    end)()
+    then
+        tbl.cont = false
+        print("Invalid language.")
+    end
+end
+
+checkLanguage(LP)
+
+if not LP.cont then
+    cleanup(LP)
+    return
+end
+
+local function checkExpiry(tbl)
+    if next(tbl.services[tbl.service].expires) then
+        if not (function()
+            for k, v in pairs(tbl.services[tbl.service].expires) do
+                if type(k) == "number" then
+                    if v:lower() == tbl.expires:lower() then
+                        tbl.expires = v
+                        return true
+                    end
+                elseif k:lower() == tbl.expires:lower() then
+                    tbl.expires = k
+                    return true
+                end
+            end
+        end)()
+        then
+            tbl.cont = false
+            print("Invalid expiration.")
+        end
+    end
+end
+
+checkExpiry(LP)
+
+if not LP.cont then
+    cleanup(LP)
+    return
+end
+
+post1(LP)
+cleanup(LP)
