@@ -90,25 +90,31 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "_______________________________________________________________________
 " => Kisayollar 							|
 "_______________________________________________________________________|
- map t i <ESC>r
- noremap gr gT
- :nnoremap f }) \| zz
- :nnoremap s {( \| zz
+noremap j h
+noremap k j
+noremap l k
+noremap ; l
+map t i <ESC>r
+noremap gr gT
+:nnoremap f }) \| zz
+:nnoremap s {( \| zz
 " :map f }) 
 " :map s {(
- nnoremap <S-q> :quit!<CR>
- noremap <Leader>p "*p	
- vnoremap <Leader>p "*p
- noremap <Leader>y "*y	
- vnoremap <Leader>y "*y
- nnoremap <S-w> :w<bar>:Bclose!<cr>
- nnoremap <Leader>e :enew<cr>
- cnoreabbrev Wq wq
- cnoreabbrev Q! q!
- cnoreabbrev W w
- cnoreabbrev Q q
- nnoremap <C-n> :bNext<CR>
- nnoremap <C-p> :bprevious<CR>
+nnoremap <S-q> :quit!<CR>
+noremap <Leader>p "*p	
+vnoremap <Leader>p "*p
+noremap <Leader>y "*y	
+vnoremap <Leader>y "*y
+nnoremap <S-w> :w<bar>:Bclose!<cr>
+nnoremap <Leader>e :enew<cr>
+cnoreabbrev Wq wq
+cnoreabbrev Q! q!
+cnoreabbrev W w
+cnoreabbrev Q q
+nnoremap <C-n> :bNext<CR>
+nnoremap <C-p> :bprevious<CR>
+nnoremap / /\v
+vnoremap / /\v
 
 "_______________________________________________________________________
 " => emrah .vimrc 							|
@@ -159,15 +165,15 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
    let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
    let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
  
-   nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
-   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
-   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
-   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
+   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'L')<cr>
+   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'D')<cr>
+   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'U')<cr>
+   nnoremap <silent> <C-;> :call TmuxOrSplitSwitch(';', 'R')<cr>
  else
-   map <C-h> <C-w>h
-   map <C-j> <C-w>j
-   map <C-k> <C-w>k
-   map <C-l> <C-w>l
+   map <C-j> <C-w>h
+   map <C-k> <C-w>j
+   map <C-l> <C-w>k
+   map <C-;> <C-w>l
  endif
 
 "_______________________________________________________________________
@@ -278,3 +284,9 @@ let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 vmap <Leader>tr :<c-u>call Turkish_Deasciify()<CR>
 vmap <Leader>rt :<c-u>call Turkish_Asciify()<CR>
 let g:turkish_deasciifier_path = '~/Git_Repolari/diger/turkish-deasciifier/turkish-deasciify'
+
+"_______________________________________________________________________
+" => translate-shell							|
+"_______________________________________________________________________|
+
+set keywordprg=trans\ :tr
