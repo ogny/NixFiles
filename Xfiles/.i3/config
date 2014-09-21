@@ -10,11 +10,11 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
-#set $left "h"
-#set $right "l"
-#set $up   "k"
-#set $down "j"
-#set $horz "g"
+set $left  "h"
+set $right "l"
+set $up    "k"
+set $down  "j"
+set $horz  "g"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -43,15 +43,15 @@ bindsym $mod+d exec dmenu_run -b -i -l 20
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-#bindsym $mod+scedilla focus right
-bindsym $mod+semicolon focus right
-#bindsym $mod+$left focus left
-#bindsym $mod+$down focus down
-#bindsym $mod+$up focus up
-#bindsym $mod+$right focus right
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+l focus up
+##bindsym $mod+scedilla focus right
+#bindsym $mod+semicolon focus right
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 
 
@@ -62,22 +62,22 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+l move up
+#bindsym $mod+Shift+semicolon move right
 #bindsym $mod+Shift+scedilla move right
  
-#bindsym $mod+Shift+$left move left
-#bindsym $mod+Shift+$down move down
-#bindsym $mod+Shift+$up move up
-#bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod4+h split h
 
 # split in vertical orientation
 bindsym $mod+v split v
