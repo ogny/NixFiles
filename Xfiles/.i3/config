@@ -198,9 +198,9 @@ exec urxvt
 #_______________________________________________________________________
 # => Kisayollar                                                         |
 #_______________________________________________________________________|   
-bindsym Mod4+w exec xterm -g 53x38  
-bindsym Mod4+q exec urxvt -g 53x38  
-bindsym Mod4+a exec urxvt -g 53x38 -e tmux new-session
+#bindsym Mod4+e exec xterm -g 53x38  
+bindsym Mod4+w exec urxvt -g 53x38  
+bindsym Mod4+e exec urxvt -g 53x38 -e tmux new-session
 bindsym Mod4+s exec google-chrome
 bindsym Mod4+4 exec pavucontrol
 bindsym Mod4+z exec "setxkbmap tr ; xmodmap /home/orkung/.Xmodmap"

@@ -1,0 +1,59 @@
+"3.8.2 (created: 2014/02/13 23:52:43)
+
+map <C-A-j> :tabm<Space>-1<Return>
+map <C-A-;> :tabm<Space>+1<Return>
+map <silent> <F9> :js<Space>toggle_element('webdeveloper-toolbar')<Return>
+map <silent> <F8> :js<Space>toggle_element('PersonalToolbar')<Return>
+map <silent> <C-F8> :js<Space>toggle_bottombar()<Return>
+nnoremap f F
+noremap gr gT
+noremap q <C-u>
+noremap w <C-o>
+noremap e <C-i>
+noremap gf gF
+noremap gb G
+noremap <C-p> gT
+noremap <C-n> gt
+noremap a 10j
+noremap s 10k
+noremap ] :bmarks!<Space>-tags
+noremap [ :bmark<Space>-tags
+noremap v :panorama<Space>switch
+noremap p :panorama<Space>stash
+noremap F f
+noremap gu gU
+noremap gU gu
+noremap xv ;c
+noremap r R
+noremap R r
+noremap j h
+noremap k j
+noremap l k
+noremap ; l
+set gui=none,tabs
+set complete=hbsf
+set "editor=urxvt -e vim -f"
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set runtimepath=/home/orkun/.vimperator
+source! /home/orkung/.vimperatorrc.local
+
+:js << EOF
+function toggle_bottombar(p) {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    if (p == 'on'){
+        bb.style.height = '';
+        bb.style.overflow = '';
+        return;
+    }
+    if (p == 'off'){
+        bb.style.height = '0px';
+        bb.style.overflow = 'hidden';
+        return;
+    }
+    bb.style.height = (bb.style.height == '') ? '0px' : '';
+    bb.style.overflow = (bb.style.height == '') ? '' : 'hidden';
+}
+toggle_bottombar();
+EOF
