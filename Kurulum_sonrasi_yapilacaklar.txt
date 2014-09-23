@@ -98,7 +98,7 @@ dpkg-reconfigure x11-common
 ```  
 * ubuntu kurulduysa 
     ** kaldirilacaklar;
-       whoopsie  apport oneconf
+       whoopsie  apport oneconf python3-apport python3-problem-report libcups2
     ** kurulacaklar; 
        python-software-properties
        acpi
