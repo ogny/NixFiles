@@ -36,24 +36,18 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run 
 bindsym $mod+d exec dmenu_run -b -i -l 20
-#bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn monospace:bold:size=9 -nb "#eee8d5" -nf "#073642" -sb "#dc322f" -p "> " -h 19'
+#bindsym $mod+d exec i3-dmenu-desktop --dmenu='dmenu -fn monospace:bold:size=9
+#-nb "#eee8d5" -nf "#073642" -sb "#dc322f" -p "> " -h 19'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-#bindsym $mod+j focus left
-#bindsym $mod+k focus down
-#bindsym $mod+l focus up
-##bindsym $mod+scedilla focus right
-#bindsym $mod+semicolon focus right
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-
-
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -62,12 +56,6 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-#bindsym $mod+Shift+j move left
-#bindsym $mod+Shift+k move down
-#bindsym $mod+Shift+l move up
-#bindsym $mod+Shift+semicolon move right
-#bindsym $mod+Shift+scedilla move right
- 
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
@@ -131,20 +119,14 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit
+#shortcut. Do you really want to exit i3? This will end your X session.' -b
+#'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        #bindsym j resize shrink width 10 px or 10 ppt
-        #bindsym k resize grow height 10 px or 10 ppt
-        #bindsym l resize shrink height 10 px or 10 ppt
-        #bindsym scedilla resize grow width 10 px or 10 ppt
         bindsym $left resize grow width 10 px or 10 ppt
         bindsym $down resize grow height 10 px or 10 ppt
         bindsym $up resize shrink height 10 px or 10 ppt
@@ -173,31 +155,14 @@ exec xrandr --output DP1 --auto --output eDP1 --auto --left-of DP1
 exec 'xmodmap /home/orkung/.Xmodmap'
 exec skype
 exec urxvt
-#exec  gtk-redshift -l 52.5:13.4
-#exec xrandr --output LVDS-1 --auto --output VGA-1 --auto --right-of LVDS-1
 # evdeki pc icin
 #exec xrandr --output LVDS1 --auto --output VGA1 --auto --right-of LVDS1
-#exec xrandr --output DP1 --mode 1920x1080_59.90 --pos 1360x0 --output eDP1 --mode 1366x768 --pos 0x0
-#exec ssh-agent /bin/zsh
+#exec xrandr --output LVDS-1 --auto --output VGA-1 --auto --right-of LVDS-1
 #exec setxkbmap tr -variant alt 
 #exec synclient TouchpadOff=1
-#exec gitk
 #exec 'synergys --config ~/.synergy.conf'
-#exec ~/bin/autostart-i3-simple
-#exec xterm -e ssh-agent /bin/bash
 #exec sleep 2; ~/Dropbox/bin/ffxtoram.sh
-#exec startmux.sh
-#exec tmux kill-session -t web
-#exec urxvt -e tmux attach-session -t web
-#exec urxvt -e tmux attach-session -t uzak
-#exec urxvt -e tmux attach-session -t genel
-#exec setxkbmap us
 #exec xset b off &
-#exec ssh-add ~/.ssh/*.pem
-#exec firefox
-#exec autojump 
-#exec feh ~/Downloads/regular_expressions_cheat_sheet.png
-#exec xsetroot -solid "#e1dce0"
  
 #_______________________________________________________________________
 # => Kisayollar                                                         |
@@ -229,23 +194,10 @@ client.urgent           #2f343a 	#900000 	#ffffff
 #_______________________________________________________________________
 # => Assign X terminals to workspace X                                  |
 #_______________________________________________________________________|   
-assign [class="feh"] 2
-assign [class="xterm"] 2
-assign [class="URxvt"] 2
-assign [class="^Skype$"] 3
-assign [class="rdesktop"] 1
-assign [class="^Chromium$" instance="accounts.google.com__ServiceLogin"] 2
-assign [class="^Chromium$" instance="quip.com"] 4
-assign [class="^Chromium$" instance="plus.google.com"] 4
-assign [class="^Chromium$" instance="todoist.com__app"] 4
-assign [class="^Chromium$" instance="10.10.18.222__login.php"] 3
-assign [class="^Chromium$" instance="10.10.18.88__gitweb"] 3
-assign [class="^Chromium$" instance="37.9.202.2__nagios3"] 3
-assign [class="^Chromium$" instance="10.44.110.249__nagios3"] 3
-assign [class="^Chromium$"  instance="soundcloud.com"] 4
-assign [class="^Chromium$"  instance="play.spotify.com"] 4
-assign [class="^Chromium$"  instance="rss.orkungunay.com"] 4
-exec --no-startup-id xsetroot -solid "#002b36"	
+#assign [class="feh"] 2
+#assign [class="xterm"] 2
+#assign [class="URxvt"] 2
+#assign [class="^Skype$"] 3
 
 #_______________________________________________________________________
 # => i3statusbar							|
@@ -258,3 +210,7 @@ bar {
 	}
 }
 
+#_______________________________________________________________________
+# => Gorunum								|
+#_______________________________________________________________________|   
+exec --no-startup-id xsetroot -solid "#002b36"	
