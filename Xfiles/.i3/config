@@ -29,7 +29,6 @@ floating_modifier $mod
 # change container layout (stacked, tabbed, default)
 bindsym Mod1+s layout stacking
 bindsym Mod1+w layout tabbed
-#bindsym Mod1+e layout default
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -151,7 +150,6 @@ exec skype
 exec urxvt
 # evdeki pc icin
 #exec xrandr --output LVDS1 --auto --output VGA1 --auto --right-of LVDS1
-#exec xrandr --output LVDS-1 --auto --output VGA-1 --auto --right-of LVDS-1
 #exec setxkbmap tr -variant alt 
 #exec synclient TouchpadOff=1
 #exec 'synergys --config ~/.synergy.conf'
