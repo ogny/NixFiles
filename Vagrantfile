@@ -19,6 +19,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   	server2.vm.box = "hashicorp/precise32"
 	server2.vm.network :private_network, ip: "10.11.1.101"
   end
+  config.vm.define :debianwheezy do |debianwheezy|
+  	debianwheezy.vm.box = "ehough/debian-wheezy"
+	debianwheezy.vm.network :private_network, ip: "10.11.1.102"
+  end
+  config.vm.define :opensuse12_2 do |opensuse12_2|
+  	opensuse12_2.vm.box = "rombert/opensuse-12.2-64-puppet"
+	opensuse12_2.vm.network :private_network, ip: "10.11.1.103"
+  end
+  config.vm.define :master1 do |master1|
+  	master1.vm.box = "hashicorp/precise32"
+	master1.vm.network :private_network, ip: "10.11.1.104"
+  end
+
+  config.vm.define :master2 do |master2|
+  	master2.vm.box = "hashicorp/precise32"
+	master2.vm.network :private_network, ip: "10.11.1.105"
+  end
+#  config.vm.define :OpenSuse121x64 do |OpenSuse121x64|
+#  	OpenSuse121x64.vm.box = "OpenSuse121x64"
+#	OpenSuse121x64.vm.network :private_network, ip: "10.11.1.106"
+#  end
+  
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -56,6 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.provider "virtualbox" do |vb|
   #   # Don't boot with headless mode
   #   vb.gui = true
+  # end
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
   #   vb.customize ["modifyvm", :id, "--memory", "1024"]
