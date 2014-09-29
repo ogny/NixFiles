@@ -1,1 +1,1 @@
-eval `keychain --eval ogunay orkun 2D8400B5`
+eval `keychain --eval --quick orkun ogunay 2D8400B5`
