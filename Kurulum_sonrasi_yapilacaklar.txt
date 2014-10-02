@@ -88,7 +88,7 @@ cp -rp ~/vundle/* ~/.vim/bundle
 ```  
 sudo apt-get install tig ranger whois dosfstools dnsutils dos2unix ffmpeg  
 apt-listchanges wicd-curses wireless-tools parted curl systemd pandoc rtmpdump  
-numlockx dstat mtr sshuttle ca-certificates lxc lxctl debootstrap rfkill  
+numlockx dstat mtr-tiny sshuttle ca-certificates lxc lxctl debootstrap rfkill  
 coreutils gnupg pass sshpass git-flow git-extras apache2-utils python-pelican
 autofs smartmontools html2text transmission-cli gawk nodejs-legacy npm
 * X11 kuruluysa yukaridakilere ek olarak;  
