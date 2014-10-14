@@ -6,9 +6,9 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "Plugin 'Shougo/unite.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neomru.vim'
+"Plugin 'amix/vim-zenrsyntastic'
+Plugin 'fatih/vim-nginx'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vim-scripts/nginx.vim'
@@ -20,9 +20,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
-"Plugin 'amix/vim-zenroom2'
 Plugin 'junegunn/limelight.vim'
-"Plugin 'jamestomasino/vim-writeroom'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -115,6 +113,10 @@ nnoremap <C-n> :bNext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap / /\v
 vnoremap / /\v
+nmap <F5> :source ~/.vimrc<CR>
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 "_______________________________________________________________________
 " => emrah .vimrc 							|
