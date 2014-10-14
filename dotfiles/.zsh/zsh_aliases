@@ -70,5 +70,5 @@ alias lab='tmux attach-session -t labmysql'
 alias tur='trans :tr $1'
 alias db='tmux attach-session -t db'
 promo () {
-	task $1 start ; (sleep 1500 ; notify-send "Mola ;)") & ; task $1 stop
+	task $1 start ; sleep 1500 ; notify-send "Mola" ; task $1 stop
 }
