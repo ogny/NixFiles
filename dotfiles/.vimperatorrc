@@ -30,7 +30,7 @@ noremap j h
 noremap k j
 noremap l k
 noremap ; l
-set gui=none
+set gui=none,tabs
 set complete=hbsf
 set "editor=urxvt -e vim -f"
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
