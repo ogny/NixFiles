@@ -104,6 +104,8 @@ dpkg-reconfigure x11-common
     ** kurulacaklar; 
        python-software-properties
        acpi
+Not: Ubuntu server security updates'i otomatik yapmak icin popcorn kullaniyor,
+incelenecek
   
 * makinanin dis ip'den cikisi varsa nagios-nrpe-server (--with-recommends ile)  
 * pass ve gnupg organize et (http://www.passwordstore.org/)  
