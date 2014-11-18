@@ -1,4 +1,7 @@
 # Write your default config options here!
-ao=alsa:device=hw=1.0
+#ao=alsa:device=hw=1.0
+ao=pulse,alsa,sdl:aalib
+#prefer-ipv4 = yes
 
-
+"afm=mp3lib"
+#softvol=yes
