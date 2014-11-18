@@ -90,12 +90,12 @@ sudo apt-get install tig ranger whois dosfstools dnsutils dos2unix ffmpeg
 apt-listchanges wicd-curses wireless-tools parted curl systemd pandoc rtmpdump  
 dstat mtr-tiny sshuttle ca-certificates lxc lxctl debootstrap rfkill  
 coreutils gnupg pass sshpass git-flow git-extras apache2-utils python-pelican
-autofs smartmontools ack-grep
+autofs smartmontools ack-grep acct
 * istege bagli; html2text transmission-cli gawk nodejs-legacy npm
 * X11 kuruluysa yukaridakilere ek olarak;  
 sudo apt-get install chromium scrot feh zathura redshift suckless-tools wodim  
 fontconfig-infinality pepperflashplugin-nonfree unclutter numlockx imagemagick && sudo
-dpkg-reconfigure x11-common
+dpkg-reconfigure x11-common xautolock
 ```  
 * ubuntu kurulduysa 
     ** kaldirilacaklar;

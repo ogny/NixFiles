@@ -117,3 +117,9 @@ eval `dircolors ~/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
 fpath=($HOME/.zsh/completion $fpath) 
 compdef _task t='task'
+#mplist() {
+#	for i in $(ls); do
+#	mplayer -slave -input file=/tmp/mplayer-control -lavdopts threads=2 *
+#done
+#}
+
