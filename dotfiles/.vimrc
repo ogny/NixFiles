@@ -21,6 +21,7 @@ Plugin 'rbgrouleff/bclose.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
 Plugin 'junegunn/limelight.vim'
+Plugin 'Shougo/neocomplete.vim'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -88,10 +89,10 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "_______________________________________________________________________
 " => Kisayollar 							|
 "_______________________________________________________________________|
-noremap j h
-noremap k j
-noremap l k
-noremap ; l
+"noremap j h
+"noremap k j
+"noremap l k
+"noremap ; l
 map t i <ESC>r
 noremap gr gT
 :nnoremap f }) \| zz
@@ -121,7 +122,7 @@ set showmode
 "_______________________________________________________________________
 " => emrah .vimrc 							|
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml call CodingSet1()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.rst call CodingSet1()
  autocmd BufNewFile,BufRead *.sql call CodingSet2()
  
  function CodingSet1()
