@@ -6,9 +6,9 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "Plugin 'Shougo/unite.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neomru.vim'
-"Plugin 'amix/vim-zenrsyntastic'
-Plugin 'fatih/vim-nginx'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vim-scripts/nginx.vim'
@@ -20,8 +20,13 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
+"Plugin 'amix/vim-zenroom2'
 Plugin 'junegunn/limelight.vim'
-Plugin 'Shougo/neocomplete.vim'
+"Plugin 'jamestomasino/vim-writeroom'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'elzr/vim-json'
+Plugin 'neilagabriel/vim-geeknote'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -114,15 +119,11 @@ nnoremap <C-n> :bNext<CR>
 nnoremap <C-p> :bprevious<CR>
 nnoremap / /\v
 vnoremap / /\v
-nmap <F5> :source ~/.vimrc<CR>
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
 
 "_______________________________________________________________________
 " => emrah .vimrc 							|
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.rst call CodingSet1()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml call CodingSet1()
  autocmd BufNewFile,BufRead *.sql call CodingSet2()
  
  function CodingSet1()
@@ -133,8 +134,8 @@ set showmode
          \ softtabstop=4
          \ expandtab
          \ autoindent
-         \ list
-         \ listchars=tab:··,trail:·
+"         \ list
+"         \ listchars=tab:··,trail:·
          \ filetype=txt
          \ syntax=conf
  endfunction
@@ -168,15 +169,15 @@ set showmode
    let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
    let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
  
-   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'L')<cr>
-   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'D')<cr>
-   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'U')<cr>
-   nnoremap <silent> <C-;> :call TmuxOrSplitSwitch(';', 'R')<cr>
+   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('h', 'L')<cr>
+   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('j', 'D')<cr>
+   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('k', 'U')<cr>
+   nnoremap <silent> <C-;> :call TmuxOrSplitSwitch('l', 'R')<cr>
  else
-   map <C-j> <C-w>h
-   map <C-k> <C-w>j
-   map <C-l> <C-w>k
-   map <C-;> <C-w>l
+   map <C-j> <C-w>j
+   map <C-k> <C-w>k
+   map <C-l> <C-w>l
+   map <C-;> <C-w>;
  endif
 
 "_______________________________________________________________________
@@ -293,3 +294,23 @@ let g:turkish_deasciifier_path = '~/Git_Repolari/diger/turkish-deasciifier/turki
 "_______________________________________________________________________|
 
 set keywordprg=trans\ :tr
+
+"_______________________________________________________________________
+" => gist-vim								|
+"_______________________________________________________________________|
+
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1
+
+"_______________________________________________________________________
+" => Geeknote-vim							|
+"_______________________________________________________________________|
+noremap <F8> :Geeknote<cr>
+autocmd FileType geeknote setlocal nonumber
+let g:GeeknoteFormat="markdown" 
+
+"_______________________________________________________________________
+" => Arama sonuclari yeni pencerede					|
+"_______________________________________________________________________|
+command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a

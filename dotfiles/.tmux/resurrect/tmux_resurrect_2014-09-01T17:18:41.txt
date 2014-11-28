@@ -1,0 +1,8 @@
+pane	genel	0	:zsh	1	:*	0	:/home/orkung	0	vim	:
+pane	genel	0	:zsh	1	:*	1	:/home/orkung	0	zsh	:
+pane	genel	0	:zsh	1	:*	2	:/home/orkung	1	zsh	:
+pane	uzak	0	:zsh	1	:*	0	:/home/orkung	1	zsh	:
+pane	uzak	0	:zsh	1	:*	1	:/home/orkung/Copy/multimedia/muzik/ambient	0	mplayer	:mplayer
+window	genel	0	1	:*	a081,80x23,0,0{15x23,0,0,0,47x23,16,0,1,16x23,64,0,2}
+window	uzak	0	1	:*	5191,170x44,0,0[170x41,0,0,7,170x2,0,42,8]
+state	uzak	uzak

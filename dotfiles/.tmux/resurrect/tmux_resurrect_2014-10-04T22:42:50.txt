@@ -1,0 +1,23 @@
+pane	7	0	:zsh	1	:*	0	:/home/orkung/Git_Repolari/kisisel/private/parolalar/.acik	1	zsh	:
+pane	7	1	:sh	0	:-	0	:/home/orkung	1	sh	:sh
+pane	api	0	:zsh	1	:*	0	:/home/orkung	1	zsh	:
+pane	db	0	:zsh	1	:*	0	:/home/orkung	1	zsh	:
+pane	diger	0	:zsh	1	:*	0	:/home/orkung	1	zsh	:
+pane	genel	0	:weechat 0.4.2	0	:!	0	:/home/orkung	0	weechat	:
+pane	genel	0	:weechat 0.4.2	0	:!	1	:/home/orkung	0	zsh	:
+pane	genel	0	:weechat 0.4.2	0	:!	2	:/home/orkung	1	zsh	:
+pane	genel	1	:translate	0	:-	0	:/home/orkung	1	bash	:
+pane	genel	2	:Copy	1	:*	0	:/home/orkung	1	CopyConsole	:
+pane	lb	0	:zsh	1	:*	0	:/home/orkung	1	zsh	:
+pane	web	0	:zsh	1	:*	0	:/home/orkung	1	zsh	:
+window	7	0	1	:*	e055,170x45,0,0,45
+window	7	1	0	:-	e056,170x45,0,0,46
+window	api	0	1	:*	5e53,170x44,0,0,14
+window	db	0	1	:*	d760,80x23,0,0,40
+window	diger	0	1	:*	de54,170x44,0,0,44
+window	genel	0	0	:!	a081,80x23,0,0{15x23,0,0,0,47x23,16,0,1,16x23,64,0,2}
+window	genel	1	0	:-	ae60,80x23,0,0,3
+window	genel	2	1	:*	ae61,80x23,0,0,4
+window	lb	0	1	:*	5e53,170x44,0,0,33
+window	web	0	1	:*	bc42,170x44,0,0,5
+state	7	
