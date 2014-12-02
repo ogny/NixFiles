@@ -1,0 +1,3 @@
+#!/bin/bash
+sorgu=$1
+egrep -wir ${sorgu} --exclude-dir=.git *
