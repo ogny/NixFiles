@@ -145,7 +145,7 @@ bindsym $mod+r mode "resize"
 #_______________________________________________________________________|   
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-2.json'
 #exec google-chrome
-#exec urxvt
+exec urxvt -e tmux attach-session -t genel
 exec ssh-add ~/.ssh/ogunay
 exec skyped
 exec xrandr --output DP1 --auto --output eDP1 --auto --left-of DP1
@@ -196,6 +196,7 @@ for_window [class="XTerm"] split v, layout tabbed
 # => Uygulamalari spesifik masaustlerine atama 				|
 #_______________________________________________________________________|   
 #assign [class="dwb"] 1
+assign [class="URxvt"] 2
 
 #_______________________________________________________________________
 # => i3statusbar							|
