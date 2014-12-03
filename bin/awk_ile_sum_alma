@@ -1,8 +1,0 @@
-awk '
-BEGIN {FS=OFS=","}
-{
-sum=0; n=0
-for(i=3;i<=NF;i++)
-     {sum+=$i; ++n}
-     print $0,"sum:"sum
-}' ~/bet/111211/iyms.csv
