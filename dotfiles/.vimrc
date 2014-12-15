@@ -27,13 +27,21 @@ Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'elzr/vim-json'
 Plugin 'neilagabriel/vim-geeknote'
+Plugin 'Rykka/clickable.vim'
+Plugin 'Rykka/clickable-things'
+Plugin 'Rykka/os.vim'
+Plugin 'Rykka/riv.vim'
+Plugin 'Rykka/rhythm.css'
+Plugin 'Rykka/InstantRst'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/ZoomWin'
 call vundle#end()            " required
 filetype plugin indent on
 
 "_______________________________________________________________________
 " => genel ayarlar 							|
 "_______________________________________________________________________|
-colorscheme default 
+colorscheme SlateDark
 filetype off
 syntax on
 syntax enable
@@ -104,7 +112,7 @@ noremap gr gT
 :nnoremap s {( \| zz
 " :map f }) 
 " :map s {(
-nnoremap <S-q> :quit!<CR>
+nnoremap <S-q> :qall!<CR>
 noremap <Leader>p "*p	
 vnoremap <Leader>p "*p
 noremap <Leader>y "*y	
@@ -246,8 +254,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "_______________________________________________________________________|
 " Yapilandirma Kaynak: https://github.com/scrooloose/nerdtree
 " Bos vim buffer'i acildiginda baslatma
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
 " map <Leader>n :NERDTreeMapToggleHidden<CR>
 map <Leader>n :NERDTreeToggle<CR>
@@ -314,3 +322,20 @@ let g:GeeknoteFormat="markdown"
 " => Arama sonuclari yeni pencerede					|
 "_______________________________________________________________________|
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
+
+"_______________________________________________________________________
+" => clickable								|
+"_______________________________________________________________________|
+"g:clickable_google-chrome
+
+"_______________________________________________________________________
+" => son kaydedilen halinden baslat					|
+"_______________________________________________________________________|
+"au BufWinLeave * mkview
+"au BufWinEnter * silent loadview
+ 
+ 
+"_______________________________________________________________________
+" => ZoomWin								|
+"_______________________________________________________________________|
+nnoremap <silent> <C-w>w :ZoomWin<CR>
