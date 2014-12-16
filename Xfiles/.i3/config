@@ -158,10 +158,13 @@ exec unclutter -display :0 -root -idle 1 &
 exec xmodmap /home/orkung/.Xmodmap
 exec luakit
 exec mkfifo /tmp/mplayer-control
-exec redshift -l 41:29 -t 5500:3700
-exec xrdb --merge ~/.Xdefaults
+#exec redshift -l 41:29 -t 5500:3700
+exec redshift -O 4500 -g 0.8
+# Kaynak: https://answers.launchpad.net/redshift/+question/235109
+exec xrdb -merge ~/.Xdefaults
 exec ~/bin/mplist.sh
 exec ~/bin/CopyConsole
+exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 # evdeki pc icin
 #exec xrandr --output LVDS1 --auto --output VGA1 --auto --right-of LVDS1
 #exec setxkbmap tr -variant alt 
@@ -206,6 +209,7 @@ for_window [class="XTerm"] split v, layout tabbed
 #_______________________________________________________________________|   
 #assign [class="dwb"] 1
 #assign [class="URxvt"] 2
+assign [class="Zathura"] 1
 
 #_______________________________________________________________________
 # => i3statusbar							|
@@ -246,9 +250,9 @@ workspace 5 output DP1
 
 
 #_______________________________________________________________________
-# => 1 dakika islem stdin'den bir sey gelmeyince ekrani kilitle		|
+# => 1 dakika stdin'den bir sey gelmeyince ekrani kilitle (calismiyor)  |
 #_______________________________________________________________________|   
-exec /home/orkung/bin/locker.sh
+#exec /home/orkung/bin/locker.sh
 # Kaynak: http://rabexc.org/posts/awesome-xautolock-battery
 
 #_______________________________________________________________________

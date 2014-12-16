@@ -339,3 +339,5 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 " => ZoomWin								|
 "_______________________________________________________________________|
 nnoremap <silent> <C-w>w :ZoomWin<CR>
+" kaynak:
+" http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
