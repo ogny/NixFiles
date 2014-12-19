@@ -55,7 +55,8 @@ set backspace=eol,start	 " allow backspacing over everything in insert mode
 set ignorecase     " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop
-set hlsearch      " highlight search terms
+set incsearch      " highlight search terms
+"set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 set history=1000         " remember more commands and search history	
 set undolevels=1000      " use many muchos levels of undo
