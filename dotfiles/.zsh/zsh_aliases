@@ -73,6 +73,6 @@ promo () {
 	task $1 start ; sleep 1500 ; notify-send "Mola" ; task $1 stop
 }
 alias soc='TZ=Europe/Berlin wine ~/.wine/drive_c/Program\ Files\ \(x86\)/SoccerStatsTracker/SSTracker.exe'
-alias peli='pelican ~/Git_Repolari/kisisel/public/pelican_blog_new/content -o ~/Git_Repolari/kisisel/public/pelican_blog_new/output -s ~/Git_Repolari/kisisel/public/pelican_blog_new/publishconf.py'
-alias deploy="rsync -rltav --progress ~/Git_Repolari/kisisel/public/pelican_blog_new/ ogny:~/virtualenvs/anlatabildiklerim/ --exclude='.git'"
+alias peli='pelican ~/Git_Repolari/kisisel/public/anlatabildiklerim/content -o ~/Git_Repolari/kisisel/public/anlatabildiklerim/output -s ~/Git_Repolari/kisisel/public/anlatabildiklerim/publishconf.py'
+alias deploy="rsync -rltav --progress ~/Git_Repolari/kisisel/public/anlatabildiklerim/ ogny:~/virtualenvs/anlatabildiklerim/ --exclude='.git'"
 alias vim-geeknote='vi -c Geeknote'

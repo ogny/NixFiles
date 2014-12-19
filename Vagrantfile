@@ -41,6 +41,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   	server3.vm.box = "ubuntu/trusty64"
 	server3.vm.network :private_network, ip: "10.11.1.106"
   end
+
+  config.vm.define :trusty64 do |trusty64|
+  	trusty64.vm.box = "ubuntu/trusty64"
+	trusty64.vm.network :private_network, ip: "10.11.1.107"
+  end
   
 #  config.vm.define :OpenSuse121x64 do |OpenSuse121x64|
 #  	OpenSuse121x64.vm.box = "OpenSuse121x64"
