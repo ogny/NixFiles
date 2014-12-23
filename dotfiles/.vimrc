@@ -32,9 +32,11 @@ Plugin 'Rykka/clickable-things'
 Plugin 'Rykka/os.vim'
 Plugin 'Rykka/riv.vim'
 Plugin 'Rykka/rhythm.css'
-Plugin 'Rykka/InstantRst'
+"Plugin 'Rykka/InstantRst'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ZoomWin'
+Plugin 'Wolfy87/vim-expand'
+Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()            " required
 filetype plugin indent on
 

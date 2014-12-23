@@ -1,0 +1,48 @@
+# Me
+set from = 'o.gunay@tasit.com'
+set realname = 'Orkun Gunay'
+
+# My credentials
+set smtp_url = 'smtp://o.gunay@tasit.com@smtp.gmail.com:587/'
+set smtp_pass = '!7,oX+(7e>#V`+<m'
+set imap_user = 'o.gunay@tasit.com'
+set imap_pass = '!7,oX+(7e>#V`+<m'
+
+# My mailboxes
+set folder = 'imaps://imap.gmail.com:993'
+set spoolfile = '+INBOX'
+set postponed = '+[Gmail]/Drafts'
+
+# Where to put the stuff
+set header_cache = '~/.mutt/cache/headers'
+set message_cachedir = '~/.mutt/cache/bodies'
+
+# Etc
+set mail_check = 30
+set move = no
+set imap_keepalive = 9000
+unset imap_passive
+set sort = threads
+set editor = 'vim'
+# -*-muttrc-*-
+
+# Palette for use with the Linux console.  Black background.
+
+color hdrdefault blue black
+color quoted blue black
+color signature blue black
+color attachment red black
+color message brightred black
+color error brightred black
+color indicator black red
+color status brightgreen blue
+color tree white black
+color normal white black
+color markers red black
+color search white black
+color tilde brightmagenta black
+color index blue black ~F
+color index red black "~N|~O"
+
+# color body brightwhite black '\*+[^*]+\*+'
+# color body brightwhite black '_+[^_]+_+'
