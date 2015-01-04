@@ -38,6 +38,7 @@ Plugin 'vim-scripts/ZoomWin'
 Plugin 'Wolfy87/vim-expand'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'PotatoesMaster/i3-vim-syntax'
+Plugin 'vivien/vim-addon-linux-coding-style'
 call vundle#end()            " required
 filetype plugin indent on
 
