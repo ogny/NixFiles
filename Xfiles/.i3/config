@@ -153,9 +153,9 @@ mode "resize" {
 exec urxvt -e tmux attach-session -t genel
 exec ssh-add ~/.ssh/ogunay
 exec skyped
-exec xrandr --output DP1 --auto --output eDP1 --auto --right-of DP1
+#exec xrandr --output DP1 --auto --output eDP1 --auto --right-of DP1
 exec unclutter -display :0 -root -idle 1 &
-exec xmodmap /home/orkung/.Xmodmap
+#exec xmodmap /home/orkung/.Xmodmap
 exec luakit
 exec mkfifo /tmp/mplayer-control
 #exec redshift -l 41:29 -t 5500:3700
@@ -164,12 +164,11 @@ exec redshift -O 4500 -g 0.8
 exec xrdb -merge ~/.Xdefaults
 exec ~/bin/mplist.sh
 exec ~/bin/CopyConsole
-exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
-# evdeki pc icin
-# xrandr --newmode  "1920x1080"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsyn
-# xrandr --addmode VGA1 "1920x1080"
-# xrandr --output VGA1 --auto
-# xrandr --output LVDS1 --off 
+#exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
+exec xrandr --newmode  "1920x1080"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+exec xrandr --addmode VGA1 "1920x1080"
+exec xrandr --output VGA1 --mode "1920x1080"
+exec xrandr --output LVDS1 --off 
 #exec setxkbmap tr -variant alt 
 #exec synclient TouchpadOff=1
 #exec 'synergys --config ~/.synergy.conf'
