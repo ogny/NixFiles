@@ -26,11 +26,16 @@ noremap gU gu
 noremap xv ;c
 noremap r R
 noremap R r
-noremap j h
-noremap k j
-noremap l k
-noremap ; l
-set gui=none,tabs
+"noremap j h
+"noremap k j
+"noremap l k
+"noremap ; l
+noremap h 10h
+noremap j 10j
+noremap k 10k
+noremap l 10l
+set gui=none
+"set gui=none,tabs
 set complete=hbsf
 set "editor=urxvt -e vim -f"
 set hintchars=hjklasdfgyuiopqwertnmzxcvb

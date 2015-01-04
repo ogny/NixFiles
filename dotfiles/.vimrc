@@ -37,6 +37,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'Wolfy87/vim-expand'
 Plugin 'tmux-plugins/vim-tmux'
+Plugin 'PotatoesMaster/i3-vim-syntax'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -80,6 +81,7 @@ set go+=a
 " => Gorunum 								|
 "_______________________________________________________________________|
  highlight VertSplit cterm=none gui=none	
+ highlight Folded ctermfg=25 ctermbg=16
  hi StatusLine cterm=none gui=none
  hi StatusLineNC cterm=none gui=none
  autocmd BufEnter,BufRead,BufNewFile *.md syntax off
@@ -134,7 +136,7 @@ vnoremap / /\v
 "_______________________________________________________________________
 " => emrah .vimrc 							|
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml call CodingSet1()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst call CodingSet1()
  autocmd BufNewFile,BufRead *.sql call CodingSet2()
  
  function CodingSet1()
@@ -344,3 +346,4 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 nnoremap <silent> <C-w>w :ZoomWin<CR>
 " kaynak:
 " http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
+"
