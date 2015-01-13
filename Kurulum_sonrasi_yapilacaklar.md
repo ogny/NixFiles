@@ -78,7 +78,7 @@ cp -rp ~/vundle/* ~/.vim/bundle
   
 #### Masaüstü ortamı  
 * X11 kurulumu   
-* i3wm kurulumu ( -t wheezy-backports i3 )  
+* i3wm kurulumu ( -t wheezy-backports i3 )
   
 # Uygulamalar  
 *  weechat'i emrah'tan al.  
@@ -94,8 +94,8 @@ autofs smartmontools ack-grep acct
 * istege bagli; html2text transmission-cli gawk nodejs-legacy npm
 * X11 kuruluysa yukaridakilere ek olarak;  
 sudo apt-get install chromium scrot feh zathura redshift suckless-tools wodim  
-fontconfig-infinality pepperflashplugin-nonfree unclutter numlockx imagemagick && sudo
-dpkg-reconfigure x11-common xautolock
+fontconfig-infinality pepperflashplugin-nonfree unclutter numlockx imagemagick xautolock i3status dunst compton j4-dmenu-desktop && sudo
+dpkg-reconfigure x11-common 
 ```  
 * ubuntu kurulduysa 
     ** kaldirilacaklar;
@@ -145,17 +145,14 @@ sudo mount -a
 mtpfs libfuse-dev libmad0-dev jmtpfs
   
 #### github'tan kurulacak uygulamalar  
-* ansible
-* cheat  
-* dircolors-solarized  
-* fasd  
-* fontconfig-infinality  
-* git-flow-completion 
-* sixarm_git_gitconfig  
-* speedtest-cli
-* sshag  
-* task  
-* tmux-colors-solarized  
-* urxvt-scripts  
-* vit  
-* zsh-syntax-highlighting  
+
+* cheat
+* dircolors-solarized
+* fasd
+* geeknote
+* j4-dmenu-desktop
+* monaco-font
+* tmux-colors-solarized
+* turkish-deasciifier
+* wped
+* zsh-syntax-highlighting
