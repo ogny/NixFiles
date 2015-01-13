@@ -1,3 +1,2 @@
 #!/bin/bash
-dosya=$1
-egrep -wir $dosya --exclude-dir=.git *
+egrep -wir $1 --exclude-dir=.git *
