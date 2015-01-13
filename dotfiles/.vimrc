@@ -5,10 +5,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-"Plugin 'Shougo/unite.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vim-scripts/nginx.vim'
@@ -20,25 +18,33 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
-"Plugin 'amix/vim-zenroom2'
 Plugin 'junegunn/limelight.vim'
-"Plugin 'jamestomasino/vim-writeroom'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'elzr/vim-json'
 Plugin 'neilagabriel/vim-geeknote'
-Plugin 'Rykka/clickable.vim'
-Plugin 'Rykka/clickable-things'
-Plugin 'Rykka/os.vim'
-Plugin 'Rykka/riv.vim'
-Plugin 'Rykka/rhythm.css'
-"Plugin 'Rykka/InstantRst'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'Wolfy87/vim-expand'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'vivien/vim-addon-linux-coding-style'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'reedes/vim-pencil'
+Plugin 'amiorin/ctrlp-z'
+Plugin 'amiorin/vim-fasd'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tomtom/tlib_vim'
+"Plugin 'bling/vim-bufferline'
+"Plugin 'amix/vim-zenroom2'
+"Plugin 'Rykka/os.vim'
+"Plugin 'Rykka/riv.vim'
+"Plugin 'Rykka/rhythm.css'
+"Plugin 'Rykka/clickable.vim'
+"Plugin 'Rykka/clickable-things'
+"Plugin 'Rykka/InstantRst'
+"Plugin 'Shougo/neomru.vim'
+"Plugin 'Shougo/unite.vim'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -46,15 +52,15 @@ filetype plugin indent on
 " => genel ayarlar 							|
 "_______________________________________________________________________|
 colorscheme SlateDark
+set background=light
 filetype off
 syntax on
 syntax enable
-set background=light
 set guitablabel=%t
 set splitright
 set autoread
 set linebreak
-set hidden	
+"set hidden	
 set backspace=eol,start	 " allow backspacing over everything in insert mode
 set ignorecase     " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
@@ -77,6 +83,10 @@ set noautoindent
 set indentexpr=
 set clipboard=unnamed
 set go+=a
+set showmode
+set ruler
+set laststatus=0
+set showcmd
 
 "_______________________________________________________________________
 " => Gorunum 								|
@@ -85,6 +95,7 @@ set go+=a
  highlight Folded ctermfg=25 ctermbg=16
  hi StatusLine cterm=none gui=none
  hi StatusLineNC cterm=none gui=none
+ highlight clear SignColumn
  autocmd BufEnter,BufRead,BufNewFile *.md syntax off
 
 "_______________________________________________________________________
@@ -120,6 +131,8 @@ noremap gr gT
 " :map s {(
 nnoremap <S-q> :qall!<CR>
 noremap <Leader>p "*p	
+noremap <Leader>w :wq!<CR>
+noremap <Leader>q :bdelete!<CR>
 vnoremap <Leader>p "*p
 noremap <Leader>y "*y	
 vnoremap <Leader>y "*y
@@ -129,16 +142,18 @@ cnoreabbrev Wq wq
 cnoreabbrev Q! q!
 cnoreabbrev W w
 cnoreabbrev Q q
-nnoremap <C-n> :bNext<CR>
-nnoremap <C-p> :bprevious<CR>
+"nnoremap <C-n> :w<bar>:bNext<CR>
+"nnoremap <C-p> :w<bar>:bprevious<CR>
+nnoremap <C-n> :bNext!<CR>
+"nnoremap <C-p> :bprevious!<CR>
 nnoremap / /\v
 vnoremap / /\v
 
 "_______________________________________________________________________
 " => emrah .vimrc 							|
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst call CodingSet1()
- autocmd BufNewFile,BufRead *.sql call CodingSet2()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh call CodingSet1()
+ autocmd BufNewFile,BufRead *.rst call CodingSet2()
  
  function CodingSet1()
          setlocal
@@ -157,9 +172,9 @@ vnoremap / /\v
  function CodingSet2()
          setlocal
          \ textwidth=79
-         \ tabstop=8
-         \ shiftwidth=4
-         \ softtabstop=4
+"         \ tabstop=8
+"         \ shiftwidth=4
+"         \ softtabstop=4
          \ expandtab
          \ autoindent
          \ list
@@ -183,15 +198,15 @@ vnoremap / /\v
    let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
    let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
  
-   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('h', 'L')<cr>
-   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('j', 'D')<cr>
-   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('k', 'U')<cr>
-   nnoremap <silent> <C-;> :call TmuxOrSplitSwitch('l', 'R')<cr>
+   nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
+   nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
+   nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
+   nnoremap <silent> <C-l> :call TmuxOrSplitSwitch('l', 'R')<cr>
  else
+   map <C-h> <C-w>h
    map <C-j> <C-w>j
    map <C-k> <C-w>k
    map <C-l> <C-w>l
-   map <C-;> <C-w>;
  endif
 
 "_______________________________________________________________________
@@ -199,6 +214,46 @@ vnoremap / /\v
 "_______________________________________________________________________|
  nnoremap <silent> <leader>z :Goyo<cr>
 
+function! GoyoBefore()
+  if exists('$TMUX')
+    silent !tmux set status off
+  endif
+  Limelight
+endfunction
+
+function! GoyoAfter()
+  if exists('$TMUX')
+    silent !tmux set status on
+  endif
+ colorscheme SlateDark
+ set background=light
+ highlight clear SignColumn
+ Limelight!
+endfunction
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd User GoyoEnter call <SID>goyo_enter()
+autocmd User GoyoLeave call <SID>goyo_leave()
+
+ 
 "_______________________________________________________________________
 " => neocomplete							|
 "_______________________________________________________________________|
@@ -287,14 +342,6 @@ let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
 " Default: 0.5
 let g:limelight_default_coefficient = 1
-" Goyo Integration
-function! GoyoBefore()
-  Limelight
-endfunction
-function! GoyoAfter()
-  Limelight!
-endfunction
-let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 
 "_______________________________________________________________________
 " => turkish-deasciifier.						|
@@ -347,4 +394,23 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 nnoremap <silent> <C-w>w :ZoomWin<CR>
 " kaynak:
 " http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
-"
+ 
+
+"_______________________________________________________________________
+" => ctrlP								|
+"_______________________________________________________________________|
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+" kaynak:
+" http://kien.github.io/ctrlp.vim
+
+"_______________________________________________________________________
+" => ctrlP-z								|
+"_______________________________________________________________________|
+let g:ctrlp_z_nerdtree = 1
+let g:ctrlp_extensions = ['Z', 'F']
+nnoremap sz :CtrlPZ<Cr>
+"nnoremap sf :CtrlPF<Cr>
+"nnoremap <leader>z :CtrlPZ<Cr>
+nnoremap <leader>f :CtrlPF<Cr>
+" kaynak:
+" https://github.com/amiorin/ctrlp-z

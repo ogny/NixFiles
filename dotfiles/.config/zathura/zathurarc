@@ -25,13 +25,13 @@ set inputbar-bg "#eee8d5"
 ## kisayollar
 unmap s
 map [normal] s scroll full-up
-unmap f
-map [normal] f scroll full-down
+unmap a
+map [normal] a scroll full-down
 map [index] q quit
 map [normal] t toggle_statusbar
 unmap <C-r>
 map [normal] <C-r> reload
 unmap d
 map [normal] d zoom in
-unmap a
-map [normal] a zoom out
+unmap f
+map [normal] f zoom out
