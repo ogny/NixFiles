@@ -3,7 +3,7 @@
 "_______________________________________________________________________|
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
@@ -35,16 +35,6 @@ Plugin 'amiorin/ctrlp-z'
 Plugin 'amiorin/vim-fasd'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tlib_vim'
-"Plugin 'bling/vim-bufferline'
-"Plugin 'amix/vim-zenroom2'
-"Plugin 'Rykka/os.vim'
-"Plugin 'Rykka/riv.vim'
-"Plugin 'Rykka/rhythm.css'
-"Plugin 'Rykka/clickable.vim'
-"Plugin 'Rykka/clickable-things'
-"Plugin 'Rykka/InstantRst'
-"Plugin 'Shougo/neomru.vim'
-"Plugin 'Shougo/unite.vim'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -130,7 +120,8 @@ noremap gr gT
 " :map f }) 
 " :map s {(
 nnoremap <S-q> :qall!<CR>
-noremap <Leader>p "*p	
+nnoremap <Leader>p :r!cat<CR>
+noremap <Leader>P "*p	
 noremap <Leader>w :wq!<CR>
 noremap <Leader>q :bdelete!<CR>
 vnoremap <Leader>p "*p
