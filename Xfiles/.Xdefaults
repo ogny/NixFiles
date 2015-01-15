@@ -3,7 +3,7 @@
 !-------------------------------------------------------------------------------
 
 Xft.dpi:                    96
-Xft.antialias:              true
+Xft.antialias:              false
 Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
@@ -28,8 +28,8 @@ URxvt.lineSpace:            0
 
 ! Fonts
 URxvt.allow_bold:           false
-URxvt.font: xft:Monaco:antialias=true:pixelsize=12
-URxvt.boldFont: xft:Monaco:style=bold:antialias=true:size=12
+URxvt.font: xft:monaco:size=10
+URxvt.boldFont: xft:monaco:style=bold:size=10
 URxvt*letterSpace: -1
 
 ! Scrollbar
