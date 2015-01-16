@@ -152,7 +152,8 @@ mode "resize" {
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-2.json'
 #exec google-chrome
 exec xmodmap ~/.Xmodmap
-exec 
+exec xrandr --output VGA-0 --auto --right-of LVDS-0 --output LVDS-0 --auto
+exec virtualbox
 exec setxkbmap us
 exec xrdb -merge ~/.Xdefaults
 #exec urxvt -e tmux attach-session -t genel
@@ -198,7 +199,6 @@ bindsym $mod+Shift+n move workspace next
 #for_window [instance="urxvt"] floating enable 
 for_window [class="Uzbl-core"] focus child, layout tabbed, focus
 for_window [class="XTerm"] split v, layout tabbed
-
  
 #_______________________________________________________________________
 # => Uygulamalari spesifik masaustlerine atama 				|
@@ -207,12 +207,13 @@ for_window [class="XTerm"] split v, layout tabbed
 #assign [class="URxvt"] 2
 assign [class="Zathura"] 1
 assign [class="HipChat"] 2
+assign [class="VirtualBox"] 1
 
 #_______________________________________________________________________
 # => i3statusbar							|
 #_______________________________________________________________________|   
 bar {
-	output	       LVDS-0
+	output	       VGA-0
         status_command i3status
 	colors {
 	background #002b36
@@ -239,7 +240,7 @@ bindsym XF86Reload exec --no-startup-id /home/orkung/.i3/i3-load-generic1.sh
 #_______________________________________________________________________
 # => Workspace'leri screen'lere atama					|
 #_______________________________________________________________________|   
-workspace 1 output LVDS-0
+workspace 1 output VGA-0
 workspace 2 output VGA-0
 workspace 3 output LVDS-0
 workspace 4 output LVDS-0

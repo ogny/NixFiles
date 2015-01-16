@@ -137,7 +137,7 @@ cnoreabbrev Q q
 "nnoremap <C-n> :w<bar>:bNext<CR>
 "nnoremap <C-p> :w<bar>:bprevious<CR>
 nnoremap <Leader>n :bNext!<CR>
-nnoremap <Leader>p :bprevious!<CR>
+nnoremap <Leader>P :bprevious!<CR>
 nnoremap / /\v
 vnoremap / /\v
 
