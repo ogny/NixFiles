@@ -35,6 +35,7 @@ Plugin 'amiorin/ctrlp-z'
 Plugin 'amiorin/vim-fasd'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tlib_vim'
+Plugin 'chrisbra/csv.vim'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -135,8 +136,8 @@ cnoreabbrev W w
 cnoreabbrev Q q
 "nnoremap <C-n> :w<bar>:bNext<CR>
 "nnoremap <C-p> :w<bar>:bprevious<CR>
-nnoremap <C-n> :bNext!<CR>
-"nnoremap <C-p> :bprevious!<CR>
+nnoremap <Leader>n :bNext!<CR>
+nnoremap <Leader>p :bprevious!<CR>
 nnoremap / /\v
 vnoremap / /\v
 
@@ -214,7 +215,7 @@ endfunction
 
 function! GoyoAfter()
   if exists('$TMUX')
-    silent !tmux set status on
+    silent !tmux set status off
   endif
  colorscheme SlateDark
  set background=light
@@ -310,7 +311,8 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
 " map <Leader>n :NERDTreeMapToggleHidden<CR>
-map <Leader>n :NERDTreeToggle<CR>
+"map <Leader>n :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 " Sadece NERDTREE penceresi aciksa Vim'i otomatik kapat;
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 

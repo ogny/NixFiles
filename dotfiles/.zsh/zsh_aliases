@@ -20,7 +20,8 @@ alias upg="sudo aptitude upgrade"
 alias kur="sudo aptitude install"
 alias se="sudo dpkg --get-selections"
 alias aps="apt-cache --names-only search"
-alias sht='vagrant halt ; sudo shutdown -h now'
+alias sht='sudo shutdown -h now'
+#alias sht='vagrant halt ; sudo shutdown -h now'
 alias vr='sudo vim'
 alias enable_alert='PS1="$PS1\a"'
 alias rake='noglob rake'
@@ -51,7 +52,7 @@ alias wrkadl='task add pro:work pri:H'
 alias ansad='task add pro:work.ansible pri:H'
 alias ofsad='task add pro:work.ofis pri:L'
 alias kerad='task add pro:work.kerim pri:L'
-alias ls='ls --color=auto'
+alias lz='ls -alhtr --color=auto'
 alias ll='ls -alh --color=auto'
 alias gad='git add -A && git status'
 #alias ssh='i3-msg border normal && ssh'
@@ -59,7 +60,7 @@ alias dpg='dpkg -l |grep $1'
 alias psd="watch --differences -n 2  'ps -e -o pid,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15'"
 alias dmesgg="dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
 alias kilc="sudo kill $(pgrep chromium)"
-alias bagla="encfs ~/Git_Repolari/kisisel/private/parolalar/.sifreli ~/Git_Repolari/kisisel/private/parolalar/.acik"
+alias bagla="encfs ~/Git_Repolari/kisisel/private/pass-ozel/.sifreli ~/Git_Repolari/kisisel/private/pass-ozel/.acik"
 alias x='ssh-agent startx'
 alias web='tmux attach-session -t web'
 alias api='tmux attach-session -t api'
@@ -69,7 +70,7 @@ alias genel='tmux attach-session -t genel'
 alias lab='tmux attach-session -t labmysql'
 alias tur='trans :tr $1'
 alias db='tmux attach-session -t db'
-alias script='tmux attach-session -t scripting'
+alias is='tmux attach-session -t is'
 alias music='tmux attach-session -t Music'
 promo () {
 	task $1 start ; sleep 1500 ; notify-send "Mola" ; task $1 stop

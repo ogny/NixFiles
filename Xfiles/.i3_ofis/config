@@ -17,7 +17,7 @@ set $horz  "g"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -151,16 +151,19 @@ mode "resize" {
 #_______________________________________________________________________|   
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-2.json'
 #exec google-chrome
+exec xmodmap ~/.Xmodmap
+exec 
 exec setxkbmap us
 exec xrdb -merge ~/.Xdefaults
-exec urxvt -e tmux attach-session -t genel
-exec ssh-add ~/.ssh/ogunay
+#exec urxvt -e tmux attach-session -t genel
+#exec ssh-add ~/.ssh/ogunay
 exec unclutter -display :0 -root -idle 1 &
 exec mkfifo /tmp/mplayer-control
 exec redshift -O 4500 -g 0.8
+exec hipchat
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
-exec ~/bin/mplist.sh
-exec ~/bin/CopyConsole
+#exec ~/bin/mplist.sh
+#exec ~/bin/CopyConsole
 #exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 #exec setxkbmap tr -variant alt 
 exec synclient TouchpadOff=1
@@ -203,6 +206,7 @@ for_window [class="XTerm"] split v, layout tabbed
 #assign [class="dwb"] 1
 #assign [class="URxvt"] 2
 assign [class="Zathura"] 1
+assign [class="HipChat"] 2
 
 #_______________________________________________________________________
 # => i3statusbar							|
@@ -236,7 +240,7 @@ bindsym XF86Reload exec --no-startup-id /home/orkung/.i3/i3-load-generic1.sh
 # => Workspace'leri screen'lere atama					|
 #_______________________________________________________________________|   
 workspace 1 output LVDS-0
-workspace 2 output LVDS-0
+workspace 2 output VGA-0
 workspace 3 output LVDS-0
 workspace 4 output LVDS-0
 workspace 5 output LVDS-0
