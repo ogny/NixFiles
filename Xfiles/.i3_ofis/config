@@ -151,7 +151,9 @@ mode "resize" {
 #_______________________________________________________________________|   
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-2.json'
 #exec google-chrome
-#exec xrandr --output VGA-0 --auto --right-of LVDS-0 --output LVDS-0 --auto
+#exec xrandr --output VGA-0 --right-of LVDS-0 --output LVDS-0 
+#exec xrandr --output LVDS-0 --auto
+exec ~/bin/myxrandr.sh
 exec VBoxHeadless --startvm ultimate
 exec xmodmap ~/.Xmodmap
 exec setxkbmap us
@@ -197,8 +199,6 @@ bindsym $mod+p workspace prev
 bindsym $mod+n workspace next
 bindsym $mod+Shift+p move workspace prev
 bindsym $mod+Shift+n move workspace next
-for_window [class="(?i)rdesktop"]  floating disable
-for_window [class="(?i)HipChat"] 
  
 #_______________________________________________________________________
 # => Uygulamalari spesifik masaustlerine atama 				|
