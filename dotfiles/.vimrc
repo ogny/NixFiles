@@ -16,7 +16,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
+"Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'mattn/gist-vim'
@@ -209,23 +209,22 @@ vnoremap / /\v
  nnoremap <silent> <leader>z :Goyo<cr>
 
 function! GoyoBefore()
-  if exists('$TMUX')
-    silent !tmux set status off
-  endif
+"  if exists('$TMUX')
+"    silent !tmux set status off
+"  endif
   Limelight
 endfunction
 
 function! GoyoAfter()
-  if exists('$TMUX')
-    silent !tmux set status off
-  endif
+"  if exists('$TMUX')
+"    silent !tmux set status off
+"  endif
  colorscheme SlateDark
  set background=light
  highlight clear SignColumn
  Limelight!
 endfunction
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
-
 function! s:goyo_enter()
   let b:quitting = 0
   let b:quitting_bang = 0
@@ -246,7 +245,11 @@ endfunction
 
 autocmd User GoyoEnter call <SID>goyo_enter()
 autocmd User GoyoLeave call <SID>goyo_leave()
-
+ 
+set winheight=7
+set winminheight=7
+set winheight=999
+"Kaynak: https://github.com/junegunn/goyo.vim/issues/13
  
 "_______________________________________________________________________
 " => neocomplete							|
