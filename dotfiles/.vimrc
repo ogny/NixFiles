@@ -121,8 +121,8 @@ noremap gr gT
 " :map f }) 
 " :map s {(
 nnoremap <S-q> :qall!<CR>
-nnoremap <Leader>p :r!cat<CR>
-noremap <Leader>P "*p	
+nnoremap <Leader>o :r!cat<CR>
+"noremap <Leader>P "*p	
 noremap <Leader>w :wq!<CR>
 noremap <Leader>q :bdelete!<CR>
 vnoremap <Leader>p "*p
@@ -136,7 +136,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 "nnoremap <C-n> :w<bar>:bNext<CR>
 "nnoremap <C-p> :w<bar>:bprevious<CR>
-nnoremap <Leader>n :bNext!<CR>
+nnoremap <C-n> :bNext!<CR>
 nnoremap <Leader>P :bprevious!<CR>
 nnoremap / /\v
 vnoremap / /\v
@@ -311,8 +311,8 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
 " map <Leader>n :NERDTreeMapToggleHidden<CR>
-"map <Leader>n :NERDTreeToggle<CR>
-map <C-n> :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
+"map <C-n> :NERDTreeToggle<CR>
 " Sadece NERDTREE penceresi aciksa Vim'i otomatik kapat;
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -404,6 +404,6 @@ let g:ctrlp_extensions = ['Z', 'F']
 nnoremap sz :CtrlPZ<Cr>
 "nnoremap sf :CtrlPF<Cr>
 "nnoremap <leader>z :CtrlPZ<Cr>
-nnoremap <leader>f :CtrlPF<Cr>
+nnoremap <leader>p :CtrlPF<Cr>
 " kaynak:
 " https://github.com/amiorin/ctrlp-z

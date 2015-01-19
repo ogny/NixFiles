@@ -17,7 +17,7 @@ set $horz  "g"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -151,15 +151,15 @@ mode "resize" {
 #_______________________________________________________________________|   
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-2.json'
 #exec google-chrome
+#exec xrandr --output VGA-0 --auto --right-of LVDS-0 --output LVDS-0 --auto
+exec VBoxHeadless --startvm ultimate
 exec xmodmap ~/.Xmodmap
-exec xrandr --output VGA-0 --auto --right-of LVDS-0 --output LVDS-0 --auto
-exec virtualbox
 exec setxkbmap us
 exec xrdb -merge ~/.Xdefaults
 #exec urxvt -e tmux attach-session -t genel
 #exec ssh-add ~/.ssh/ogunay
 exec unclutter -display :0 -root -idle 1 &
-exec mkfifo /tmp/mplayer-control
+#exec mkfifo /tmp/mplayer-control
 exec redshift -O 4500 -g 0.8
 exec hipchat
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
@@ -167,7 +167,7 @@ exec hipchat
 #exec ~/bin/CopyConsole
 #exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 #exec setxkbmap tr -variant alt 
-exec synclient TouchpadOff=1
+#exec synclient TouchpadOff=1
 #exec 'synergys --config ~/.synergy.conf'
  
 #_______________________________________________________________________
@@ -186,7 +186,8 @@ bindsym XF86Forward exec --no-startup-id pactl set-sink-volume $sink -- +10%
 bindsym XF86Back exec --no-startup-id pactl set-sink-volume $sink -- -10%
 bindsym XF86Mail exec --no-startup-id echo "pause" > /tmp/mplayer-control
 bindsym XF86Search exec --no-startup-id echo "pt_step 1" > /tmp/mplayer-control
-bindsym XF86HomePage exec --no-startup-id echo "pt_step -1" > /tmp/mplayer-control
+#bindsym XF86HomePage exec --no-startup-id echo "pt_step -1" > /tmp/mplayer-control
+bindsym XF86HomePage exec --no-startup-id  rdesktop -g 1360x768 -u orkun 192.168.56.2
 # Kaynak: https://faq.i3wm.org/question/125/how-to-change-the-systems-volume/?sort=votes&page=2#sort-top
 
 #_______________________________________________________________________
@@ -196,9 +197,8 @@ bindsym $mod+p workspace prev
 bindsym $mod+n workspace next
 bindsym $mod+Shift+p move workspace prev
 bindsym $mod+Shift+n move workspace next
-#for_window [instance="urxvt"] floating enable 
-for_window [class="Uzbl-core"] focus child, layout tabbed, focus
-for_window [class="XTerm"] split v, layout tabbed
+for_window [class="(?i)rdesktop"]  floating disable
+for_window [class="(?i)HipChat"] 
  
 #_______________________________________________________________________
 # => Uygulamalari spesifik masaustlerine atama 				|
@@ -207,6 +207,7 @@ for_window [class="XTerm"] split v, layout tabbed
 #assign [class="URxvt"] 2
 assign [class="Zathura"] 1
 assign [class="HipChat"] 2
+assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
 
 #_______________________________________________________________________
@@ -225,6 +226,7 @@ bar {
 #_______________________________________________________________________|   
 exec --no-startup-id xsetroot -solid "#002b36"
 new_window none
+new_float 1pixel
 # class                 border  	backgr. 	text    
 client.focused          #111111 	#002b36		#111111 
 client.focused_inactive #111111 	#002b36 	#111111
