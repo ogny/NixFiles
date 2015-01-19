@@ -36,6 +36,7 @@ Plugin 'amiorin/vim-fasd'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'chrisbra/csv.vim'
+Plugin 'Z1MM32M4N/vim-superman'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -78,7 +79,8 @@ set showmode
 set ruler
 set laststatus=0
 set showcmd
-
+"runtime! ftplugin/man.vim
+"autocmd FileType man setlocal foldmethod=indent
 "_______________________________________________________________________
 " => Gorunum 								|
 "_______________________________________________________________________|

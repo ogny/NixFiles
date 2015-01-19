@@ -142,3 +142,13 @@ chpwd_functions+='chpwd_update_git_vars'
 # Set the prompt.
 PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
 %#%{${fg[default]}%} '
+
+vman() {
+  vim -c "SuperMan $*"
+
+  if [ "$?" != "0" ]; then
+    echo "No manual entry for $*"
+  fi
+}
+
+compdef vman="man"
