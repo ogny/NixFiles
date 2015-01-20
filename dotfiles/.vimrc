@@ -142,6 +142,8 @@ nnoremap <C-n> :bNext!<CR>
 nnoremap <Leader>P :bprevious!<CR>
 nnoremap / /\v
 vnoremap / /\v
+nnoremap <Leader>l :Limelight<CR>
+nnoremap <Leader>k :Limelight!<CR>
 
 "_______________________________________________________________________
 " => emrah .vimrc 							|
@@ -246,9 +248,9 @@ endfunction
 autocmd User GoyoEnter call <SID>goyo_enter()
 autocmd User GoyoLeave call <SID>goyo_leave()
  
-set winheight=7
-set winminheight=7
-set winheight=999
+"set winheight=7
+"set winminheight=7
+"set winheight=999
 "Kaynak: https://github.com/junegunn/goyo.vim/issues/13
  
 "_______________________________________________________________________
@@ -398,6 +400,7 @@ nnoremap <silent> <C-w>w :ZoomWin<CR>
 " => ctrlP								|
 "_______________________________________________________________________|
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_regexp = 1
 " kaynak:
 " http://kien.github.io/ctrlp.vim
 

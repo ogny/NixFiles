@@ -62,16 +62,7 @@ alias dmesgg="dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m 
 alias kilc="sudo kill $(pgrep chromium)"
 alias bagla="encfs ~/Git_Repolari/kisisel/private/pass-ozel/.sifreli ~/Git_Repolari/kisisel/private/pass-ozel/.acik"
 alias x='ssh-agent startx'
-alias web='tmux attach-session -t web'
-alias api='tmux attach-session -t api'
-alias diger='tmux attach-session -t diger'
-alias lb='tmux attach-session -t lb'
-alias genel='tmux attach-session -t genel'
-alias lab='tmux attach-session -t labmysql'
 alias tur='trans :tr $1'
-alias db='tmux attach-session -t db'
-alias is='tmux attach-session -t is'
-alias music='tmux attach-session -t Music'
 promo () {
 	task $1 start ; sleep 1500 ; notify-send "Mola" ; task $1 stop
 }
@@ -80,3 +71,9 @@ alias peli='pelican ~/Git_Repolari/kisisel/public/anlatabildiklerim/content -o ~
 alias deploy="rsync -rltav --progress ~/Git_Repolari/kisisel/public/anlatabildiklerim/ ogny:~/virtualenvs/anlatabildiklerim/ --exclude='.git'"
 alias vim-geeknote='vi -c Geeknote'
 alias git-refs="git for-each-ref --format='%(committerdate) %09 %(authorname) %09 %(refname)' | sort -k5n -k2M -k3n -k4n"
+alias myiostat="iostat -c 1 10"
+
+# Tmux Session'lari
+alias chef='tmux attach-session -t chef'
+alias is='tmux attach-session -t is'
+alias sserver='tmux attach-session -t simpleserver'
