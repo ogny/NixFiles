@@ -189,7 +189,7 @@ bindsym XF86Back exec --no-startup-id pactl set-sink-volume $sink -- -10%
 bindsym XF86Mail exec --no-startup-id echo "pause" > /tmp/mplayer-control
 bindsym XF86Search exec --no-startup-id echo "pt_step 1" > /tmp/mplayer-control
 #bindsym XF86HomePage exec --no-startup-id echo "pt_step -1" > /tmp/mplayer-control
-bindsym XF86HomePage exec --no-startup-id  "VBoxHeadless --startvm ultimate ; sleep 40 ; rdesktop -g 1360x768 -u orkun 192.168.56.2"
+bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1360x768 -u orkun 192.168.56.2"
 # Kaynak: https://faq.i3wm.org/question/125/how-to-change-the-systems-volume/?sort=votes&page=2#sort-top
 
 #_______________________________________________________________________
