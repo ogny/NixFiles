@@ -37,6 +37,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tlib_vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'Z1MM32M4N/vim-superman'
+Plugin 't9md/vim-chef'
 call vundle#end()            " required
 filetype plugin indent on
 
