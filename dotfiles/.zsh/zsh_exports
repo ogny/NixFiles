@@ -7,3 +7,4 @@ export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu
 # Kaynak: http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 GPG_TTY=$(tty)
 export GPG_TTY
+export PATH="/opt/chef/embedded/bin:$PATH"
