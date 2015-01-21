@@ -82,6 +82,9 @@ set laststatus=0
 set showcmd
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
+"
+autocmd TextChanged,TextChangedI <buffer> silent write
+" Kaynak: http://stackoverflow.com/questions/6991638/how-to-auto-save-a-file-every-1-second-in-vim
 "_______________________________________________________________________
 " => Gorunum 								|
 "_______________________________________________________________________|

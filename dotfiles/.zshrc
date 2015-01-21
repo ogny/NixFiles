@@ -154,3 +154,4 @@ vman() {
 
 compdef vman="man"
 
+eval "$(chef shell-init zsh)"
