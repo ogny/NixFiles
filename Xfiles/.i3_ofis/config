@@ -164,6 +164,10 @@ exec unclutter -display :0 -root -idle 1 &
 #exec mkfifo /tmp/mplayer-control
 exec redshift -O 4500 -g 0.8
 exec hipchat
+#exec --no-startup-id  feh --set-zoom-fill ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
+#exec --no-startup-id  feh ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
+#exec --no-startup-id  feh --restore
+exec ~/bin/myfeh.sh
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
 #exec ~/bin/mplist.sh
 #exec ~/bin/CopyConsole
@@ -209,6 +213,7 @@ assign [class="Zathura"] 1
 assign [class="HipChat"] 2
 assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
+assign [class="feh"] 2
 
 #_______________________________________________________________________
 # => i3statusbar							|
