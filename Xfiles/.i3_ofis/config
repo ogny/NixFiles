@@ -156,7 +156,7 @@ mode "resize" {
 exec ~/bin/myxrandr.sh
 exec VBoxHeadless --startvm ultimate
 exec xmodmap ~/.Xmodmap
-exec setxkbmap us
+#exec setxkbmap us
 exec xrdb -merge ~/.Xdefaults
 #exec urxvt -e tmux attach-session -t genel
 #exec ssh-add ~/.ssh/ogunay
