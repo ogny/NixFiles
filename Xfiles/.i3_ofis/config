@@ -151,12 +151,12 @@ mode "resize" {
 #_______________________________________________________________________|   
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-2.json'
 #exec google-chrome
-#exec xrandr --output VGA-0 --right-of LVDS-0 --output LVDS-0 
-#exec xrandr --output LVDS-0 --auto
-#exec ~/bin/myxrandr.sh
-exec VBoxHeadless --startvm ultimate
+#exec xrandr --output VGA-1 --right-of LVDS-1 --output LVDS-0 
+#exec xrandr --output LVDS-1 --auto
+exec ~/bin/myxrandr.sh
+#exec VBoxHeadless --startvm ultimate
+exec setxkbmap us
 exec xmodmap ~/.Xmodmap
-#exec setxkbmap us
 exec xrdb -merge ~/.Xdefaults
 #exec urxvt -e tmux attach-session -t genel
 #exec ssh-add ~/.ssh/ogunay
@@ -173,7 +173,8 @@ exec ~/bin/myfeh.sh
 #exec ~/bin/CopyConsole
 #exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 #exec setxkbmap tr -variant alt 
-#exec synclient TouchpadOff=1
+exec synclient TouchpadOff=1
+exec numlockx
 #exec 'synergys --config ~/.synergy.conf'
  
 #_______________________________________________________________________
@@ -193,7 +194,7 @@ bindsym XF86Back exec --no-startup-id pactl set-sink-volume $sink -- -10%
 bindsym XF86Mail exec --no-startup-id echo "pause" > /tmp/mplayer-control
 bindsym XF86Search exec --no-startup-id echo "pt_step 1" > /tmp/mplayer-control
 #bindsym XF86HomePage exec --no-startup-id echo "pt_step -1" > /tmp/mplayer-control
-bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1920x1080 -u orkun 192.168.56.2"
+bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1440x900 -u orkun 192.168.56.2"
 # Kaynak: https://faq.i3wm.org/question/125/how-to-change-the-systems-volume/?sort=votes&page=2#sort-top
 
 #_______________________________________________________________________
@@ -211,7 +212,7 @@ bindsym $mod+Shift+n move workspace next
 #assign [class="URxvt"] 2
 assign [class="Zathura"] 1
 assign [class="HipChat"] 2
-assign [class="rdesktop"] 2 
+#assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
 assign [class="feh"] 2
 
@@ -219,7 +220,7 @@ assign [class="feh"] 2
 # => i3statusbar							|
 #_______________________________________________________________________|   
 bar {
-	output	       VGA-0
+	output	       VGA-1
         status_command i3status
 	colors {
 	background #002b36
@@ -247,11 +248,11 @@ bindsym XF86Reload exec --no-startup-id /home/orkung/.i3/i3-load-generic1.sh
 #_______________________________________________________________________
 # => Workspace'leri screen'lere atama					|
 #_______________________________________________________________________|   
-workspace 1 output VGA-0
-workspace 2 output VGA-0
-workspace 3 output LVDS-0
-workspace 4 output LVDS-0
-workspace 5 output LVDS-0
+workspace 1 output VGA-1
+workspace 2 output VGA-1
+workspace 3 output LVDS-1
+workspace 4 output LVDS-1
+workspace 5 output LVDS-1
 
 for_window [class="rdesktop"] border normal
 
