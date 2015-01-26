@@ -16,7 +16,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
-"Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'mattn/gist-vim'
@@ -83,7 +83,7 @@ set showcmd
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
 "
-autocmd TextChanged,TextChangedI <buffer> silent write
+"autocmd TextChanged,TextChangedI <buffer> silent write
 " Kaynak: http://stackoverflow.com/questions/6991638/how-to-auto-save-a-file-every-1-second-in-vim
 "_______________________________________________________________________
 " => Gorunum 								|
@@ -142,8 +142,8 @@ cnoreabbrev W w
 cnoreabbrev Q q
 "nnoremap <C-n> :w<bar>:bNext<CR>
 "nnoremap <C-p> :w<bar>:bprevious<CR>
-nnoremap <C-n> :bNext!<CR>
-nnoremap <Leader>P :bprevious!<CR>
+nnoremap <C-n> :BuffergatorMruCycleNext<CR>
+nnoremap <C-p> :BuffergatorMruCyclePrev<CR>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
@@ -405,6 +405,8 @@ nnoremap <silent> <C-w>w :ZoomWin<CR>
 "_______________________________________________________________________|
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_regexp = 1
+let g:ctrlp_map = '<leader>;'
+let g:ctrlp_cmd = 'CtrlP'
 " kaynak:
 " http://kien.github.io/ctrlp.vim
 

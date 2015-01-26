@@ -75,6 +75,9 @@ alias myiostat="iostat -c 1 10"
 alias mywin="VBoxHeadless --startvm ultimate"
 
 # Tmux Session'lari
-alias mychef='tmux attach-session -t chef'
+alias mychef='tmux attach-session -t mychef'
 alias is='tmux attach-session -t is'
 alias sserver='tmux attach-session -t SimpleServer'
+alias ipam='tmux attach-session -t ipam'
+alias kota='tmux attach-session -t kota'
+alias diger='tmux attach-session -t diger'
