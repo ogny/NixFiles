@@ -218,5 +218,5 @@
 #
 [notify-send]
         appname = notify-send
-        format = "<span weight='normal' letter_spacing='1000' color='#4E9FB1'>%s</span>\n%b"
+        format = "<span weight='normal' letter_spacing='1000' color='#ffffff'>%s</span>\n%b"
         geometry = "300x5-30+20"

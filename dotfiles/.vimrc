@@ -5,25 +5,29 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
+Plugin 'honza/vim-snippets'
+Plugin 'junegunn/limelight.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'junegunn/goyo.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'Shougo/neosnippet.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'L9'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'junegunn/goyo.vim'
 Plugin 'rbgrouleff/bclose.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'joom/turkish-deasciifier.vim'
-Plugin 'junegunn/limelight.vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'elzr/vim-json'
 Plugin 'neilagabriel/vim-geeknote'
-Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-scripts/ZoomWin'
 Plugin 'Wolfy87/vim-expand'
 Plugin 'tmux-plugins/vim-tmux'
@@ -38,6 +42,16 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'chrisbra/csv.vim'
 Plugin 'Z1MM32M4N/vim-superman'
 Plugin 't9md/vim-chef'
+Plugin 'klen/python-mode'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+"Plugin 'vim-scripts/AutoComplPop'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-eunuch'
+"Plugin 'ivanov/vim-ipython'
+"Plugin 'kevinw/pyflakes-vim'
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -80,6 +94,8 @@ set showmode
 set ruler
 set laststatus=0
 set showcmd
+set nofoldenable
+set nu!
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
 "
@@ -128,6 +144,7 @@ noremap gr gT
 " :map s {(
 nnoremap <S-q> :qall!<CR>
 nnoremap <Leader>o :r!cat<CR>
+nnoremap <Leader>s :set nu!<CR>
 "noremap <Leader>P "*p	
 noremap <Leader>w :wq!<CR>
 noremap <Leader>q :bdelete!<CR>
@@ -152,8 +169,8 @@ nnoremap <Leader>k :Limelight!<CR>
 "_______________________________________________________________________
 " => emrah .vimrc 							|
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh call CodingSet1()
- autocmd BufNewFile,BufRead *.rst call CodingSet2()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst call CodingSet1()
+"autocmd BufNewFile,BufRead *.rst call CodingSet2()
  
  function CodingSet1()
          setlocal
@@ -262,7 +279,7 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 "_______________________________________________________________________|
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+"let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -421,3 +438,50 @@ nnoremap sz :CtrlPZ<Cr>
 nnoremap <leader>p :CtrlPF<Cr>
 " kaynak:
 " https://github.com/amiorin/ctrlp-z
+
+"_______________________________________________________________________
+" => Python-mode							|
+"_______________________________________________________________________|
+"
+let g:pymode_rope = 0
+
+"_______________________________________________________________________
+" => Ultisnips								|
+"_______________________________________________________________________|
+
+set runtimepath+=~/.vim/ultisnips_rep
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsUsePythonVersion = 2
+ 
+""_______________________________________________________________________
+"" => Neosnippet								|
+""_______________________________________________________________________|
+" 
+"\" Plugin key-mappings.
+"imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: pumvisible() ? "\<C-n>" : "\<TAB>"
+"smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"\ "\<Plug>(neosnippet_expand_or_jump)"
+"\: "\<TAB>"
+"
+"" For snippet_complete marker.
+"if has('conceal')
+"  set conceallevel=2 concealcursor=i
+"endif
+"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets' 
+
+"_______________________________________________________________________
+" => Jedi.vim 								|
+"_______________________________________________________________________|
+ 
+let g:jedi#popup_on_dot = 0
