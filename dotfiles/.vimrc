@@ -51,7 +51,7 @@ Plugin 'tpope/vim-eunuch'
 "Plugin 'ivanov/vim-ipython'
 "Plugin 'kevinw/pyflakes-vim'
 "Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -72,8 +72,8 @@ set backspace=eol,start	 " allow backspacing over everything in insert mode
 set ignorecase     " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smarttab      " insert tabs on the start of a line according to shiftwidth, not tabstop
-set incsearch      " highlight search terms
-"set hlsearch      " highlight search terms
+"set incsearch      " highlight search terms
+set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
 set history=1000         " remember more commands and search history	
 set undolevels=1000      " use many muchos levels of undo
@@ -105,6 +105,7 @@ set nu!
 " => Gorunum 								|
 "_______________________________________________________________________|
  highlight VertSplit cterm=none gui=none	
+ highlight Search ctermfg=25 ctermbg=16
  highlight Folded ctermfg=25 ctermbg=16
  hi StatusLine cterm=none gui=none
  hi StatusLineNC cterm=none gui=none
