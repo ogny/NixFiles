@@ -1,0 +1,38 @@
+let barposition = "bottom"
+set noautofocus
+set typelinkhints
+let searchlimit = 15
+let scrollstep = 70
+set nodefaultnewtabpage
+set regexp
+let searchalias g = "google"
+let searchengine google = "https://www.google.com.tr/?#q=%s"
+let blacklists = ["https://mail.google.com/*","*://mail.google.com/*","https://docs.google.com/*","*://docs.google.com/*","https://cas.limonhost.net/*","://cas.limonhost.net/","*://web.whatsapp.com/","https://web.whatsapp.com/*"]
+let mapleader = "\\"
+map <Leader>x :restore<Space>
+map gb :buffer<Space>
+map gr previousTab
+imap <Leader>d deleteWord
+map p P
+unmap s
+map s scrollPageUp
+unmap a
+map a scrollPageDown
+unmap d
+map d closeTab
+unmap u
+map u lastClosedTab
+unmap f
+map f createTabbedHint
+unmap F
+map F createHint
+unmap w
+map w goForward
+unmap b
+map b goBack
+let qmark a = ["https://docs.google.com/spreadsheets/d/1q9Cd1sB5u7vGVgD3Le8ERJBZIfqSJ25oIMplTp-dqCc/edit#gid=207159894"]
+let qmark b = ["https://docs.google.com/spreadsheets/d/1xVh53_3jlBLr-B3NvdpiONGSRFdbSFM2DNpRI4UN2rY/edit#gid=731300506"]
+let qmark c = ["https://cas.limonhost.net/owa"]
+let qmark g = ["https://mail.google.com/mail/u/0"]
+let qmark d = ["chrome-extension://ihlenndgcmojhcghmfjfneahoeklbjjh/pages/options.html"]
+let qmark x = ["chrome://extensions"]
