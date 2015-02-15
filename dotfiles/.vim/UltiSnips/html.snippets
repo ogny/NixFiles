@@ -1,0 +1,18 @@
+snippet hi "hello world" b
+
+<html>
+<body>
+	<${1:div}>
+		hello world
+
+	</${1/(\w+).*/$1/}>
+<body>
+</html>
+
+endsnippet
+
+snippet todo "this is a todo reminder" b
+<!-- TODO: ${1:desc} | `!v strftime("%c")` -->
+endsnippet
+
+
