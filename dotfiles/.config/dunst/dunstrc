@@ -3,10 +3,10 @@
     monitor = 0
 
     # allow a small subset of html markup:
-     <b>bold</b>
-     <i>italic</i>
-     <s>strikethrough<s/>
-     <u>underline</u>
+     #<b>bold</b>
+     #<i>italic</i>
+     #<s>strikethrough<s/>
+     #<u>underline</u>
     #
     # for a complete reference see http://developer.gnome.org/pango/stable/PangoMarkupFormat.html
     # If markup is not allowed, those tags will be stripped out of the message.
