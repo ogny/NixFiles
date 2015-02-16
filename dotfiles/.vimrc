@@ -1,68 +1,72 @@
 "_______________________________________________________________________
 " => Vundle 								|
 "_______________________________________________________________________|
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-Plugin 'honza/vim-snippets'
-Plugin 'junegunn/limelight.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'junegunn/goyo.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'vim-scripts/nginx.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'L9'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'rbgrouleff/bclose.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'joom/turkish-deasciifier.vim'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'elzr/vim-json'
-Plugin 'neilagabriel/vim-geeknote'
-Plugin 'vim-scripts/ZoomWin'
-Plugin 'Wolfy87/vim-expand'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'vivien/vim-addon-linux-coding-style'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'reedes/vim-pencil'
-Plugin 'amiorin/ctrlp-z'
-Plugin 'amiorin/vim-fasd'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tomtom/tlib_vim'
-Plugin 'chrisbra/csv.vim'
-Plugin 'Z1MM32M4N/vim-superman'
-Plugin 't9md/vim-chef'
-Plugin 'klen/python-mode'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
-Plugin 'SirVer/ultisnips'
-Plugin 'tpope/vim-eunuch'
-"Plugin 'plasticboy/vim-markdown'
-"Plugin 'vim-pandoc/vim-pandoc'
-"Plugin 'vim-pandoc/vim-pandoc-syntax'
-"Plugin 'vim-scripts/AutoComplPop'
-"Plugin 'Shougo/neosnippet-snippets'
-"Plugin 'Shougo/neosnippet.vim'
-"Plugin 'ivanov/vim-ipython'
-"Plugin 'kevinw/pyflakes-vim'
-"Plugin 'godlygeek/tabular'
-call vundle#end()            " required
-filetype plugin indent on
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#begin()
+call plug#begin('~/.vim/plugged')
+Plug 'honza/vim-snippets'
+Plug 'junegunn/limelight.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'flazz/vim-colorschemes'
+Plug 'junegunn/goyo.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Shougo/neocomplete.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'vim-scripts/nginx.vim'
+Plug 'tpope/vim-surround'
+Plug 'L9'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'rbgrouleff/bclose.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'joom/turkish-deasciifier.vim'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'elzr/vim-json'
+Plug 'neilagabriel/vim-geeknote'
+Plug 'vim-scripts/ZoomWin'
+Plug 'Wolfy87/vim-expand'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'vivien/vim-addon-linux-coding-style'
+Plug 'airblade/vim-gitgutter'
+Plug 'reedes/vim-pencil'
+Plug 'amiorin/ctrlp-z'
+Plug 'amiorin/vim-fasd'
+Plug 'kien/ctrlp.vim'
+Plug 'tomtom/tlib_vim'
+Plug 'chrisbra/csv.vim'
+Plug 'Z1MM32M4N/vim-superman'
+Plug 't9md/vim-chef'
+Plug 'klen/python-mode'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'SirVer/ultisnips'
+Plug 'tpope/vim-eunuch'
+Plug 'vim-ruby/vim-ruby'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'vim-pandoc/vim-pandoc'
+"Plug 'vim-pandoc/vim-pandoc-syntax'
+"Plug 'vim-scripts/AutoComplPop'
+"Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'ivanov/vim-ipython'
+"Plug 'kevinw/pyflakes-vim'
+"Plug 'godlygeek/tabular'
+"call vundle#end()            " required
+call plug#end()
 
 "_______________________________________________________________________
 " => genel ayarlar 							|
 "_______________________________________________________________________|
 colorscheme SlateDark
 set background=light
-filetype off
+filetype plugin on
+"filetype plugin indent on
+filetype indent on
+set nocompatible              " be iMproved, required
+filetype on
 syntax on
 syntax enable
 set guitablabel=%t
@@ -88,7 +92,6 @@ set noswapfile
 set pastetoggle=<F2>
 set nocindent  " Switch off all auto-indenting
 set nosmartindent	
-set noautoindent
 set indentexpr=
 set clipboard=unnamed
 set go+=a
@@ -488,3 +491,28 @@ let g:UltiSnipsUsePythonVersion = 2
 "_______________________________________________________________________|
  
 let g:jedi#popup_on_dot = 0
+
+"_______________________________________________________________________
+" => ruby-vim 								|
+"_______________________________________________________________________|
+ 
+imap <S-CR>    <CR><CR>end<Esc>-cc
+set autoindent
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+
+if !exists( "*EndToken" )
+  function EndToken()
+    let current_line = getline( '.' )
+    let braces_at_end = '{\s*\(|\(,\|\s\|\w\)*|\s*\)\?$'
+    if match( current_line, braces_at_end ) >= 0
+      return '}'
+    else
+      return 'end'
+    endif
+  endfunction
+endif
+
+imap <S-CR> <ESC>:execute 'normal o' . EndToken()<CR>O
+
+" Kaynak: https://github.com/vim-ruby/vim-ruby/wiki/VimRubySupport
