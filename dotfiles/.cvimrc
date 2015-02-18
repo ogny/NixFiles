@@ -7,7 +7,7 @@ set nodefaultnewtabpage
 set regexp
 let searchalias g = "google"
 let searchengine google = "https://www.google.com.tr/?#q=%s"
-let blacklists = ["https://mail.google.com/*","*://mail.google.com/*","https://docs.google.com/*","*://docs.google.com/*","https://cas.limonhost.net/*","://cas.limonhost.net/","*://web.whatsapp.com/","https://web.whatsapp.com/*"]
+let blacklists = ["https://mail.google.com/*","*://mail.google.com/*","https://docs.google.com/*","*://docs.google.com/*","https://cas.limonhost.net/*","://cas.limonhost.net/","*://web.whatsapp.com/","https://web.whatsapp.com/*","http://bellard.org/jslinux/*","*://bellard.org/jslinux/"]
 let mapleader = "\\"
 map <Leader>x :restore<Space>
 map gb :buffer<Space>
