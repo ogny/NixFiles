@@ -39,12 +39,12 @@ Plug 'tomtom/tlib_vim'
 Plug 'chrisbra/csv.vim'
 Plug 'Z1MM32M4N/vim-superman'
 Plug 't9md/vim-chef'
-Plug 'klen/python-mode'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-eunuch'
 Plug 'vim-ruby/vim-ruby'
+Plug 'klen/python-mode'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'vim-pandoc/vim-pandoc'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -100,7 +100,7 @@ set ruler
 set laststatus=0
 set showcmd
 set nofoldenable
-set nu!
+"set number!
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
 "
@@ -389,7 +389,10 @@ set keywordprg=trans\ :tr
 
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
-let g:gist_show_privates = 1
+"let g:gist_show_privates = 1
+" Only :w! updates a gist.
+let g:gist_update_on_write = 2
+
 
 "_______________________________________________________________________
 " => Geeknote-vim							|
