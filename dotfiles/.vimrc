@@ -1,5 +1,6 @@
 "_______________________________________________________________________
-" => Vundle 								|
+"
+" => Vundle 								                                            |
 "_______________________________________________________________________|
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
@@ -44,7 +45,10 @@ Plug 'tpope/vim-speeddating'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-eunuch'
 Plug 'vim-ruby/vim-ruby'
-Plug 'klen/python-mode'
+"Plug 'klen/python-mode'
+Plug 'justinmk/vim-sneak'
+Plug 'richsoni/vim-ecliptic'
+Plug 'orlandov/vimfluence'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'vim-pandoc/vim-pandoc'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -58,9 +62,10 @@ Plug 'klen/python-mode'
 call plug#end()
 
 "_______________________________________________________________________
-" => genel ayarlar 							|
+" => genel ayarlar 							                                        |
 "_______________________________________________________________________|
 colorscheme SlateDark
+set modifiable
 set background=light
 filetype plugin on
 "filetype plugin indent on
@@ -107,7 +112,7 @@ set nofoldenable
 "autocmd TextChanged,TextChangedI <buffer> silent write
 " Kaynak: http://stackoverflow.com/questions/6991638/how-to-auto-save-a-file-every-1-second-in-vim
 "_______________________________________________________________________
-" => Gorunum 								|
+" => Gorunum 								                                            |
 "_______________________________________________________________________|
  highlight VertSplit cterm=none gui=none	
  highlight Search ctermfg=25 ctermbg=16
@@ -118,7 +123,7 @@ set nofoldenable
  autocmd BufEnter,BufRead,BufNewFile *.md syntax off
 
 "_______________________________________________________________________
-" => Ozel karakterler 							|
+" => Ozel karakterler 							                                    |
 "_______________________________________________________________________|
 let g:AutoCloseProtectedRegions = ["Character"]"
 " modify selected text using combining diacritics
@@ -136,7 +141,7 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
 
 "_______________________________________________________________________
-" => Kisayollar 							|
+" => Kisayollar 							                                          |
 "_______________________________________________________________________|
 "noremap j h
 "noremap k j
@@ -150,7 +155,7 @@ noremap gr gT
 " :map s {(
 nnoremap <S-q> :qall!<CR>
 nnoremap <Leader>o :r!cat<CR>
-nnoremap <Leader>s :set nu!<CR>
+nnoremap <Leader>s :GitGutterToggle<CR>
 "noremap <Leader>P "*p	
 noremap <Leader>w :wq!<CR>
 noremap <Leader>q :bdelete!<CR>
@@ -173,10 +178,9 @@ nnoremap <Leader>l :Limelight<CR>
 nnoremap <Leader>k :Limelight!<CR>
 
 "_______________________________________________________________________
-" => emrah .vimrc 							|
+" => emrah .vimrc 							                                        |
 "_______________________________________________________________________|
  autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst call CodingSet1()
-"autocmd BufNewFile,BufRead *.rst call CodingSet2()
  
  function CodingSet1()
          setlocal
@@ -192,20 +196,8 @@ nnoremap <Leader>k :Limelight!<CR>
          \ syntax=conf
  endfunction
  
- function CodingSet2()
-         setlocal
-         \ textwidth=79
-"         \ tabstop=8
-"         \ shiftwidth=4
-"         \ softtabstop=4
-         \ expandtab
-         \ autoindent
-         \ list
-         \ listchars=tab:»·,trail:·
- endfunction
- 
 "_______________________________________________________________________
-" => vim-tmux-navigator 						|
+" => vim-tmux-navigator 						                                    |
 "_______________________________________________________________________|
  if exists('$TMUX')
    function! TmuxOrSplitSwitch(wincmd, tmuxdir)
@@ -233,7 +225,7 @@ nnoremap <Leader>k :Limelight!<CR>
  endif
 
 "_______________________________________________________________________
-" => goyo.vim								|
+" => goyo.vim								                                            |
 "_______________________________________________________________________|
  nnoremap <silent> <leader>z :Goyo<cr>
 
@@ -281,7 +273,7 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 "Kaynak: https://github.com/junegunn/goyo.vim/issues/13
  
 "_______________________________________________________________________
-" => neocomplete							|
+" => neocomplete							                                          |
 "_______________________________________________________________________|
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
@@ -337,7 +329,7 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 "_______________________________________________________________________
-" => NERDTREE 								|
+" => NERDTREE 								                                          |
 "_______________________________________________________________________|
 " Yapilandirma Kaynak: https://github.com/scrooloose/nerdtree
 " Bos vim buffer'i acildiginda baslatma
@@ -351,14 +343,14 @@ map <Leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "_______________________________________________________________________
-" => Vim Indent Color 							|
+" => Vim Indent Color 							                                    |
 "_______________________________________________________________________|
 let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "_______________________________________________________________________
-" => Limelight!								|
+" => Limelight!								                                          |
 "_______________________________________________________________________|
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'Black'
@@ -371,20 +363,20 @@ let g:limelight_conceal_guifg = '#777777'
 let g:limelight_default_coefficient = 1
 
 "_______________________________________________________________________
-" => turkish-deasciifier.						|
+" => turkish-deasciifier.						                                    |
 "_______________________________________________________________________|
 vmap <Leader>tr :<c-u>call Turkish_Deasciify()<CR>
 vmap <Leader>rt :<c-u>call Turkish_Asciify()<CR>
 let g:turkish_deasciifier_path = '~/Git_Repolari/diger/turkish-deasciifier/turkish-deasciify'
 
 "_______________________________________________________________________
-" => translate-shell							|
+" => translate-shell							                                      |
 "_______________________________________________________________________|
 
 set keywordprg=trans\ :tr
 
 "_______________________________________________________________________
-" => gist-vim								|
+" => gist-vim								                                            |
 "_______________________________________________________________________|
 
 let g:gist_clip_command = 'xclip -selection clipboard'
@@ -395,31 +387,31 @@ let g:gist_update_on_write = 2
 
 
 "_______________________________________________________________________
-" => Geeknote-vim							|
+" => Geeknote-vim							                                          |
 "_______________________________________________________________________|
 noremap <F8> :Geeknote<cr>
 autocmd FileType geeknote setlocal nonumber
 let g:GeeknoteFormat="markdown" 
 
 "_______________________________________________________________________
-" => Arama sonuclari yeni pencerede					|
+" => Arama sonuclari yeni pencerede					                            |
 "_______________________________________________________________________|
 command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=nofile | put! a
 
 "_______________________________________________________________________
-" => clickable								|
+" => clickable								                                          |
 "_______________________________________________________________________|
 "g:clickable_google-chrome
 
 "_______________________________________________________________________
-" => son kaydedilen halinden baslat					|
+" => son kaydedilen halinden baslat					                            |
 "_______________________________________________________________________|
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
  
  
 "_______________________________________________________________________
-" => ZoomWin								|
+" => ZoomWin								                                            |
 "_______________________________________________________________________|
 nnoremap <silent> <C-w>w :ZoomWin<CR>
 " kaynak:
@@ -427,7 +419,7 @@ nnoremap <silent> <C-w>w :ZoomWin<CR>
  
 
 "_______________________________________________________________________
-" => ctrlP								|
+" => ctrlP								                                              |
 "_______________________________________________________________________|
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_regexp = 1
@@ -437,7 +429,7 @@ let g:ctrlp_cmd = 'CtrlP'
 " http://kien.github.io/ctrlp.vim
 
 "_______________________________________________________________________
-" => ctrlP-z								|
+" => ctrlP-z								                                            |
 "_______________________________________________________________________|
 let g:ctrlp_z_nerdtree = 1
 let g:ctrlp_extensions = ['Z', 'F']
@@ -449,13 +441,13 @@ nnoremap <leader>p :CtrlPF<Cr>
 " https://github.com/amiorin/ctrlp-z
 
 "_______________________________________________________________________
-" => Python-mode							|
+" => Python-mode							                                          |
 "_______________________________________________________________________|
 "
 let g:pymode_rope = 0
 
 "_______________________________________________________________________
-" => Ultisnips								|
+" => Ultisnips								                                          |
 "_______________________________________________________________________|
 
 set runtimepath+=~/.vim/ultisnips_rep
@@ -467,7 +459,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsUsePythonVersion = 2
  
 ""_______________________________________________________________________
-"" => Neosnippet								|
+"" => Neosnippet								                                         |
 ""_______________________________________________________________________|
 " 
 "\" Plugin key-mappings.
@@ -490,13 +482,13 @@ let g:UltiSnipsUsePythonVersion = 2
 "let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets' 
 
 "_______________________________________________________________________
-" => Jedi.vim 								|
+" => Jedi.vim 								                                          |
 "_______________________________________________________________________|
  
 let g:jedi#popup_on_dot = 0
 
 "_______________________________________________________________________
-" => ruby-vim 								|
+" => ruby-vim 								                                          |
 "_______________________________________________________________________|
  
 imap <S-CR>    <CR><CR>end<Esc>-cc
@@ -519,3 +511,9 @@ endif
 imap <S-CR> <ESC>:execute 'normal o' . EndToken()<CR>O
 
 " Kaynak: https://github.com/vim-ruby/vim-ruby/wiki/VimRubySupport
+
+"_______________________________________________________________________
+" => Sneak                                                              |
+"_______________________________________________________________________|
+ 
+let g:sneak#streak = 1

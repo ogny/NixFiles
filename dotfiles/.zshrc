@@ -168,5 +168,6 @@ function _pip_completion {
 compctl -K _pip_completion pip
 # pip zsh completion end
 
-source /usr/local/bin/virtualenvwrapper.sh
-#source ~/Git_Repolari/diger/sshag/sshag.sh; sshag &>/dev/null
+#source /usr/local/bin/virtualenvwrapper.sh
+source ~/Git_Repolari/diger/sshag/sshag.sh; sshag &>/dev/null
+
