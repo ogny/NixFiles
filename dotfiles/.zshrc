@@ -6,6 +6,11 @@
 #%# '
 bindkey -v
 
+setopt correctall
+setopt autocd
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+#Kaynak: http://wiki.gentoo.org/wiki/Zsh/HOWTO
 setopt dotglob
 setopt histignorealldups sharehistory
 # append to the history file, don't overwrite it
@@ -14,7 +19,7 @@ setopt histappend
 set -k
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
+HISTSIZE=1000000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
