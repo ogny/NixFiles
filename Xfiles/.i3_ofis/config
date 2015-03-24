@@ -174,7 +174,7 @@ exec ~/bin/myfeh.sh
 #exec ~/bin/CopyConsole
 #exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 #exec setxkbmap tr -variant alt 
-exec synclient TouchpadOff=1
+#exec synclient TouchpadOff=1
 exec numlockx
 #exec 'synergys --config ~/.synergy.conf'
  
@@ -215,7 +215,7 @@ assign [class="Zathura"] 1
 assign [class="HipChat"] 2
 #assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
-assign [class="feh"] 2
+#assign [class="feh"] 2
 
 #_______________________________________________________________________
 # => i3statusbar							|
