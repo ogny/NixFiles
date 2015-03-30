@@ -45,11 +45,13 @@ Plug 'tpope/vim-speeddating'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-eunuch'
 Plug 'vim-ruby/vim-ruby'
-"Plug 'klen/python-mode'
 Plug 'justinmk/vim-sneak'
 Plug 'richsoni/vim-ecliptic'
 Plug 'orlandov/vimfluence'
+Plug 'godlygeek/tabular'
 "Plug 'plasticboy/vim-markdown'
+"Plug 'klen/python-mode'
+"Plug 'vim-scripts/rest.vim'
 "Plug 'vim-pandoc/vim-pandoc'
 "Plug 'vim-pandoc/vim-pandoc-syntax'
 "Plug 'vim-scripts/AutoComplPop'
@@ -176,6 +178,7 @@ nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
 nnoremap <Leader>k :Limelight!<CR>
+nnoremap <Leader>h :nohl<CR>
 
 "_______________________________________________________________________
 " => emrah .vimrc 							                                        |
