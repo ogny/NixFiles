@@ -12,4 +12,35 @@ find k
 search icon
 open_wit
 open_with 
+shell rm -rf bitlbee
+shell rm -rf calisilan_vidyolar
+shell rm -rf cherry_pick_mis_gibi
+shell rm -rf deneme
+shell rm -rf diger
+shell rm -rf Documents
+shell rm -rf gpg_ile_sifreli
+shell rm -rf log
+shell rm -rf mounpoint
+shell rm -rf mpt
+shell rm -rf mtp
+shell rm -rf Music
+shell rm -rf oiaejidbmkiecgbjeifoejpgmdaleoha.org
+shell rm -rf Pictures
+shell rm -rf profile1_den_oia
+shell rm -rf Public
+shell rm -rf pycharm-community-4.0.4
+shell rm -rf PycharmProjects
+shell rm -rf sensu-community-plugins
+shell rm -rf tasit_devops
+shell rm -rf Templates
+shell rm -rf Videos
+shell rm -rf vimwiki
+shell rm -rf workspace ab2015
+shell rm -rf workspace\ ab2015
+shell rm -rf bitbucket
+shell rm -rf bitbucket.css
+shell rm -rf xorg.conf.new
+shell rm -rf gpg.conf
+shell rm -rf Git_notlari.md
+shell rm -rf hahayd
 delete 

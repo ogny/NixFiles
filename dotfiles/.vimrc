@@ -68,6 +68,7 @@ call plug#end()
 "_______________________________________________________________________|
 colorscheme SlateDark
 set modifiable
+set hidden
 set background=light
 filetype plugin on
 "filetype plugin indent on
@@ -159,13 +160,14 @@ nnoremap <S-q> :qall!<CR>
 nnoremap <Leader>o :r!cat<CR>
 nnoremap <Leader>s :GitGutterToggle<CR>
 "noremap <Leader>P "*p	
-noremap <Leader>w :wq!<CR>
 noremap <Leader>q :bdelete!<CR>
+nnoremap <S-w> :w<bar>:Bclose!<cr>
+nnoremap <S-e> :Bclose!<cr>
+noremap <Leader>w :wq!<CR>
+nnoremap <Leader>e :enew<cr>
 vnoremap <Leader>p "*p
 noremap <Leader>y "*y	
 vnoremap <Leader>y "*y
-nnoremap <S-w> :w<bar>:Bclose!<cr>
-nnoremap <Leader>e :enew<cr>
 cnoreabbrev Wq wq
 cnoreabbrev Q! q!
 cnoreabbrev W w

@@ -153,13 +153,13 @@ mode "resize" {
 #exec google-chrome
 exec ~/bin/evxrandr.sh
 #exec urxvt -e tmux attach-session -t genel
-exec ssh-add ~/.ssh/ogunay
-exec skyped
+#exec ssh-add ~/.ssh/ogunay
+#exec skyped
 #exec xrandr --output DP1 --auto --output eDP1 --auto --right-of DP1
 exec unclutter -idle 1 &
 exec xmodmap /home/orkung/.Xmodmap
-exec luakit
-exec mkfifo /tmp/mplayer-control
+#exec luakit
+#exec mkfifo /tmp/mplayer-control
 #exec redshift -l 41:29 -t 5500:3700
 exec redshift -O 4500 -g 0.8
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
@@ -168,7 +168,7 @@ exec ~/bin/mplist.sh
 exec ~/bin/CopyConsole
 #exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 #exec setxkbmap tr -variant alt 
-#exec synclient TouchpadOff=1
+exec synclient TouchpadOff=1
 #exec 'synergys --config ~/.synergy.conf'
 #exec sleep 2; ~/Dropbox/bin/ffxtoram.sh
 #exec xset b off &
