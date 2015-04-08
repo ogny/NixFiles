@@ -154,7 +154,7 @@ mode "resize" {
 #exec google-chrome
 #exec xrandr --output VGA-1 --right-of LVDS-1 --output LVDS-0 
 #exec xrandr --output LVDS-1 --auto
-exec ~/bin/myxrandr.sh
+#exec ~/bin/myxrandr.sh
 #exec VBoxHeadless --startvm ultimate
 exec setxkbmap us
 exec xmodmap ~/.Xmodmap
@@ -221,7 +221,8 @@ assign [class="VirtualBox"] 1
 # => i3statusbar							|
 #_______________________________________________________________________|   
 bar {
-	output	       VGA-1
+	output	       LVDS-1
+	#output	       VGA-1
         status_command i3status
 	colors {
 	background #002b36
@@ -268,3 +269,5 @@ for_window [class="rdesktop"] border normal
 #_______________________________________________________________________
 bindsym $mod+m move workspace to output left 
 bindsym $mod+Shift+m move workspace to output right
+# bar toggle, hide or show 
+bindsym Mod4+m bar mode toggle
