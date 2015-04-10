@@ -1,0 +1,4 @@
+--pager="less -r"
+ 
+# Always color, even if piping to a another program
+--color
