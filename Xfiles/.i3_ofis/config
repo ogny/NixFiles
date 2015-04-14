@@ -271,3 +271,4 @@ bindsym $mod+m move workspace to output left
 bindsym $mod+Shift+m move workspace to output right
 # bar toggle, hide or show 
 bindsym Mod4+m bar mode toggle
+bindsym Mod4+r exec ~/bin/ingce.sh

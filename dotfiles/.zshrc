@@ -176,4 +176,7 @@ compctl -K _pip_completion pip
 #source /usr/local/bin/virtualenvwrapper.sh
 #source ~/Git_Repolari/diger/sshag/sshag.sh; sshag &>/dev/null
 source ~/Git_Repolari/diger/sshag/sshag.sh >/dev/null 2>&1
-#source ~/Git_Repolari/diger/sshag/sshag.sh 
+#source ~/Git_Repolari/diger/sshag/sshag.sh
+
+# OPAM configuration
+. /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
