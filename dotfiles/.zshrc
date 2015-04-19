@@ -6,7 +6,6 @@
 #%# '
 bindkey -v
 
-setopt correctall
 setopt autocd
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
