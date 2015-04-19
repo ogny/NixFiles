@@ -159,7 +159,7 @@ vman() {
 
 compdef vman="man"
 
-eval "$(chef shell-init zsh)"
+#eval "$(chef shell-init zsh)"
 
 # pip zsh completion start
 function _pip_completion {
