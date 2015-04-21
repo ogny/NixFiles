@@ -11,3 +11,4 @@ export GPG_TTY
 #export WORKON_HOME=~/.virtualenvs
 #export WORKON_HOME=/home/orkung/.virtualenvs
 #export PIP_VIRTUALENV_BASE=/home/orkung/.virtualenvs
+export LESS="-FX"

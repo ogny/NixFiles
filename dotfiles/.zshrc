@@ -1,7 +1,7 @@
 # Set up the prompt
-#autoload -Uz promptinit
-#promptinit
-#prompt off
+autoload -Uz promptinit
+promptinit
+prompt off
 #PS1=' %~ 
 #%# '
 bindkey -v
@@ -179,3 +179,5 @@ source ~/Git_Repolari/diger/sshag/sshag.sh >/dev/null 2>&1
 
 # OPAM configuration
 . /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

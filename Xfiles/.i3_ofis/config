@@ -154,7 +154,7 @@ mode "resize" {
 #exec google-chrome
 #exec xrandr --output VGA-1 --right-of LVDS-1 --output LVDS-0 
 #exec xrandr --output LVDS-1 --auto
-#exec ~/bin/myxrandr.sh
+exec ~/bin/myxrandr.sh
 #exec VBoxHeadless --startvm ultimate
 exec setxkbmap us
 exec xmodmap ~/.Xmodmap
@@ -252,7 +252,8 @@ bindsym XF86Reload exec --no-startup-id /home/orkung/.i3/i3-load-generic1.sh
 #_______________________________________________________________________|   
 workspace 1 output VGA-1
 workspace 2 output VGA-1
-workspace 3 output LVDS-1
+workspace 3 output VGA-1
+#workspace 3 output LVDS-1
 workspace 4 output LVDS-1
 workspace 5 output LVDS-1
 
