@@ -5,6 +5,7 @@
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
+Plug 'L9'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/limelight.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -17,7 +18,6 @@ Plug 'Shougo/vimproc.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'vim-scripts/nginx.vim'
 Plug 'tpope/vim-surround'
-Plug 'L9'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -49,18 +49,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'richsoni/vim-ecliptic'
 Plug 'orlandov/vimfluence'
 Plug 'godlygeek/tabular'
-"Plug 'plasticboy/vim-markdown'
-"Plug 'klen/python-mode'
-"Plug 'vim-scripts/rest.vim'
-"Plug 'vim-pandoc/vim-pandoc'
-"Plug 'vim-pandoc/vim-pandoc-syntax'
-"Plug 'vim-scripts/AutoComplPop'
-"Plug 'Shougo/neosnippet-snippets'
-"Plug 'Shougo/neosnippet.vim'
-"Plug 'ivanov/vim-ipython'
-"Plug 'kevinw/pyflakes-vim'
-"Plug 'godlygeek/tabular'
-"call vundle#end()            " required
 call plug#end()
 
 "_______________________________________________________________________
@@ -291,11 +279,12 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
+"    \ '_': "~/a.dict,~/b.dict",
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
+    \ 'default' : '~/mydict',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+    \ }
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
