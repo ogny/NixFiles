@@ -170,7 +170,7 @@ exec unclutter -display :0 -root -idle 1 &
 #exec --no-startup-id  feh --restore
 exec ~/bin/myfeh.sh
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
-exec libreoffice ~/alsat_serverlar_v21.xlsx
+#exec libreoffice ~/alsat_serverlar_v21.xlsx
 exec sudo vpnc
 #exec ~/bin/mplist.sh
 #exec ~/bin/CopyConsole
@@ -217,7 +217,7 @@ assign [class="Zathura"] 1
 assign [class="HipChat"] 2
 #assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
-assign [class="libreoffice"] 4
+#assign [class="libreoffice"] 4
 #assign [class="feh"] 2
 
 #_______________________________________________________________________
