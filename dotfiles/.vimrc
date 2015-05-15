@@ -49,6 +49,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'richsoni/vim-ecliptic'
 Plug 'orlandov/vimfluence'
 Plug 'godlygeek/tabular'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'tpope/vim-markdown'
 call plug#end()
 
 "_______________________________________________________________________
@@ -96,6 +98,9 @@ set ruler
 set laststatus=0
 set showcmd
 set nofoldenable
+"set dictionary+=k~/turkish_dic.add
+"set complete+=k~/turkish_dic
+set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 "set number!
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
@@ -111,7 +116,8 @@ set nofoldenable
  hi StatusLine cterm=none gui=none
  hi StatusLineNC cterm=none gui=none
  highlight clear SignColumn
- autocmd BufEnter,BufRead,BufNewFile *.md syntax off
+ "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
+ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 "_______________________________________________________________________
 " => Ozel karakterler 							                                    |
@@ -148,9 +154,13 @@ nnoremap <S-q> :qall!<CR>
 nnoremap <Leader>o :r!cat<CR>
 nnoremap <Leader>s :GitGutterToggle<CR>
 "noremap <Leader>P "*p	
-noremap <Leader>q :bdelete!<CR>
-nnoremap <S-w> :w<bar>:Bclose!<cr>
+"window acik buffer'i sil/kapat
+noremap <Leader>q :bdelete!<CR> 
+"window acik buffer'i kaydet
+nnoremap <S-w> :w<bar>:Bclose!<cr>  
+"window acik buffer'i kaydetme
 nnoremap <S-e> :Bclose!<cr>
+"window kapat buffer'i kaydet
 noremap <Leader>w :wq!<CR>
 nnoremap <Leader>e :enew<cr>
 vnoremap <Leader>p "*p
@@ -268,23 +278,27 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 "_______________________________________________________________________
 " => neocomplete							                                          |
 "_______________________________________________________________________|
+set runtimepath+=~/.vim/plugged/neocomplete.vim/
+set fo+=aw
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 "let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_select = 0
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-" Define dictionary.
-"    \ '_': "~/a.dict,~/b.dict",
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '~/mydict',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
+     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add'
+     \ }
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ '_' : '~/turkish.dic_calisma',
+"    \ 'vimshell' : $HOME.'/.vimshell_hist',
+"    \ 'scheme' : $HOME.'/.gosh_completions'
+"    \ }
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
@@ -415,7 +429,7 @@ nnoremap <silent> <C-w>w :ZoomWin<CR>
 "_______________________________________________________________________
 " => ctrlP								                                              |
 "_______________________________________________________________________|
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/plugged/ctrlp.vim
 let g:ctrlp_regexp = 1
 let g:ctrlp_map = '<leader>;'
 let g:ctrlp_cmd = 'CtrlP'
