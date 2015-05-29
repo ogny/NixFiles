@@ -169,7 +169,7 @@ exec unclutter -display :0 -root -idle 1 &
 #exec --no-startup-id  feh --set-zoom-fill ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh --restore
-exec ~/bin/myfeh.sh
+#exec ~/bin/myfeh.sh
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
 #exec libreoffice ~/alsat_serverlar_v21.xlsx
 #exec sudo vpnc
@@ -262,6 +262,7 @@ workspace 4 output LVDS-1
 workspace 5 output LVDS-1
 
 for_window [class="rdesktop"] border normal
+for_window [class="Pgadmin3"] floating enable
 
 #_______________________________________________________________________
 # => 1 dakika stdin'den bir sey gelmeyince ekrani kilitle (calismiyor)  |

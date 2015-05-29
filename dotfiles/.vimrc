@@ -104,7 +104,8 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 "set number!
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
-"
+:au FocusLost * silent! wa
+" 
 "autocmd TextChanged,TextChangedI <buffer> silent write
 " Kaynak: http://stackoverflow.com/questions/6991638/how-to-auto-save-a-file-every-1-second-in-vim
 "_______________________________________________________________________
@@ -117,7 +118,7 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
  hi StatusLineNC cterm=none gui=none
  highlight clear SignColumn
  "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
- autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 "_______________________________________________________________________
 " => Ozel karakterler 							                                    |
@@ -183,7 +184,7 @@ nnoremap <Leader>h :nohl<CR>
 "_______________________________________________________________________
 " => emrah .vimrc 							                                        |
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst call CodingSet1()
+ autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst,*.markdown call CodingSet1()
  
  function CodingSet1()
          setlocal
@@ -279,7 +280,7 @@ autocmd User GoyoLeave call <SID>goyo_leave()
 " => neocomplete							                                          |
 "_______________________________________________________________________|
 set runtimepath+=~/.vim/plugged/neocomplete.vim/
-set fo+=aw
+"set fo+=aw
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 "let g:acp_enableAtStartup = 0
@@ -291,9 +292,9 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplete#sources#dictionary#dictionaries = {
-     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add'
-     \ }
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add'
+"     \ }
 "let g:neocomplete#sources#dictionary#dictionaries = {
 "    \ '_' : '~/turkish.dic_calisma',
 "    \ 'vimshell' : $HOME.'/.vimshell_hist',

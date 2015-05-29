@@ -8,8 +8,9 @@ export GPG_TTY
 #export TERM=rxvt-unicode-256color
 #export SSH_AGENT_SOCK=`/home/orkung/Git_Repolari/diger/sshag/sshag.sh`
 export PATH="/opt/chef/embedded/bin:$PATH"
-#export WORKON_HOME=~/.virtualenvs
+export WORKON_HOME=~/.virtualenvs
 #export WORKON_HOME=/home/orkung/.virtualenvs
 #export PIP_VIRTUALENV_BASE=/home/orkung/.virtualenvs
+export VIRTUAL_ENV=/home/orkung/.virtualenvs
 export LESS="-FX"
 export XAUTHORITY=~/.Xauthority
