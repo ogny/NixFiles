@@ -1,0 +1,37 @@
+## gorunum
+set adjust-open width
+set font monaco 
+
+# renkler
+#set recolor-keephue
+set recolor true
+
+set default-bg "#eee8d5"
+set default-fg "#586e75"
+
+set recolor-lightcolor  "#eee8d5"
+set recolor-darkcolor "#586e75"
+
+set recolor-darkcolor  "#586e75"
+#set recolor-darkcolor "#111111"
+set recolor-lightcolor "#eee8d5"
+
+set statusbar-bg "#eee8d5"
+set statusbar-fg "#586e75"
+
+set inputbar-fg "#586e75"
+set inputbar-bg "#eee8d5"
+
+## kisayollar
+unmap s
+map [normal] s scroll full-up
+unmap a
+map [normal] a scroll full-down
+map [index] q quit
+map [normal] t toggle_statusbar
+unmap <C-r>
+map [normal] <C-r> reload
+unmap d
+map [normal] d zoom in
+unmap f
+map [normal] f zoom out

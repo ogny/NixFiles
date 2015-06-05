@@ -49,6 +49,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'richsoni/vim-ecliptic'
 Plug 'orlandov/vimfluence'
 Plug 'godlygeek/tabular'
+Plug 'tpope/vim-obsession'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
 call plug#end()
