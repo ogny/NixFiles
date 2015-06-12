@@ -148,8 +148,10 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "noremap ; l
 map t i <ESC>r
 noremap gr gT
-:nnoremap f }) \| zz
-:nnoremap s {( \| zz
+:nnoremap f }) \| zt
+":nnoremap f }) \| zz
+":nnoremap s {( \| zz
+:nnoremap s {( \| zt
 " :map f }) 
 " :map s {(
 nnoremap <S-q> :qall!<CR>
