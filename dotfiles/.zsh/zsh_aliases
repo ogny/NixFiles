@@ -90,3 +90,7 @@ alias gecr='geeknote create --title $1'
 alias geed='geeknote edit --note $1'
 alias gefs='geeknote find --search $1'
 alias psc='ps xawf -eo pid,user,cgroup,args'
+alias sdo='sudo docker'
+function mman {
+    man $1 |fold |less
+    }

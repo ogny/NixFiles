@@ -50,6 +50,7 @@ Plug 'richsoni/vim-ecliptic'
 Plug 'orlandov/vimfluence'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
+Plug 'Raimondi/delimitMate'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
 call plug#end()
@@ -161,11 +162,11 @@ nnoremap <Leader>s :GitGutterToggle<CR>
 "window acik buffer'i sil/kapat
 noremap <Leader>q :bdelete!<CR> 
 "window acik buffer'i kaydet
-nnoremap <S-w> :w<bar>:Bclose!<cr>  
+nnoremap <Leader>w :w<bar>:Bclose!<cr>  
 "window acik buffer'i kaydetme
 nnoremap <S-e> :Bclose!<cr>
 "window kapat buffer'i kaydet
-noremap <Leader>w :wq!<CR>
+noremap <S-w> :wq!<CR>
 nnoremap <Leader>e :enew<cr>
 vnoremap <Leader>p "*p
 noremap <Leader>y "*y	
@@ -529,3 +530,9 @@ imap <S-CR> <ESC>:execute 'normal o' . EndToken()<CR>O
 "_______________________________________________________________________|
  
 let g:sneak#streak = 1
+
+"_______________________________________________________________________
+" => Vim-markdown                                                       |
+"_______________________________________________________________________|
+"
+let g:vim_markdown_folding_disabled=1 
