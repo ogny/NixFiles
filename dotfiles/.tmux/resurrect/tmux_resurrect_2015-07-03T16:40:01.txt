@@ -1,0 +1,24 @@
+pane	1	1	:weechat-curses	1	:*	1	:/home/orkung/Desktop/Copy/multimedia/muzik/classic	0	mplayer	:mplayer -loop 0 Beethoven_Symphony_7_Allegretto_mvt_2.mp3 Mozart_-_Rondo_Alla_Turca.mp4.mp3 The_Best_of_Mozart.mp3 The_Best_of_Rachmaninov.mp3 The_Best_of_Vivaldi.mp4.mp3
+pane	1	1	:weechat-curses	1	:*	2	:/home/orkung	0	zsh	:
+pane	1	1	:weechat-curses	1	:*	3	:/home/orkung	1	weechat-curses	:weechat-curses
+pane	1	2	:zsh	0	:-	1	:/home/orkung	0	zsh	:
+pane	1	2	:zsh	0	:-	2	:/home/orkung	1	zsh	:
+pane	lab	1	:gui-staging	0	:-	1	:/home/orkung	1	ssh	:ssh root@172.26.34.124
+pane	lab	2	:gui-prod	1	:*	1	:/home/orkung	1	ssh	:ssh alsat-gui-1
+pane	lab	5	:vagrant	0	: 	1	:/home/orkung	1	zsh	:
+pane	lab	6	:zsh	0	: 	1	:/home/orkung	1	zsh	:
+pane	redis	1	:redis-3	0	: 	1	:/home/orkung	1	ssh	:ssh ulus-redis-3
+pane	redis	2	:redis-2	0	: 	1	:/home/orkung	1	ssh	:ssh ulus-redis-2
+pane	redis	3	:redis-1	0	:-	1	:/home/orkung	1	ssh	:ssh ulus-redis-1
+pane	redis	5	:zsh	1	:*	1	:/home/orkung/Git_Repolari/is/devops/chef-repo	1	zsh	:
+window	1	1	1	:*	2979,170x40,0,0{85x40,0,0[85x20,0,0,20,85x19,0,21,31],84x40,86,0,2}
+window	1	2	0	:-	44ef,170x40,0,0{85x40,0,0,41,84x40,86,0,46}
+window	lab	1	0	:-	df20,239x15,0,0,21
+window	lab	2	1	:*	df22,239x15,0,0,23
+window	lab	5	0	: 	5f23,239x15,0,0,14
+window	lab	6	0	: 	df24,239x15,0,0,25
+window	redis	1	0	: 	c5dd,239x17,0,0,0
+window	redis	2	0	: 	c5e2,239x17,0,0,5
+window	redis	3	0	:-	c5e3,239x17,0,0,6
+window	redis	5	1	:*	6325,239x17,0,0,35
+state	1	
