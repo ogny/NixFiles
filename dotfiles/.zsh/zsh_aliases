@@ -61,7 +61,7 @@ alias gud="git add -A && git commit -m "." && git push"
 #alias ssh='i3-msg border normal && ssh'
 alias dpg='dpkg -l |grep $1'
 alias psd="watch --differences -n 2  'ps -e -o pid,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15'"
-alias dmesgg="dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
+alias dmesgg="sudo dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
 alias kilc="sudo kill $(pgrep chromium)"
 alias bagla="encfs ~/Git_Repolari/kisisel/private/pass-ozel/.sifreli ~/Git_Repolari/kisisel/private/pass-ozel/.new"
 alias x='ssh-agent startx'
@@ -94,3 +94,5 @@ alias sdo='sudo docker'
 function mman {
     man $1 |fold |less
     }
+alias gese='geeknote find --content-search --notebooks "kisisel" --search $1 '
+

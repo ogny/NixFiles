@@ -51,6 +51,8 @@ Plug 'orlandov/vimfluence'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
 Plug 'Raimondi/delimitMate'
+Plug 'hron84/vim-librarian'
+Plug 't9md/vim-chef'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
 call plug#end()
