@@ -88,7 +88,7 @@ alias diger='tmux attach-session -t diger'
 alias mydig='dig +nocmd $1 ANY +multiline +noall +answer'
 alias gecr='geeknote create --title $1'
 alias geed='geeknote edit --note $1'
-alias gefs='geeknote find --search $1'
+alias gefs='geeknote find --notebooks "kisisel" --search $1'
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias sdo='sudo docker'
 function mman {

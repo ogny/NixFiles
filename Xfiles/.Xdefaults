@@ -25,6 +25,7 @@ URxvt.loginShell:           true
 URxvt.saveLines:            7777
 URxvt.internalBorder:       3
 URxvt.lineSpace:            0
+URxvt.allowWindowOps:       false
 
 ! Fonts
 URxvt.allow_bold:           false

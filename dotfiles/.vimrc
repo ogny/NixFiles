@@ -1,58 +1,58 @@
 "_______________________________________________________________________
-"
+"                                                                       |
 " => Vundle 								                                            |
 "_______________________________________________________________________|
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
-Plug 'L9'
-Plug 'honza/vim-snippets'
 Plug 'junegunn/limelight.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Shougo/neocomplete.vim'
-Plug 'davidhalter/jedi-vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'vim-scripts/nginx.vim'
 Plug 'tpope/vim-surround'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'joom/turkish-deasciifier.vim'
 Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
 Plug 'elzr/vim-json'
-Plug 'neilagabriel/vim-geeknote'
 Plug 'vim-scripts/ZoomWin'
-Plug 'Wolfy87/vim-expand'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'vivien/vim-addon-linux-coding-style'
-Plug 'airblade/vim-gitgutter'
-Plug 'reedes/vim-pencil'
 Plug 'amiorin/ctrlp-z'
 Plug 'amiorin/vim-fasd'
-Plug 'kien/ctrlp.vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Lokaltog/vim-easymotion'
 Plug 'tomtom/tlib_vim'
-Plug 'chrisbra/csv.vim'
-Plug 'Z1MM32M4N/vim-superman'
 Plug 't9md/vim-chef'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-speeddating'
-Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-eunuch'
-Plug 'vim-ruby/vim-ruby'
 Plug 'justinmk/vim-sneak'
-Plug 'richsoni/vim-ecliptic'
 Plug 'orlandov/vimfluence'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
 Plug 'Raimondi/delimitMate'
 Plug 'hron84/vim-librarian'
-Plug 't9md/vim-chef'
+Plug 'kien/ctrlp.vim'
+Plug 'SirVer/ultisnips'
+Plug 'vim-ruby/vim-ruby'
+Plug 'honza/vim-snippets'
+Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'airblade/vim-gitgutter'
+"Plug 'L9'
+"Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'mattn/webapi-vim'
+"Plug 'vim-scripts/nginx.vim'
+"Plug 'davidhalter/jedi-vim'
+"Plug 'neilagabriel/vim-geeknote'
+"Plug 'Wolfy87/vim-expand'
+"Plug 'vivien/vim-addon-linux-coding-style'
+"Plug 'reedes/vim-pencil'
+"Plug 'chrisbra/csv.vim'
+"Plug 'Z1MM32M4N/vim-superman'
+"Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-speeddating'
+"Plug 'tpope/vim-eunuch'
+"Plug 'richsoni/vim-ecliptic'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
 call plug#end()
@@ -60,9 +60,12 @@ call plug#end()
 "_______________________________________________________________________
 " => genel ayarlar 							                                        |
 "_______________________________________________________________________|
-colorscheme SlateDark
+colorscheme DevC++
 set modifiable
+autocmd VimResized * wincmd =
 set hidden
+set equalalways
+set noea
 set background=light
 filetype plugin on
 "filetype plugin indent on
@@ -116,11 +119,12 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 " => Gorunum 								                                            |
 "_______________________________________________________________________|
  highlight VertSplit cterm=none gui=none	
+highlight SignColumn ctermbg=none
  highlight Search ctermfg=25 ctermbg=16
  highlight Folded ctermfg=25 ctermbg=16
  hi StatusLine cterm=none gui=none
  hi StatusLineNC cterm=none gui=none
- highlight clear SignColumn
+highlight clear SignColumn
  "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -151,10 +155,10 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "noremap ; l
 map t i <ESC>r
 noremap gr gT
-:nnoremap f }) \| zt
-":nnoremap f }) \| zz
-":nnoremap s {( \| zz
-:nnoremap s {( \| zt
+"":nnoremap f }) \| zt
+"":nnoremap s {( \| zt
+:nnoremap f }) \| zz
+:nnoremap s {( \| zz
 " :map f }) 
 " :map s {(
 nnoremap <S-q> :qall!<CR>
@@ -250,7 +254,7 @@ function! GoyoAfter()
 "  if exists('$TMUX')
 "    silent !tmux set status off
 "  endif
- colorscheme SlateDark
+ colorscheme DevC++
  set background=light
  highlight clear SignColumn
  Limelight!
@@ -500,7 +504,7 @@ let g:UltiSnipsUsePythonVersion = 2
 " => Jedi.vim 								                                          |
 "_______________________________________________________________________|
  
-let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_on_dot = 0
 
 "_______________________________________________________________________
 " => ruby-vim 								                                          |
@@ -538,3 +542,18 @@ let g:sneak#streak = 1
 "_______________________________________________________________________|
 "
 let g:vim_markdown_folding_disabled=1 
+
+"_______________________________________________________________________
+" => Vim-bookmarks                                                       |
+"_______________________________________________________________________|
+"
+let g:bookmark_highlight_lines = 0
+nmap <Leader>m <Plug>BookmarkToggle
+nmap <Leader>i <Plug>BookmarkAnnotate
+nmap <Leader>a <Plug>BookmarkShowAll
+nmap <Leader>j <Plug>BookmarkNext
+nmap <Leader>k <Plug>BookmarkPrev
+nmap <Leader>c <Plug>BookmarkClear
+nmap <Leader>x <Plug>BookmarkClearAll
+let g:bookmark_center = 1
+let g:bookmark_auto_close = 1

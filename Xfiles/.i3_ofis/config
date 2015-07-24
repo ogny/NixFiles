@@ -156,7 +156,7 @@ mode "resize" {
 #exec xrandr --output LVDS-1 --auto
 #exec ~/bin/evxrandr.sh
 exec ~/bin/myxrandr.sh
-#exec  xrandr --output LVDS-1 --off
+# exec  xrandr --output HDMI-1 --on
 #exec VBoxHeadless --startvm ultimate
 exec setxkbmap us
 exec xmodmap ~/.Xmodmap
@@ -217,7 +217,7 @@ bindsym $mod+Shift+n move workspace next
 #assign [class="URxvt"] 2
 assign [class="Zathura"] 1
 assign [class="HipChat"] 2
-assign [class="bubble"] 2
+#assign [class="bubble"] 2
 #assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
 #assign [class="libreoffice"] 4
@@ -228,7 +228,8 @@ assign [class="VirtualBox"] 1
 #_______________________________________________________________________|   
 bar {
 	#output	       LVDS-1
-	output	       VGA-1
+	#output	       LVDS-1
+	output	       HDMI-1
         status_command i3status
 	colors {
 	background #002b36
@@ -266,6 +267,7 @@ workspace 5 output LVDS-1
 for_window [class="rdesktop"] border normal
 for_window [class="Pgadmin3"] floating enable
 for_window [window_role="bubble"] floating enable
+for_window [window_role="pavucontrol"] floating enable
 
 #_______________________________________________________________________
 # => 1 dakika stdin'den bir sey gelmeyince ekrani kilitle (calismiyor)  |

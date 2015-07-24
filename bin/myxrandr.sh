@@ -5,4 +5,5 @@
 #xrandr --output VGA-1 --mode 1440x900_60.00 --right-of LVDS-1 --output LVDS-1 --auto
 #xrandr --output VGA-1 --auto --left-of LVDS-1 --output LVDS-1 --auto
 #xrandr --output VGA-1 --auto --right-of LVDS-1 --output LVDS-1 --auto
-xrandr --output LVDS-1 --auto --left-of VGA-1 --output VGA-1 --auto
+xrandr --output HDMI-1 --on
+xrandr --output LVDS-1 --off
