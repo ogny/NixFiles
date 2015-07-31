@@ -148,15 +148,16 @@ chpwd_functions+='chpwd_update_git_vars'
 PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
 %#%{${fg[default]}%} '
 
-vman() {
-  vim -c "SuperMan $*"
-
-  if [ "$?" != "0" ]; then
-    echo "No manual entry for $*"
-  fi
-}
-
-compdef vman="man"
+#vman() {
+#  vim -c "SuperMan $*"
+#
+#  if [ "$?" != "0" ]; then
+#    echo "No manual entry for $*"
+#  fi
+#}
+#
+#compdef vman="man"
+#complete -o default -o nospace -F _man vman
 
 eval "$(chef shell-init zsh)"
 

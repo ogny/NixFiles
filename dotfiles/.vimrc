@@ -48,7 +48,7 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'vivien/vim-addon-linux-coding-style'
 "Plug 'reedes/vim-pencil'
 "Plug 'chrisbra/csv.vim'
-"Plug 'Z1MM32M4N/vim-superman'
+Plug 'jez/vim-superman'
 "Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-speeddating'
 "Plug 'tpope/vim-eunuch'
@@ -547,13 +547,17 @@ let g:vim_markdown_folding_disabled=1
 " => Vim-bookmarks                                                       |
 "_______________________________________________________________________|
 "
-let g:bookmark_highlight_lines = 0
 nmap <Leader>m <Plug>BookmarkToggle
 nmap <Leader>i <Plug>BookmarkAnnotate
 nmap <Leader>a <Plug>BookmarkShowAll
 nmap <Leader>j <Plug>BookmarkNext
-nmap <Leader>k <Plug>BookmarkPrev
 nmap <Leader>c <Plug>BookmarkClear
 nmap <Leader>x <Plug>BookmarkClearAll
 let g:bookmark_center = 1
 let g:bookmark_auto_close = 1
+let g:bookmark_auto_save = 1
+let g:bookmark_manage_per_buffer = 0
+let g:bookmark_sign = '>>'
+let g:bookmark_annotation_sign = '##'
+let g:bookmark_show_warning = 0
+

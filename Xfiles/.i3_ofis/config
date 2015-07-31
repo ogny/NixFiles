@@ -283,3 +283,7 @@ bindsym $mod+Shift+m move workspace to output right
 # bar toggle, hide or show 
 bindsym Mod4+m bar mode toggle
 bindsym Mod4+r exec ~/bin/ingce.sh
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
