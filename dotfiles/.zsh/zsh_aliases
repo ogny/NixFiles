@@ -95,4 +95,6 @@ function mman {
     man $1 |fold |less
     }
 alias gese='geeknote find --content-search --notebooks "kisisel" --search $1 '
-
+alias sshp="sshpass -p '3wr2S09a8N' ssh"
+alias hdmi="xrandr --output LVDS-1 --off"
+alias lvds="xrandr --output HDMI-1 --auto --left-of LVDS-1 --output LVDS-1 --auto"

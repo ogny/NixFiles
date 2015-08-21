@@ -48,13 +48,14 @@ Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'vivien/vim-addon-linux-coding-style'
 "Plug 'reedes/vim-pencil'
 "Plug 'chrisbra/csv.vim'
-Plug 'jez/vim-superman'
+"Plug 'jez/vim-superman'
 "Plug 'tpope/vim-repeat'
 "Plug 'tpope/vim-speeddating'
 "Plug 'tpope/vim-eunuch'
 "Plug 'richsoni/vim-ecliptic'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 call plug#end()
 
 "_______________________________________________________________________
@@ -118,13 +119,14 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 "_______________________________________________________________________
 " => Gorunum 								                                            |
 "_______________________________________________________________________|
- highlight VertSplit cterm=none gui=none	
+highlight VertSplit cterm=none gui=none	
 highlight SignColumn ctermbg=none
- highlight Search ctermfg=25 ctermbg=16
- highlight Folded ctermfg=25 ctermbg=16
- hi StatusLine cterm=none gui=none
- hi StatusLineNC cterm=none gui=none
+highlight Search ctermfg=25 ctermbg=16
+highlight Folded ctermfg=25 ctermbg=16
+hi StatusLine cterm=none gui=none
+hi StatusLineNC cterm=none gui=none
 highlight clear SignColumn
+hi link markdownError Normal
  "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -295,7 +297,7 @@ set runtimepath+=~/.vim/plugged/neocomplete.vim/
 " Disable AutoComplPop.
 "let g:acp_enableAtStartup = 0
 " Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 0
 let g:neocomplete#enable_auto_select = 0
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
@@ -303,7 +305,8 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 "let g:neocomplete#sources#dictionary#dictionaries = {
-"     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add'
+"     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add',
+"     \ 'english' : '/usr/share/dict/american-english'
 "     \ }
 "let g:neocomplete#sources#dictionary#dictionaries = {
 "    \ '_' : '~/turkish.dic_calisma',
@@ -553,11 +556,58 @@ nmap <Leader>a <Plug>BookmarkShowAll
 nmap <Leader>j <Plug>BookmarkNext
 nmap <Leader>c <Plug>BookmarkClear
 nmap <Leader>x <Plug>BookmarkClearAll
-let g:bookmark_center = 1
-let g:bookmark_auto_close = 1
+let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
-let g:bookmark_manage_per_buffer = 0
+let g:bookmark_center = 1
+let g:bookmark_manage_per_buffer = 1
 let g:bookmark_sign = '>>'
 let g:bookmark_annotation_sign = '##'
-let g:bookmark_show_warning = 0
 
+"#TODO Extend For CtrP With Word  
+ function! FZFExecute()  
+  " Remove trailing new line to make it work with tmux splits  
+  let directory = substitute(system('git rev-parse --show-toplevel'), '\n$', '', '')  
+  if !v:shell_error  
+   call fzf#run({'sink': 'e', 'dir': directory, 'source': 'git ls-files'})  
+  else  
+   FZF  
+  endif  
+ endfunction  
+ command! FZFExecute call FZFExecute()  
+
+"Grepping Using FZF #TODO File With :File: Name  
+ function! s:escape(path)  
+  return substitute(a:path, ' ', '\\ ', 'g')  
+ endfunction  
+ "TODO Extend To Other Handlers  
+ function! AgHandler(line)  
+  let parts = split(a:line, ':')  
+  let [fn, lno] = parts[0 : 1]  
+  execute 'e '. s:escape(fn)  
+  execute lno  
+  normal! zz  
+ endfunction  
+function! FZFGrep(pattern, ...)
+let filter = a:0 > 0 ? a:1 : '*'
+let command = 'ag -i "'.a:pattern.'" '.filter
+call fzf#run({
+  \ 'source': command,
+  \ 'sink': function('AgHandler'),
+  \ 'options': '+m'
+  \ })
+endfunction
+command! -nargs=* FZFGrep call FZFGrep(<f-args>)
+
+"Find A Directory
+function! FZFDirectory(directory)
+  let directory = expand(a:directory)
+  let command = 'tree -i -f -d "'.directory.'"'
+  call fzf#run({
+  \ 'source': command,
+  \ 'sink': 'Ex',
+  \ 'options': '+e'
+  \ })
+endfunction
+command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
+" signcolumn gizleme
+" :sign unplace *

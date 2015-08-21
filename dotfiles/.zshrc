@@ -18,8 +18,8 @@ setopt histappend
 set -k
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000000
-SAVEHIST=1000
+HISTSIZE=10000000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
@@ -180,3 +180,28 @@ source ~/Git_Repolari/diger/sshag/sshag.sh >/dev/null 2>&1
 
 # OPAM configuration
 . /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#fzf-dmenu() { 
+#    # note: xdg-open has a bug with .desktop files, so we cant use that shit
+#    selected="$(ls /usr/share/applications | fzf -e)"
+#    nohup `grep '^Exec' "/usr/share/applications/$selected" | tail -1 | sed 's/^Exec=//' | sed 's/%.//'` >/dev/null 2>&1&
+#}
+
+# hotkey to run the function (Ctrl+O)
+#bindkey -s '^O' "fzf-dmenu\n"
+#line_divider(){
+#  echo "${(l.$COLUMNS..—.)}"
+#}
+fj() {
+  local dir
+  dir=$(fasd -Rdl | fzf --no-sort +m) && cd "$dir"
+}
+fo() {
+  local out file key
+  out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
+  key=$(head -1 <<< "$out")
+  file=$(head -2 <<< "$out" | tail -1)
+  if [ -n "$file" ]; then
+    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+  fi
+}
