@@ -183,6 +183,8 @@ cnoreabbrev Wq wq
 cnoreabbrev Q! q!
 cnoreabbrev W w
 cnoreabbrev Q q
+" FZF'yi baslat
+noremap <S-f> :FZF ~<CR>
 "nnoremap <C-n> :w<bar>:bNext<CR>
 "nnoremap <C-p> :w<bar>:bprevious<CR>
 nnoremap <C-n> :BuffergatorMruCycleNext<CR>
