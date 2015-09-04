@@ -24,7 +24,7 @@ HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
-compinit
+compinit -D
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
@@ -120,7 +120,6 @@ find $1 -maxdepth 1 -type f -printf '%f\n'
 eval "$(fasd --init auto)"
 eval `dircolors ~/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
-#fpath=($HOME/.zsh/completion $fpath) 
 compdef _task t='task'
 
 # Initialize colors.
@@ -131,8 +130,8 @@ colors
 setopt PROMPT_SUBST
  
 # Autoload zsh functions.
-fpath=(~/.zsh/functions $fpath)
-autoload -U ~/.zsh/functions/*(:t)
+fpath=(${HOME}/.zsh/functions $fpath)
+autoload -U ~/.zsh/*(:t)
  
 # Enable auto-execution of functions.
 typeset -ga preexec_functions
