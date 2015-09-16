@@ -167,10 +167,11 @@ exec xrdb -merge ~/.Xdefaults
 exec unclutter -display :0 -root -idle 1 &
 #exec mkfifo /tmp/mplayer-control
 #exec redshift -O 4500 -g 0.8
-#exec hipchat
+exec hipchat
 #exec --no-startup-id  feh --set-zoom-fill ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh --restore
+exec --no-startup-id  dunst -config ~/.config/dunst/dunstrc
 #exec ~/bin/myfeh.sh
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
 #exec libreoffice ~/alsat_serverlar_v21.xlsx
@@ -217,7 +218,7 @@ bindsym $mod+Shift+n move workspace next
 #assign [class="dwb"] 1
 #assign [class="URxvt"] 2
 #assign [class="Zathura"] 1
-assign [class="HipChat"] 1
+#assign [class="HipChat"] 1
 assign [class="bubble"] 1
 #assign [class="rdesktop"] 2 
 assign [class="VirtualBox"] 1
