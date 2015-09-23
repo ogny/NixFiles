@@ -157,6 +157,7 @@ mode "resize" {
 #exec ~/bin/evxrandr.sh
 exec ~/bin/myxrandr.sh
 exec sudo vpnc 
+exec owncloud
 # exec  xrandr --output HDMI-1 --on
 #exec VBoxHeadless --startvm ultimate
 exec setxkbmap us
