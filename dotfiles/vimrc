@@ -13,7 +13,7 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set encoding=utf-8
-set rtp+=~/etc/vim/bundle/Vundle.vim
+set rtp+=/etc/vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'elzr/vim-json'
