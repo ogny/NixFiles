@@ -63,7 +63,6 @@ alias dpg='dpkg -l |grep $1'
 alias psd="watch --differences -n 2  'ps -e -o pid,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15'"
 alias dmesgg="sudo dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
 alias kilc="sudo kill $(pgrep chromium)"
-alias bagla="encfs ~/Git_Repolari/kisisel/private/pass-ozel/.sifreli ~/Git_Repolari/kisisel/private/pass-ozel/.new"
 alias x='ssh-agent startx'
 alias tur='trans :tr $1'
 promo () {
@@ -79,11 +78,7 @@ alias mywin="VBoxHeadless --startvm ultimate"
 
 # Tmux Session'lari
 alias mychef='tmux attach-session -t mychef'
-alias is='tmux attach-session -t is'
 alias sserver='tmux attach-session -t SimpleServer'
-alias ipam='tmux attach-session -t ipam'
-alias raporlama='tmux attach-session -t raporlama'
-alias kota='tmux attach-session -t kota'
 alias diger='tmux attach-session -t diger'
 alias mydig='dig +nocmd $1 ANY +multiline +noall +answer'
 alias gecr='geeknote create --title $1'
@@ -95,7 +90,6 @@ function mman {
     man $1 |fold |less
     }
 alias gese='geeknote find --content-search --notebooks "kisisel" --search $1 '
-alias sshp="sshpass -p '3wr2S09a8N' ssh"
-#alias sshp="sshpass -p '06Egem34' ssh"
 alias hdmi="xrandr --output LVDS-1 --off"
 alias lvds="xrandr --output HDMI-1 --auto --left-of LVDS-1 --output LVDS-1 --auto"
+alias myf="find . -type f -iname $1"

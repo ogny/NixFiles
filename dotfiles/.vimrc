@@ -38,6 +38,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'honza/vim-snippets'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'beloglazov/vim-online-thesaurus'
+Plug 'scrooloose/nerdcommenter'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'L9'
 "Plug 'nathanaelkane/vim-indent-guides'
@@ -70,7 +71,7 @@ set equalalways
 set noea
 set background=light
 filetype plugin on
-"filetype plugin indent on
+filetype plugin indent on
 filetype indent on
 set nocompatible              " be iMproved, required
 filetype on
