@@ -1,17 +1,14 @@
 filetype off
 set smartcase
 set hidden
-set nocompatible
 syntax on
 set hls
 set is
 set ic
-set hls
 set textwidth=79
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent
 set encoding=utf-8
 set rtp+=/etc/vim/bundle/Vundle.vim
 call vundle#begin()
