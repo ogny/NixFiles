@@ -1,5 +1,7 @@
 filetype off
 set smartcase
+set nocompatible
+set bs=2
 set hidden
 syntax on
 set hls
