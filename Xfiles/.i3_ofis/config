@@ -154,8 +154,8 @@ mode "resize" {
 #exec google-chrome
 #exec xrandr --output HDMI-1 --right-of LVDS-1 --output LVDS-0 
 #exec xrandr --output LVDS-1 --auto
-#exec ~/bin/evxrandr.sh
-exec ~/bin/myxrandr.sh
+#exec ~/bin/myxrandr.sh
+exec xrandr --output LVDS-1 --off
 exec sudo vpnc 
 exec owncloud
 # exec  xrandr --output HDMI-1 --on
