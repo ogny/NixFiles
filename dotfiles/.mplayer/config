@@ -3,5 +3,5 @@
 ao=pulse,alsa,sdl:aalib
 #prefer-ipv4 = yes
 
-"afm=mp3lib"
+afm=mp3lib
 #softvol=yes
