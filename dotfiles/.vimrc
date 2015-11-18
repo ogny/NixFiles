@@ -39,6 +39,7 @@ Plug 'honza/vim-snippets'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'scrooloose/nerdcommenter'
+"Plug 'vim-scripts/FormatToWidth'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'L9'
 "Plug 'nathanaelkane/vim-indent-guides'
@@ -81,6 +82,10 @@ set guitablabel=%t
 set splitright
 set autoread
 set linebreak
+set foldmethod=indent
+"set foldcolumn=4
+set breakindent
+"set showbreak=\ \
 "set hidden	
 set backspace=eol,start	 " allow backspacing over everything in insert mode
 set ignorecase     " ignore case when searching
@@ -200,21 +205,21 @@ nnoremap <Leader>h :nohl<CR>
 "_______________________________________________________________________
 " => emrah .vimrc 							                                        |
 "_______________________________________________________________________|
- autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst,*.markdown call CodingSet1()
- 
- function CodingSet1()
-         setlocal
-         \ textwidth=79
-         \ tabstop=8
-         \ shiftwidth=4
-         \ softtabstop=4
-         \ expandtab
-         \ autoindent
-"         \ list
-"         \ listchars=tab:··,trail:·
-         \ filetype=txt
-         \ syntax=conf
- endfunction
+"" autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst,*.markdown call CodingSet1()
+"" 
+"" function CodingSet1()
+""         setlocal
+""         \ textwidth=79
+""         \ tabstop=8
+""         \ shiftwidth=4
+""         \ softtabstop=4
+""         \ expandtab
+""         \ autoindent
+""         \ list
+""         \ listchars=tab:··,trail:·
+""         \ filetype=txt
+""         \ syntax=conf
+"" endfunction
  
 "_______________________________________________________________________
 " => vim-tmux-navigator 						                                    |

@@ -7,4 +7,4 @@ curl -s http://musicforprogramming.net/rss.php \
     | sed 's/\s*<.\?comments>\s*//g' \
     | shuf \
     | tr '\n' ' ' \
-    | xargs mplayer -nocache 2>&1 >/dev/null
+    | xargs mplayer -slave -input file=/tmp/mplayer-control -nocache 2>&1 >/dev/null
