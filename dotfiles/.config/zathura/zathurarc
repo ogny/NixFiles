@@ -24,9 +24,11 @@ set font monaco
 
 ## kisayollar
 unmap s
-map [normal] s scroll full-up
+"map [normal] s scroll full-up
+map [normal] s scroll half-up
 unmap f
-map [normal] f scroll full-down
+"map [normal] f scroll full-down
+map [normal] f scroll half-down
 map [index] q quit
 map [normal] t toggle_statusbar
 unmap <C-r>
