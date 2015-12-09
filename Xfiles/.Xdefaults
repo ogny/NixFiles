@@ -2,11 +2,11 @@
 ! Xft settings
 !-------------------------------------------------------------------------------
 
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
+Xft*dpi:                    96
+Xft*antialias:              true
+Xft*rgba:                   rgb
+Xft*hinting:                true
+Xft*hintstyle:              hintslight
 
 !-------------------------------------------------------------------------------
 ! URxvt settings
@@ -15,27 +15,28 @@ Xft.hintstyle:              hintslight
 ! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
 !-------------------------------------------------------------------------------
 
-URxvt.depth:                32
-URxvt.geometry:             90x30
-URxvt.transparent:          false
-URxvt.fading:               0
-URxvt.urgentOnBell:         true
-URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.saveLines:            7777
-URxvt.internalBorder:       3
-URxvt.lineSpace:            0
-URxvt.allowWindowOps:       false
+URxvt*termName:             rxvt-unicode-noblink
+URxvt*depth:                32
+URxvt*geometry:             90x30
+URxvt*transparent:          false
+URxvt*fading:               0
+URxvt*urgentOnBell:         true
+URxvt*visualBell:           true
+URxvt*loginShell:           true
+URxvt*saveLines:            7777
+URxvt*internalBorder:       3
+URxvt*lineSpace:            0
+URxvt*allowWindowOps:       false
 
 ! Fonts
-URxvt.allow_bold:           false
-URxvt.font: xft:monaco:size=10
-URxvt.boldFont: xft:monaco:style=bold:size=10
+URxvt*allow_bold:           false
+URxvt*font: xft:monaco:size=10
+URxvt*boldFont: xft:monaco:style=bold:size=10
 URxvt*letterSpace: -1
 
 ! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
+URxvt*scrollStyle:          rxvt
+URxvt*scrollBar:            false
 
 ! Perl extensions
 !URxvt.perl-ext-common:      default,matcher

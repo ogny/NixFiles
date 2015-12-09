@@ -2,8 +2,8 @@
 autoload -Uz promptinit
 promptinit
 prompt off
-#PS1=' %~ 
-#%# '
+PS1=' %~ 
+%# '
 bindkey -v
 
 setopt autocd
@@ -16,10 +16,12 @@ setopt histignorealldups sharehistory
 setopt histappend
 # isaretini comment olarak yorumlasin.
 set -k
+set DISPLAY :0.0
 
+#echo -e '\033[?17;0;127c']'
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=10000000
-SAVEHIST=100000
+HISTSIZE=1000000000
+SAVEHIST=100000000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
@@ -113,9 +115,6 @@ zz(){
 uncomment() {
 sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 }
-lm () {
-find $1 -maxdepth 1 -type f -printf '%f\n'
-}
 #source $HOME/bin/sshag.sh >/dev/null 2>&1
 eval "$(fasd --init auto)"
 eval `dircolors ~/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
@@ -142,10 +141,10 @@ typeset -ga chpwd_functions
 preexec_functions+='preexec_update_git_vars'
 precmd_functions+='precmd_update_git_vars'
 chpwd_functions+='chpwd_update_git_vars'
- 
-# Set the prompt.
-PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
-%#%{${fg[default]}%} '
+# 
+## Set the prompt.
+#PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
+#%#%{${fg[default]}%} '
 
 #vman() {
 #  vim -c "SuperMan $*"

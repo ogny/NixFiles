@@ -4,7 +4,7 @@ alias ntstat='sudo netstat -taunp |egrep *:80'
 alias perms='find . -type d -exec chmod 0755 {} \; && find . -type f -exec chmod 0644 {} \;'
 alias mr='sudo mtr -s 1500 -r -c 1000 -i 0.1 $@'
 alias bagli='lsof -P -i -n'
-alias pp='ps -efd | grep -v grep | grep $1 '
+alias pp='ps -efd | grep -v grep |grep'
 alias mem='ps -A --sort -rss -o comm,pmem | head -n 11'
 #alias vim="LC_ALL=en_US.UTF-8 vim"
 alias dv="du --max-depth=1 -k | sort -nr | head -11 |cut -f2 | xargs -d '\n' du -sh 2>/dev/null"
@@ -20,8 +20,8 @@ alias upg="sudo apt-get upgrade"
 alias kur="sudo apt-get install"
 alias se="sudo dpkg --get-selections"
 alias aps="apt-cache --names-only search"
-#alias sht='sudo shutdown -h now'
-alias sht='vagrant halt ; sudo shutdown -h now'
+alias sht='sudo shutdown -h now'
+#alias sht='vagrant halt ; sudo shutdown -h now'
 alias vr='sudo vim'
 alias enable_alert='PS1="$PS1\a"'
 alias rake='noglob rake'
@@ -54,19 +54,20 @@ alias ofsad='task add pro:work.ofis pri:L'
 alias kerad='task add pro:work.kerim pri:L'
 alias lz='ls -alhtr --color=auto'
 alias lm='ls -lh --color=auto'
-alias ll=$'ls -alhtr |awk \'{print$9}\''
+#alias ll=$'ls -alhtr |awk \'{print$9}\''
+alias mll=$'ls -alhtr --color=auto|awk \'{print$9}\' |less'
 alias ll='ls -alh --color=auto'
 alias gad='git add -A && git status'
 alias gud="git add -A && git commit -m "." && git push"
 #alias ssh='i3-msg border normal && ssh'
-alias dpg='dpkg -l |grep $1'
+alias dpg="dpkg -l |grep"
 alias psd="watch --differences -n 2  'ps -e -o pid,cmd,pmem,pcpu --sort=-pmem,-pcpu | head -15'"
 alias dmesgg="sudo dmesg -T|sed -e 's|\(^.*'`date +%Y`']\)\(.*\)|\x1b[0;34m\1\x1b[0m - \2|g'"
 alias kilc="sudo kill $(pgrep chromium)"
 alias x='ssh-agent startx'
-alias tur='trans :tr $1'
+alias tur='trans :tr'
 promo () {
-	task $1 start ; sleep 1500 ; notify-send "Mola" ; task $1 stop
+	task start ; sleep 1500 ; notify-send "Mola" ; task stop
 }
 alias soc='TZ=Europe/Berlin wine ~/.wine/drive_c/Program\ Files\ \(x86\)/SoccerStatsTracker/SSTracker.exe'
 alias peli='pelican ~/Git_Repolari/kisisel/public/anlatabildiklerim/content -o ~/Git_Repolari/kisisel/public/anlatabildiklerim/output -s ~/Git_Repolari/kisisel/public/anlatabildiklerim/publishconf.py'
@@ -77,20 +78,25 @@ alias myiostat="iostat -c 1 10"
 alias mywin="VBoxHeadless --startvm ultimate"
 
 # Tmux Session'lari
-alias mychef='tmux attach-session -t mychef'
-alias sserver='tmux attach-session -t SimpleServer'
-alias diger='tmux attach-session -t diger'
-alias mydig='dig +nocmd $1 ANY +multiline +noall +answer'
-alias gecr='geeknote create --title $1'
-alias geed='geeknote edit --note $1'
-alias gefs='geeknote find --notebooks "kisisel" --search $1'
-alias psc='ps xawf -eo pid,user,cgroup,args'
+alias mychef="tmux attach-session -t mychef"
+alias sserver="tmux attach-session -t SimpleServer"
+alias diger="tmux attach-session -t diger"
+alias mydig="dig +nocmd ANY +multiline +noall +answer"
+alias gecr="geeknote create --title" 
+alias geed="geeknote edit --note"
+alias gefs="geeknote find --notebooks "kisisel" --search"
+alias psc="ps xawf -eo pid,user,cgroup,args"
 alias sdo='sudo docker'
 function mman {
     man $1 |fold |less
     }
-alias gese='geeknote find --content-search --notebooks "kisisel" --search $1 '
+alias gese="geeknote find --content-search --notebooks "kisisel" --search"
 alias hdmi="xrandr --output LVDS-1 --off"
 alias lvds="xrandr --output HDMI-1 --auto --left-of LVDS-1 --output LVDS-1 --auto"
-alias myf="find . -type f -iname $1"
-alias goin="google-chrome --incognito $1"
+alias myf="find . -type f -iname"
+alias goin="google-chrome --incognito"
+myack () {
+dosya="/home/orkung/.ssh/config"
+  ack-grep -A 1 -B 1 $1 $dosya
+}
+alias tmx="ssh-add ~/.ssh/ogunay ; tmux"
