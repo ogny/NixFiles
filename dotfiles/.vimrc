@@ -6,6 +6,7 @@
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/limelight.vim'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
@@ -22,6 +23,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'amiorin/ctrlp-z'
 Plug 'amiorin/vim-fasd'
+Plug 'amiorin/vim-fenced-code-blocks'
 Plug 'Shougo/vimproc.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'tomtom/tlib_vim'
@@ -64,7 +66,9 @@ call plug#end()
 "_______________________________________________________________________
 " => genel ayarlar 							                                        |
 "_______________________________________________________________________|
+"colorscheme flattened_dark
 colorscheme DevC++
+set mouse=nv
 set modifiable
 autocmd VimResized * wincmd =
 set hidden
@@ -106,7 +110,7 @@ set pastetoggle=<F2>
 set nocindent  " Switch off all auto-indenting
 set nosmartindent	
 set indentexpr=
-set clipboard=unnamed
+set clipboard=unnamedplus
 set go+=a
 set showmode
 set ruler
@@ -183,9 +187,8 @@ nnoremap <S-e> :Bclose!<cr>
 "window kapat buffer'i kaydet
 noremap <S-w> :wq!<CR>
 nnoremap <Leader>e :enew<cr>
+
 vnoremap <Leader>p "*p
-noremap <Leader>y "*y	
-vnoremap <Leader>y "*y
 cnoreabbrev Wq wq
 cnoreabbrev Q! q!
 cnoreabbrev W w
@@ -367,9 +370,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
-" map <Leader>n :NERDTreeMapToggleHidden<CR>
-map <Leader>n :NERDTreeToggle<CR>
-"map <C-n> :NERDTreeToggle<CR>
+"" map <Leader>n :NERDTreeMapToggleHidden<CR>
+map <Leader>j :NERDTreeToggle<CR>
 " Sadece NERDTREE penceresi aciksa Vim'i otomatik kapat;
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -386,6 +388,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'Black'
 let g:limelight_conceal_ctermfg = 0
+
 "hi Conceal        ctermfg=7 ctermbg=242 guifg=#e5e5e5 guibg=#080808
 " Color name (:help gui-colors) or RGB color
 let g:limelight_conceal_guifg = 'DarkGray'
@@ -444,7 +447,7 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 "_______________________________________________________________________
 " => ZoomWin								                                            |
 "_______________________________________________________________________|
-nnoremap <silent> <C-w>w :ZoomWin<CR>
+nnoremap <silent> <c-w>w :ZoomWin<CR>
 " kaynak:
 " http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
  
@@ -553,7 +556,7 @@ let g:sneak#streak = 1
 " => Vim-markdown                                                       |
 "_______________________________________________________________________|
 "
-let g:vim_markdown_folding_disabled=1 
+"let g:vim_markdown_folding_disabled=1 
 
 "_______________________________________________________________________
 " => Vim-bookmarks                                                      |
@@ -562,15 +565,18 @@ let g:vim_markdown_folding_disabled=1
 nmap <Leader>m <Plug>BookmarkToggle
 nmap <Leader>i <Plug>BookmarkAnnotate
 nmap <Leader>a <Plug>BookmarkShowAll
-nmap <Leader>j <Plug>BookmarkNext
+nmap <Leader>n <Plug>BookmarkNext
 nmap <Leader>c <Plug>BookmarkClear
 nmap <Leader>x <Plug>BookmarkClearAll
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_highlight_lines = 1
 let g:bookmark_save_per_working_dir = 1
 let g:bookmark_auto_save = 1
 let g:bookmark_center = 1
 let g:bookmark_manage_per_buffer = 1
 let g:bookmark_sign = '>>'
-let g:bookmark_annotation_sign = '##'
+let g:bookmark_annotation_sign = '!!'
 
 "#TODO Extend For CtrP With Word  
  function! FZFExecute()  
@@ -621,6 +627,12 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 " signcolumn gizleme
 " :sign unplace *
 "
+"_______________________________________________________________________
+" => vim-table-mode                                                     |
+"_______________________________________________________________________|
+"For Markdown-compatible tables use
+let g:table_mode_corner="|"
+
 "_______________________________________________________________________
 " => ttmaster vimrc'den alinti                                          |
 "_______________________________________________________________________|
@@ -676,6 +688,7 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 "
 "" Switch syntax highlighting on, when the terminal has colors
 "" Also switch on highlighting the last used search pattern.
+
 "if &t_Co > 2 || has("gui_running")
 "  syntax on
 "  set hlsearch
@@ -688,3 +701,11 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 "     set t_Sb=^[[4%dm
 "     set t_Sf=^[[3%dm
 "endif
+"vnoremap yy "*y	
+"nnoremap yy "*y	
+vnoremap y "*y
+nnoremap y "*y
+vnoremap p "*p
+nnoremap p "*p
+
+set t_Co=256

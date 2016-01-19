@@ -1,21 +1,27 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+source /usr/local/bin/virtualenvwrapper.sh
 export TERM=rxvt-256color
-export PATH="$PATH:$HOME/bin:/usr/local/bin:/opt/chefdk/bin:/opt/chefdk/embedded/bin"
 #export VAGRANT_HOME=$HOME/.vagrant.d
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 ma nolist nonu' -\""
+export GPGKEY=17D9BD2F
+NPM_PACKAGES="${HOME}/.npm-packages"
 GPG_TTY=$(tty)
 export GPG_TTY
 # Kaynak: http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
 #export TERM=rxvt-unicode-256color
 #export SSH_AGENT_SOCK=`/home/orkung/Git_Repolari/diger/sshag/sshag.sh`
 export WORKON_HOME=~/.virtualenvs
-#export PROJECT_HOME=/home/
-#export WORKON_HOME=/home/orkung/.virtualenvs
-#export PIP_VIRTUALENV_BASE=/home/orkung/.virtualenvs
+export PIP_VIRTUALENV_BASE=/home/orkung/.virtualenvs
 export VIRTUAL_ENV=/home/orkung/.virtualenvs
-export LESS="-FX"
+export LESS="-eirMX"
 export XAUTHORITY=~/.Xauthority
 #export GEM_PATH=/home/orkung/.chefdk/gem/ruby/2.1.0
-#export GEM_PATH="/opt/chefdk/embedded/bin/gem"
+#export GEM_PATH="/opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems"
+export GEM_PATH="$HOME/.rvm/gems/ruby-2.2.1"
+#export GEM_HOME="$HOME/.rvm/gems/:$HOME/.gem"
+export PATH="$HOME/.rvm/gems/ruby-2.2.1/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/opt/chefdk/embedded/bin:$PATH"
+#export PATH="$HOME/.rvm/gems/ruby-2.2.1/bin:$HOME/.gem/bin:/usr/bin:$HOME/bin:/usr/local/bin:$PATH"
+#export RB_USER_INSTALL='true'
 export SSH_AUTH_SOCK=$(find /tmp -maxdepth 2 -type s -name "agent*" -user $USER -printf '%T@ %p\n' 2>/dev/null |sort -n|tail -1|cut -d' ' -f2)
 export FZF_COMPLETION_TRIGGER='//'
 export EDITOR=vim
@@ -23,3 +29,9 @@ export LD_LIBRARY_PATH=/opt/ora/instantclient_12_1/
 export ORACLE_HOME=/opt/ora/instantclient_12_1/
 export C_FORCE_ROOT="true"
 #export /home/orkung/Git_Repolari/diger/powerline/powerline/config_files
+export DISPLAY=:0.0
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
+#export NVM_DIR="/home/orkung/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"

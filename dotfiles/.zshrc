@@ -16,7 +16,7 @@ setopt histignorealldups sharehistory
 setopt histappend
 # isaretini comment olarak yorumlasin.
 set -k
-set DISPLAY :0.0
+#set DISPLAY :0.0
 
 #echo -e '\033[?17;0;127c']'
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
@@ -33,7 +33,6 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -47,7 +46,11 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:*:task:*' verbose yes
 zstyle ':completion:*:*:task:*:descriptions' format '%U%B%d%b%u' 
 zstyle ':completion:*:*:task:*' group-name ''
+zstyle ':completion:*:hosts' hosts _ssh_config 
+[[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
+zstyle ':completion:*:hosts' hosts $_ssh_config
 
+eval "$(dircolors -b)"
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -203,3 +206,22 @@ fo() {
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
 }
+# rxvt-unicode-256color kullanilacaksa
+case "$TERM" in
+    rxvt-unicode-256color)
+    TERM=rxvt-unicode
+    ;;
+esac
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+ssh() {
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+        tmux rename-window "$(echo $* | cut -d . -f 1)"
+        command ssh "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        command ssh "$@"
+    fi
+}
+
+

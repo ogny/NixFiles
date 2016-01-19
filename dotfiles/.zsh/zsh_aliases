@@ -15,9 +15,9 @@ alias us='setxkbmap us && xmodmap ~/.Xmodmap'
 alias nm='nmap -T4 -A -v -PE -PS22,25,80 -PA21,23,80,3389 $@'
 alias uzers='sudo cat /etc/passwd | cut -d":" -f1'
 alias nt=" netstat -anoep --inet |grep $@"
-alias upd="sudo apt-get update"
-alias upg="sudo apt-get upgrade"
-alias kur="sudo apt-get install"
+alias upd="sudo apt update"
+alias upg="sudo apt upgrade"
+alias kur="sudo apt install  -y --force-yes"
 alias se="sudo dpkg --get-selections"
 alias aps="apt-cache --names-only search"
 alias sht='sudo shutdown -h now'
@@ -87,6 +87,7 @@ alias geed="geeknote edit --note"
 alias gefs="geeknote find --notebooks "kisisel" --search"
 alias psc="ps xawf -eo pid,user,cgroup,args"
 alias sdo='sudo docker'
+alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 function mman {
     man $1 |fold |less
     }
@@ -100,3 +101,6 @@ dosya="/home/orkung/.ssh/config"
   ack-grep -A 1 -B 1 $1 $dosya
 }
 alias tmx="ssh-add ~/.ssh/ogunay ; tmux"
+alias grep-all=!"git rev-list --all | xargs git grep '$1'"
+alias vifm="vifm -c 'only' ."
+alias acikportlar='declare -a array=($(tail -n +2 /proc/net/tcp | cut -d":" -f"3"|cut -d" " -f"1")) && for port in ${array[@]}; do echo $((0x$port)); done'
