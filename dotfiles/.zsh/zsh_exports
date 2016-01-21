@@ -35,3 +35,5 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+export MAILCONF="$HOME/.mutt"
+export BROWSER="/opt/google/chrome/chrome --disk-cache-dir=/tmp/ --user-data-dir=/opt/google/"

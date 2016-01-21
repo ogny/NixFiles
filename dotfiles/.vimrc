@@ -5,6 +5,7 @@
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'junegunn/limelight.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'christoomey/vim-tmux-navigator'

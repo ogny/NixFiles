@@ -1,12 +1,12 @@
 # Me
-set from = 'o.gunay@tasit.com'
+set from = 
 set realname = 'Orkun Gunay'
 
 # My credentials
-set smtp_url = 'smtp://o.gunay@tasit.com@smtp.gmail.com:587/'
-set smtp_pass = '!7,oX+(7e>#V`+<m'
-set imap_user = 'o.gunay@tasit.com'
-set imap_pass = '!7,oX+(7e>#V`+<m'
+set smtp_url = 
+set smtp_pass = 
+set imap_user = 
+set imap_pass = 
 
 # My mailboxes
 set folder = 'imaps://imap.gmail.com:993'
