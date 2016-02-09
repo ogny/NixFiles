@@ -120,7 +120,7 @@ sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 }
 #source $HOME/bin/sshag.sh >/dev/null 2>&1
 eval "$(fasd --init auto)"
-eval `dircolors ~/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
+eval `dircolors /home/orkung/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
 compdef _task t='task'
 
@@ -176,7 +176,7 @@ compctl -K _pip_completion pip
 
 #source /usr/local/bin/virtualenvwrapper.sh
 #source ~/Git_Repolari/diger/sshag/sshag.sh; sshag &>/dev/null
-source ~/Git_Repolari/diger/sshag/sshag.sh >/dev/null 2>&1
+#source ~/Git_Repolari/diger/sshag/sshag.sh >/dev/null 2>&1
 #source ~/Git_Repolari/diger/sshag/sshag.sh
 
 # OPAM configuration

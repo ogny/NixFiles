@@ -95,20 +95,20 @@ URxvt*color14: #93a1a1
 URxvt*color7: #eee8d5
 URxvt*color15: #fdf6e3
 
-XTerm*cursorColor:                      darkorange1
-XTerm*scrollBar:                        false
-XTterm*utf8:                            2
-XTerm*termName:                         xterm-256color
-XTerm*faceName: xft:Monaco:antialias=true:size=11
-XTerm.VT100.geometry:                   89x29
-XTerm*saveLines:                        7777
-XTerm*metaSendsEscape:                  true
-XTerm*highlightSelection:               true
-XTerm*trimSelection:                    true
-XTerm*cutNewline:                       false
-XTerm*colorBDMode:                      true
-XTerm*colorBD:                          khaki
-XTerm*charClass: 3:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
+!XTerm*cursorColor:                      darkorange1
+!XTerm*scrollBar:                        false
+!XTterm*utf8:                            2
+!XTerm*termName:                         xterm-256color
+!XTerm*faceName: Terminus:style=Regular:size=10
+!XTerm.VT100.geometry:                   89x29
+!XTerm*saveLines:                        7777
+!XTerm*metaSendsEscape:                  true
+!XTerm*highlightSelection:               true
+!XTerm*trimSelection:                    true
+!XTerm*cutNewline:                       false
+!XTerm*colorBDMode:                      true
+!XTerm*colorBD:                          khaki
+!XTerm*charClass: 3:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
 !! black dark/light
 XTerm*color0: #073642
 XTerm*color8: #002b36

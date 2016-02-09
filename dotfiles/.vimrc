@@ -61,6 +61,7 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'richsoni/vim-ecliptic'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
+Plug 'klen/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 call plug#end()
 

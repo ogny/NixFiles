@@ -1,0 +1,21 @@
+[general]
+accounts = Work
+ 
+[Account Work]
+localrepository = Local
+remoterepository = Remote
+ 
+[Repository Local]
+type = Maildir
+localfolders = ~/Maildir/work
+ 
+[Repository Remote]
+type = IMAP
+remotehost = cas.limonhost.net
+remoteport = 443
+remoteuser = orkun.gunay\@egemsoft.net
+remotepass = O6un@ycas
+ssl = yes
+
+# Folders to skip during sync.
+folderfilter = lambda foldername: foldername not in ['Deleted Items', 'Contacts', 'Calendar', 'Trash']
