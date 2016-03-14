@@ -41,6 +41,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'honza/vim-snippets'
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'beloglazov/vim-online-thesaurus'
+"Plug 'saevarb/chronos'
 Plug 'scrooloose/nerdcommenter'
 "Plug 'vim-scripts/FormatToWidth'
 "Plug 'airblade/vim-gitgutter'
@@ -63,12 +64,15 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'tpope/vim-markdown'
 Plug 'klen/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "_______________________________________________________________________
 " => genel ayarlar 							                                        |
 "_______________________________________________________________________|
 "colorscheme flattened_dark
+" signcolumn gizleme
+" :sign unplace *
 colorscheme DevC++
 set mouse=nv
 set modifiable
@@ -189,7 +193,7 @@ nnoremap <S-e> :Bclose!<cr>
 "window kapat buffer'i kaydet
 noremap <S-w> :wq!<CR>
 nnoremap <Leader>e :enew<cr>
-
+map <C-e> <Nop>
 vnoremap <Leader>p "*p
 cnoreabbrev Wq wq
 cnoreabbrev Q! q!
@@ -580,6 +584,19 @@ let g:bookmark_manage_per_buffer = 1
 let g:bookmark_sign = '>>'
 let g:bookmark_annotation_sign = '!!'
 
+
+"_______________________________________________________________________
+" => FZF                                                                |
+"_______________________________________________________________________|
+"
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
+" For Commits and BCommits to customize the options used by 'git log':
+let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"'
+
+" Advanced customization using autoload functions
+autocmd VimEnter * command! Colors
+  \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'})
+
 "#TODO Extend For CtrP With Word  
  function! FZFExecute()  
   " Remove trailing new line to make it work with tmux splits  
@@ -626,9 +643,7 @@ function! FZFDirectory(directory)
   \ })
 endfunction
 command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
-" signcolumn gizleme
-" :sign unplace *
-"
+
 "_______________________________________________________________________
 " => vim-table-mode                                                     |
 "_______________________________________________________________________|

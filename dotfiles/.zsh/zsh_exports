@@ -17,7 +17,7 @@ export XAUTHORITY=~/.Xauthority
 #export GEM_PATH=/home/orkung/.chefdk/gem/ruby/2.1.0
 #export GEM_PATH="/opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems"
 export GEM_PATH="$HOME/.rvm/gems/ruby-2.2.1"
-#export GEM_HOME="$HOME/.rvm/gems/:$HOME/.gem"
+export GEM_HOME="$HOME/.rvm/gems/:$HOME/.gem"
 export PATH="$HOME/.local/bin:$HOME/.rvm/gems/ruby-2.2.1/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:/home/orkung/bin:/opt/chefdk/embedded/bin:$PATH"
 #export PATH="$HOME/.rvm/gems/ruby-2.2.1/bin:$HOME/.gem/bin:/usr/bin:$HOME/bin:/usr/local/bin:$PATH"
 #export RB_USER_INSTALL='true'
@@ -36,3 +36,4 @@ unset MANPATH # delete if you already modified MANPATH elsewhere in your config
 export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 export MAILCONF="$HOME/.mutt"
 #export BROWSER="/opt/google/chrome/chrome --disk-cache-dir=/tmp/ --user-data-dir=/opt/google/data_dir"
+export VIMRC="$HOME/.vimrc"

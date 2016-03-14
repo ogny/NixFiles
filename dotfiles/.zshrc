@@ -160,7 +160,7 @@ chpwd_functions+='chpwd_update_git_vars'
 #compdef vman="man"
 #complete -o default -o nospace -F _man vman
 
-eval "$(chef shell-init zsh)"
+#eval "$(chef shell-init zsh)"
 
 # pip zsh completion start
 function _pip_completion {
@@ -180,13 +180,33 @@ compctl -K _pip_completion pip
 #source ~/Git_Repolari/diger/sshag/sshag.sh
 
 # OPAM configuration
-. /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# . /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #fzf-dmenu() { 
 #    # note: xdg-open has a bug with .desktop files, so we cant use that shit
 #    selected="$(ls /usr/share/applications | fzf -e)"
 #    nohup `grep '^Exec' "/usr/share/applications/$selected" | tail -1 | sed 's/^Exec=//' | sed 's/%.//'` >/dev/null 2>&1&
 #}
+
+
+
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+ssh() {
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+        tmux rename-window "$(echo $* | cut -d . -f 1)"
+        command ssh "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        command ssh "$@"
+    fi
+}
+
+# fda - including hidden directories
+fda() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
 
 # hotkey to run the function (Ctrl+O)
 #bindkey -s '^O' "fzf-dmenu\n"
@@ -206,22 +226,31 @@ fo() {
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
 }
+
+# ZSH keybinding example; ~/.zshrc
+fzf_history() { 
+  zle -I; eval $(history | fzf +s | sed 's/ *[0-9]* *//') ; }; 
+  zle -N fzf_history; bindkey '^F' fzf_history
+fzf_killps() { zle -I; ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9} ; }; zle -N fzf_killps; bindkey '^Q' fzf_killps
+fzf_cd() { zle -I; DIR=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf) && cd "$DIR" ; }; zle -N fzf_cd; bindkey '^E' fzf_cd
+
+#myvfm() {
+#  zle -I; eval $(${EDITOR:-vim}$(fzf)); };
+#  zle -N myvfm; bindkey '^W' myvfm
+#  zle redisplay
+#}
+#zle     -N   myvfm
+#bindkey '^W' myvfm
 # rxvt-unicode-256color kullanilacaksa
 case "$TERM" in
     rxvt-unicode-256color)
     TERM=rxvt-unicode
     ;;
 esac
+bindkey -s '^W' 'vim $(fzf)\n' 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-ssh() {
-    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-        tmux rename-window "$(echo $* | cut -d . -f 1)"
-        command ssh "$@"
-        tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        command ssh "$@"
-    fi
-}
-
-
+PATH="/home/orkung/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/home/orkung/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/orkung/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;

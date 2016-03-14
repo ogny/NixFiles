@@ -1,0 +1,1 @@
+/home/orkung/Git_Repolari/diger/antiword-xp-rb/antiwordxp.rb
