@@ -91,6 +91,9 @@ alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate
 function mman {
     man $1 |fold |less
     }
+function mytasks {
+  geeknote create --title $1 --notebook is 
+  }
 alias gese="geeknote find --content-search --notebooks "kisisel" --search"
 alias hdmi="xrandr --output LVDS-1 --off"
 alias lvds="xrandr --output HDMI-1 --auto --left-of LVDS-1 --output LVDS-1 --auto"

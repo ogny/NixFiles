@@ -35,14 +35,17 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
 Plug 'Raimondi/delimitMate'
 Plug 'hron84/vim-librarian'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 Plug 'SirVer/ultisnips'
 Plug 'vim-ruby/vim-ruby'
 Plug 'honza/vim-snippets'
-Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'MattesGroeger/vim-bookmarks'
 Plug 'beloglazov/vim-online-thesaurus'
-"Plug 'saevarb/chronos'
 Plug 'scrooloose/nerdcommenter'
+Plug 'klen/python-mode'
+Plug 'junegunn/fzf.vim'
+Plug 'terryma/vim-multiple-cursors'
+"Plug 'saevarb/chronos'
 "Plug 'vim-scripts/FormatToWidth'
 "Plug 'airblade/vim-gitgutter'
 "Plug 'L9'
@@ -62,9 +65,7 @@ Plug 'scrooloose/nerdcommenter'
 "Plug 'richsoni/vim-ecliptic'
 "Plug 'plasticboy/vim-markdown'
 "Plug 'tpope/vim-markdown'
-Plug 'klen/python-mode'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "_______________________________________________________________________
@@ -200,7 +201,8 @@ cnoreabbrev Q! q!
 cnoreabbrev W w
 cnoreabbrev Q q
 " FZF'yi baslat
-noremap <S-f> :FZF ~<CR>
+noremap <C-w> :FZF ~<CR>
+"noremap <S-f> :FZF ~<CR>
 "nnoremap <C-n> :w<bar>:bNext<CR>
 "nnoremap <C-p> :w<bar>:bprevious<CR>
 nnoremap <C-n> :BuffergatorMruCycleNext<CR>
@@ -568,21 +570,21 @@ let g:sneak#streak = 1
 " => Vim-bookmarks                                                      |
 "_______________________________________________________________________|
 "
-nmap <Leader>m <Plug>BookmarkToggle
-nmap <Leader>i <Plug>BookmarkAnnotate
-nmap <Leader>a <Plug>BookmarkShowAll
-nmap <Leader>n <Plug>BookmarkNext
-nmap <Leader>c <Plug>BookmarkClear
-nmap <Leader>x <Plug>BookmarkClearAll
-highlight BookmarkSign ctermbg=NONE ctermfg=160
-highlight BookmarkLine ctermbg=194 ctermfg=NONE
-let g:bookmark_highlight_lines = 1
-let g:bookmark_save_per_working_dir = 1
-let g:bookmark_auto_save = 1
-let g:bookmark_center = 1
-let g:bookmark_manage_per_buffer = 1
-let g:bookmark_sign = '>>'
-let g:bookmark_annotation_sign = '!!'
+"nmap <Leader>m <Plug>BookmarkToggle
+"nmap <Leader>i <Plug>BookmarkAnnotate
+"nmap <Leader>a <Plug>BookmarkShowAll
+"nmap <Leader>n <Plug>BookmarkNext
+"nmap <Leader>c <Plug>BookmarkClear
+"nmap <Leader>x <Plug>BookmarkClearAll
+"highlight BookmarkSign ctermbg=NONE ctermfg=160
+"highlight BookmarkLine ctermbg=194 ctermfg=NONE
+"let g:bookmark_highlight_lines = 1
+"let g:bookmark_save_per_working_dir = 1
+"let g:bookmark_auto_save = 1
+"let g:bookmark_center = 1
+"let g:bookmark_manage_per_buffer = 1
+"let g:bookmark_sign = '>>'
+"let g:bookmark_annotation_sign = '!!'
 
 
 "_______________________________________________________________________
@@ -643,6 +645,15 @@ function! FZFDirectory(directory)
   \ })
 endfunction
 command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
+
+"_______________________________________________________________________
+" => vim-multiple-cursors                                               |
+"_______________________________________________________________________|
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<Leader>n'
+"let g:multi_cursor_prev_key='<Leader>p'
+"let g:multi_cursor_skip_key='<Leader>x'
+"let g:multi_cursor_quit_key='<Esc>'
 
 "_______________________________________________________________________
 " => vim-table-mode                                                     |

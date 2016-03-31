@@ -26,14 +26,14 @@ set font monaco
 unmap s
 "map [normal] s scroll full-up
 map [normal] s scroll half-up
-unmap f
+unmap a
 "map [normal] f scroll full-down
-map [normal] f scroll half-down
+map [normal] a scroll half-down
 map [index] q quit
 map [normal] t toggle_statusbar
 unmap <C-r>
 map [normal] <C-r> reload
+unmap f
+map [normal] f zoom in
 unmap d
-map [normal] d zoom in
-unmap a
-map [normal] a zoom out
+map [normal] d zoom out

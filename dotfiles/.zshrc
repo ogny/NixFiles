@@ -247,10 +247,12 @@ case "$TERM" in
     TERM=rxvt-unicode
     ;;
 esac
-bindkey -s '^W' 'vim $(fzf)\n' 
+bindkey -s '^W' 'cd ~/ && vim $(fzf)\n' 
+bindkey -s '^O' 'fj\n' 
 
 PATH="/home/orkung/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/orkung/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/orkung/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
+#SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
