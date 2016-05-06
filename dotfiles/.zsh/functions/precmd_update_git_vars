@@ -1,4 +1,0 @@
-if [ -n "$__EXECUTED_GIT_COMMAND" ]; the
-    update_current_git_var
-    unset __EXECUTED_GIT_COMMAN
-f

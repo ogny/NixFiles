@@ -190,7 +190,6 @@ compctl -K _pip_completion pip
 
 
 
-#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 ssh() {
     if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
         tmux rename-window "$(echo $* | cut -d . -f 1)"
@@ -249,6 +248,7 @@ case "$TERM" in
 esac
 bindkey -s '^W' 'cd ~/ && vim $(fzf)\n' 
 bindkey -s '^O' 'fj\n' 
+#bindkey -s '^I' 'fda\n' 
 
 PATH="/home/orkung/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/orkung/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
@@ -256,3 +256,4 @@ PERL_LOCAL_LIB_ROOT="/home/orkung/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 #SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
+

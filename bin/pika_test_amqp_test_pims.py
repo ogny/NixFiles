@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import pika
-parameters = pika.URLParameters('amqp://superadmin:q1w2e3r4@172.25.6.67:5672/%2F')
+parameters = pika.URLParameters('amqp://pttpims:q1w2e3r4@172.25.6.36:5672/%2F')
 connection = pika.BlockingConnection(parameters)
 
 channel = connection.channel()

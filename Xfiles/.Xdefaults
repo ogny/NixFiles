@@ -32,6 +32,7 @@ URxvt*allowWindowOps:       false
 URxvt*allow_bold:           false
 URxvt*font: xft:monaco:size=10
 URxvt*boldFont: xft:monaco:style=bold:size=10
+!URxvt.font: xft:Source Code Pro:size=10
 URxvt*letterSpace: -1
 
 ! Scrollbar
@@ -100,6 +101,9 @@ URxvt*color15: #fdf6e3
 !XTterm*utf8:                            2
 !XTerm*termName:                         xterm-256color
 !XTerm*faceName: Terminus:style=Regular:size=10
+XTerm*faceName: SourceCodePro:style=Regular
+XTerm*faceSize: 12
+XTerm*termName: xterm-256color
 !XTerm.VT100.geometry:                   89x29
 !XTerm*saveLines:                        7777
 !XTerm*metaSendsEscape:                  true

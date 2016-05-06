@@ -1,7 +1,17 @@
 ! Swap caps lock and escape
-remove Lock = Caps_Lock
+clear Lock
+!remove Lock = Caps_Lock
+clear Mod1
+clear Mod4
+!add lock = Escape
+add Mod1 = Alt_L Alt_R 
+add Mod4 = Super_L Super_R 
+!keysym Caps_Lock = Escape
 keysym Escape = Caps_Lock
-keysym Caps_Lock = Escape
 keycode 94 = backslash bar brokenbar bar less greater
 keycode 51 =  Up u Up u
 keycode 108 = Return
+!keysym Super_L = Alt_L
+!keysym Alt_L = Super_L 
+!keycode 64 = Super_L NoSymbol Super_L
+!keycode 133 = Alt_L Meta_L Alt_L Meta_L

@@ -8,12 +8,13 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+#exec xmodmap ~/.Xmodmap
 set $mod Mod1
 set $left  "h"
 set $right "l"
 set $up    "k"
 set $down  "j"
-#set $horz  "g"
+set $horz  "g"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -25,14 +26,15 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font pango:DejaVu Sans Mono 10
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+default_orientation horizontal
 
 # change container layout (stacked, tabbed, default)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+v layout splitv
-#bindsym $mod+$horz layout splith
+bindsym $mod+$horz layout splith
 bindsym $mod+e layout toggle split
-
+ 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -69,7 +71,9 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+Shift+$horz split h
+bindsym $mod+Shift+$horz split h
+#bindsym $mod+Shift+$horz focus left, split h
+#bindsym $mod+Shift+y focus left, split h
 
 # split in vertical orientation
 bindsym $mod+Shift+v split v
@@ -128,12 +132,18 @@ bindsym $mod+r mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        bindsym $left resize grow width 10 px or 10 ppt
-        bindsym $down resize grow height 10 px or 10 ppt
-        bindsym $up resize shrink height 10 px or 10 ppt
-        bindsym $right resize shrink width 10 px or 10 ppt
-	bindsym Mod4+$down resize grow height 40 px or 40 ppt
-        bindsym Mod4+$up resize shrink height 40 px or 40 ppt
+        bindsym $left resize shrink width 10 px or 10 ppt
+        bindsym $mod+$left resize shrink width 5 px or 5 ppt
+        bindsym Shift+$left resize shrink width 40 px or 40 ppt
+        bindsym $right resize grow width 10 px or 10 ppt
+        bindsym $mod+$right resize grow width 5 px or 5 ppt
+        bindsym Shift+$right resize grow width 40 px or 40 ppt
+        bindsym $down resize shrink height 10 px or 10 ppt
+        bindsym $mod+$down resize shrink height 5 px or 5 ppt
+	      bindsym Shift+$down resize grow height 40 px or 40 ppt
+        bindsym $up resize grow height 10 px or 10 ppt
+        bindsym $mod+$up resize grow height 5 px or 5 ppt
+        bindsym Shift+$up resize shrink height 40 px or 40 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -150,8 +160,12 @@ mode "resize" {
 #_______________________________________________________________________
 # => Uygulamalar                                                        |
 #_______________________________________________________________________|   
-exec pa-applet
+#exec setxkbmap -option caps:escape
 exec xmodmap ~/.Xmodmap
+exec setxkbmap -option caps:escape
+exec sudo vpnc sekom
+#exec i3-msg split v
+exec pa-applet
 exec xrdb -merge ~/.Xdefaults
 exec unclutter -display :0 -root -idle 1 &
 exec mkfifo /tmp/mplayer-control
@@ -165,7 +179,6 @@ exec xrandr --output HDMI2 --auto --left-of eDP1  --output eDP1 --auto
 #exec xrandr --output eDP-1 --auto
 #exec ~/bin/myxrandr.sh
 #exec xrandr --output eDP1 --off
-exec sudo vpnc sekom
 #exec find ~/.cache/google-chrome -type d -exec chmod 755 {} \;
 #exec owncloud
 #exec ~/bin/mymusic.sh
@@ -189,7 +202,7 @@ exec --no-startup-id  dunst -config ~/.config/dunst/dunstrc
 #exec ~/bin/CopyConsole
 #exec zathura ~/Copy/docs/teknik/Programlama/Symfony_book_2.6.pdf
 #exec setxkbmap tr -variant alt 
-#exec synclient TouchpadOff=1
+#exec synclient TouchpadOff=g
 #exec 'synergys --config ~/.synergy.conf'
  
 #_______________________________________________________________________
@@ -246,7 +259,11 @@ assign [class="VirtualBox"] 1
 bar {
 	output	       eDP1
 	output	       HDMI2
-        status_command i3status
+        status_command i3status --config ~/.i3status.conf
+  mode hide
+  hidden_state hide
+  modifier Mod4
+  #modifier Mod5
 	colors {
 	background #002b36
 	}
@@ -305,7 +322,8 @@ bindsym $mod+m move workspace to output left
 bindsym $mod+Shift+m move workspace to output right
 # bar toggle, hide or show 
 bindsym Mod4+m bar mode toggle
-bindsym Mod4+r exec ~/bin/ingce.sh
+#bindsym $mod+o bar mode toggle
+#bindsym Mod4+r exec ~/bin/ingce.sh
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window

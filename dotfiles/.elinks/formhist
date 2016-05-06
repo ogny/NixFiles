@@ -1,12 +1,16 @@
-https://sekomy.atlassian.net/login?dest-url=/wiki%2Fpages%2Fviewpage.action%3FspaceKey%3DPIMS%26title%3DPTT%2BEnvironment&permission-violation=true
+https://sekomy.atlassian.net/login?dest-url=/wiki%2Fpages%2Fviewpage.action%3FspaceKey%3DPIMS%26title%3DPTT%2BIstanbul%2BProd%2BEnvironment&permission-violation=true
+password	password	TzZ1bkB5YXQ=
+text	username	b3JrdW4uZ3VuYXlAc2Vrb215YXppbGltLmNvbS50cg==
+
+https://sekomy.atlassian.net/login?dest-url=/wiki%2Fpages%2Fviewpage.action%3FspaceKey%3DKB%26title%3DGrafana%2BConfiguration&permission-violation=true
 password	password	TzZ1bkB5YXQ=
 text	username	b3JrdW4uZ3VuYXlAc2Vrb215YXppbGltLmNvbS50cg==
 
 https://sekomy.atlassian.net/login
-text	username	b3JrdW4uZ3VuYXlAc2Vrb215YXppbGltLmNvbS50cg==
 password	password	TzZ1bkB5YXQ=
+text	username	b3JrdW4uZ3VuYXlAc2Vrb215YXppbGltLmNvbS50cg==
 
-https://sekomy.atlassian.net/login?dest-url=/wiki%2Fpages%2Fviewpage.action%3FspaceKey%3DKB%26title%3DGrafana%2BConfiguration&permission-violation=true
+https://sekomy.atlassian.net/login?dest-url=/wiki%2Fpages%2Fviewpage.action%3FspaceKey%3DPIMS%26title%3DPTT%2BEnvironment&permission-violation=true
 text	username	b3JrdW4uZ3VuYXlAc2Vrb215YXppbGltLmNvbS50cg==
 password	password	TzZ1bkB5YXQ=
 

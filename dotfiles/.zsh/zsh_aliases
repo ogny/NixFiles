@@ -19,10 +19,11 @@ alias upd="sudo apt update"
 alias upg="sudo apt upgrade"
 alias kur="sudo apt install  -y --force-yes"
 alias se="sudo dpkg --get-selections"
-alias aps="apt-cache --names-only search"
+alias ara="apt-cache --names-only search"
 alias sht='sudo shutdown -h now'
 #alias sht='vagrant halt ; sudo shutdown -h now'
 alias vr='sudo vim'
+alias vi='vim'
 alias enable_alert='PS1="$PS1\a"'
 alias rake='noglob rake'
 alias disk_test='dd if=/dev/zero of=test bs=64k count=16k conv=fdatasync'

@@ -169,6 +169,7 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "_______________________________________________________________________
 " => Kisayollar 							                                          |
 "_______________________________________________________________________|
+"let mapleader=" "
 "noremap j h
 "noremap k j
 "noremap l k
@@ -203,10 +204,10 @@ cnoreabbrev Q q
 " FZF'yi baslat
 noremap <C-w> :FZF ~<CR>
 "noremap <S-f> :FZF ~<CR>
-"nnoremap <C-n> :w<bar>:bNext<CR>
-"nnoremap <C-p> :w<bar>:bprevious<CR>
-nnoremap <C-n> :BuffergatorMruCycleNext<CR>
-nnoremap <C-p> :BuffergatorMruCyclePrev<CR>
+nnoremap <C-n> :w<bar>:bNext<CR>
+nnoremap <C-p> :w<bar>:bprevious<CR>
+"nnoremap <leader>n :BuffergatorMruCycleNext<CR>
+"nnoremap <leader>p :BuffergatorMruCyclePrev<CR>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
@@ -651,6 +652,7 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 "_______________________________________________________________________|
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<Leader>n'
+"let g:multi_cursor_next_key='<BS-n>'
 "let g:multi_cursor_prev_key='<Leader>p'
 "let g:multi_cursor_skip_key='<Leader>x'
 "let g:multi_cursor_quit_key='<Esc>'
