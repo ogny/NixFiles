@@ -183,6 +183,7 @@ noremap gr gT
 " :map f }) 
 " :map s {(
 nnoremap <S-q> :qall!<CR>
+nnoremap <S-f> :set foldenable<CR>
 nnoremap <Leader>o :r!cat<CR>
 nnoremap <Leader>s :GitGutterToggle<CR>
 "noremap <Leader>P "*p	
@@ -202,12 +203,13 @@ cnoreabbrev Q! q!
 cnoreabbrev W w
 cnoreabbrev Q q
 " FZF'yi baslat
-noremap <C-w> :FZF ~<CR>
+noremap <C-e> :FZF ~<CR>
+"noremap <C-w> :FZF ~<CR>
 "noremap <S-f> :FZF ~<CR>
-nnoremap <C-n> :w<bar>:bNext<CR>
-nnoremap <C-p> :w<bar>:bprevious<CR>
-"nnoremap <leader>n :BuffergatorMruCycleNext<CR>
-"nnoremap <leader>p :BuffergatorMruCyclePrev<CR>
+nnoremap <leader>n :w<bar>:bNext<CR>
+nnoremap <leader>p :w<bar>:bprevious<CR>
+nnoremap <C-n> :BuffergatorMruCycleNext<CR>
+nnoremap <C-p> :BuffergatorMruCyclePrev<CR>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
@@ -737,5 +739,8 @@ vnoremap y "*y
 nnoremap y "*y
 vnoremap p "*p
 nnoremap p "*p
-
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
 set t_Co=256

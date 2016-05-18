@@ -246,7 +246,7 @@ case "$TERM" in
     TERM=rxvt-unicode
     ;;
 esac
-bindkey -s '^W' 'cd ~/ && vim $(fzf)\n' 
+bindkey -s '^E' 'cd ~/ && vim $(fzf)\n' 
 bindkey -s '^O' 'fj\n' 
 #bindkey -s '^I' 'fda\n' 
 
