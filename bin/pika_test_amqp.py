@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 import pika
-parameters = pika.URLParameters('amqp://superadmin:q1w2e3r4@172.25.6.34:5672/%2F')
+parameters = pika.URLParameters('amqp://orkun:1@172.17.0.2:5672/')
 connection = pika.BlockingConnection(parameters)
 
 channel = connection.channel()
 
-channel.queue_declare(queue='naber')
+channel.queue_declare(queue='iyi')
 
 channel.basic_publish(exchange='',
-                      routing_key='hello',
-                      body='Hello World!')
-print " [x] Sent 'Hello World!'"
+                      routing_key='slm',
+                      body='naber!')
+print " [x] Sent 'naber!'"
 connection.close()

@@ -132,8 +132,9 @@ colors
 setopt PROMPT_SUBST
  
 # Autoload zsh functions.
-fpath=(${HOME}/.zsh/functions $fpath)
-autoload -U ~/.zsh/*(:t)
+fpath=(~/.zsh/completion $fpath)
+autoload -U ~/.zsh/completion
+#autoload -U ~/.zsh/*(:t)
  
 # Enable auto-execution of functions.
 typeset -ga preexec_functions
@@ -256,4 +257,4 @@ PERL_LOCAL_LIB_ROOT="/home/orkung/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 #SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
-
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

@@ -175,6 +175,10 @@ highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Re
 "noremap l k
 "noremap ; l
 map t i <ESC>r
+"nnoremap ; o <ESC>
+nmap ; o<Esc>
+nmap <CR> o<Esc>
+
 noremap gr gT
 "":nnoremap f }) \| zt
 "":nnoremap s {( \| zt
@@ -185,7 +189,7 @@ noremap gr gT
 nnoremap <S-q> :qall!<CR>
 nnoremap <S-f> :set foldenable<CR>
 nnoremap <Leader>o :r!cat<CR>
-nnoremap <Leader>s :GitGutterToggle<CR>
+"nnoremap <Leader>s :GitGutterToggle<CR>
 "noremap <Leader>P "*p	
 "window acik buffer'i sil/kapat
 noremap <Leader>q :bdelete!<CR> 
@@ -215,6 +219,7 @@ vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
 nnoremap <Leader>k :Limelight!<CR>
 nnoremap <Leader>h :nohl<CR>
+
 
 "_______________________________________________________________________
 " => emrah .vimrc 							                                        |
@@ -744,3 +749,6 @@ augroup reload_vimrc " {
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END " }
 set t_Co=256
+set is
+set ic
+

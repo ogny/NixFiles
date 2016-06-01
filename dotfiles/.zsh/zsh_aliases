@@ -20,6 +20,7 @@ alias upg="sudo apt upgrade"
 alias kur="sudo apt install  -y --force-yes"
 alias se="sudo dpkg --get-selections"
 alias ara="apt-cache --names-only search"
+alias lkur="sudo dpkg -i $1"
 alias sht='sudo shutdown -h now'
 #alias sht='vagrant halt ; sudo shutdown -h now'
 alias vr='sudo vim'
@@ -36,7 +37,7 @@ alias ......="cd ../../../../.."
 alias v='f -e vim'       # open file in vim
 alias o='a -e open'      # open file
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
-alias t='task'
+#alias t='task'
 alias wrkh='task list pro:work pri:H'
 alias wrkm='task list pro:work pri:M'
 alias wrkl='task list pro:work pri:L'
@@ -105,10 +106,11 @@ myack () {
 dosya="/home/orkung/.ssh/config"
   ack-grep -A 1 -B 1 $1 $dosya
 }
-alias tmx="ssh-add ~/.ssh/ogunay ; tmux"
+alias tmx="ssh-add ~/.ssh/ogunay ; tmux new-session -s"
 alias grep-all=!"git rev-list --all | xargs git grep '$1'"
 alias vifm="vifm -c 'only' ."
 alias acikportlar='declare -a array=($(tail -n +2 /proc/net/tcp | cut -d":" -f"3"|cut -d" " -f"1")) && for port in ${array[@]}; do echo $((0x$port)); done'
+#alias zsh="zsh --login"
 #alias google-chrome="/opt/google/chrome/chrome --disk-cache-dir=/tmp/ --user-data-dir=/opt/google/data_dir"
 
 
