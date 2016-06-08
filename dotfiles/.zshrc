@@ -119,7 +119,7 @@ uncomment() {
 sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 }
 #source $HOME/bin/sshag.sh >/dev/null 2>&1
-eval "$(fasd --init auto)"
+#########eval "$(fasd --init auto)"
 eval `dircolors /home/orkung/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
 compdef _task t='task'

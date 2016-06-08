@@ -8,7 +8,6 @@
 # i3 config file (v4)
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-#exec xmodmap ~/.Xmodmap
 set $mod Mod1
 set $left  "h"
 set $right "l"
@@ -160,9 +159,9 @@ mode "resize" {
 #_______________________________________________________________________
 # => Uygulamalar                                                        |
 #_______________________________________________________________________|   
-#exec setxkbmap -option caps:escape
-exec xmodmap ~/.Xmodmap
 exec setxkbmap -option caps:escape
+exec xmodmap ~/.Xmodmap
+#exec setxkbmap -option caps:escape
 exec sudo vpnc sekom
 #exec i3-msg split v
 exec pa-applet
