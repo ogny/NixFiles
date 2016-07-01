@@ -113,5 +113,6 @@ alias vifm="vifm -c 'only' ."
 alias acikportlar='declare -a array=($(tail -n +2 /proc/net/tcp | cut -d":" -f"3"|cut -d" " -f"1")) && for port in ${array[@]}; do echo $((0x$port)); done'
 #alias zsh="zsh --login"
 #alias google-chrome="/opt/google/chrome/chrome --disk-cache-dir=/tmp/ --user-data-dir=/opt/google/data_dir"
-
+alias mylynx="lynx -dump -nonumbers"
+alias toggl="cd ~/Git_Repolari/diger/toggldesktop && make run"
 
