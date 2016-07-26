@@ -1,4 +1,5 @@
 alias z='/home/orkung/bin/zargan.py'
+
 alias rdsktp='rdesktop -u administrator -g 1920x1080 10.10.18.111'
 alias ntstat='sudo netstat -taunp |egrep *:80'
 alias perms='find . -type d -exec chmod 0755 {} \; && find . -type f -exec chmod 0644 {} \;'
@@ -90,7 +91,7 @@ alias geed="geeknote edit --note"
 alias gefs="geeknote find --notebooks "kisisel" --search"
 alias psc="ps xawf -eo pid,user,cgroup,args"
 alias sdo='sudo docker'
-alias dockviz="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
+alias dockviz="docker run --privileged -it --rm --volume /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
 function mman {
     man $1 |fold |less
     }

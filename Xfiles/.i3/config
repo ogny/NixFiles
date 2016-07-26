@@ -250,7 +250,7 @@ bindsym $mod+Shift+n move workspace next
 #assign [class="HipChat"] 1
 assign [class="bubble"] 1
 #assign [class="rdesktop"] 2 
-assign [class="VirtualBox"] 1
+#assign [class="VirtualBox"] 1
 #assign [class="libreoffice"] 4
 #assign [class="feh"] 2
 
