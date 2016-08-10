@@ -16,10 +16,12 @@ footer.footer-style2 {
 
 #content {
     margin-left: -10%;
+    background-color: #002b36;
 }
 
 div.col-sm-9.mbottom50 {
     width: 55%;
     font-family: Helvetica;
+    background-color: #fafafa;
 }
 
