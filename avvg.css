@@ -1,0 +1,25 @@
+#sub-header {
+    display: none;
+}
+
+div.header-breadcrumb {
+    display: none;
+}
+
+div.col-sm-12 {
+    display: none;
+}
+
+footer.footer-style2 {
+    display: none;
+}
+
+#content {
+    margin-left: -10%;
+}
+
+div.col-sm-9.mbottom50 {
+    width: 55%;
+    font-family: Helvetica;
+}
+

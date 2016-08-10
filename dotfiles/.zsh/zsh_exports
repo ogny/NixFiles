@@ -45,3 +45,4 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export PYTHONIOENCODING="utf-8"
 source $HOME/.local/bin/virtualenvwrapper.sh
+export CHEATCOLORS=true
