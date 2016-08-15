@@ -221,6 +221,7 @@ fo() {
   local out file key
   out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
   key=$(head -1 <<< "$out")
+  ME/bin/ssh-find-agent.sh
   file=$(head -2 <<< "$out" | tail -1)
   if [ -n "$file" ]; then
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
@@ -258,3 +259,6 @@ PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 #SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+. $HOME/bin/ssh-find-agent.sh
+
+
