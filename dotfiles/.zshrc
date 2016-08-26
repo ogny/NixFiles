@@ -119,7 +119,7 @@ uncomment() {
 sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 }
 #source $HOME/bin/sshag.sh >/dev/null 2>&1
-#########eval "$(fasd --init auto)"
+eval "$(fasd --init auto)"
 eval `dircolors /home/orkung/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 alias x='ssh-agent startx'
 compdef _task t='task'
@@ -259,6 +259,7 @@ PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 #SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-. $HOME/bin/ssh-find-agent.sh
-
-
+#. $HOME/bin/ssh-find-agent.sh
+#. $HOME/Git_Repolari/kisisel/public/nixfiles/bin/ssh-find-agent.sh
+#eval `ssh-agent -s`
+. /home/orkung/ssh-agent.cf >/dev/null 2>&1

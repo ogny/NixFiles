@@ -1,4 +1,3 @@
-filetype off
 set smartcase
 set nocompatible
 set bs=2
@@ -7,14 +6,21 @@ syntax on
 set hls
 set is
 set ic
-set textwidth=79
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set encoding=utf-8
-set rtp+=/etc/vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'elzr/vim-json'
-call vundle#end()
-filetype plugin indent on
+nnoremap  <C-n> :next <cr>
+nnoremap  <C-p> :prev <cr>
+" === burasi calisilacak === "
+"set rtp+=/etc/vim/bundle/Vundle.vim
+"call vundle#begin()
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'elzr/vim-json'
+"call vundle#end()
+"filetype off
+"filetype plugin indent on
+
+" == bunlar kullanisli durmuyor
+"set autoindent
+"set textwidth=79

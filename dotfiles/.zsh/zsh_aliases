@@ -1,8 +1,7 @@
 alias z='/home/orkung/bin/zargan.py'
-
 alias rdsktp='rdesktop -u administrator -g 1920x1080 10.10.18.111'
-alias ntstat='sudo netstat -taunp |egrep *:80'
-alias perms='find . -type d -exec chmod 0755 {} \; && find . -type f -exec chmod 0644 {} \;'
+alias ntstat="sudo netstat -taunp |egrep *:80"
+alias perms="find . -type d -exec chmod 0755 {} \; && find . -type f -exec chmod 0644 {} \;"
 alias mr='sudo mtr -s 1500 -r -c 1000 -i 0.1 $@'
 alias bagli='lsof -P -i -n'
 alias pp='ps -efd | grep -v grep |grep'
@@ -108,7 +107,8 @@ dosya="/home/orkung/.ssh/config"
   ack-grep -A 1 -B 1 $1 $dosya
 }
 #alias tmx="ssh-add ~/.ssh/ogunay ; tmux"
-alias tmx="ssh-add ~/.ssh/ogunay ; tmux new-session" 
+alias tmx="ssh-add ~/.ssh/ogunay ; tmux new-session"
+#alias tmx="ssh-agent zsh ; tmux new-session" 
 alias grep-all=!"git rev-list --all | xargs git grep '$1'"
 alias vifm="vifm -c 'only' ."
 alias acikportlar='declare -a array=($(tail -n +2 /proc/net/tcp | cut -d":" -f"3"|cut -d" " -f"1")) && for port in ${array[@]}; do echo $((0x$port)); done'
@@ -132,3 +132,8 @@ _ssh_auth_save() {
 #    fi
 #}
 #
+#function pjson() {
+#gist "$@" |json | pygmentize -l json |less
+#}
+#export -f pjson
+alias pjson='json | pygmentize -l json |less'

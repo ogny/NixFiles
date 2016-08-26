@@ -159,9 +159,11 @@ mode "resize" {
 #_______________________________________________________________________
 # => Uygulamalar                                                        |
 #_______________________________________________________________________|   
-exec toggl
+exec ssh-agent tmux
+#exec toggl
 exec setxkbmap -option caps:escape
 exec xmodmap ~/.Xmodmap
+exec ssh-agent -s > ~/ssh-agent.cf
 #exec setxkbmap -option caps:escape
 exec sudo vpnc sekom
 #exec i3-msg split v
@@ -209,7 +211,9 @@ exec --no-startup-id  dunst -config ~/.config/dunst/dunstrc
 # => Kisayollar                                                         |
 #_______________________________________________________________________|   
 #bindsym Mod4+e exec urxvt -geometry 53x38  
-bindsym Mod4+w exec urxvt 
+bindsym Mod4+w exec mrxvt
+#bindsym Mod4+w exec lxterminal
+#bindsym Mod4+w exec urxvt 
 bindsym Mod4+e exec urxvt -geometry 53x38 -e tmux new-session
 bindsym Mod4+s exec google-chrome
 bindsym Mod4+a exec pavucontrol 
