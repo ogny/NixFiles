@@ -10,8 +10,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set encoding=utf-8
-nnoremap  <C-n> :next <cr>
-nnoremap  <C-p> :prev <cr>
+nnoremap  <C-n> :bn<cr>
+nnoremap  <C-p> :bp<cr>
 " === burasi calisilacak === "
 "set rtp+=/etc/vim/bundle/Vundle.vim
 "call vundle#begin()

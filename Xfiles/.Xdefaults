@@ -47,7 +47,7 @@ URxvt*scrollBar:            false
 ! Cursor
 URxvt.cursorBlink:          false
 URxvt.cursorColor:          #657b83
-URxvt*cursorUnderline:      true
+URxvt*cursorBlink:          false
 
 ! Pointer
 URxvt.pointerBlank:         true

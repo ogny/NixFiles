@@ -176,7 +176,8 @@ exec numlockx
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-3.json'
 #exec google-chrome
 #exec xrandr --output HDMI-1 --right-of eDP-1 --output eDP-0 
-exec xrandr --output HDMI2 --auto --left-of eDP1  --output eDP1 --auto
+#exec xrandr --output HDMI2 --auto --left-of eDP1  --output eDP1 --auto
+exec xrandr --output HDMI2 --auto --output eDP1 --off
 #exec xrandr --output eDP1 --auto --left-of HDMI2 --output HDMI2 --auto
 #exec xrandr --output eDP-1 --auto
 #exec ~/bin/myxrandr.sh
@@ -211,8 +212,9 @@ exec --no-startup-id  dunst -config ~/.config/dunst/dunstrc
 # => Kisayollar                                                         |
 #_______________________________________________________________________|   
 #bindsym Mod4+e exec urxvt -geometry 53x38  
-bindsym Mod4+w exec mrxvt
+#bindsym Mod4+w exec mrxvt
 #bindsym Mod4+w exec lxterminal
+bindsym Mod4+w exec mate-terminal
 #bindsym Mod4+w exec urxvt 
 bindsym Mod4+e exec urxvt -geometry 53x38 -e tmux new-session
 bindsym Mod4+s exec google-chrome

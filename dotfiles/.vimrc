@@ -75,7 +75,7 @@ call plug#end()
 " signcolumn gizleme
 " :sign unplace *
 colorscheme DevC++
-set mouse=nv
+"set mouse=nv
 set modifiable
 autocmd VimResized * wincmd =
 set hidden
@@ -143,6 +143,7 @@ highlight Search ctermfg=25 ctermbg=16
 highlight Folded ctermfg=25 ctermbg=16
 hi StatusLine cterm=none gui=none
 hi StatusLineNC cterm=none gui=none
+hi NonText ctermfg=00 
 highlight clear SignColumn
 hi link markdownError Normal
  "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
@@ -740,10 +741,10 @@ let g:table_mode_corner="|"
 "endif
 "vnoremap yy "*y	
 "nnoremap yy "*y	
-vnoremap y "*y
-nnoremap y "*y
-vnoremap p "*p
-nnoremap p "*p
+"vnoremap y "*y
+"nnoremap y "*y
+"vnoremap p "*p
+"nnoremap p "*p
 augroup reload_vimrc " {
     autocmd!
     autocmd BufWritePost $MYVIMRC source $MYVIMRC
