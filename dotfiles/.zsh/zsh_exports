@@ -19,7 +19,7 @@ export XAUTHORITY=~/.Xauthority
 #export GEM_PATH="/usr/lib/ruby/gems/2.1.0/gems"
 #export GEM_HOME="$HOME/.gem/ruby/2.1.0/gems
 #export GEM_PATH="$HOME/.gem/ruby/2.1.0/gems
-export PATH="$HOME/.rvm/gems/ruby-2.1.1/bin:$HOME/.pyenv/bin:$HOME/.rvm/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/usr/sbin:$PATH"
+export PATH="$HOME/.pyenv/bin:$HOME/.rvm/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/usr/sbin:$PATH"
 #export PATH="$HOME/bin:$HOME/.local/bin:/opt/chefdk/bin:$PATH"
 #export RB_USER_INSTALL='true'
 export SSH_AUTH_SOCK=$(find /tmp -maxdepth 2 -type s -name "agent*" -user $USER -printf '%T@ %p\n' 2>/dev/null |sort -n|tail -1|cut -d' ' -f2)
@@ -46,3 +46,4 @@ export LC_ALL="en_US.UTF-8"
 export PYTHONIOENCODING="utf-8"
 source $HOME/.local/bin/virtualenvwrapper.sh
 export CHEATCOLORS=true
+#export ANSIBLE_INVENTORY=$HOME/Devops/ansible_hosts

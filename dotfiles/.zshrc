@@ -1,3 +1,12 @@
+if [ -f ~/.zsh/zsh_aliases ]; then
+    . ~/.zsh/zsh_aliases
+fi
+
+# load exports
+if [ -f ~/.zsh/zsh_exports ]; then
+  source ~/.zsh/zsh_exports
+fi
+
 # Set up the prompt
 autoload -Uz promptinit
 promptinit
@@ -87,14 +96,6 @@ fi
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-if [ -f ~/.zsh/zsh_aliases ]; then
-    . ~/.zsh/zsh_aliases
-fi
-
-# load exports
-if [ -f ~/.zsh/zsh_exports ]; then
-  source ~/.zsh/zsh_exports
-fi
 
 #zargan
 zl(){
@@ -176,6 +177,7 @@ compctl -K _pip_completion pip
 # pip zsh completion end
 
 #source /usr/local/bin/virtualenvwrapper.sh
+#source $HOME/.local/bin/virtualenvwrapper.sh
 #source ~/Git_Repolari/diger/sshag/sshag.sh; sshag &>/dev/null
 #source ~/Git_Repolari/diger/sshag/sshag.sh >/dev/null 2>&1
 #source ~/Git_Repolari/diger/sshag/sshag.sh
@@ -258,8 +260,9 @@ PERL_LOCAL_LIB_ROOT="/home/orkung/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_
 PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 #SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #. $HOME/bin/ssh-find-agent.sh
 #. $HOME/Git_Repolari/kisisel/public/nixfiles/bin/ssh-find-agent.sh
 #eval `ssh-agent -s`
 . /home/orkung/ssh-agent.cf >/dev/null 2>&1
+#source ~/Git_Repolari/diger/ansible/hacking/env-setup -q
+#. /home/orkung/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh

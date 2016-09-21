@@ -176,8 +176,8 @@ exec numlockx
 #exec --no-startup-id  i3-msg 'workspace 2; append_layout /home/orkung/.i3/workspace-3.json'
 #exec google-chrome
 #exec xrandr --output HDMI-1 --right-of eDP-1 --output eDP-0 
-#exec xrandr --output HDMI2 --auto --left-of eDP1  --output eDP1 --auto
-exec xrandr --output HDMI2 --auto --output eDP1 --off
+exec xrandr --output HDMI2 --auto --right-of eDP1  --output eDP1 --auto
+#exec xrandr --output HDMI2 --auto --output eDP1 --off
 #exec xrandr --output eDP1 --auto --left-of HDMI2 --output HDMI2 --auto
 #exec xrandr --output eDP-1 --auto
 #exec ~/bin/myxrandr.sh
@@ -189,7 +189,7 @@ exec xrandr --output HDMI2 --auto --output eDP1 --off
 #exec VBoxHeadless --startvm ultimate
 #exec VBoxHeadless --startvm mswin7
 #exec setxkbmap us
-exec hipchat
+#exec hipchat
 #exec urxvt -e tmux attach-session -t genel
 #exec ssh-add ~/.ssh/ogunay
 #exec redshift -O 4500 -g 0.8
@@ -220,7 +220,7 @@ bindsym Mod4+e exec urxvt -geometry 53x38 -e tmux new-session
 bindsym Mod4+s exec google-chrome
 bindsym Mod4+a exec pavucontrol 
 bindsym Mod4+z exec "setxkbmap tr"
-bindsym Mod4+x exec "setxkbmap us ; xmodmap ~/.Xmodmap"
+bindsym Mod4+x exec "setxkbmap us ; setxkbmap -option caps:escape ; xmodmap /home/orkung/.Xmodmap"
 # Sesi ayarlama	
 set $sink $(pactl list short sinks | grep RUNNING | cut -f1)
 bindsym XF86Forward exec --no-startup-id pactl set-sink-volume $sink -- +10%
@@ -342,3 +342,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
+# monitoru kapa
+bindsym Mod4+c  exec --no-startup-id /home/orkung/bin/laptop.sh
+# laptopu kapa
+bindsym Mod4+d  exec --no-startup-id /home/orkung/bin/monitor.sh

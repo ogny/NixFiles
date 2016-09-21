@@ -5,13 +5,15 @@
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
-Plug 'tmux-plugins/vim-tmux-focus-events'
+"Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-airline/vim-airline'
 Plug 'junegunn/limelight.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Shougo/neocomplete.vim'
 Plug 'tpope/vim-surround'
 Plug 'rbgrouleff/bclose.vim'
@@ -35,19 +37,22 @@ Plug 'godlygeek/tabular'
 Plug 'tpope/vim-obsession'
 Plug 'Raimondi/delimitMate'
 Plug 'hron84/vim-librarian'
-"Plug 'kien/ctrlp.vim'
 Plug 'SirVer/ultisnips'
 Plug 'vim-ruby/vim-ruby'
 Plug 'honza/vim-snippets'
-"Plug 'MattesGroeger/vim-bookmarks'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'scrooloose/nerdcommenter'
 Plug 'klen/python-mode'
 Plug 'junegunn/fzf.vim'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'airblade/vim-gitgutter'
+"Plug 'kien/ctrlp.vim'
+"Plug 'MattesGroeger/vim-bookmarks'
+"Plug 'tmux-plugins/vim-tmux-focus-events'
+"Plug 'terryma/vim-multiple-cursors'
 "Plug 'saevarb/chronos'
 "Plug 'vim-scripts/FormatToWidth'
-"Plug 'airblade/vim-gitgutter'
 "Plug 'L9'
 "Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'mattn/webapi-vim'
@@ -84,7 +89,7 @@ set noea
 set background=light
 filetype plugin on
 filetype plugin indent on
-filetype indent on
+filetype indent off
 set nocompatible              " be iMproved, required
 filetype on
 syntax on
@@ -116,6 +121,7 @@ set swapfile
 set pastetoggle=<F2>
 set nocindent  " Switch off all auto-indenting
 set nosmartindent	
+set noautoindent	
 set indentexpr=
 set clipboard=unnamedplus
 set go+=a
@@ -141,8 +147,8 @@ highlight VertSplit cterm=none gui=none
 highlight SignColumn ctermbg=none
 highlight Search ctermfg=25 ctermbg=16
 highlight Folded ctermfg=25 ctermbg=16
-hi StatusLine cterm=none gui=none
-hi StatusLineNC cterm=none gui=none
+"hi StatusLine cterm=none gui=none
+"hi StatusLineNC cterm=none gui=none
 hi NonText ctermfg=00 
 highlight clear SignColumn
 hi link markdownError Normal
@@ -187,19 +193,22 @@ noremap gr gT
 :nnoremap s {( \| zz
 " :map f }) 
 " :map s {(
-nnoremap <S-q> :qall!<CR>
-nnoremap <S-f> :set foldenable<CR>
-nnoremap <Leader>o :r!cat<CR>
-"nnoremap <Leader>s :GitGutterToggle<CR>
 "noremap <Leader>P "*p	
-"window acik buffer'i sil/kapat
-noremap <Leader>q :bdelete!<CR> 
+
+"window acik buffer'i kaydetme
+nnoremap <S-e> :Bclose!<cr>
 "window acik buffer'i kaydet
 nnoremap <Leader>w :w<bar>:Bclose!<cr>  
 "window acik buffer'i kaydetme
-nnoremap <S-e> :Bclose!<cr>
+nnoremap <Leader>q :bdelete!<CR>
 "window kapat buffer'i kaydet
 noremap <S-w> :wq!<CR>
+"window kapat buffer'i kaydetme
+noremap <S-q> :qall!<CR> 
+
+nnoremap <S-f> :set foldenable<CR>
+nnoremap <Leader>o :r!cat<CR>
+nnoremap <Leader>g :GitGutterToggle<CR>
 nnoremap <Leader>e :enew<cr>
 map <C-e> <Nop>
 vnoremap <Leader>p "*p
@@ -213,14 +222,13 @@ noremap <C-e> :FZF ~<CR>
 "noremap <S-f> :FZF ~<CR>
 nnoremap <leader>n :w<bar>:bNext<CR>
 nnoremap <leader>p :w<bar>:bprevious<CR>
-nnoremap <C-n> :BuffergatorMruCycleNext<CR>
+nnoremap <C-n> :BuffergatorMruCycleNext<cr>
 nnoremap <C-p> :BuffergatorMruCyclePrev<CR>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
 nnoremap <Leader>k :Limelight!<CR>
 nnoremap <Leader>h :nohl<CR>
-
 
 "_______________________________________________________________________
 " => emrah .vimrc 							                                        |
@@ -388,10 +396,11 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
 "" map <Leader>n :NERDTreeMapToggleHidden<CR>
-map <Leader>j :NERDTreeToggle<CR>
+map <Leader>n :NERDTreeToggle<CR>
 " Sadece NERDTREE penceresi aciksa Vim'i otomatik kapat;
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
+let g:NERDTreeMapJumpNextSibling = ''
+let g:NERDTreeMapJumpPrevSibling = ''
 "_______________________________________________________________________
 " => Vim Indent Color 							                                    |
 "_______________________________________________________________________|
@@ -543,7 +552,6 @@ let g:UltiSnipsUsePythonVersion = 2
 "_______________________________________________________________________|
  
 imap <S-CR>    <CR><CR>end<Esc>-cc
-set noautoindent
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 
@@ -658,8 +666,8 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 "_______________________________________________________________________
 " => vim-multiple-cursors                                               |
 "_______________________________________________________________________|
-let g:multi_cursor_use_default_mapping=0
-let g:multi_cursor_next_key='<Leader>n'
+"let g:multi_cursor_use_default_mapping=0
+"let g:multi_cursor_next_key='<Leader>n'
 "let g:multi_cursor_next_key='<BS-n>'
 "let g:multi_cursor_prev_key='<Leader>p'
 "let g:multi_cursor_skip_key='<Leader>x'
@@ -753,3 +761,12 @@ set t_Co=256
 set is
 set ic
 
+set pastetoggle=<F2>
+nnoremap <C-x> @='5j'<CR>
+nnoremap <C-c> @='5k'<CR>
+"let g:airline#extensions#tabline#enabled = 1
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+
+let g:gitgutter_enabled = 0
