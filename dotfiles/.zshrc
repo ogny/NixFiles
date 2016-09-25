@@ -2,6 +2,9 @@ if [ -f ~/.zsh/zsh_aliases ]; then
     . ~/.zsh/zsh_aliases
 fi
 
+if [ -f ~/.zsh/git_aliases ]; then
+    . ~/.zsh/git_aliases
+fi
 # load exports
 if [ -f ~/.zsh/zsh_exports ]; then
   source ~/.zsh/zsh_exports

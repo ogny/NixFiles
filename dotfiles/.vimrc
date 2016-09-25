@@ -21,7 +21,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'joom/turkish-deasciifier.vim'
 Plug 'mattn/gist-vim'
 Plug 'elzr/vim-json'
-Plug 'vim-scripts/ZoomWin'
+"Plug 'vim-scripts/ZoomWin'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'amiorin/ctrlp-z'
@@ -195,21 +195,33 @@ noremap gr gT
 " :map s {(
 "noremap <Leader>P "*p	
 
-"window acik buffer'i kaydetme
-nnoremap <S-e> :Bclose!<cr>
-"window acik buffer'i kaydet
+
+"""" Window'u acik tut, buffer yonet
+" buffer'i kaydet
 nnoremap <Leader>w :w<bar>:Bclose!<cr>  
-"window acik buffer'i kaydetme
-nnoremap <Leader>q :bdelete!<CR>
-"window kapat buffer'i kaydet
-noremap <S-w> :wq!<CR>
-"window kapat buffer'i kaydetme
-noremap <S-q> :qall!<CR> 
+" buffer'i kaydetme
+nnoremap <Leader>q :Bclose!<cr>
+
+" buffer'lari kaydet
+"noremap <Leader>e :wall<CR> 
+
+"""" Window'u kapatip buffer yonet
+" buffer'i kaydet
+noremap <S-w> :wqall!<CR>
+" buffer'lari kaydetme
+noremap <S-q> :bdelete!<cr>
+noremap <S-e> :qall!<cr>
+
+" buffer'i kaydetme
+"nnoremap <Leader>q :bdelete!<CR>
+" buffer'i kaydetme
+"nnoremap <Leader>q <bar>:Bclose!<cr> <== usttekiyle ayni
+
 
 nnoremap <S-f> :set foldenable<CR>
 nnoremap <Leader>o :r!cat<CR>
 nnoremap <Leader>g :GitGutterToggle<CR>
-nnoremap <Leader>e :enew<cr>
+"nnoremap <Leader>e :enew<cr>
 map <C-e> <Nop>
 vnoremap <Leader>p "*p
 cnoreabbrev Wq wq
@@ -392,8 +404,8 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 "_______________________________________________________________________|
 " Yapilandirma Kaynak: https://github.com/scrooloose/nerdtree
 " Bos vim buffer'i acildiginda baslatma
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Leader key ile acma
 "" map <Leader>n :NERDTreeMapToggleHidden<CR>
 map <Leader>n :NERDTreeToggle<CR>
@@ -401,6 +413,8 @@ map <Leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let g:NERDTreeMapJumpNextSibling = ''
 let g:NERDTreeMapJumpPrevSibling = ''
+let g:NERDTreeMapJumpLastChild = ''
+let g:NERDTreeMapJumpFirstChild = ''
 "_______________________________________________________________________
 " => Vim Indent Color 							                                    |
 "_______________________________________________________________________|
@@ -473,7 +487,7 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 "_______________________________________________________________________
 " => ZoomWin								                                            |
 "_______________________________________________________________________|
-nnoremap <silent> <c-w>w :ZoomWin<CR>
+"nnoremap <silent> <c-w>w :ZoomWin<CR>
 " kaynak:
 " http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
  

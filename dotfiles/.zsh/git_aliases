@@ -1,0 +1,1 @@
+alias glog='git log --no-merges -p --function-context --pretty=format:user:%aN%n%ct --reverse --encoding=UTF-8 --no-renames'

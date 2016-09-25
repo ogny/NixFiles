@@ -339,7 +339,8 @@ bindsym Mod4+m bar mode toggle
 # Make the currently focused window a scratchpad
 bindsym $mod+Shift+minus move scratchpad
 # Show the first scratchpad window
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus [instance="hipchat"] scratchpad show
+bindsym $mod+equal [instance="spotify"] scratchpad show
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
 # monitoru kapa
