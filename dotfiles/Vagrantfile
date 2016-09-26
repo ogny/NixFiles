@@ -1,0 +1,33 @@
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+ config.vm.define "centos1" do |node1|
+    node1.vm.box = "CentOS-6.7"
+    node1.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    node1.vm.hostname = "centos1"
+    node1.vm.network :private_network, ip: "192.168.33.15"
+    node1.vm.network "forwarded_port", guest: 9200, host: 8081,
+      auto_correct: true
+    node1.ssh.insert_key = false
+    node1.ssh.username = "vagrant"
+    node1.ssh.password= "vagrant"
+    node1.vm.provision "shell",
+      inline: "/etc/init.d/iptables stop"
+  end
+
+  config.vm.define "centos2" do |node2|
+    node2.vm.box = "CentOS-6.7"
+    node2.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    node2.vm.hostname = "centos2"
+    node2.vm.network :private_network, ip: "192.168.33.16"
+    node2.vm.network "forwarded_port", guest: 9200, host: 8082,
+      auto_correct: true
+    node2.ssh.insert_key = false
+    node2.ssh.username = "vagrant"
+    node2.ssh.password= "vagrant"
+    node2.vm.provision "shell",
+      inline: "/etc/init.d/iptables stop"
+  end
+
+end
