@@ -6,7 +6,7 @@
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
 "Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 Plug 'junegunn/limelight.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'christoomey/vim-tmux-navigator'
@@ -47,7 +47,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
-"Plug 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 "Plug 'MattesGroeger/vim-bookmarks'
 "Plug 'tmux-plugins/vim-tmux-focus-events'
 "Plug 'terryma/vim-multiple-cursors'
@@ -85,7 +85,7 @@ set modifiable
 autocmd VimResized * wincmd =
 set hidden
 set equalalways
-set noea
+"set noea
 set background=light
 filetype plugin on
 filetype plugin indent on
@@ -147,8 +147,11 @@ highlight VertSplit cterm=none gui=none
 highlight SignColumn ctermbg=none
 highlight Search ctermfg=25 ctermbg=16
 highlight Folded ctermfg=25 ctermbg=16
-"hi StatusLine cterm=none gui=none
-"hi StatusLineNC cterm=none gui=none
+hi StatusLine cterm=none gui=none
+hi TabLine cterm=none gui=none
+hi TabLineFill cterm=none gui=none
+hi TabLineSel cterm=none gui=none
+hi StatusLineNC cterm=none gui=none
 hi NonText ctermfg=00 
 highlight clear SignColumn
 hi link markdownError Normal
@@ -204,6 +207,7 @@ nnoremap <Leader>q :Bclose!<cr>
 
 " buffer'lari kaydet
 "noremap <Leader>e :wall<CR> 
+"
 
 """" Window'u kapatip buffer yonet
 " buffer'i kaydet
@@ -219,9 +223,9 @@ noremap <S-e> :qall!<cr>
 
 
 nnoremap <S-f> :set foldenable<CR>
-nnoremap <Leader>o :r!cat<CR>
+"nnoremap <Leader>o :r!cat<CR>
 nnoremap <Leader>g :GitGutterToggle<CR>
-"nnoremap <Leader>e :enew<cr>
+nnoremap <C-w>e :enew<cr>
 map <C-e> <Nop>
 vnoremap <Leader>p "*p
 cnoreabbrev Wq wq
@@ -415,6 +419,7 @@ let g:NERDTreeMapJumpNextSibling = ''
 let g:NERDTreeMapJumpPrevSibling = ''
 let g:NERDTreeMapJumpLastChild = ''
 let g:NERDTreeMapJumpFirstChild = ''
+let g:NERDTreeWinSize=31
 "_______________________________________________________________________
 " => Vim Indent Color 							                                    |
 "_______________________________________________________________________|
@@ -487,7 +492,7 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 "_______________________________________________________________________
 " => ZoomWin								                                            |
 "_______________________________________________________________________|
-"nnoremap <silent> <c-w>w :ZoomWin<CR>
+nnoremap <silent> <Leader>z :ZoomWin<CR>
 " kaynak:
 " http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
  
@@ -507,9 +512,9 @@ let g:ctrlp_cmd = 'CtrlP'
 "_______________________________________________________________________|
 let g:ctrlp_z_nerdtree = 1
 let g:ctrlp_extensions = ['Z', 'F']
-nnoremap sz :CtrlPZ<Cr>
+"nnoremap sz :CtrlPZ<Cr>
 "nnoremap sf :CtrlPF<Cr>
-"nnoremap <leader>z :CtrlPZ<Cr>
+nnoremap <leader>o :CtrlPZ<Cr>
 nnoremap <leader>p :CtrlPF<Cr>
 " kaynak:
 " https://github.com/amiorin/ctrlp-z
@@ -784,3 +789,5 @@ nnoremap <C-c> @='5k'<CR>
 "python del powerline_setup
 
 let g:gitgutter_enabled = 0
+nnoremap <C-w>q :tabclose<CR>
+nnoremap <C-w>e :tabnew<CR>
