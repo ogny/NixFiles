@@ -148,13 +148,19 @@ highlight SignColumn ctermbg=none
 highlight Search ctermfg=25 ctermbg=16
 highlight Folded ctermfg=25 ctermbg=16
 hi StatusLine cterm=none gui=none
-hi TabLine cterm=none gui=none
-hi TabLineFill cterm=none gui=none
-hi TabLineSel cterm=none gui=none
 hi StatusLineNC cterm=none gui=none
 hi NonText ctermfg=00 
 highlight clear SignColumn
 hi link markdownError Normal
+hi TabLineFill cterm=none gui=none
+hi TabLine ctermfg=none ctermbg=none
+hi TabLineSel ctermfg=none ctermbg=none
+"This line affects the window counter per tab:
+"hi Title ctermfg=LightBlue ctermbg=Magenta
+"hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+"hi TabLine cterm=none gui=none
+"hi TabLineSel cterm=none gui=none
+
  "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
@@ -198,7 +204,6 @@ noremap gr gT
 " :map s {(
 "noremap <Leader>P "*p	
 
-
 """" Window'u acik tut, buffer yonet
 " buffer'i kaydet
 nnoremap <Leader>w :w<bar>:Bclose!<cr>  
@@ -206,8 +211,7 @@ nnoremap <Leader>w :w<bar>:Bclose!<cr>
 nnoremap <Leader>q :Bclose!<cr>
 
 " buffer'lari kaydet
-"noremap <Leader>e :wall<CR> 
-"
+noremap <Leader>e :wall<CR> 
 
 """" Window'u kapatip buffer yonet
 " buffer'i kaydet
@@ -215,15 +219,11 @@ noremap <S-w> :wqall!<CR>
 " buffer'lari kaydetme
 noremap <S-q> :bdelete!<cr>
 noremap <S-e> :qall!<cr>
-
-" buffer'i kaydetme
-"nnoremap <Leader>q :bdelete!<CR>
-" buffer'i kaydetme
-"nnoremap <Leader>q <bar>:Bclose!<cr> <== usttekiyle ayni
-
+nnoremap <C-w>q :tabclose!<CR>
+nnoremap <C-w>e :tabnew!<CR>
 
 nnoremap <S-f> :set foldenable<CR>
-"nnoremap <Leader>o :r!cat<CR>
+"nnoremap <Leader>o :r!cat<CR> " kullanimda
 nnoremap <Leader>g :GitGutterToggle<CR>
 nnoremap <C-w>e :enew<cr>
 map <C-e> <Nop>
@@ -420,6 +420,7 @@ let g:NERDTreeMapJumpPrevSibling = ''
 let g:NERDTreeMapJumpLastChild = ''
 let g:NERDTreeMapJumpFirstChild = ''
 let g:NERDTreeWinSize=31
+let g:NERDTreeDirArrows=0
 "_______________________________________________________________________
 " => Vim Indent Color 							                                    |
 "_______________________________________________________________________|
@@ -789,5 +790,8 @@ nnoremap <C-c> @='5k'<CR>
 "python del powerline_setup
 
 let g:gitgutter_enabled = 0
-nnoremap <C-w>q :tabclose<CR>
-nnoremap <C-w>e :tabnew<CR>
+
+" buffer'i kaydetme
+"nnoremap <Leader>q :bdelete!<CR>
+" buffer'i kaydetme
+"nnoremap <Leader>q <bar>:Bclose!<cr> <== usttekiyle ayni
