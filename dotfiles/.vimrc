@@ -102,7 +102,6 @@ set foldmethod=indent
 "set foldcolumn=4
 set breakindent
 "set showbreak=\ \
-"set hidden	
 set backspace=eol,start	 " allow backspacing over everything in insert mode
 set ignorecase     " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
@@ -211,7 +210,8 @@ nnoremap <Leader>w :w<bar>:Bclose!<cr>
 nnoremap <Leader>q :Bclose!<cr>
 
 " buffer'lari kaydet
-noremap <Leader>e :wall<CR> 
+noremap <Leader>s :wall<CR> 
+"noremap <Leader>e :wall<CR> 
 
 """" Window'u kapatip buffer yonet
 " buffer'i kaydet
@@ -221,11 +221,17 @@ noremap <S-q> :bdelete!<cr>
 noremap <S-e> :qall!<cr>
 nnoremap <C-w>q :tabclose!<CR>
 nnoremap <C-w>e :tabnew!<CR>
+ca <C-w>q :tabclose!<CR>
+ca <C-w>e :tabnew!<CR>
+
+"ca <C-w tabnew
+"ca th tabp
+"ca tl tabn
 
 nnoremap <S-f> :set foldenable<CR>
 "nnoremap <Leader>o :r!cat<CR> " kullanimda
 nnoremap <Leader>g :GitGutterToggle<CR>
-nnoremap <C-w>e :enew<cr>
+"nnoremap <C-w>e :enew<cr>
 map <C-e> <Nop>
 vnoremap <Leader>p "*p
 cnoreabbrev Wq wq
@@ -795,3 +801,4 @@ let g:gitgutter_enabled = 0
 "nnoremap <Leader>q :bdelete!<CR>
 " buffer'i kaydetme
 "nnoremap <Leader>q <bar>:Bclose!<cr> <== usttekiyle ayni
+

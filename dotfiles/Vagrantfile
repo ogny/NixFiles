@@ -6,32 +6,76 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node1.vm.box = "CentOS-6.7"
     node1.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
     node1.vm.hostname = "centos1"
-    node1.vm.network :private_network, ip: "192.168.33.15"
-    node1.vm.network "forwarded_port", guest: 9200, host: 8081,
-      auto_correct: true
+    node1.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
     node1.ssh.insert_key = false
     node1.ssh.username = "vagrant"
-#   node1.ssh.password= "vagrant"
-#   node1.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
     node1.ssh.forward_agent = true
     node1.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
+#   node1.vm.network :private_network, ip: "192.168.33.15"
+#   node1.vm.network "forwarded_port", guest: 22 , host: 2222,
+#     auto_correct: true
+#   node1.ssh.password= "vagrant"
    end
  
   config.vm.define "centos2" do |node2|
     node2.vm.box = "CentOS-6.7"
     node2.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
     node2.vm.hostname = "centos2"
-    node2.vm.network :private_network, ip: "192.168.33.16"
-    node2.vm.network "forwarded_port", guest: 9200, host: 8082,
-      auto_correct: true
     node2.ssh.insert_key = false
     node2.ssh.username = "vagrant"
-    node2.ssh.password= "vagrant"
-#   node2.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
-#   node2.ssh.forward_agent = true
+    node2.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    node2.ssh.forward_agent = true
     node2.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
+    node2.vm.network :private_network, ip: "192.168.33.16"
+    node2.vm.network :private_network, ip: "10.134.50.199"
+    node2.vm.network "forwarded_port", guest: 8080 , host: 8080,
+      auto_correct: true
+#   node2.ssh.password= "vagrant"
   end
 
 end
+
+#### Supervisor'de coklu makina acma ####
+
+# # -*- mode: ruby -*-
+# # vi: set ft=ruby :
+# 
+# Vagrant.configure("2") do |config|
+#     # config.vm.box_url = 'http://10.134.50.227:8000/CentOS-6.7-x86_64-v20151108.box'
+#     config.vm.box = "thinktainer/centos-6_6-x64"
+#     config.ssh.username="vagrant"
+#     config.ssh.password="vagrant"
+#     config.ssh.insert_key = false
+#     config.vm.box_check_update = false
+#     config.vm.network :forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
+# 
+#     (0..9).each do |i|
+#         config.vm.define "cma#{i}" do |nc|
+#             nc.vm.hostname = "cma#{i}"
+#             nc.vm.network :private_network, ip: "192.168.33.#{i+2}" 
+#             nc.vm.network "forwarded_port
+# ", guest: 22, host: "220#{i}".to_i
+#         end
+#     end
+# end
+# Hide full text
+# 10 tane makina acmak isteyen olursa
+# #test/integration/cma/Vagrantfile
+# 
+# [all]
+# cma0 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2200
+# cma1 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2201
+# cma2 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2202
+# cma3 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2203
+# cma4 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2204
+# cma5 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2205
+# cma6 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2206
+# cma7 ansi
+# ble_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2207
+# cma8 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2208
+# cma9 ansible_host=localhost ansible_ssh_user=vagrant ansible_ssh_pass=vagrant ansible_ssh_port=2209
+# 
+# [servers]
+# cma[0:9]
