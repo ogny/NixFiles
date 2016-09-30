@@ -269,3 +269,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 . /home/orkung/ssh-agent.cf >/dev/null 2>&1
 #source ~/Git_Repolari/diger/ansible/hacking/env-setup -q
 #. /home/orkung/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+
+#bindkey '^S'
+stty -ixon

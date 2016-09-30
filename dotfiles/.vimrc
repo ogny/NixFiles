@@ -5,8 +5,6 @@
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
-"Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Plug 'vim-airline/vim-airline'
 Plug 'junegunn/limelight.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'christoomey/vim-tmux-navigator'
@@ -21,7 +19,6 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'joom/turkish-deasciifier.vim'
 Plug 'mattn/gist-vim'
 Plug 'elzr/vim-json'
-"Plug 'vim-scripts/ZoomWin'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'amiorin/ctrlp-z'
@@ -45,31 +42,35 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'klen/python-mode'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'idanarye/vim-merginal'
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
-"Plug 'MattesGroeger/vim-bookmarks'
-"Plug 'tmux-plugins/vim-tmux-focus-events'
-"Plug 'terryma/vim-multiple-cursors'
-"Plug 'saevarb/chronos'
-"Plug 'vim-scripts/FormatToWidth'
-"Plug 'L9'
-"Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'mattn/webapi-vim'
-"Plug 'vim-scripts/nginx.vim'
-"Plug 'davidhalter/jedi-vim'
-"Plug 'neilagabriel/vim-geeknote'
-"Plug 'Wolfy87/vim-expand'
-"Plug 'vivien/vim-addon-linux-coding-style'
-"Plug 'reedes/vim-pencil'
-"Plug 'chrisbra/csv.vim'
-"Plug 'jez/vim-superman'
-"Plug 'tpope/vim-repeat'
-"Plug 'tpope/vim-speeddating'
-"Plug 'tpope/vim-eunuch'
-"Plug 'richsoni/vim-ecliptic'
-"Plug 'plasticboy/vim-markdown'
-"Plug 'tpope/vim-markdown'
+""Plug 'MattesGroeger/vim-bookmarks'
+""Plug 'tmux-plugins/vim-tmux-focus-events'
+""Plug 'terryma/vim-multiple-cursors'
+""Plug 'saevarb/chronos'
+""Plug 'vim-scripts/FormatToWidth'
+""Plug 'L9'
+""Plug 'nathanaelkane/vim-indent-guides'
+""Plug 'mattn/webapi-vim'
+""Plug 'vim-scripts/nginx.vim'
+""Plug 'davidhalter/jedi-vim'
+""Plug 'neilagabriel/vim-geeknote'
+""Plug 'Wolfy87/vim-expand'
+""Plug 'vivien/vim-addon-linux-coding-style'
+""Plug 'reedes/vim-pencil'
+""Plug 'chrisbra/csv.vim'
+""Plug 'jez/vim-superman'
+""Plug 'tpope/vim-repeat'
+""Plug 'tpope/vim-speeddating'
+""Plug 'tpope/vim-eunuch'
+""Plug 'richsoni/vim-ecliptic'
+""Plug 'plasticboy/vim-markdown'
+""Plug 'tpope/vim-markdown'
+""Plug 'vim-scripts/ZoomWin'
+""Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+""Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 call plug#end()
 
@@ -197,8 +198,8 @@ nmap <CR> o<Esc>
 noremap gr gT
 "":nnoremap f }) \| zt
 "":nnoremap s {( \| zt
-:nnoremap f }) \| zz
-:nnoremap s {( \| zz
+nnoremap <C-a> }) \| zz
+nnoremap <C-s> {( \| zz
 " :map f }) 
 " :map s {(
 "noremap <Leader>P "*p	
@@ -231,8 +232,9 @@ ca <C-w>e :tabnew!<CR>
 nnoremap <S-f> :set foldenable<CR>
 "nnoremap <Leader>o :r!cat<CR> " kullanimda
 nnoremap <Leader>g :GitGutterToggle<CR>
+nnoremap <Leader>m :MerginalToggle<CR>
 "nnoremap <C-w>e :enew<cr>
-map <C-e> <Nop>
+"map <C-e> <Nop>
 vnoremap <Leader>p "*p
 cnoreabbrev Wq wq
 cnoreabbrev Q! q!
@@ -788,8 +790,7 @@ set is
 set ic
 
 set pastetoggle=<F2>
-nnoremap <C-x> @='5j'<CR>
-nnoremap <C-c> @='5k'<CR>
+"nnoremap <C-c> @='5k'<CR>
 "let g:airline#extensions#tabline#enabled = 1
 "python from powerline.vim import setup as powerline_setup
 "python powerline_setup()
@@ -802,3 +803,7 @@ let g:gitgutter_enabled = 0
 " buffer'i kaydetme
 "nnoremap <Leader>q <bar>:Bclose!<cr> <== usttekiyle ayni
 
+"_______________________________________________________________________
+" => vim-fugitive                                                       |
+"_______________________________________________________________________|
+autocmd QuickFixCmdPost *grep* cwindow

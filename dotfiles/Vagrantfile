@@ -12,9 +12,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node1.ssh.forward_agent = true
     node1.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
-#   node1.vm.network :private_network, ip: "192.168.33.15"
-#   node1.vm.network "forwarded_port", guest: 22 , host: 2222,
-#     auto_correct: true
+    node1.vm.network :private_network, ip: "192.168.33.15"
+    node1.vm.network "forwarded_port", guest: 8000 , host: 8000,  ## local yumrepo
+#   node1.vm.network "forwarded_port", guest: 8081 , host: 8081,  ## nexus
+      auto_correct: true
 #   node1.ssh.password= "vagrant"
    end
  
@@ -29,7 +30,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node2.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
     node2.vm.network :private_network, ip: "192.168.33.16"
-    node2.vm.network :private_network, ip: "10.134.50.199"
     node2.vm.network "forwarded_port", guest: 8080 , host: 8080,
       auto_correct: true
 #   node2.ssh.password= "vagrant"
