@@ -35,7 +35,7 @@ bindsym $mod+$horz layout splith
 bindsym $mod+e layout toggle split
  
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -351,3 +351,4 @@ bindsym $mod+x floating disable; floating enable
 bindsym Mod4+c  exec --no-startup-id /home/orkung/bin/laptop.sh
 # laptopu kapa
 bindsym Mod4+d  exec --no-startup-id /home/orkung/bin/monitor.sh
+bindsym Mod4+p  exec pavucontrol
