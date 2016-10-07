@@ -143,18 +143,21 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 "_______________________________________________________________________
 " => Gorunum 								                                            |
 "_______________________________________________________________________|
-highlight VertSplit cterm=none gui=none	
-highlight SignColumn ctermbg=none
-highlight Search ctermfg=25 ctermbg=16
-highlight Folded ctermfg=25 ctermbg=16
+hi VertSplit cterm=none gui=none	
+hi VertSplit ctermfg=00 
+hi LineNr guibg=none
+hi SignColumn ctermbg=none
+hi Search ctermfg=25 ctermbg=16
+hi Folded ctermfg=25 ctermbg=16
 hi StatusLine cterm=none gui=none
 hi StatusLineNC cterm=none gui=none
 hi NonText ctermfg=00 
-highlight clear SignColumn
+hi clear SignColumn
 hi link markdownError Normal
 hi TabLineFill cterm=none gui=none
 hi TabLine ctermfg=none ctermbg=none
 hi TabLineSel ctermfg=none ctermbg=none
+set fillchars+=vert:│
 "This line affects the window counter per tab:
 "hi Title ctermfg=LightBlue ctermbg=Magenta
 "hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
@@ -304,7 +307,7 @@ nnoremap <Leader>h :nohl<CR>
 "_______________________________________________________________________
 " => goyo.vim								                                            |
 "_______________________________________________________________________|
- nnoremap <silent> <leader>z :Goyo<cr>
+ nnoremap <silent> <leader>x :Goyo<cr>
 
 function! GoyoBefore()
 "  if exists('$TMUX')
@@ -319,7 +322,12 @@ function! GoyoAfter()
 "  endif
  colorscheme DevC++
  set background=light
- highlight clear SignColumn
+ hi clear SignColumn
+ hi VertSplit cterm=none gui=none
+ hi NonText ctermfg=00
+ hi TabLineFill cterm=none gui=none
+ hi TabLine ctermfg=none ctermbg=none
+ hi TabLineSel ctermfg=none ctermbg=none
  Limelight!
 endfunction
 let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]

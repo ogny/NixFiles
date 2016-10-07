@@ -17,7 +17,7 @@ alias uzers='sudo cat /etc/passwd | cut -d":" -f1'
 alias nt=" netstat -anoep --inet |grep $@"
 alias upd="sudo apt update"
 alias upg="sudo apt upgrade"
-alias kur="sudo apt install  -y --allow"
+alias kur="sudo apt install -y --force-yes"
 alias se="sudo dpkg --get-selections"
 alias ara="apt-cache --names-only search"
 alias lkur="sudo dpkg -i $1"
@@ -139,4 +139,6 @@ _ssh_auth_save() {
 #gist "$@" |json | pygmentize -l json |less
 #}
 #export -f pjson
-alias pjson='json | pygmentize -l json |less'
+alias pjson='json | pygmentize -l json' 
+alias kaydet='ffmpeg -f x11grab -r 135 -s 1920x1080 -i :0.0 /tmp/outputFile.mp4' 
+alias asp='ansible-playbook'

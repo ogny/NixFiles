@@ -236,7 +236,7 @@ bindsym XF86Mail exec --no-startup-id echo "pause" > /tmp/mplayer-control
 bindsym XF86Search exec --no-startup-id echo "pt_step 1" > /tmp/mplayer-control
 #bindsym XF86HomePage exec --no-startup-id echo "pt_step -1" > /tmp/mplayer-control
 #bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1680x1050 -u orkung 192.168.56.2"
-bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1920x1440 -u orkung 192.168.56.2"
+bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1920x1080 -u orkung 192.168.56.2"
 
 #bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1366x768 -u orkung 192.168.56.2"
 # Kaynak: https://faq.i3wm.org/question/125/how-to-change-the-systems-volume/?sort=votes&page=2#sort-top
