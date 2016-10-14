@@ -14,6 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       inline: "/etc/init.d/iptables stop"
     node1.vm.network :private_network, ip: "192.168.33.15"
     node1.vm.network "forwarded_port", guest: 8000 , host: 8000  ## local yumrepo
+    node1.vm.network "forwarded_port", guest: 8080 , host: 8080  ## local yumrepo
     node1.vm.network "forwarded_port", guest: 5432 , host: 5432  ## db
 #   node1.vm.network "forwarded_port", guest: 8081 , host: 8081,  ## nexus
 #     auto_correct: true
@@ -29,8 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node2.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
     node2.ssh.forward_agent = true
     node2.vm.network :private_network, ip: "192.168.33.16"
-    node2.vm.network "forwarded_port", guest: 8080 , host: 8080,
-      auto_correct: true
+#   node2.vm.network "forwarded_port", guest: 8080 , host: 8080,
+#     auto_correct: true
 #   node2.ssh.password= "vagrant"
 # end
     node2.vm.provision "shell",
@@ -40,8 +41,45 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #   ansible.sudo = true
 #   ansible.playbook = "/home/orkung/Git_Repolari/diger/ansible_graphite_repolari/vagrant-ansible-graphite/graphite.yml"
 # end
-end
 
+  config.vm.define "centos3" do |node3|
+    node3.vm.box = "CentOS-6.7"
+    node3.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    node3.vm.hostname = "centos3"
+    node3.ssh.insert_key = false
+    node3.ssh.username = "vagrant"
+    node3.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    node3.ssh.forward_agent = true
+    node3.vm.network :private_network, ip: "192.168.33.17"
+#   node2.vm.network "forwarded_port", guest: 8080 , host: 8080,
+#     auto_correct: true
+#   node2.ssh.password= "vagrant"
+# end
+    node3.vm.provision "shell",
+      inline: "/etc/init.d/iptables stop"
+    end
+
+  config.vm.define "centos4" do |node4|
+    node4.vm.box = "CentOS-6.7"
+    node4.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    node4.vm.hostname = "centos4"
+    node4.ssh.insert_key = false
+    node4.ssh.username = "vagrant"
+    node4.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    node4.ssh.forward_agent = true
+    node4.vm.network :private_network, ip: "192.168.33.18"
+#   node2.vm.network "forwarded_port", guest: 8080 , host: 8080,
+#     auto_correct: true
+#   node2.ssh.password= "vagrant"
+# end
+    node4.vm.provision "shell",
+      inline: "/etc/init.d/iptables stop"
+    end
+# config.vm.provision "ansible" do |ansible|
+#   ansible.sudo = true
+#   ansible.playbook = "/home/orkung/Git_Repolari/diger/ansible_graphite_repolari/vagrant-ansible-graphite/graphite.yml"
+# end
+end
 
 #### Supervisor'de coklu makina acma ####
 

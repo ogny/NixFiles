@@ -196,7 +196,8 @@ exec xrandr --output HDMI2 --auto --right-of eDP1  --output eDP1 --auto
 #exec --no-startup-id  feh --set-zoom-fill ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh --restore
-exec --no-startup-id  dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
+exec --no-startup-id google-chrome --app="https://soundcloud.com/stream" 
 #exec ~/bin/myfeh.sh
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
 #exec libreoffice ~/alsat_serverlar_v21.xlsx
@@ -217,7 +218,7 @@ exec --no-startup-id  dunst -config ~/.config/dunst/dunstrc
 bindsym Mod4+w exec mate-terminal
 #bindsym Mod4+w exec urxvt 
 bindsym Mod4+e exec urxvt -geometry 53x38 -e tmux new-session
-bindsym Mod4+s exec google-chrome
+bindsym Mod4+g exec google-chrome
 bindsym Mod4+a exec pavucontrol 
 bindsym Mod4+z exec "setxkbmap tr"
 bindsym Mod4+x exec "setxkbmap us ; setxkbmap -option caps:escape ; xmodmap /home/orkung/.Xmodmap"
@@ -333,22 +334,28 @@ for_window [class="Toggl Desktop"] floating enable
 bindsym $mod+m move workspace to output left 
 bindsym $mod+Shift+m move workspace to output right
 # bar toggle, hide or show 
-bindsym Mod4+m bar mode toggle
+bindsym Mod4+t bar mode toggle
 #bindsym $mod+o bar mode toggle
 #bindsym Mod4+r exec ~/bin/ingce.sh
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym Mod4+Shift+h move scratchpad
 # Show the first scratchpad window
-bindsym $mod+minus [instance="hipchat"] scratchpad show
+bindsym Mod4+h [instance="hipchat"] scratchpad show
 
 # Make the currently focused window a scratchpad
-bindsym $mod+Shift+equal move scratchpad
+bindsym Mod4+Shift+equal move scratchpad
 # Show the first scratchpad window
-bindsym $mod+equal [instance="spotify"] scratchpad show
+bindsym Mod4+s [instance="spotify"] scratchpad show
+
+# Make the currently focused window a scratchpad
+bindsym Mod4+Shift+semicolon move scratchpad
+# Show the first scratchpad window
+bindsym Mod4+semicolon [instance="soundcloud.com__stream"] scratchpad show
+
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
 # monitoru kapa
-bindsym Mod4+c  exec --no-startup-id /home/orkung/bin/laptop.sh
+bindsym Mod4+l  exec --no-startup-id /home/orkung/bin/laptop.sh
 # laptopu kapa
-bindsym Mod4+d  exec --no-startup-id /home/orkung/bin/monitor.sh
+bindsym Mod4+m  exec --no-startup-id /home/orkung/bin/monitor.sh
 bindsym Mod4+p  exec pavucontrol

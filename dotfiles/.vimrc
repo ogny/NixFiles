@@ -6,6 +6,7 @@
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/limelight.vim'
+Plug 'lepture/vim-jinja'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
@@ -815,3 +816,6 @@ let g:gitgutter_enabled = 0
 " => vim-fugitive                                                       |
 "_______________________________________________________________________|
 autocmd QuickFixCmdPost *grep* cwindow
+
+" In text files, always limit the width of text to 78 characters
+autocmd  BufEnter,BufRead,BufNewFile,BufReadPost *.tw set textwidth=137
