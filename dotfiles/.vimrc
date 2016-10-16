@@ -235,7 +235,9 @@ ca <C-w>e :tabnew!<CR>
 
 nnoremap <S-f> :set foldenable<CR>
 "nnoremap <Leader>o :r!cat<CR> " kullanimda
-nnoremap <Leader>g :GitGutterToggle<CR>
+nnoremap <Leader>g :Gstatus<CR>
+nnoremap <Leader>p :Gpush<CR>
+"nnoremap <Leader>g :GitGutterToggle<CR>
 nnoremap <Leader>m :MerginalToggle<CR>
 "nnoremap <C-w>e :enew<cr>
 "map <C-e> <Nop>
@@ -248,10 +250,12 @@ cnoreabbrev Q q
 noremap <C-e> :FZF ~<CR>
 "noremap <C-w> :FZF ~<CR>
 "noremap <S-f> :FZF ~<CR>
-nnoremap <leader>n :w<bar>:bNext<CR>
-nnoremap <leader>p :w<bar>:bprevious<CR>
+"nnoremap <leader>n :w<bar>:bNext<CR>
+"nnoremap <leader>p :w<bar>:bprevious<CR>
 nnoremap <C-n> :BuffergatorMruCycleNext<cr>
 nnoremap <C-p> :BuffergatorMruCyclePrev<CR>
+"nnoremap  <C-n> :bn<cr>
+"nnoremap  <C-p> :bp<cr>
 nnoremap / /\v
 vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
@@ -532,8 +536,8 @@ let g:ctrlp_z_nerdtree = 1
 let g:ctrlp_extensions = ['Z', 'F']
 "nnoremap sz :CtrlPZ<Cr>
 "nnoremap sf :CtrlPF<Cr>
-nnoremap <leader>o :CtrlPZ<Cr>
-nnoremap <leader>p :CtrlPF<Cr>
+nnoremap <leader>d :CtrlPZ<Cr>
+nnoremap <leader>f :CtrlPF<Cr>
 " kaynak:
 " https://github.com/amiorin/ctrlp-z
 
