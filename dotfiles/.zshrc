@@ -11,11 +11,12 @@ if [ -f ~/.zsh/zsh_exports ]; then
 fi
 
 # Set up the prompt
-autoload -Uz promptinit
+autoload -Uz compinit promptinit
+compinit
 promptinit
-prompt off
-PS1=' %~ 
-%# '
+#prompt off
+#PS1=' %~ 
+#%# '
 bindkey -v
 
 setopt autocd
@@ -152,6 +153,9 @@ chpwd_functions+='chpwd_update_git_vars'
 # 
 ## Set the prompt.
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
+#PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} '
+#PROMPT='%B%m%~%b$(git_super_status) %# '
+PROMPT=$'%{${fg[cyan]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
 #%#%{${fg[default]}%} '
 
 #vman() {
@@ -272,3 +276,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 
 #bindkey '^S'
 stty -ixon
+source /home/orkung/Git_Repolari/diger/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+plugins=(git extract)
+source /home/orkung/Git_Repolari/diger/zsh-git-prompt/zshrc.sh 
