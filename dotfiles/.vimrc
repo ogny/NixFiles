@@ -146,7 +146,7 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 "_______________________________________________________________________|
 hi VertSplit cterm=none gui=none	
 hi VertSplit ctermfg=00 
-hi LineNr guibg=none
+"hi LineNr guibg=none
 hi SignColumn ctermbg=none
 hi Search ctermfg=25 ctermbg=16
 hi Folded ctermfg=25 ctermbg=16
