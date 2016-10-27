@@ -155,7 +155,10 @@ chpwd_functions+='chpwd_update_git_vars'
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} '
 #PROMPT='%B%m%~%b$(git_super_status) %# '
-PROMPT=$'%{${fg[cyan]}%}%B%~%b$(git_super_status)%{${fg[default]}%} '
+PROMPT=$'%{${fg[cyan]}%}%B%~%b$(git_super_status)
+%{${fg[default]}%}'
+#PS1=' %~ 
+#%# '
 #%#%{${fg[default]}%} '
 
 #vman() {

@@ -5,6 +5,7 @@
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
+Plug 'gcmt/taboo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'lepture/vim-jinja'
 Plug 'dhruvasagar/vim-table-mode'
@@ -81,7 +82,51 @@ call plug#end()
 "colorscheme flattened_dark
 " signcolumn gizleme
 " :sign unplace *
+
+"colorscheme molokai
+"let s:color_override_dark = '
+"    \ if &background == "dark"
+"    \ | hi StatusLine    guifg=#000000 guibg=#ffffff gui=NONE  ctermfg=16 ctermbg=15     cterm=NONE
+"    \ | hi CursorLine    guibg=#293739 ctermbg=236
+"    \ | hi PmenuSel      guibg=#0a9dff guifg=white   gui=NONE  ctermbg=39 ctermfg=white  cterm=NONE
+"    \ | hi PmenuSbar     guibg=#857f78
+"    \ | hi PmenuThumb    guifg=#242321
+"    \ | hi WildMenu      gui=NONE cterm=NONE guifg=#f8f6f2 guibg=#0a9dff ctermfg=255 ctermbg=39
+"    \ | hi DiffAdd       guifg=#ffffff guibg=#006600 gui=NONE  ctermfg=231  ctermbg=22   cterm=NONE 
+"    \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE 
+"    \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE 
+"    \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE 
+"    \ | hi MatchParen    guifg=NONE   guibg=NONE gui=underline ctermfg=NONE ctermbg=NONE cterm=underline
+"    \ | endif
+"    \'
+"if has('vim_starting') "only on startup
+"  exe 'autocmd ColorScheme * '.s:color_override_dark
+"  " expects &runtimepath/colors/{name}.vim.
+"  silent! colorscheme molokai
+"endif
+
 colorscheme DevC++
+let s:color_override_dark = '
+    \ if &background == "dark"
+    \ | hi StatusLine    guifg=#000000 guibg=#ffffff gui=NONE  ctermfg=16 ctermbg=15     cterm=NONE
+    \ | hi CursorLine    guibg=#293739 ctermbg=236
+    \ | hi PmenuSel      guibg=#0a9dff guifg=white   gui=NONE  ctermbg=39 ctermfg=white  cterm=NONE
+    \ | hi PmenuSbar     guibg=#857f78
+    \ | hi PmenuThumb    guifg=#242321
+    \ | hi WildMenu      gui=NONE cterm=NONE guifg=#f8f6f2 guibg=#0a9dff ctermfg=255 ctermbg=39
+    \ | hi DiffAdd       guifg=#ffffff guibg=#006600 gui=NONE  ctermfg=231  ctermbg=22   cterm=NONE 
+    \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE 
+    \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE 
+    \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE 
+    \ | hi MatchParen    guifg=NONE   guibg=NONE gui=underline ctermfg=NONE ctermbg=NONE cterm=underline
+    \ | endif
+    \'
+if has('vim_starting') "only on startup
+  exe 'autocmd ColorScheme * '.s:color_override_dark
+  " expects &runtimepath/colors/{name}.vim.
+  silent! colorscheme DevC++
+endif
+
 "set mouse=nv
 set modifiable
 autocmd VimResized * wincmd =
@@ -96,7 +141,6 @@ set nocompatible              " be iMproved, required
 filetype on
 syntax on
 syntax enable
-set guitablabel=%t
 set splitright
 set autoread
 set linebreak
@@ -224,8 +268,6 @@ noremap <S-w> :wqall!<CR>
 " buffer'lari kaydetme
 noremap <S-q> :bdelete!<cr>
 noremap <S-e> :qall!<cr>
-nnoremap <C-w>q :tabclose!<CR>
-nnoremap <C-w>e :tabnew!<CR>
 ca <C-w>q :tabclose!<CR>
 ca <C-w>e :tabnew!<CR>
 
@@ -238,6 +280,7 @@ nnoremap <S-f> :set foldenable<CR>
 nnoremap <Leader>g :Gstatus<CR>
 nnoremap <Leader>p :Gpush<CR>
 "nnoremap <Leader>g :GitGutterToggle<CR>
+nnoremap <Leader>u :GitGutterToggle<CR>
 nnoremap <Leader>m :MerginalToggle<CR>
 "nnoremap <C-w>e :enew<cr>
 "map <C-e> <Nop>
@@ -325,7 +368,6 @@ function! GoyoAfter()
 "  if exists('$TMUX')
 "    silent !tmux set status off
 "  endif
- colorscheme DevC++
  set background=light
  hi clear SignColumn
  hi VertSplit cterm=none gui=none
@@ -809,7 +851,7 @@ set pastetoggle=<F2>
 "python powerline_setup()
 "python del powerline_setup
 
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
 
 " buffer'i kaydetme
 "nnoremap <Leader>q :bdelete!<CR>
@@ -823,3 +865,24 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 " In text files, always limit the width of text to 78 characters
 autocmd  BufEnter,BufRead,BufNewFile,BufReadPost *.tw set textwidth=137
+"hi diffAdded   ctermbg=NONE ctermfg=46  cterm=NONE guibg=NONE guifg=#00FF00 gui=NONE
+"hi diffRemoved ctermbg=NONE ctermfg=196 cterm=NONE guibg=NONE guifg=#FF0000 gui=NONE
+"hi link diffLine String
+"hi link diffSubname Normal
+if &diff
+    colorscheme molokai
+endif
+
+"_______________________________________________________________________
+" => taboo.vim                                                          |
+"_______________________________________________________________________|
+set guioptions-=e
+set sessionoptions+=tabpages,globals
+set guitablabel=%t
+nnoremap <C-w>q :tabclose!<CR>
+nnoremap <C-w>e :TabooOpen 
+"nnoremap <C-w>e :tabnew!<CR>
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
+
