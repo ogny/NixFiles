@@ -57,3 +57,5 @@ while ((count)); do
     sleep $seconds
     ((count--))
 done
+
+pkill -f hipchat && hipchat
