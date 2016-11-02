@@ -1,0 +1,22 @@
+[user]
+	name = Orkun Gunay
+	email = orkun.gunay@sekomyazilim.com.tr
+[push]
+	default = matching
+[core]
+  editor = vim
+  whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = ~/.gitignore
+[web]
+  browser = google-chrome
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+  s = status
+  c = checkout
+  b = branch
+[merge]
+	tool = vimdiff
