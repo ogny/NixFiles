@@ -173,6 +173,7 @@ exec --no-startup-id sudo vpnc sekom
 exec --no-startup-id pa-applet
 exec --no-startup-id unclutter -display :0 -root -idle 1 &
 exec --no-startup-id google-chrome --app="https://soundcloud.com/adamhusa" 
+exec --no-startup-id google-chrome --app="https://soundcloud.com/relaxdaily"
 
 #exec --no-startup-id numlockx
 #exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1  --output eDP1 --auto
