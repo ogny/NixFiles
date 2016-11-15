@@ -168,7 +168,8 @@ set nocindent  " Switch off all auto-indenting
 set nosmartindent	
 set noautoindent	
 set indentexpr=
-set clipboard=unnamedplus
+set clipboard=unnamed
+"set clipboard=unnamedplus
 set go+=a
 set showmode
 set ruler
@@ -244,10 +245,12 @@ nmap ; o<Esc>
 nmap <CR> o<Esc>
 
 noremap gr gT
-"":nnoremap f }) \| zt
-"":nnoremap s {( \| zt
+":nnoremap f }) \| zt
+":nnoremap s {( \| zt
 nnoremap <C-a> }) \| zz
 nnoremap <C-s> {( \| zz
+"noremap <C-a> }) \| zt
+"noremap <C-s> {( \| zt
 " :map f }) 
 " :map s {(
 "noremap <Leader>P "*p	

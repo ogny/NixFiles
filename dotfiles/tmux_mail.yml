@@ -1,0 +1,11 @@
+session_name: mail
+windows:
+- window_name: kisisel
+  panes:
+    - mutt -F ~/.mutt/account.com.gmail.orkungunayx
+- window_name: sysadm
+  panes:
+    - mutt -F ~/.mutt/account.com.gmail.rkngny80
+- window_name: is
+  panes:
+    - mutt -F ~/.mutt/account.com.outlook.sekomy

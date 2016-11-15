@@ -172,8 +172,8 @@ exec --no-startup-id hipchat
 exec --no-startup-id sudo vpnc sekom
 exec --no-startup-id pa-applet
 exec --no-startup-id unclutter -display :0 -root -idle 1 &
-exec --no-startup-id google-chrome --app="https://soundcloud.com/adamhusa" 
-exec --no-startup-id google-chrome --app="https://soundcloud.com/relaxdaily"
+#exec --no-startup-id google-chrome --app="https://soundcloud.com/adamhusa" 
+#exec --no-startup-id google-chrome --app="https://soundcloud.com/relaxdaily"
 
 #exec --no-startup-id numlockx
 #exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1  --output eDP1 --auto
@@ -323,8 +323,8 @@ for_window [class="HipChat"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [class="uxterm"] floating enable
 for_window [class="zathura"] floating enable
-for_window [class="soundcloud.com__adamhusa"] floating enable 
-#for_window [class="soundcloud.com__adamhusa"] floating enable resize set 387 492
+#for_window [class="google-chrome"] floating enable 
+#for_window [class="soundcloud.com"] floating enable resize set 387 492
 for_window [class="Pavucontrol"] floating enable resize set 640 480
 for_window [class="TogglDesktop"] floating enable
 for_window [class="Toggl Desktop"] floating enable
@@ -343,6 +343,7 @@ bindsym $mod+Shift+m move workspace to output right
 # bar toggle, hide or show 
 #bindsym $mod+o bar mode toggle
 #bindsym Mod4+r exec ~/bin/ingce.sh
+
 # Make the currently focused window a scratchpad
 bindsym Mod4+Shift+h move scratchpad
 # Show the first scratchpad window
@@ -356,7 +357,7 @@ bindsym Mod4+s [instance="spotify"] scratchpad show
 # Make the currently focused window a scratchpad
 bindsym Mod4+Shift+semicolon move scratchpad
 # Show the first scratchpad window
-bindsym Mod4+semicolon [instance="soundcloud.com__adamhusa"] scratchpad show
+bindsym Mod4+semicolon [instance="google-chrome"] scratchpad show
 
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable

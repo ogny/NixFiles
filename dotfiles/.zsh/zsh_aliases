@@ -142,3 +142,4 @@ _ssh_auth_save() {
 alias pjson='json | pygmentize -l json' 
 alias kaydet='ffmpeg -f x11grab -r 135 -s 1920x1080 -i :0.0 /tmp/outputFile.mp4' 
 alias asp='ansible-playbook'
+alias myag="ag -iQ"

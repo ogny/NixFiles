@@ -14,9 +14,13 @@
 [difftool]
 	prompt = false
 [alias]
+  a = "add ."
 	d = difftool
   s = status
   c = checkout
   b = branch
+  ps = "push origin"
+  pl = pull
+  co = "commit -m"
 [merge]
 	tool = vimdiff
