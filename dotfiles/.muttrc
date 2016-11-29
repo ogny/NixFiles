@@ -40,9 +40,9 @@ set index_format="%?M? ↳&%4C? %-18.18n %s"
 # Mailboxes
 bind    index   G  imap-fetch-mail
 macro   index   gi "<change-folder>=INBOX<enter>"       "Go to Inbox"
-macro   index   gs "<change-folder>=$my_sent<enter>"    "Go to Sent"
-macro   index   gd "<change-folder>=$my_drafts<enter>"  "Go to Drafts"
-macro   index   gt "<change-folder>=$my_trash<enter>"   "Go to Trash"
+macro   index   gs "<change-folder>=Sent Items<enter>"    "Go to Sent"
+macro   index   gd "<change-folder>=Drafts<enter>"  "Go to Drafts"
+macro   index   gt "<change-folder>=Deleted Items<enter>"   "Go to Trash"
 
 macro index .i  "<limit>~F<Enter>"  "view new/flag"
 macro index .a  "<limit>~A<Enter>"       "view all"
@@ -90,3 +90,5 @@ bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 #bind index,pager B sidebar-toggle-visible
 bind index,pager \CO sidebar-open
+set alias_file=~/.mutt/aliases 
+source ~/.mutt/aliases

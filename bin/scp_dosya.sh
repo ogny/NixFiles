@@ -1,8 +1,8 @@
 #!/bin/bash
 
-all_array=($(cat ~/is/env/off/alsat))
+all_array=($(cat ~/fatih_etlik))
   for i in "${all_array[@]}"; do
-    scp ~/Downloads/tzdata-2016g-2.el6.noarch.rpm root@$i:~/ 
+    sshpass -f ~/is/parolalar/dpic_fatih/root scp /home/orkung/files/supervisor-3.3.0.tar.gz $i:~/
   done
 
   
