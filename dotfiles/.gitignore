@@ -4,3 +4,5 @@
 Session.vim
 .netrwhist
 *~
+dotfiles/.tmux/plugins/tmux-sessionist
+dotfiles/.tmux/plugins/tmux-sidebar
