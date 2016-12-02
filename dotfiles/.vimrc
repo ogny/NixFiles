@@ -126,7 +126,7 @@ if has('vim_starting') "only on startup
   " expects &runtimepath/colors/{name}.vim.
   silent! colorscheme DevC++
 endif
-
+set textwidth=78
 "set mouse=nv
 set modifiable
 autocmd VimResized * wincmd =
@@ -867,7 +867,7 @@ let g:gitgutter_enabled = 1
 autocmd QuickFixCmdPost *grep* cwindow
 
 " In text files, always limit the width of text to 78 characters
-autocmd  BufEnter,BufRead,BufNewFile,BufReadPost *.tw set textwidth=137
+autocmd  BufEnter,BufRead,BufNewFile,BufReadPost *.tw set textwidth=78
 "hi diffAdded   ctermbg=NONE ctermfg=46  cterm=NONE guibg=NONE guifg=#00FF00 gui=NONE
 "hi diffRemoved ctermbg=NONE ctermfg=196 cterm=NONE guibg=NONE guifg=#FF0000 gui=NONE
 "hi link diffLine String
@@ -888,4 +888,9 @@ nnoremap <C-w>e :TabooOpen
 if $TMUX == ''
     set clipboard+=unnamed
 endif
+autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
+au FileType mail set tw=64 autoindent expandtab formatoptions=tcqn
+au FileType mail set list listchars=tab:»·,trail:·
+au FileType mail set comments=nb:>
+au FileType mail vmap D dO[...]^[]
 
