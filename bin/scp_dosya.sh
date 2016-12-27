@@ -1,8 +1,8 @@
 #!/bin/bash
 
-all_array=($(cat ~/fatih_etlik))
+all_array=($(cat ~/ipam-fatih))
   for i in "${all_array[@]}"; do
-    sshpass -f ~/is/parolalar/dpic_fatih/root scp /home/orkung/files/supervisor-3.3.0.tar.gz $i:~/
+    scp /home/orkung/Linux_x64_RWC2_v15.11.00.13.tar.gz $i:~/
   done
 
   

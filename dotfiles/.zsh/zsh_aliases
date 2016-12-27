@@ -144,3 +144,4 @@ alias kaydet='ffmpeg -f x11grab -r 135 -s 1920x1080 -i :0.0 /tmp/outputFile.mp4'
 alias asp='ansible-playbook'
 alias myag="ag -iQ"
 alias sshf='sshpass -f ~/is/parolalar/dpic_fatih/cma ssh'
+alias dsmrtdb='sshpass -f ~/is/parolalar/generic_parola ssh root@213.243.1.188'

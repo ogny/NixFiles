@@ -282,3 +282,4 @@ stty -ixon
 source /home/orkung/Git_Repolari/diger/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(git extract)
 source /home/orkung/Git_Repolari/diger/zsh-git-prompt/zshrc.sh 
+

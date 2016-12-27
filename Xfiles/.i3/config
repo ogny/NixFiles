@@ -172,6 +172,8 @@ exec --no-startup-id hipchat
 exec --no-startup-id sudo vpnc sekom
 exec --no-startup-id pa-applet
 exec --no-startup-id unclutter -display :0 -root -idle 1 &
+exec --no-startup-id clipmenud &
+exec --no-startup-id nohup watch -n 15 --precise hipchat_restart.sh & 
 #exec --no-startup-id unclutter -root -idle 1 &
 #exec --no-startup-id google-chrome --app="https://soundcloud.com/adamhusa" 
 #exec --no-startup-id google-chrome --app="https://soundcloud.com/relaxdaily"
@@ -225,7 +227,7 @@ bindsym Mod4+w exec mate-terminal
 #bindsym Mod4+w exec urxvt 
 bindsym Mod4+e exec urxvt -geometry 53x38 -e tmux new-session
 bindsym Mod4+g exec google-chrome
-bindsym Mod4+a exec pavucontrol 
+#bindsym Mod4+a exec pavucontrol 
 bindsym Mod4+z exec "setxkbmap tr"
 bindsym Mod4+x exec "setxkbmap us ; setxkbmap -option caps:escape ; xmodmap /home/orkung/.Xmodmap"
 # Sesi ayarlama	
@@ -276,6 +278,7 @@ bar {
 	output	       eDP1
 	output	       HDMI2
         status_command i3status --config ~/.i3status.conf
+#  mode toggle
   mode hide
   hidden_state hide
   modifier Mod4
@@ -356,9 +359,9 @@ bindsym Mod4+Shift+s move scratchpad
 bindsym Mod4+s [instance="spotify"] scratchpad show
 
 # Make the currently focused window a scratchpad
-bindsym Mod4+Shift+semicolon move scratchpad
+bindsym Mod4+Shift+b move scratchpad
 # Show the first scratchpad window
-bindsym Mod4+semicolon [instance="google-chrome"] scratchpad show
+bindsym Mod4+b [instance="google-chrome"] scratchpad show
 
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
@@ -368,3 +371,4 @@ bindsym $mod+x floating disable; floating enable
 #bindsym Mod4+t bar mode toggle
 bindsym Mod4+t exec --no-startup-id /home/orkung/bin/xrandr_toggle.sh
 bindsym Mod4+p  exec pavucontrol
+bindsym Mod4+v exec clipmenu

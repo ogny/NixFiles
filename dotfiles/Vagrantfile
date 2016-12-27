@@ -2,80 +2,80 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.define "centos1" do |config|
-    config.vm.box = "CentOS-6.7"
-    config.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
-    config.vm.hostname = "centos1"
-    config.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
-    config.ssh.insert_key = false
-    config.ssh.username = "vagrant"
-    config.ssh.forward_agent = true
-    config.vm.provision "shell",
+  config.vm.define "centos1" do |centos1|
+    centos1.vm.box = "CentOS-6.7"
+    centos1.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    centos1.vm.hostname = "centos1"
+    centos1.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    centos1.ssh.insert_key = false
+    centos1.ssh.username = "vagrant"
+    centos1.ssh.forward_agent = true
+    centos1.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
-    config.vm.network :private_network, ip: "192.168.33.15"
-    config.vm.network "forwarded_port", guest: 8000 , host: 8000  ## local yumrepo
-    config.vm.network "forwarded_port", guest: 8080 , host: 8080  ## local yumrepo
-    config.vm.network "forwarded_port", guest: 5432 , host: 5432  ## db
-#   config.vm.network "forwarded_port", guest: 8081 , host: 8081,  ## nexus
+    centos1.vm.network :private_network, ip: "192.168.33.15"
+    centos1.vm.network "forwarded_port", guest: 8000 , host: 8000  ## local yumrepo
+    centos1.vm.network "forwarded_port", guest: 8080 , host: 8080  ## local yumrepo
+    centos1.vm.network "forwarded_port", guest: 5432 , host: 5432  ## db
+#   centos1.vm.network "forwarded_port", guest: 8081 , host: 8081,  ## nexus
 #     auto_correct: true
-#   config.ssh.password= "vagrant"
+#   centos1.ssh.password= "vagrant"
    end
  
-  config.vm.define "centos2" do |config|
-    config.vm.box = "CentOS-6.7"
-    config.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
-    config.vm.hostname = "centos2"
-    config.ssh.insert_key = false
-    config.ssh.username = "vagrant"
-    config.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
-    config.ssh.forward_agent = true
-    config.vm.network :private_network, ip: "192.168.33.16"
-#   config.vm.network "forwarded_port", guest: 8080 , host: 8080,
+  config.vm.define "centos2" do |centos2|
+    centos2.vm.box = "CentOS-6.7"
+    centos2.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    centos2.vm.hostname = "centos2"
+    centos2.ssh.insert_key = false
+    centos2.ssh.username = "vagrant"
+    centos2.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    centos2.ssh.forward_agent = true
+    centos2.vm.network :private_network, ip: "192.168.33.16"
+#   centos2.vm.network "forwarded_port", guest: 8080 , host: 8080,
 #     auto_correct: true
-#   config.ssh.password= "vagrant"
+#   centos2.ssh.password= "vagrant"
 # end
-    config.vm.provision "shell",
+    centos2.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
     end
-# config.vm.provision "ansible" do |ansible|
+# centos2.vm.provision "ansible" do |ansible|
 #   ansible.sudo = true
 #   ansible.playbook = "/home/orkung/Git_Repolari/diger/ansible_graphite_repolari/vagrant-ansible-graphite/graphite.yml"
 # end
 
-  config.vm.define "centos3" do |config|
-    config.vm.box = "CentOS-6.7"
-    config.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
-    config.vm.hostname = "centos3"
-    config.ssh.insert_key = false
-    config.ssh.username = "vagrant"
-    config.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
-    config.ssh.forward_agent = true
-    config.vm.network :private_network, ip: "192.168.33.17"
-#   config.vm.network "forwarded_port", guest: 8080 , host: 8080,
+  config.vm.define "centos3" do |centos3|
+    centos3.vm.box = "CentOS-6.7"
+    centos3.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    centos3.vm.hostname = "centos3"
+    centos3.ssh.insert_key = false
+    centos3.ssh.username = "vagrant"
+    centos3.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    centos3.ssh.forward_agent = true
+    centos3.vm.network :private_network, ip: "192.168.33.17"
+#   centos3.vm.network "forwarded_port", guest: 8080 , host: 8080,
 #     auto_correct: true
-#   config.ssh.password= "vagrant"
+#   centos3.ssh.password= "vagrant"
 # end
-    config.vm.provision "shell",
+    centos3.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
     end
 
-  config.vm.define "centos4" do |config|
-    config.vm.box = "CentOS-6.7"
-    config.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
-    config.vm.hostname = "centos4"
-    config.ssh.insert_key = false
-    config.ssh.username = "vagrant"
-    config.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
-    config.ssh.forward_agent = true
-    config.vm.network :private_network, ip: "192.168.33.18"
-#   config.vm.network "forwarded_port", guest: 8080 , host: 8080,
+  config.vm.define "centos4" do |centos4|
+    centos4.vm.box = "CentOS-6.7"
+    centos4.vm.box_url = 'file:///home/orkung/CentOS-6.7-x86_64-v20151108.box'
+    centos4.vm.hostname = "centos4"
+    centos4.ssh.insert_key = false
+    centos4.ssh.username = "vagrant"
+    centos4.ssh.private_key_path = '/home/orkung/.vagrant.d/insecure_private_key' 
+    centos4.ssh.forward_agent = true
+    centos4.vm.network :private_network, ip: "192.168.33.18"
+#   centos4.vm.network "forwarded_port", guest: 8080 , host: 8080,
 #     auto_correct: true
-#   config.ssh.password= "vagrant"
+#   centos4.ssh.password= "vagrant"
 # end
-    config.vm.provision "shell",
+    centos4.vm.provision "shell",
       inline: "/etc/init.d/iptables stop"
     end
-# config.vm.provision "ansible" do |ansible|
+# centos4.vm.provision "ansible" do |ansible|
 #   ansible.sudo = true
 #   ansible.playbook = "/home/orkung/Git_Repolari/diger/ansible_graphite_repolari/vagrant-ansible-graphite/graphite.yml"
 # end

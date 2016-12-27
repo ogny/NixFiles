@@ -50,9 +50,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 ""Plug 'MattesGroeger/vim-bookmarks'
 ""Plug 'tmux-plugins/vim-tmux-focus-events'
-""Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 ""Plug 'saevarb/chronos'
 ""Plug 'vim-scripts/FormatToWidth'
+Plug 'vim-scripts/Align'
+Plug 'vim-syntastic/syntastic'
+Plug 'myint/syntastic-extras'
 ""Plug 'L9'
 ""Plug 'nathanaelkane/vim-indent-guides'
 ""Plug 'mattn/webapi-vim'
@@ -752,12 +755,11 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 "_______________________________________________________________________
 " => vim-multiple-cursors                                               |
 "_______________________________________________________________________|
-"let g:multi_cursor_use_default_mapping=0
-"let g:multi_cursor_next_key='<Leader>n'
-"let g:multi_cursor_next_key='<BS-n>'
-"let g:multi_cursor_prev_key='<Leader>p'
-"let g:multi_cursor_skip_key='<Leader>x'
-"let g:multi_cursor_quit_key='<Esc>'
+let g:multi_cursor_use_default_mapping=0
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-M>'
+let g:multi_cursor_skip_key='<Leader>x'
+let g:multi_cursor_quit_key='<Esc>'
 
 "_______________________________________________________________________
 " => vim-table-mode                                                     |
@@ -894,3 +896,23 @@ au FileType mail set list listchars=tab:»·,trail:·
 au FileType mail set comments=nb:>
 au FileType mail vmap D dO[...]^[]
 
+"_______________________________________________________________________
+" => syntastic-extras                                                   |
+"_______________________________________________________________________|
+let g:syntastic_python_checkers = ['pyflakes_with_warnings']
+let g:syntastic_javascript_checkers = ['json_tool']
+nnoremap ZZ :call syntastic_extras#quit_hook()<cr>
+let g:syntastic_yaml_checkers = ['pyyaml']
+
+
+"_______________________________________________________________________
+" => syntastic                                                          |
+"_______________________________________________________________________|
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
