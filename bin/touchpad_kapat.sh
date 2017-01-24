@@ -1,3 +1,4 @@
 #!/bin/bash
-id=`xinput list |grep PS/2 |awk '{print$6}' |cut -d= -f2`
-xinput set-prop $id 'Device Enabled' 0
+#id=`xinput list |grep PS/2 |awk '{print$6}' |cut -d= -f2`
+#xinput set-prop $id 'Device Enabled' 0
+synclient TouchpadOff=1

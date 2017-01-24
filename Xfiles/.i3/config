@@ -173,7 +173,9 @@ exec --no-startup-id sudo vpnc sekom
 exec --no-startup-id pa-applet
 exec --no-startup-id unclutter -display :0 -root -idle 1 &
 exec --no-startup-id clipmenud &
-exec --no-startup-id nohup watch -n 15 --precise hipchat_restart.sh & 
+exec --no-startup-id mymarkserv.sh 
+#exec --no-startup-id "cd ~/Git_Repolari/kisisel/private/gunluk/is_notlari/egem/toplanti_notlari/2017 ; nohup markserv -a 0.0.0.0 &"
+#exec --no-startup-id nohup watch -n 15 --precise hipchat_restart.sh & 
 #exec --no-startup-id unclutter -root -idle 1 &
 #exec --no-startup-id google-chrome --app="https://soundcloud.com/adamhusa" 
 #exec --no-startup-id google-chrome --app="https://soundcloud.com/relaxdaily"
@@ -361,14 +363,16 @@ bindsym Mod4+s [instance="spotify"] scratchpad show
 # Make the currently focused window a scratchpad
 bindsym Mod4+Shift+b move scratchpad
 # Show the first scratchpad window
-bindsym Mod4+b [instance="google-chrome"] scratchpad show
+bindsym Mod4+b [instance="zathura"] scratchpad show
+
 
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
 # laptopu ve monitoru kapamayi toggle'a aliyorum.
-#bindsym Mod4+m  exec --no-startup-id /home/orkung/bin/monitor.sh
-#bindsym Mod4+l  exec --no-startup-id /home/orkung/bin/laptop.sh
+bindsym Mod4+m  exec --no-startup-id /home/orkung/bin/myxrandr_toggle.sh
+bindsym Mod4+l  exec --no-startup-id /home/orkung/bin/laptop.sh
 #bindsym Mod4+t bar mode toggle
 bindsym Mod4+t exec --no-startup-id /home/orkung/bin/xrandr_toggle.sh
-bindsym Mod4+p  exec pavucontrol
-bindsym Mod4+v exec clipmenu
+bindsym Mod4+p  exec --no-startup-id  pavucontrol
+bindsym Mod4+v exec --no-startup-id clipmenu
+bindsym Mod4+a exec --no-startup-id /home/orkung/Git_Repolari/kisisel/private/server-side/parolalar/dmenu-passwords.sh

@@ -17,7 +17,7 @@ alias uzers='sudo cat /etc/passwd | cut -d":" -f1'
 alias nt=" netstat -anoep --inet |grep $@"
 alias upd="sudo apt update"
 alias upg="sudo apt upgrade"
-alias kur="sudo apt install -y --force-yes"
+alias kur="sudo apt install -y --allow-unauthenticated"
 alias se="sudo dpkg --get-selections"
 alias ara="apt-cache --names-only search"
 alias lkur="sudo dpkg -i $1"
@@ -56,7 +56,7 @@ alias ansad='task add pro:work.ansible pri:H'
 alias ofsad='task add pro:work.ofis pri:L'
 alias kerad='task add pro:work.kerim pri:L'
 alias lz='ls -alhtr --color=auto'
-alias lm='ls -lh --color=auto'
+alias lm='ls -1ah --color=auto'
 #alias ll=$'ls -alhtr |awk \'{print$9}\''
 alias mll=$'ls -alhtr --color=auto|awk \'{print$9}\' |less'
 alias ll='ls -alh --color=auto'
@@ -85,9 +85,15 @@ alias mychef="tmux attach-session -t mychef"
 alias sserver="tmux attach-session -t SimpleServer"
 alias diger="tmux attach-session -t diger"
 alias mydig="dig +nocmd ANY +multiline +noall +answer"
-alias gecr="geeknote create --title" 
 alias geed="geeknote edit --note"
-alias gefs="geeknote find --notebooks "kisisel" --search |cut -d\  -f 8- "
+gefs()
+{
+  geeknote find --notebooks "$1" --search |cut -d\  -f 8- 
+}
+gecr()
+{
+  geeknote create --title "$1" --notebook $2
+}
 alias psc="ps xawf -eo pid,user,cgroup,args"
 alias sdo='sudo docker'
 alias dockviz="docker run --privileged -it --rm --volume /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
@@ -120,9 +126,9 @@ alias acikportlar='declare -a array=($(tail -n +2 /proc/net/tcp | cut -d":" -f"3
 alias mylynx="lynx -dump -nonumbers"
 alias toggl="cd ~/Git_Repolari/diger/toggldesktop && make run"
 
-_ssh_auth_save() {
-    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
-}
+#_ssh_auth_save() {
+#    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh-auth-sock.$HOSTNAME"
+#}
 #alias tmux='ssh-add ~/.ssh/ogunay ; _ssh_auth_save ; export HOSTNAME=$(hostname) ; tmux'
 #update_auth_sock() {
 #    local socket_path="$(tmux show-environment | sed -n 's/^SSH_AUTH_SOCK=//p')"
@@ -142,6 +148,12 @@ _ssh_auth_save() {
 alias pjson='json | pygmentize -l json' 
 alias kaydet='ffmpeg -f x11grab -r 135 -s 1920x1080 -i :0.0 /tmp/outputFile.mp4' 
 alias asp='ansible-playbook'
-alias myag="ag -iQ"
+alias myag="ag -iQS"
 alias sshf='sshpass -f ~/is/parolalar/dpic_fatih/cma ssh'
-alias dsmrtdb='sshpass -f ~/is/parolalar/generic_parola ssh root@213.243.1.188'
+#alias dsmrtdb='sshpass -f ~/is/parolalar/generic_parola ssh root@213.243.1.188'
+alias systemctl='sudo systemctl'
+alias -s pdf=zathura
+sus () {
+  setopt localoptions rmstarsilent
+  rm -rf /tmp/clipmenu.orkung/* && sudo /lib/systemd/systemd-sleep suspend
+}

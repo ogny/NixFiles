@@ -1,0 +1,17 @@
+{
+  "download_dir": "~/music",
+  "audio-backend": "mpg123",
+  "curses": {
+    "colors": {
+      "default": ["white", "black"],
+      "playlist": ["green", "black"],
+      "playlist_active": ["red", "black"],
+      "progress": ["cyan", "black"],
+      "progress_bar": ["blue", "white"],
+      "title": ["cyan"],
+      "artist": ["magenta"],
+      "status": ["red"]
+    }
+  }
+}
+

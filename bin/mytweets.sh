@@ -1,7 +1,7 @@
 #!/bin/bash
 source $HOME/.profile
 TARIH=$(date +"%Y-%m-%d_%H:%M")
-DOSYA="$HOME/gunun_tweetleri/$TARIH"
+DOSYA="$HOME/Downloads/gunun_tweetleri/$TARIH"
 t="/home/orkung/.rvm/gems/ruby-2.1.1/bin/t"
 touch $DOSYA 
 $t list timeline @orkungunay/kiymetliler -n 20 > $DOSYA

@@ -57,3 +57,22 @@ while ((count)); do
     sleep $seconds
     ((count--))
 done
+
+CALISTIR=$(LIBGL_ALWAYS_SOFTWARE=1 /usr/bin/hipchat >/dev/null 2>&1)
+YENIDEN_CALISTIR=$(pkill -f hipchat && LIBGL_ALWAYS_SOFTWARE=1 /usr/bin/hipchat >/dev/null 2>&1)
+ps -efd |grep /usr/bin/hipchat |grep -v grep
+RESULT=$?
+if [ $RESULT -eq 0 ]; then
+#  exit 0
+  $YENIDEN_CALISTIR  
+else
+  $CALISTIR  
+fi
+#toggl_baslat=$(pkill -f TogglDesktop && cd ~/Git_Repolari/diger/toggldesktop && make run)
+ps -efd |grep TogglDesktop |grep -v grep
+RESULT=$?
+if [ $RESULT -eq 0 ]; then
+pkill -f TogglDesktop 
+else
+  ~/Git_Repolari/diger/toggldesktop/src/ui/linux/TogglDesktop/build/release/TogglDesktop >/dev/null 2>&1
+fi

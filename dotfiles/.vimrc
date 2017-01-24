@@ -6,6 +6,8 @@
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
 Plug 'gcmt/taboo.vim'
+Plug 'mileszs/ack.vim'
+Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/limelight.vim'
 Plug 'lepture/vim-jinja'
 Plug 'dhruvasagar/vim-table-mode'
@@ -14,7 +16,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Shougo/neocomplete.vim'
+Plug 'jmcantrell/vim-virtualenv'
 Plug 'tpope/vim-surround'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -41,21 +43,30 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'honza/vim-snippets'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'scrooloose/nerdcommenter'
-Plug 'klen/python-mode'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal'
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
-""Plug 'MattesGroeger/vim-bookmarks'
-""Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'terryma/vim-multiple-cursors'
-""Plug 'saevarb/chronos'
-""Plug 'vim-scripts/FormatToWidth'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'Shougo/neocomplete.vim'
+Plug 'klen/python-mode'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'ehamberg/vim-cute-python'
 Plug 'vim-scripts/Align'
 Plug 'vim-syntastic/syntastic'
 Plug 'myint/syntastic-extras'
+Plug 'tmhedberg/SimpylFold'
+Plug 'Valloric/YouCompleteMe'
+Plug 'nvie/vim-flake8'
+Plug 'sjl/gundo.vim'
+Plug 'ntpeters/vim-better-whitespace'
+""Plug 'MattesGroeger/vim-bookmarks'
+""Plug 'tmux-plugins/vim-tmux-focus-events'
+""Plug 'saevarb/chronos'
+""Plug 'vim-scripts/FormatToWidth'
 ""Plug 'L9'
 ""Plug 'nathanaelkane/vim-indent-guides'
 ""Plug 'mattn/webapi-vim'
@@ -95,10 +106,10 @@ call plug#end()
 "    \ | hi PmenuSbar     guibg=#857f78
 "    \ | hi PmenuThumb    guifg=#242321
 "    \ | hi WildMenu      gui=NONE cterm=NONE guifg=#f8f6f2 guibg=#0a9dff ctermfg=255 ctermbg=39
-"    \ | hi DiffAdd       guifg=#ffffff guibg=#006600 gui=NONE  ctermfg=231  ctermbg=22   cterm=NONE 
-"    \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE 
-"    \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE 
-"    \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE 
+"    \ | hi DiffAdd       guifg=#ffffff guibg=#006600 gui=NONE  ctermfg=231  ctermbg=22   cterm=NONE
+"    \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE
+"    \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE
+"    \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE
 "    \ | hi MatchParen    guifg=NONE   guibg=NONE gui=underline ctermfg=NONE ctermbg=NONE cterm=underline
 "    \ | endif
 "    \'
@@ -117,11 +128,12 @@ let s:color_override_dark = '
     \ | hi PmenuSbar     guibg=#857f78
     \ | hi PmenuThumb    guifg=#242321
     \ | hi WildMenu      gui=NONE cterm=NONE guifg=#f8f6f2 guibg=#0a9dff ctermfg=255 ctermbg=39
-    \ | hi DiffAdd       guifg=#ffffff guibg=#006600 gui=NONE  ctermfg=231  ctermbg=22   cterm=NONE 
-    \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE 
-    \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE 
-    \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE 
-    \ | hi MatchParen    guifg=NONE   guibg=NONE gui=underline ctermfg=NONE ctermbg=NONE cterm=underline
+    \ | hi DiffAdd       guifg=#ffffff guibg=#006600 gui=NONE  ctermfg=231  ctermbg=22   cterm=NONE
+    \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE
+    \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE
+    \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE
+    \ | hi highlight ExtraWhitespace ctermbg=blue
+    \ | hi MatchParent   guifg=none   guibg=none gui=underline ctermfg=none ctermbg=none cterm=underline
     \ | endif
     \'
 if has('vim_starting') "only on startup
@@ -129,7 +141,11 @@ if has('vim_starting') "only on startup
   " expects &runtimepath/colors/{name}.vim.
   silent! colorscheme DevC++
 endif
-set textwidth=78
+
+"   \ | hi BadWhitespace guifg=none   guibg=none gui=underline ctermfg=none ctermbg=none cterm=underline
+
+set encoding=utf-8
+set textwidth=79
 "set mouse=nv
 set modifiable
 autocmd VimResized * wincmd =
@@ -139,15 +155,17 @@ set equalalways
 set background=light
 filetype plugin on
 filetype plugin indent on
-filetype indent off
+filetype indent on
 set nocompatible              " be iMproved, required
 filetype on
-syntax on
 syntax enable
+"let python_highlight_all=1
+syntax on
 set splitright
 set autoread
 set linebreak
 set foldmethod=indent
+set foldlevel=99
 "set foldcolumn=4
 set breakindent
 "set showbreak=\ \
@@ -158,7 +176,7 @@ set smarttab      " insert tabs on the start of a line according to shiftwidth, 
 "set incsearch      " highlight search terms
 set hlsearch      " highlight search terms
 set incsearch     " show search matches as you type
-set history=1000         " remember more commands and search history	
+set history=1000         " remember more commands and search history
 set undolevels=1000      " use many muchos levels of undo
 set wildignore=*.swp,*.bak,*.pyc,*.class
 set title                " change the terminal's title
@@ -168,8 +186,9 @@ set nobackup
 set swapfile
 set pastetoggle=<F2>
 set nocindent  " Switch off all auto-indenting
-set nosmartindent	
-set noautoindent	
+set nosmartindent
+set noautoindent
+set shiftround
 set indentexpr=
 set clipboard=unnamed
 "set clipboard=unnamedplus
@@ -186,27 +205,34 @@ set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
 :au FocusLost * silent! wa
-" 
+"
 "autocmd TextChanged,TextChangedI <buffer> silent write
 " Kaynak: http://stackoverflow.com/questions/6991638/how-to-auto-save-a-file-every-1-second-in-vim
+
 "_______________________________________________________________________
 " => Gorunum 								                                            |
 "_______________________________________________________________________|
-hi VertSplit cterm=none gui=none	
-hi VertSplit ctermfg=00 
+hi VertSplit cterm=none gui=none
+hi VertSplit ctermfg=00
 "hi LineNr guibg=none
 hi SignColumn ctermbg=none
 hi Search ctermfg=25 ctermbg=16
 hi Folded ctermfg=25 ctermbg=16
 hi StatusLine cterm=none gui=none
 hi StatusLineNC cterm=none gui=none
-hi NonText ctermfg=00 
+hi NonText ctermfg=00
 hi clear SignColumn
 hi link markdownError Normal
 hi TabLineFill cterm=none gui=none
 hi TabLine ctermfg=none ctermbg=none
 hi TabLineSel ctermfg=none ctermbg=none
+"hi BadWhitespace ctermfg=none cterm=none ctermbg=blue
 set fillchars+=vert:│
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+
 "This line affects the window counter per tab:
 "hi Title ctermfg=LightBlue ctermbg=Magenta
 "hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
@@ -229,11 +255,6 @@ function! s:CombineSelection(line1, line2, cp)
   execute 'let char = "\u'.a:cp.'"'
   execute a:line1.','.a:line2.'s/\%V[^[:cntrl:]]/&'.char.'/ge'
 endfunction
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
-
 "_______________________________________________________________________
 " => Kisayollar 							                                          |
 "_______________________________________________________________________|
@@ -254,19 +275,19 @@ nnoremap <C-a> }) \| zz
 nnoremap <C-s> {( \| zz
 "noremap <C-a> }) \| zt
 "noremap <C-s> {( \| zt
-" :map f }) 
+" :map f })
 " :map s {(
-"noremap <Leader>P "*p	
+"noremap <Leader>P "*p
 
 """" Window'u acik tut, buffer yonet
 " buffer'i kaydet
-nnoremap <Leader>w :w<bar>:Bclose!<cr>  
+nnoremap <Leader>w :w<bar>:Bclose!<cr>
 " buffer'i kaydetme
 nnoremap <Leader>q :Bclose!<cr>
 
 " buffer'lari kaydet
-noremap <Leader>s :wall<CR> 
-"noremap <Leader>e :wall<CR> 
+noremap <Leader>s :wall<CR>
+"noremap <Leader>e :wall<CR>
 
 """" Window'u kapatip buffer yonet
 " buffer'i kaydet
@@ -311,11 +332,30 @@ nnoremap <Leader>l :Limelight<CR>
 nnoremap <Leader>k :Limelight!<CR>
 nnoremap <Leader>h :nohl<CR>
 
+" Python'a ozel ayarlar
+"au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py,*.pyw,*.c,*.h
+    \ set textwidth=79 |
+    \ set tabstop=4 |
+    \ set shiftwidth=4 |
+    \ set softtabstop=4 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+    \ set number! |
+    \ set shiftround |
+
+
+"   \ match BadWhitespace /\s\+$/ |
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+
+
 "_______________________________________________________________________
 " => emrah .vimrc 							                                        |
 "_______________________________________________________________________|
+
 "" autocmd BufNewFile,BufRead *.txt,*.md,*.yaml,*.yml,*.sh,*.rst,*.markdown call CodingSet1()
-"" 
 "" function CodingSet1()
 ""         setlocal
 ""         \ textwidth=79
@@ -329,7 +369,7 @@ nnoremap <Leader>h :nohl<CR>
 ""         \ filetype=txt
 ""         \ syntax=conf
 "" endfunction
- 
+
 "_______________________________________________________________________
 " => vim-tmux-navigator 						                                    |
 "_______________________________________________________________________|
@@ -342,11 +382,11 @@ nnoremap <Leader>h :nohl<CR>
        redraw!
      endif
    endfunction
- 
+
    let previous_title = substitute(system("tmux display-message -p '#{pane_title}'"), '\n', '', '')
    let &t_ti = "\<Esc>]2;vim\<Esc>\\" . &t_ti
    let &t_te = "\<Esc>]2;". previous_title . "\<Esc>\\" . &t_te
- 
+
    nnoremap <silent> <C-h> :call TmuxOrSplitSwitch('h', 'L')<cr>
    nnoremap <silent> <C-j> :call TmuxOrSplitSwitch('j', 'D')<cr>
    nnoremap <silent> <C-k> :call TmuxOrSplitSwitch('k', 'U')<cr>
@@ -404,73 +444,73 @@ endfunction
 
 autocmd User GoyoEnter call <SID>goyo_enter()
 autocmd User GoyoLeave call <SID>goyo_leave()
- 
+
 "set winheight=7
 "set winminheight=7
 "set winheight=999
 "Kaynak: https://github.com/junegunn/goyo.vim/issues/13
- 
+
 "_______________________________________________________________________
 " => neocomplete							                                          |
 "_______________________________________________________________________|
-set runtimepath+=~/.vim/plugged/neocomplete.vim/
+"set runtimepath+=~/.vim/plugged/neocomplete.vim/
 "set fo+=aw
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
 " Disable AutoComplPop.
 "let g:acp_enableAtStartup = 0
 " Use neocomplete.
-let g:neocomplete#enable_at_startup = 0
-let g:neocomplete#enable_auto_select = 0
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add',
-"     \ 'english' : '/usr/share/dict/american-english'
-"     \ }
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"    \ '_' : '~/turkish.dic_calisma',
-"    \ 'vimshell' : $HOME.'/.vimshell_hist',
-"    \ 'scheme' : $HOME.'/.gosh_completions'
-"    \ }
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+"let g:neocomplete#enable_at_startup = 0
+"let g:neocomplete#enable_auto_select = 0
+"" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+"" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+""let g:neocomplete#sources#dictionary#dictionaries = {
+""     \ '_' : '~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add',
+""     \ 'english' : '/usr/share/dict/american-english'
+""     \ }
+""let g:neocomplete#sources#dictionary#dictionaries = {
+""    \ '_' : '~/turkish.dic_calisma',
+""    \ 'vimshell' : $HOME.'/.vimshell_hist',
+""    \ 'scheme' : $HOME.'/.gosh_completions'
+""    \ }
+"" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+"" Plugin key-mappings.
+"inoremap <expr><C-g>     neocomplete#undo_completion()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
+"" Recommended key-mappings.
+"" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplete#close_popup() . "\<CR>"
+"  " For no inserting <CR> key.
+"  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"endfunction
+"" <TAB>: completion.
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-y>  neocomplete#close_popup()
+"inoremap <expr><C-e>  neocomplete#cancel_popup()
+"" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+"" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"" For perlomni.vim setting.
+"" https://github.com/c9s/perlomni.vim
+"let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 "_______________________________________________________________________
 " => NERDTREE 								                                          |
@@ -494,7 +534,7 @@ let g:NERDTreeDirArrows=0
 " => Vim Indent Color 							                                    |
 "_______________________________________________________________________|
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=blue ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "_______________________________________________________________________
@@ -540,7 +580,7 @@ let g:gist_update_on_write = 2
 "_______________________________________________________________________|
 noremap <F8> :Geeknote<cr>
 autocmd FileType geeknote setlocal nonumber
-let g:GeeknoteFormat="markdown" 
+let g:GeeknoteFormat="markdown"
 
 "_______________________________________________________________________
 " => Arama sonuclari yeni pencerede					                            |
@@ -557,15 +597,15 @@ command! -nargs=? Filter let @a='' | execute 'g/<args>/y A' | new | setlocal bt=
 "_______________________________________________________________________|
 "au BufWinLeave * mkview
 "au BufWinEnter * silent loadview
- 
- 
+
+
 "_______________________________________________________________________
 " => ZoomWin								                                            |
 "_______________________________________________________________________|
 nnoremap <silent> <Leader>z :ZoomWin<CR>
 " kaynak:
 " http://stackoverflow.com/questions/15583346/how-can-i-temporarily-make-the-window-im-working-on-to-be-fullscreen-in-vim
- 
+
 
 "_______________________________________________________________________
 " => ctrlP								                                              |
@@ -594,6 +634,7 @@ nnoremap <leader>f :CtrlPF<Cr>
 "_______________________________________________________________________|
 "
 let g:pymode_rope = 0
+let g:pymode_syntax = 0
 
 "_______________________________________________________________________
 " => Ultisnips								                                          |
@@ -606,11 +647,11 @@ let g:UltiSnipsExpandTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsUsePythonVersion = 2
- 
+
 ""_______________________________________________________________________
 "" => Neosnippet								                                         |
 ""_______________________________________________________________________|
-" 
+"
 "\" Plugin key-mappings.
 "imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 "smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -628,18 +669,18 @@ let g:UltiSnipsUsePythonVersion = 2
 "if has('conceal')
 "  set conceallevel=2 concealcursor=i
 "endif
-"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets' 
+"let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 "_______________________________________________________________________
 " => Jedi.vim 								                                          |
 "_______________________________________________________________________|
- 
+
 "let g:jedi#popup_on_dot = 0
 
 "_______________________________________________________________________
 " => ruby-vim 								                                          |
 "_______________________________________________________________________|
- 
+
 imap <S-CR>    <CR><CR>end<Esc>-cc
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
@@ -663,14 +704,14 @@ imap <S-CR> <ESC>:execute 'normal o' . EndToken()<CR>O
 "_______________________________________________________________________
 " => Sneak                                                              |
 "_______________________________________________________________________|
- 
+
 let g:sneak#streak = 1
 
 "_______________________________________________________________________
 " => Vim-markdown                                                       |
 "_______________________________________________________________________|
 "
-"let g:vim_markdown_folding_disabled=1 
+"let g:vim_markdown_folding_disabled=1
 
 "_______________________________________________________________________
 " => Vim-bookmarks                                                      |
@@ -705,30 +746,30 @@ let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %
 autocmd VimEnter * command! Colors
   \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'})
 
-"#TODO Extend For CtrP With Word  
- function! FZFExecute()  
-  " Remove trailing new line to make it work with tmux splits  
-  let directory = substitute(system('git rev-parse --show-toplevel'), '\n$', '', '')  
-  if !v:shell_error  
-   call fzf#run({'sink': 'e', 'dir': directory, 'source': 'git ls-files'})  
-  else  
-   FZF  
-  endif  
- endfunction  
- command! FZFExecute call FZFExecute()  
+"#TODO Extend For CtrP With Word
+ function! FZFExecute()
+  " Remove trailing new line to make it work with tmux splits
+  let directory = substitute(system('git rev-parse --show-toplevel'), '\n$', '', '')
+  if !v:shell_error
+   call fzf#run({'sink': 'e', 'dir': directory, 'source': 'git ls-files'})
+  else
+   FZF
+  endif
+ endfunction
+ command! FZFExecute call FZFExecute()
 
-"Grepping Using FZF #TODO File With :File: Name  
- function! s:escape(path)  
-  return substitute(a:path, ' ', '\\ ', 'g')  
- endfunction  
- "TODO Extend To Other Handlers  
- function! AgHandler(line)  
-  let parts = split(a:line, ':')  
-  let [fn, lno] = parts[0 : 1]  
-  execute 'e '. s:escape(fn)  
-  execute lno  
-  normal! zz  
- endfunction  
+"Grepping Using FZF #TODO File With :File: Name
+ function! s:escape(path)
+  return substitute(a:path, ' ', '\\ ', 'g')
+ endfunction
+ "TODO Extend To Other Handlers
+ function! AgHandler(line)
+  let parts = split(a:line, ':')
+  let [fn, lno] = parts[0 : 1]
+  execute 'e '. s:escape(fn)
+  execute lno
+  normal! zz
+ endfunction
 function! FZFGrep(pattern, ...)
 let filter = a:0 > 0 ? a:1 : '*'
 let command = 'ag -i "'.a:pattern.'" '.filter
@@ -758,7 +799,7 @@ command! -nargs=+ -complete=dir FZFDirectory call FZFDirectory('<args>')
 let g:multi_cursor_use_default_mapping=0
 let g:multi_cursor_next_key='<C-m>'
 let g:multi_cursor_prev_key='<C-M>'
-let g:multi_cursor_skip_key='<Leader>x'
+let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
 "_______________________________________________________________________
@@ -835,8 +876,8 @@ let g:table_mode_corner="|"
 "     set t_Sb=^[[4%dm
 "     set t_Sf=^[[3%dm
 "endif
-"vnoremap yy "*y	
-"nnoremap yy "*y	
+"vnoremap yy "*y
+"nnoremap yy "*y
 "vnoremap y "*y
 "nnoremap y "*y
 "vnoremap p "*p
@@ -885,7 +926,7 @@ set guioptions-=e
 set sessionoptions+=tabpages,globals
 set guitablabel=%t
 nnoremap <C-w>q :tabclose!<CR>
-nnoremap <C-w>e :TabooOpen 
+nnoremap <C-w>e :TabooOpen
 "nnoremap <C-w>e :tabnew!<CR>
 if $TMUX == ''
     set clipboard+=unnamed
@@ -911,8 +952,46 @@ let g:syntastic_yaml_checkers = ['pyyaml']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+
+silent !mkdir ~/.vim/backups > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
+
+" "================= Swap Directory ==============
+silent !mkdir ~/.vim/temp > /dev/null 2>&1
+set directory=~/.vim/temp
+
+" "================= Session sharing ==================
+" shares cursor position and more between vim sessions
+"set viewdir=~/.vim/vimview
+"au BufWinLeave ?* mkview
+"au VimEnter ?* loadview
+
+"_______________________________________________________________________
+" SimplyFold
+"_______________________________________________________________________
+let g:SimpylFold_docstring_preview=1
+
+"_______________________________________________________________________
+" Gundo
+"_______________________________________________________________________
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
+let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
+
+"vnoremap <expr> cn g:mc . "``cgn"
+"nnoremap cn *``cgn
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif

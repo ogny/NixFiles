@@ -1,3 +1,7 @@
+#if [ -f ~/.profile ]; then
+#    . ~/.profile
+#fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 if [ -f ~/.zsh/zsh_aliases ]; then
     . ~/.zsh/zsh_aliases
 fi
@@ -282,4 +286,6 @@ stty -ixon
 source /home/orkung/Git_Repolari/diger/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(git extract)
 source /home/orkung/Git_Repolari/diger/zsh-git-prompt/zshrc.sh 
+source $HOME/.local/bin/virtualenvwrapper.sh
 
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

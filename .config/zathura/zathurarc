@@ -1,16 +1,18 @@
 ## gorunum
 set adjust-open width
-set font monaco 
+set font monaco normal 15
 
 # renkler
 #set recolor-keephue
-#set recolor true
-#
+set recolor true
+
+set default-bg "#002b36"
+set default-fg "#f1f1f1"
 #set default-bg "#002b36"
 #set default-fg "#93A1A1"
-#
-#set recolor-lightcolor  "#002b36"
-#set recolor-darkcolor "#93A1A1"
+
+set recolor-lightcolor "#002b36"
+set recolor-darkcolor "#93A1A1"
 #
 #set recolor-darkcolor  "#93A1A1"
 ##set recolor-darkcolor "#111111"
