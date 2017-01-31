@@ -69,10 +69,10 @@ else
   $CALISTIR  
 fi
 #toggl_baslat=$(pkill -f TogglDesktop && cd ~/Git_Repolari/diger/toggldesktop && make run)
-ps -efd |grep TogglDesktop |grep -v grep
-RESULT=$?
-if [ $RESULT -eq 0 ]; then
-pkill -f TogglDesktop 
-else
-  ~/Git_Repolari/diger/toggldesktop/src/ui/linux/TogglDesktop/build/release/TogglDesktop >/dev/null 2>&1
-fi
+#ps -efd |grep TogglDesktop |grep -v grep
+#RESULT=$?
+#if [ $RESULT -eq 0 ]; then
+#pkill -f TogglDesktop 
+#else
+#  ~/Git_Repolari/diger/toggldesktop/src/ui/linux/TogglDesktop/build/release/TogglDesktop >/dev/null 2>&1
+#fi

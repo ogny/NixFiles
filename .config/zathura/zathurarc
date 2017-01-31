@@ -8,6 +8,7 @@ set recolor true
 
 set default-bg "#002b36"
 set default-fg "#f1f1f1"
+#set default-fg "#93A1A1"
 #set default-bg "#002b36"
 #set default-fg "#93A1A1"
 

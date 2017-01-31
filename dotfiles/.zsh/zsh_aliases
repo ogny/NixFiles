@@ -56,7 +56,7 @@ alias ansad='task add pro:work.ansible pri:H'
 alias ofsad='task add pro:work.ofis pri:L'
 alias kerad='task add pro:work.kerim pri:L'
 alias lz='ls -alhtr --color=auto'
-alias lm='ls -1ah --color=auto'
+alias lm='ls -1htr --color=auto'
 #alias ll=$'ls -alhtr |awk \'{print$9}\''
 alias mll=$'ls -alhtr --color=auto|awk \'{print$9}\' |less'
 alias ll='ls -alh --color=auto'
@@ -153,7 +153,7 @@ alias sshf='sshpass -f ~/is/parolalar/dpic_fatih/cma ssh'
 #alias dsmrtdb='sshpass -f ~/is/parolalar/generic_parola ssh root@213.243.1.188'
 alias systemctl='sudo systemctl'
 alias -s pdf=zathura
-sus () {
-  setopt localoptions rmstarsilent
-  rm -rf /tmp/clipmenu.orkung/* && sudo /lib/systemd/systemd-sleep suspend
-}
+#sus () {
+#  setopt localoptions rmstarsilent
+#  rm -rf /tmp/clipmenu.orkung/* && sudo /lib/systemd/systemd-sleep suspend
+#}

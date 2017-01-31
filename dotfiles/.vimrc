@@ -132,7 +132,7 @@ let s:color_override_dark = '
     \ | hi DiffChange    guifg=#ffffff guibg=#007878 gui=NONE  ctermfg=231  ctermbg=30   cterm=NONE
     \ | hi DiffDelete    guifg=#ff0101 guibg=#9a0000 gui=NONE  ctermfg=196  ctermbg=88   cterm=NONE
     \ | hi DiffText      guifg=#000000 guibg=#ffb733 gui=NONE  ctermfg=000  ctermbg=214  cterm=NONE
-    \ | hi highlight ExtraWhitespace ctermbg=blue
+    \ | hi ExtraWhitespace ctermbg=blue
     \ | hi MatchParent   guifg=none   guibg=none gui=underline ctermfg=none ctermbg=none cterm=underline
     \ | endif
     \'
@@ -634,7 +634,7 @@ nnoremap <leader>f :CtrlPF<Cr>
 "_______________________________________________________________________|
 "
 let g:pymode_rope = 0
-let g:pymode_syntax = 0
+let g:pymode_syntax = 1
 
 "_______________________________________________________________________
 " => Ultisnips								                                          |
