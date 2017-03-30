@@ -1,7 +1,7 @@
 #if [ -f ~/.profile ]; then
 #    . ~/.profile
 #fi
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 if [ -f ~/.zsh/zsh_aliases ]; then
     . ~/.zsh/zsh_aliases
 fi
@@ -19,7 +19,7 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 #prompt off
-#PS1=' %~ 
+#PS1=' %~
 #%# '
 bindkey -v
 
@@ -61,9 +61,9 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:*:task:*' verbose yes
-zstyle ':completion:*:*:task:*:descriptions' format '%U%B%d%b%u' 
+zstyle ':completion:*:*:task:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:*:task:*' group-name ''
-zstyle ':completion:*:hosts' hosts _ssh_config 
+zstyle ':completion:*:hosts' hosts _ssh_config
 [[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
 zstyle ':completion:*:hosts' hosts $_ssh_config
 
@@ -130,38 +130,39 @@ sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 #source $HOME/bin/sshag.sh >/dev/null 2>&1
 eval "$(fasd --init auto)"
 eval `dircolors /home/orkung/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
+#eval "$(pyenv init -)"
 alias x='ssh-agent startx'
-compdef _task t='task'
+#compdef _task t='task'
 
 # Initialize colors.
 autoload -U colors
 colors
- 
+
 # Allow for functions in the prompt.
 setopt PROMPT_SUBST
- 
+
 # Autoload zsh functions.
 fpath=(~/.zsh/completion $fpath)
 autoload -U ~/.zsh/completion
 #autoload -U ~/.zsh/*(:t)
- 
+
 # Enable auto-execution of functions.
 typeset -ga preexec_functions
 typeset -ga precmd_functions
 typeset -ga chpwd_functions
- 
+
 # Append git functions needed for prompt.
 preexec_functions+='preexec_update_git_vars'
 precmd_functions+='precmd_update_git_vars'
 chpwd_functions+='chpwd_update_git_vars'
-# 
+#
 ## Set the prompt.
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} '
 #PROMPT='%B%m%~%b$(git_super_status) %# '
 PROMPT=$'%{${fg[cyan]}%}%B%~%b$(git_super_status)
 %{${fg[default]}%}'
-#PS1=' %~ 
+#PS1=' %~
 #%# '
 #%#%{${fg[default]}%} '
 
@@ -199,23 +200,31 @@ compctl -K _pip_completion pip
 # OPAM configuration
 # . /root/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#fzf-dmenu() { 
+#fzf-dmenu() {
 #    # note: xdg-open has a bug with .desktop files, so we cant use that shit
 #    selected="$(ls /usr/share/applications | fzf -e)"
 #    nohup `grep '^Exec' "/usr/share/applications/$selected" | tail -1 | sed 's/^Exec=//' | sed 's/%.//'` >/dev/null 2>&1&
 #}
-
-
-
-ssh() {
-    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-        tmux rename-window "$(echo $* | cut -d . -f 1)"
-        command ssh "$@"
-        tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        command ssh "$@"
-    fi
+settitle() {
+    printf "\033k$1\033\\"
 }
+ssh() {
+    settitle "$*"
+    command ssh "$@"
+    settitle "zsh"
+}
+
+
+#ssh() {
+#    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+#        tmux rename-window "$(echo $* | rev | cut -d ' ' -f1 | rev | cut -d . -f 1)"
+##       tmux rename-window "$(echo $* | cut -d . -f 1)"
+#        command ssh "$@"
+#        tmux set-window-option automatic-rename "on" 1>/dev/null
+#    else
+#        command ssh "$@"
+#    fi
+#}
 
 # fda - including hidden directories
 fda() {
@@ -231,7 +240,7 @@ fda() {
 #}
 fj() {
   local dir
-  dir=$(fasd -Rdl | fzf --no-sort +m) && cd "$dir"
+  dir=$(fasd -Rdl | fzf --no-sort +m) && mycd "$dir"
 }
 fo() {
   local out file key
@@ -245,8 +254,8 @@ fo() {
 }
 
 # ZSH keybinding example; ~/.zshrc
-fzf_history() { 
-  zle -I; eval $(history | fzf +s | sed 's/ *[0-9]* *//') ; }; 
+fzf_history() {
+  zle -I; eval $(history | fzf +s | sed 's/ *[0-9]* *//') ; };
   zle -N fzf_history; bindkey '^F' fzf_history
 fzf_killps() { zle -I; ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9} ; }; zle -N fzf_killps; bindkey '^Q' fzf_killps
 fzf_cd() { zle -I; DIR=$(find ${1:-*} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf) && cd "$DIR" ; }; zle -N fzf_cd; bindkey '^E' fzf_cd
@@ -264,16 +273,16 @@ case "$TERM" in
     TERM=rxvt-unicode
     ;;
 esac
-bindkey -s '^E' 'cd ~/ && vim $(fzf)\n' 
-bindkey -s '^O' 'fj\n' 
-#bindkey -s '^I' 'fda\n' 
+bindkey -s '^E' 'cd ~/ && vim $(fzf)\n'
+bindkey -s '^O' 'fj\n'
+#bindkey -s '^I' 'fda\n'
 
 PATH="/home/orkung/perl5/bin${PATH+:}${PATH}"; export PATH;
 PERL5LIB="/home/orkung/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/orkung/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/orkung/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
-#SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb 
+#SC_CLIENT_ID=50bd426b5980711cfa6f895ef33a2dfb
 #. $HOME/bin/ssh-find-agent.sh
 #. $HOME/Git_Repolari/kisisel/public/nixfiles/bin/ssh-find-agent.sh
 #eval `ssh-agent -s`
@@ -285,7 +294,23 @@ PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 stty -ixon
 source /home/orkung/Git_Repolari/diger/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(git extract)
-source /home/orkung/Git_Repolari/diger/zsh-git-prompt/zshrc.sh 
-source $HOME/.local/bin/virtualenvwrapper.sh
+source /home/orkung/Git_Repolari/diger/zsh-git-prompt/zshrc.sh
+#source $HOME/.local/bin/virtualenvwrapper.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+#source /etc/bash_completion.d/climate_completion
+mkmv() {
+    mkdir -p -- "$argv[-1]"
+      mv "$@"
+    }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /home/orkung/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+  source '/home/orkung/Downloads/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /home/orkung/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/home/orkung/Downloads/google-cloud-sdk/completion.zsh.inc'
+fi

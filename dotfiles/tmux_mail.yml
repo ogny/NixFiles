@@ -6,6 +6,6 @@ windows:
 - window_name: sysadm
   panes:
     - mutt -F ~/.mutt/account.com.gmail.rkngny80
-- window_name: is
-  panes:
-    - mutt -F ~/.mutt/account.com.outlook.sekomy
+#- window_name: is
+#  panes:
+#    - mutt -F ~/.mutt/account.com.outlook.sekomy

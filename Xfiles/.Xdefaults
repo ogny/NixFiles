@@ -101,7 +101,7 @@ URxvt*color15: #fdf6e3
 !XTterm*utf8:                            2
 !XTerm*termName:                         xterm-256color
 !XTerm*faceName: Terminus:style=Regular:size=10
-XTerm*faceName: SourceCodePro:style=Regular
+XTerm*faceName: xft:monaco:size=10
 XTerm*faceSize: 12
 XTerm*termName: xterm-256color
 !XTerm.VT100.geometry:                   89x29
@@ -114,120 +114,120 @@ XTerm*termName: xterm-256color
 !XTerm*colorBD:                          khaki
 !XTerm*charClass: 3:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48,35:48,58:48,63:48,61:48,44:48,38:48,59:48
 !! black dark/light
-XTerm*color0: #073642
-XTerm*color8: #002b36
-
-! red dark/light
-XTerm*color1: #dc322f
-XTerm*color9: #cb4b16
-
-! green dark/light
-XTerm*color2: #859900
-XTerm*color10: #586e75
-
-! yellow dark/light
-XTerm*color3: #b58900
-XTerm*color11: #657b83
-
-! blue dark/light
-!!XTerm*color4: #002b36
-Term*color4: #268bd2
-XTerm*color12: #839496
-
-! magenta dark/light
-XTerm*color5: #d33682
-XTerm*color13: #6c71c4
-
-! cyan dark/light
-XTerm*color6: #2aa198
-XTerm*color14: #93a1a1
-
-! white dark/light
-XTerm*color7: #eee8d5
-XTerm*color15: #fdf6e3
-
-XTerm*background: #002b36
-XTerm*foreground: #657b83
-
-PS1="\[\033[1;34m\][\$(date +%H%M)][\u@\h:\w]$\[\033[0m\] "
-
-eterm*termName:             eterm-noblink
-eterm*depth:                32
-eterm*geometry:             90x30
-eterm*transparent:          false
-eterm*fading:               0
-eterm*urgentOnBell:         true
-eterm*visualBell:           true
-eterm*loginShell:           true
-eterm*saveLines:            7777
-eterm*internalBorder:       3
-eterm*lineSpace:            0
-eterm*allowWindowOps:       false
-
-! Fonts
-eterm*allow_bold:           false
-eterm*font: xft:monaco:size=10
-eterm*boldFont: xft:monaco:style=bold:size=10
-eterm*letterSpace: -1
-!URxvt.font: xft:Source Code Pro:size=10
-
-! Scrollbar
-eterm*scrollStyle:          rxvt
-eterm*scrollBar:            false
-
-! Perl extensions
-!URxvt.perl-ext-common:      default,matcher
-!URxvt.matcher.button:       1
-!URxvt.urlLauncher:          firefox
-
-! Cursor
-eterm*cursorBlink:          false
-eterm*cursorColor:          #657b83
-eterm*cursorUnderline:      true
-
-! Pointer
-eterm.pointerBlank:         true
-
-!Source http://github.com/altercation/solarized
-
-!*fading: 40
-eterm*fadeColor: #002b36
-!eterm*cursorColor: #93a1a1
-eterm*pointerColorBackground: #586e75
-eterm*pointerColorForeground: #93a1a1
-
-eterm*background: #002b36
-eterm*foreground: #657b83
-
-! black dark/light
-eterm*color0: #073642
-eterm*color8: #002b36
-
-! red dark/light
-eterm*color1: #dc322f
-eterm*color9: #cb4b16
-
-! green dark/light
-eterm*color2: #859900
-eterm*color10: #586e75
-
-! yellow dark/light
-eterm*color3: #b58900
-eterm*color11: #657b83
-
-! blue dark/light
-!!URxvt*color4: #002b36
-eterm*color4: #268bd2
-eterm*color12: #839496
-
-! magenta dark/light
-eterm*color5: #d33682
-eterm*color13: #6c71c4
-
-! cyan dark/light
-eterm*color6: #2aa198
-eterm*color14: #93a1a1
-
+!XTerm*color0: #073642
+!XTerm*color8: #002b36
+!
+!! red dark/light
+!XTerm*color1: #dc322f
+!XTerm*color9: #cb4b16
+!
+!! green dark/light
+!XTerm*color2: #859900
+!XTerm*color10: #586e75
+!
+!! yellow dark/light
+!XTerm*color3: #b58900
+!XTerm*color11: #657b83
+!
+!! blue dark/light
+!!!XTerm*color4: #002b36
+!Term*color4: #268bd2
+!XTerm*color12: #839496
+!
+!! magenta dark/light
+!XTerm*color5: #d33682
+!XTerm*color13: #6c71c4
+!
+!! cyan dark/light
+!XTerm*color6: #2aa198
+!XTerm*color14: #93a1a1
+!
 !! white dark/light
-eterm*color7: #eee8d5
-eterm*color15: #fdf6e3
+!XTerm*color7: #eee8d5
+!XTerm*color15: #fdf6e3
+!
+XTerm*background: #292b2e
+!XTerm*foreground: #657b83
+!
+!PS1="\[\033[1;34m\][\$(date +%H%M)][\u@\h:\w]$\[\033[0m\] "
+!
+!eterm*termName:             eterm-noblink
+!eterm*depth:                32
+!eterm*geometry:             90x30
+!eterm*transparent:          false
+!eterm*fading:               0
+!eterm*urgentOnBell:         true
+!eterm*visualBell:           true
+!eterm*loginShell:           true
+!eterm*saveLines:            7777
+!eterm*internalBorder:       3
+!eterm*lineSpace:            0
+!eterm*allowWindowOps:       false
+!
+!! Fonts
+!eterm*allow_bold:           false
+!eterm*font: xft:monaco:size=10
+!eterm*boldFont: xft:monaco:style=bold:size=10
+!eterm*letterSpace: -1
+!!URxvt.font: xft:Source Code Pro:size=10
+!
+!! Scrollbar
+!eterm*scrollStyle:          rxvt
+!eterm*scrollBar:            false
+!
+!! Perl extensions
+!!URxvt.perl-ext-common:      default,matcher
+!!URxvt.matcher.button:       1
+!!URxvt.urlLauncher:          firefox
+!
+!! Cursor
+!eterm*cursorBlink:          false
+!eterm*cursorColor:          #657b83
+!eterm*cursorUnderline:      true
+!
+!! Pointer
+!eterm.pointerBlank:         true
+!
+!!Source http://github.com/altercation/solarized
+!
+!!*fading: 40
+!eterm*fadeColor: #002b36
+!!eterm*cursorColor: #93a1a1
+!eterm*pointerColorBackground: #586e75
+!eterm*pointerColorForeground: #93a1a1
+!
+!eterm*background: #002b36
+!eterm*foreground: #657b83
+!
+!! black dark/light
+!eterm*color0: #073642
+!eterm*color8: #002b36
+!
+!! red dark/light
+!eterm*color1: #dc322f
+!eterm*color9: #cb4b16
+!
+!! green dark/light
+!eterm*color2: #859900
+!eterm*color10: #586e75
+!
+!! yellow dark/light
+!eterm*color3: #b58900
+!eterm*color11: #657b83
+!
+!! blue dark/light
+!!!URxvt*color4: #002b36
+!eterm*color4: #268bd2
+!eterm*color12: #839496
+!
+!! magenta dark/light
+!eterm*color5: #d33682
+!eterm*color13: #6c71c4
+!
+!! cyan dark/light
+!eterm*color6: #2aa198
+!eterm*color14: #93a1a1
+!
+!!! white dark/light
+!eterm*color7: #eee8d5
+!eterm*color15: #fdf6e3

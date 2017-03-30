@@ -75,14 +75,14 @@ bind    pager   w           previous-page
 # For better looks
 set markers=no # don't put '+' at the beginning of wrapped lines
 #set pager_index_lines= 5 # how large is the index window?
-#set beep_new 
-#source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc 
-source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc 
+set beep_new
+#source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
+source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
 #bind index,pager \ck sidebar-prev
 #bind index,pager \cj sidebar-next
 #LANG=en_US.UTF-8
 #al before saving; can then get the actual bytes and figure them out in Wenlin or whatever)
- set charset = 'utf-8' 
+ set charset = 'utf-8'
 charset-hook windows-1254 CP1254
 set assumed_charset="cp1254"
 set editor = "vim"
@@ -90,5 +90,7 @@ bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 #bind index,pager B sidebar-toggle-visible
 bind index,pager \CO sidebar-open
-set alias_file=~/.mutt/aliases 
+set alias_file=~/.mutt/aliases
 source ~/.mutt/aliases
+set query_command="goobook query '%s'"
+set text_flowed

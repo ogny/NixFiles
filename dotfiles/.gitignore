@@ -4,5 +4,6 @@
 Session.vim
 .netrwhist
 *~
+.NERDTreeBookmarks
 dotfiles/.tmux/plugins/tmux-sessionist
 dotfiles/.tmux/plugins/tmux-sidebar

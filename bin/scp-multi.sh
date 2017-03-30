@@ -15,7 +15,7 @@ starttmux() {
     local hosts=( $HOSTS )
 
 
-    tmux new-window "rsync -a /home/orkung/Devops/ansible/repos/internal/cma-dpic-ttnet/roles/internal/sky-util/files/java-check.sh ${hosts[0]}"
+    tmux new-window "scp ~/Downloads/Linux_x64_RWC2_v15.11.00.13.tar.gz ${hosts[0]}"
     unset hosts[0];
     for i in "${hosts[@]}"; do
         tmux split-window -h  "ssh $i"

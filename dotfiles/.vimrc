@@ -5,8 +5,15 @@
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
+"Plug 'liuchengxu/space-vim-dark'
+"Plug 'kana/vim-textobj-line'
+"Plug 'jmcantrell/vim-virtualenv'
 Plug 'gcmt/taboo.vim'
+Plug 't9md/vim-quickhl'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'yegappan/mru'
 Plug 'mileszs/ack.vim'
+"Plug 'rking/ag.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/limelight.vim'
 Plug 'lepture/vim-jinja'
@@ -16,7 +23,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/goyo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'tpope/vim-surround'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'jeetsukumaran/vim-buffergator'
@@ -50,7 +56,7 @@ Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Shougo/neocomplete.vim'
 Plug 'klen/python-mode'
 Plug 'vim-scripts/indentpython.vim'
@@ -63,6 +69,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'nvie/vim-flake8'
 Plug 'sjl/gundo.vim'
 Plug 'ntpeters/vim-better-whitespace'
+"Plug 'chrisbra/csv.vim'
 ""Plug 'MattesGroeger/vim-bookmarks'
 ""Plug 'tmux-plugins/vim-tmux-focus-events'
 ""Plug 'saevarb/chronos'
@@ -80,7 +87,7 @@ Plug 'ntpeters/vim-better-whitespace'
 ""Plug 'jez/vim-superman'
 ""Plug 'tpope/vim-repeat'
 ""Plug 'tpope/vim-speeddating'
-""Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 ""Plug 'richsoni/vim-ecliptic'
 ""Plug 'plasticboy/vim-markdown'
 ""Plug 'tpope/vim-markdown'
@@ -143,13 +150,17 @@ if has('vim_starting') "only on startup
 endif
 
 "   \ | hi BadWhitespace guifg=none   guibg=none gui=underline ctermfg=none ctermbg=none cterm=underline
-
+set nojoinspaces
 set encoding=utf-8
 set textwidth=79
 "set mouse=nv
 set modifiable
 autocmd VimResized * wincmd =
 set hidden
+"set wildmenu            " visual autocomplete for command menu"
+set lazyredraw          " redraw only when we need to."
+set showmatch           " highlight matching [{()}]}]"
+nnoremap gV `[v`]`
 set equalalways
 "set noea
 set background=light
@@ -183,6 +194,7 @@ set title                " change the terminal's title
 set visualbell           " don't beep
 set noerrorbells         " don't beep
 set nobackup
+"set noswapfile
 set swapfile
 set pastetoggle=<F2>
 set nocindent  " Switch off all auto-indenting
@@ -232,6 +244,12 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Re
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17 gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=88 gui=none guifg=bg guibg=Red
+hi link CSVColumnOdd StatusLine
+hi link CSVColumnEven StatusLine
+hi link CSVColumnHeaderEven StatusLine
+hi link CSVColumnHeaderOdd StatusLine
+let g:csv_no_column_highlight = 1
+
 
 "This line affects the window counter per tab:
 "hi Title ctermfg=LightBlue ctermbg=Magenta
@@ -305,7 +323,7 @@ ca <C-w>e :tabnew!<CR>
 nnoremap <S-f> :set foldenable<CR>
 "nnoremap <Leader>o :r!cat<CR> " kullanimda
 nnoremap <Leader>g :Gstatus<CR>
-nnoremap <Leader>p :Gpush<CR>
+"nnoremap <Leader>p :Gpush<CR>
 "nnoremap <Leader>g :GitGutterToggle<CR>
 nnoremap <Leader>u :GitGutterToggle<CR>
 nnoremap <Leader>m :MerginalToggle<CR>
@@ -562,7 +580,7 @@ let g:turkish_deasciifier_path = '~/Git_Repolari/diger/turkish-deasciifier/turki
 " => translate-shell							                                      |
 "_______________________________________________________________________|
 
-set keywordprg=trans\ :tr
+"set keywordprg=trans\ :tr
 
 "_______________________________________________________________________
 " => gist-vim								                                            |
@@ -820,7 +838,7 @@ let g:table_mode_corner="|"
 "set bs=indent,eol,start         " allow backspacing over everything in insert
 "mode
 ""set ai                 " always set autoindenting on
-""set backup             " keep a backup file
+"set backup             " keep a backup file
 "set viminfo='20,\"50    " read/write a .viminfo file, don't store more
 "                        " than 50 lines of registers
 "set history=50          " keep 50 lines of command line history
@@ -962,6 +980,7 @@ let g:syntastic_check_on_wq = 0
 " Only works all the time.
 
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
+"set backupdir=~/.vim/backup
 set undodir=~/.vim/backups
 set undofile
 
@@ -988,10 +1007,44 @@ let g:gundo_width = 60
 let g:gundo_preview_height = 40
 let g:gundo_right = 1
 let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
-
 "vnoremap <expr> cn g:mc . "``cgn"
 "nnoremap cn *``cgn
 
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+" g:loaded_youcompleteme = 1
+
+" edit vimrc/zshrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+"nnoremap <silent> <C-d> :lclose<CR>:bdelete!<CR>
+cabbrev <silent> bd <C-r>=(getcmdtype()==#':' && getcmdpos()==1 ? 'lclose\|bdelete!' : 'bd')<CR>
+"if !empty($NERDTREE_BOOKMARKS)
+"    if filereadable($NERDTREE_BOOKMARKS)
+"        let g:NERDTreeBookmarksFile = $NERDTREE_BOOKMARKS
+"    endif
+"endif
+if filereadable(".NERDTreeBookmarks")
+    let g:NERDTreeBookmarksFile = ".NERDTreeBookmarks"
+endif
+" quickhl
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
+
+nmap <Space>j <Plug>(quickhl-cword-toggle)
+nmap <Space>] <Plug>(quickhl-tag-toggle)
+map H <Plug>(operator-quickhl-manual-this-motion)
+"let g:ackprg = 'ag --vimgrep --smart-case'
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
+let g:ag_working_path_mode="r"
+
