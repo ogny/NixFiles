@@ -16,7 +16,7 @@ bind index G imap-fetch-mail
 set folder_format = " %N %f"
 set mailcap_path = ~/.mutt/mailcap.conf
 auto_view text/html
-set signature="~/.mutt/signature"
+"set signature="~/.mutt/signature"
 set imap_check_subscribed="yes"
 set imap_list_subscribed="yes"
 set timeout=15
@@ -59,18 +59,19 @@ bind    index   C           noop
 bind    index   -           collapse-thread
 bind    index   _           collapse-all
 
+set pager=vim
 # Pager
-#bind    pager   o           open-all
-bind    pager   <up>        previous-line
-bind    pager   <down>      next-line
-bind    pager   <left>      previous-entry
-bind    pager   <right>     next-entry
-bind    pager   <delete>    delete-message
-bind    pager   k           previous-line
-bind    pager   j           next-line
-bind    pager   n           next-entry
-bind    pager   p           previous-entry
-bind    pager   w           previous-page
+##bind    pager   o           open-all
+#bind    pager   <up>        previous-line
+#bind    pager   <down>      next-line
+#bind    pager   <left>      previous-entry
+#bind    pager   <right>     next-entry
+#bind    pager   <delete>    delete-message
+#bind    pager   k           previous-line
+#bind    pager   j           next-line
+#bind    pager   n           next-entry
+#bind    pager   p           previous-entry
+#bind    pager   w           previous-page
 
 # For better looks
 set markers=no # don't put '+' at the beginning of wrapped lines
@@ -93,4 +94,4 @@ bind index,pager \CO sidebar-open
 set alias_file=~/.mutt/aliases
 source ~/.mutt/aliases
 set query_command="goobook query '%s'"
-set text_flowed
+set text_flowed=yes

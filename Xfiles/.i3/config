@@ -384,3 +384,10 @@ bindsym Mod4+a exec --no-startup-id /home/orkung/Git_Repolari/kisisel/private/se
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym XF86TouchpadToggle exec ~/bin/toggletouchpad.sh # toggle touchpad
+
+bindsym $mod+} exec i3-cycle right
+bindsym $mod+{ exec i3-cycle left
+bindsym $mod+Shift+{ exec i3-cycle up
+bindsym $mod+Shift+} exec i3-cycle down
+bind $mod+49 exec i3-cycle next
+bind $mod+Shift+49 exec i3-cycle prev

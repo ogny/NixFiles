@@ -1,6 +1,6 @@
 "_______________________________________________________________________
 "                                                                       |
-" => Vundle 								                                            |
+" => Vundle 								                            |
 "_______________________________________________________________________|
 "set rtp+=~/.vim/bundle/vundle/
 "call vundle#begin()
@@ -8,9 +8,14 @@ call plug#begin('~/.vim/plugged')
 "Plug 'liuchengxu/space-vim-dark'
 "Plug 'kana/vim-textobj-line'
 "Plug 'jmcantrell/vim-virtualenv'
+"Plug 'wkentaro/conque.vim'
+Plug 'gregsexton/gitv'
+Plug 'laurentgoudet/vim-howdoi'
 Plug 'gcmt/taboo.vim'
+"Plug 'terryma/vim-multiple-cursors'
 Plug 't9md/vim-quickhl'
 Plug 'maxbrunsfeld/vim-yankstack'
+"Plug 'vim-scripts/YankRing.vim'
 Plug 'yegappan/mru'
 Plug 'mileszs/ack.vim'
 "Plug 'rking/ag.vim'
@@ -55,7 +60,6 @@ Plug 'idanarye/vim-merginal'
 Plug 'tpope/vim-git'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
-Plug 'terryma/vim-multiple-cursors'
 "Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Shougo/neocomplete.vim'
 Plug 'klen/python-mode'
@@ -68,7 +72,10 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'Valloric/YouCompleteMe'
 Plug 'nvie/vim-flake8'
 Plug 'sjl/gundo.vim'
-Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-eunuch'
+Plug 'xolox/vim-session'
+Plug 'xolox/vim-misc'
+"Plug 'ntpeters/vim-better-whitespace'
 "Plug 'chrisbra/csv.vim'
 ""Plug 'MattesGroeger/vim-bookmarks'
 ""Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -87,7 +94,6 @@ Plug 'ntpeters/vim-better-whitespace'
 ""Plug 'jez/vim-superman'
 ""Plug 'tpope/vim-repeat'
 ""Plug 'tpope/vim-speeddating'
-Plug 'tpope/vim-eunuch'
 ""Plug 'richsoni/vim-ecliptic'
 ""Plug 'plasticboy/vim-markdown'
 ""Plug 'tpope/vim-markdown'
@@ -151,6 +157,8 @@ endif
 
 "   \ | hi BadWhitespace guifg=none   guibg=none gui=underline ctermfg=none ctermbg=none cterm=underline
 set nojoinspaces
+set guioptions-=L
+"set scrollbind
 set encoding=utf-8
 set textwidth=79
 "set mouse=nv
@@ -212,8 +220,8 @@ set showcmd
 set nofoldenable
 "set dictionary+=k~/turkish_dic.add
 "set complete+=k~/turkish_dic
-set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
-"set number!
+"set spellfile=~/.vim/plugged/ctrlp.vim/spell/en.utf-8.add
+"set nu!
 "runtime! ftplugin/man.vim
 "autocmd FileType man setlocal foldmethod=indent
 :au FocusLost * silent! wa
@@ -260,6 +268,7 @@ let g:csv_no_column_highlight = 1
  "autocmd BufEnter,BufRead,BufNewFile *.md syntax off
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
+" autocmd BufEnter,BufRead,BufNewFile * set nu!
 "_______________________________________________________________________
 " => Ozel karakterler 							                                    |
 "_______________________________________________________________________|
@@ -319,7 +328,7 @@ ca <C-w>e :tabnew!<CR>
 "ca <C-w tabnew
 "ca th tabp
 "ca tl tabn
-
+nnoremap <Leader>y :set nu!<CR>
 nnoremap <S-f> :set foldenable<CR>
 "nnoremap <Leader>o :r!cat<CR> " kullanimda
 nnoremap <Leader>g :Gstatus<CR>
@@ -329,7 +338,7 @@ nnoremap <Leader>u :GitGutterToggle<CR>
 nnoremap <Leader>m :MerginalToggle<CR>
 "nnoremap <C-w>e :enew<cr>
 "map <C-e> <Nop>
-vnoremap <Leader>p "*p
+"vnoremap <Leader>p "*p
 cnoreabbrev Wq wq
 cnoreabbrev Q! q!
 cnoreabbrev W w
@@ -352,16 +361,16 @@ nnoremap <Leader>h :nohl<CR>
 
 " Python'a ozel ayarlar
 "au BufNewFile,BufRead *.py
-au BufNewFile,BufRead *.py,*.pyw,*.c,*.h
-    \ set textwidth=79 |
-    \ set tabstop=4 |
-    \ set shiftwidth=4 |
-    \ set softtabstop=4 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-    \ set number! |
-    \ set shiftround |
+"au BufNewFile,BufRead *.py,*.pyw,*.c,*.h
+"    \ set textwidth=79 |
+"    \ set tabstop=4 |
+"    \ set shiftwidth=4 |
+"    \ set softtabstop=4 |
+"    \ set expandtab |
+"    \ set autoindent |
+"    \ set fileformat=unix |
+"    \ set number! |
+"    \ set shiftround |
 
 
 "   \ match BadWhitespace /\s\+$/ |
@@ -940,7 +949,7 @@ endif
 "_______________________________________________________________________
 " => taboo.vim                                                          |
 "_______________________________________________________________________|
-set guioptions-=e
+"set guioptions-=e
 set sessionoptions+=tabpages,globals
 set guitablabel=%t
 nnoremap <C-w>q :tabclose!<CR>
@@ -949,11 +958,15 @@ nnoremap <C-w>e :TabooOpen
 if $TMUX == ''
     set clipboard+=unnamed
 endif
+
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
-au FileType mail set tw=64 autoindent expandtab formatoptions=tcqn
+au FileType mail set tw=78 autoindent expandtab formatoptions=tcqn syntax=json
 au FileType mail set list listchars=tab:»·,trail:·
 au FileType mail set comments=nb:>
 au FileType mail vmap D dO[...]^[]
+au FileType mail nmap =j :%!python -m json.tool<CR>
+
+
 
 "_______________________________________________________________________
 " => syntastic-extras                                                   |
@@ -1047,4 +1060,19 @@ cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
 let g:ag_working_path_mode="r"
+set runtimepath^=~/.vim/plugged/vim-howdoi
+map <leader>ho <Plug>Howdoi
 
+"let g:yankstack_map_keys = 1
+let g:yankstack_yank_keys = ['y', 'd']
+noremap <leader>p <Plug>yankstack_substitute_newer_paste
+call yankstack#setup()
+nmap Y y$
+" other mappings involving y, d, c, etc
+
+nmap =j :%!python -m json.tool<CR>
+let g:session_autosave='yes'
+let g:session_autosave_periodic=1
+let g:session_default_name="Session"
+let g:session_directory="~/"
+let g:session_autosave_silent='yes'

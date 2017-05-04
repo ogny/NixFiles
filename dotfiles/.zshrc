@@ -314,3 +314,5 @@ fi
 if [ -f /home/orkung/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
   source '/home/orkung/Downloads/google-cloud-sdk/completion.zsh.inc'
 fi
+eval  "$(ntfy shell-integration)"
+

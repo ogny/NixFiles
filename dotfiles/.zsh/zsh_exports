@@ -54,4 +54,5 @@ export CHEATCOLORS=true
 #export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #export FZF_DEFAULT_COMMAND="find * -path '*/\.*' -prune -o -path '~\/\.vim\/temp/\.*' -prune -o -path '~\/\.vim\/backups/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null"
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
-
+export AUTO_NTFY_DONE_IGNORE="vim tmux meld"
+export MYVIMRC="$HOME/.vimrc"

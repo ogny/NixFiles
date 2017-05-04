@@ -1,3 +1,3 @@
 #!/bin/bash
-cd ~/Git_Repolari/kisisel/private/gunluk/is_notlari/egem/toplanti_notlari/2017
+cd ~/Git_Repolari/kisisel/private/gunluk/is_notlari/egem/toplanti_notlari/2017/04
 nohup markserv -a 0.0.0.0 &

@@ -1,6 +1,20 @@
 [user]
 	name = Orkun Gunay
 	email = orkun.gunay@sekomyazilim.com.tr
+
+[alias]
+  showtool = "!f() { git difftool $1^ $1; }; f"
+  added = difftool --cached
+	d  = difftool
+  s  = status -uno
+  c  = checkout
+  cl = clone
+  b  = branch
+  ps = "push origin"
+  pl = pull
+  co = "commit -m"
+  a  = "add ."
+
 [push]
 	default = matching
 [core]
@@ -10,18 +24,16 @@
 [web]
   browser = google-chrome
 [diff]
-	tool = vimdiff
+#	tool = vimdiff
+  tool = icdiff
 [difftool]
 	prompt = false
-[alias]
-	d  = difftool
-  s  = status
-  c  = checkout
-  cl = clone
-  b  = branch
-  ps = "push origin"
-  pl = pull
-  co = "commit -m"
-  a  = "add ."
+
 [merge]
 	tool = vimdiff
+
+[difftool "icdiff"]
+  cmd = /usr/bin/icdiff --line-numbers $LOCAL $REMOTE
+
+[pager]
+  difftool = true

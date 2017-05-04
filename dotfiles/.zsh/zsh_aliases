@@ -1,6 +1,8 @@
 alias z='/home/orkung/bin/zargan.py'
 alias rdsktp='rdesktop -u administrator -g 1920x1080 10.10.18.111'
 alias ntstat="sudo netstat -taunp |egrep *:80"
+alias established="sudo netstat -anptl | grep ESTABLISHED | awk '{ print $7 }' | cut -d/ -f2 | sort -u"
+alias listened="sudo netstat -anptl | grep LISTEN | awk '{ print $7 }' | cut -d/ -f2 | sort -u"
 alias perms="find . -type d -exec chmod 0755 {} \; && find . -type f -exec chmod 0644 {} \;"
 alias mr='sudo mtr -s 1500 -r -c 1000 -i 0.1 $@'
 alias bagli='lsof -P -i -n'
@@ -180,4 +182,7 @@ function mycd() {
 function repolist() {
 apt-cache policy | awk '/http/ { printf "%s %s\n",$2,$3 }' | sort | uniq
 }
-
+function send2kindle() {
+echo "hi" | mutt -a "$1" -- orkungunay@kindle.com
+}
+alias dis="docker images"
