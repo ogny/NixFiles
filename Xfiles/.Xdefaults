@@ -146,7 +146,7 @@ XTerm*termName: xterm-256color
 !XTerm*color7: #eee8d5
 !XTerm*color15: #fdf6e3
 !
-XTerm*background: #292b2e
+!!!!!XTerm*background: #292b2e
 !XTerm*foreground: #657b83
 !
 !PS1="\[\033[1;34m\][\$(date +%H%M)][\u@\h:\w]$\[\033[0m\] "

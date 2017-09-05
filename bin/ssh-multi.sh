@@ -21,7 +21,7 @@ starttmux() {
         tmux split-window -h  "ssh $i"
         tmux select-layout tiled > /dev/null
     done
-    tmux select-pane -t 0
+    tmux select-pane -t 7
     tmux set-window-option synchronize-panes on > /dev/null
 
 }

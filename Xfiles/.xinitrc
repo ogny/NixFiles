@@ -5,4 +5,5 @@
 xset s off -dpms
 setxkbmap -option caps:escape
 #exec /home/orkung/bin/clipd
-exec i3 --shmlog-size=26214400
+#exec i3 --shmlog-size=26214400
+exec i3

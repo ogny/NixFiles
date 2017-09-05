@@ -96,6 +96,10 @@ gecr()
 {
   geeknote create --title "$1" --notebook $2
 }
+germ()
+{
+geeknote remove --note "$1" --force
+}
 alias psc="ps xawf -eo pid,user,cgroup,args"
 alias sdo='sudo docker'
 alias dockviz="docker run --privileged -it --rm --volume /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
@@ -113,7 +117,7 @@ alias myf="find . -type f -iname"
 alias goin="google-chrome --incognito"
 myack () {
 dosya="/home/orkung/.ssh/config"
-  ack-grep -A 1 -B 1 $1 $dosya
+  ack-grep -A 2 -B 2 $1 $dosya
 }
 alias ag2="ag -A 2 -B 2 $1"
 alias ag1="ag -A 1 -B 1 $1"
@@ -157,7 +161,7 @@ alias asp='ansible-playbook'
 alias myag="ag -iQSlG"
 alias sshf='sshpass -f ~/is/parolalar/dpic_fatih/cma ssh'
 #alias dsmrtdb='sshpass -f ~/is/parolalar/generic_parola ssh root@213.243.1.188'
-alias systemctl='sudo systemctl'
+#alias systemctl='sudo systemctl'
 alias -s pdf=zathura
 alias -s conf=vim
 alias -s md=vim
@@ -183,6 +187,19 @@ function repolist() {
 apt-cache policy | awk '/http/ { printf "%s %s\n",$2,$3 }' | sort | uniq
 }
 function send2kindle() {
-echo "hi" | mutt -a "$1" -- orkungunay@kindle.com
+echo "hi" | mutt  -e "set crypt_use_gpgme=no" -a "$1" -- orkungunay@kindle.com
 }
-alias dis="docker images"
+function ntt() {
+mutt -e "set crypt_use_gpgme=no" -s "$1" orkungunayx@gmail.com << EOT 
+EOT
+}
+dis() {
+  docker image ls |awk '{print " "$1":"$2" "}' |sort -n
+}
+alias dps="docker ps -a"
+alias ll="ls -alh"
+alias ttvpn="echo '8skcytAY' | sudo  openconnect -u 37951336 --passwd-on-stdin --juniper 'https://sslvpn.turktelekom.com.tr/dana-na/auth/url_332/welcome.cgi'"
+alias datagrip="bash ~/Downloads/DataGrip-2017.1.4/bin/datagrip.sh"
+alias subl="~/Downloads/sublime_text_3/sublime_text"
+alias dm="docker-machine"
+#alias aypi=`ip addr | grep -E 'eth0.*state UP' -A2 | tail -n 1 | awk '{print $2}' | cut -f1 -d '/'`

@@ -34,6 +34,7 @@ bindsym $mod+v layout splitv
 bindsym $mod+$horz layout splith
 bindsym $mod+e layout toggle split
 
+set $terminal mate-terminal
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 
@@ -163,18 +164,23 @@ mode "resize" {
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id xmodmap /home/orkung/.Xmodmap
 exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1 --output eDP1 --off
-exec --no-startup-id ssh-agent -s > ~/ssh-agent.cf
-exec --no-startup-id ssh-agent tmux
+#exec --no-startup-id ssh-agent -s > ~/ssh-agent.cf
+exec --no-startup-id ssh-agent  tmux
+exec --no-startup-id tmux attach-session -s is
+#exec --no-startup-id ssh-agent tmux
 #exec --no-startup-id "setxkbmap -option caps:escape"
 exec --no-startup-id xrdb -merge ~/.Xdefaults
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id hipchat
-exec --no-startup-id sudo vpnc sekom
+#exec --no-startup-id sudo vpnc sekom
+exec --no-startup-id sudo  openconnect --juniper "https://sslvpn.turktelekom.com.tr/skapvpn"
 exec --no-startup-id pa-applet
+exec --no-startup-id xbindkeys
 exec --no-startup-id xbacklight
-exec --no-startup-id fluxgui
+#exec --no-startup-id fluxgui
 exec --no-startup-id nohup unclutter -display :0 -root -idle 1 &
-exec --no-startup-id clipmenud &
+#exec --no-startup-id clipmenud &
+exec --no-startup-id systemctl --user start clipmenud.service 
 exec --no-startup-id mymarkserv.sh
 #exec --no-startup-id "cd ~/Git_Repolari/kisisel/private/gunluk/is_notlari/egem/toplanti_notlari/2017 ; nohup markserv -a 0.0.0.0 &"
 #exec --no-startup-id nohup watch -n 15 --precise hipchat_restart.sh &
@@ -211,7 +217,7 @@ exec --no-startup-id mymarkserv.sh
 #exec --no-startup-id  feh ~/Desktop/karisik/Orkun_Gunay_CV_tr-0.png
 #exec --no-startup-id  feh --restore
 #exec --no-startup-id ~/bin/myfeh.sh
-exec --no-startup-id ~/bin/nitrogen_background.sh
+#exec --no-startup-id ~/bin/nitrogen_background.sh
 #exec --no-startup-id nitrogen
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
 #exec libreoffice ~/alsat_serverlar_v21.xlsx
@@ -243,15 +249,19 @@ bindsym XF86Back exec --no-startup-id pactl set-sink-volume $sink -- -10%
 bindsym Control+F2 exec --no-startup-id pactl set-sink-volume $sink -- +10%
 bindsym Control+F1 exec --no-startup-id pactl set-sink-volume $sink -- -10%
 #bindsym Control+F4 exec --no-startup-id "synclient TouchpadOff=1"
-bindsym Control+F4 exec --no-startup-id ~/bin/touchpad_kapat.sh
-bindsym Control+F5 exec --no-startup-id ~/bin/touchpad_ac.sh
+bindsym Control+F4 exec --no-startup-id ~/bin/touchpad_toogle.sh
+bindsym Control+F5 exec --no-startup-id ~/bin/trackpad_kapa.sh
+bindsym Control+F6 exec --no-startup-id ~/bin/trackpad_ac.sh
 #bindsym Control+F5 exec --no-startup-id "xinput set-prop 12 'Device Enabled' 1"
 #bindsym Control+F5 exec --no-startup-id "synclient TouchpadOff=0"
 bindsym XF86Mail exec --no-startup-id echo "pause" > /tmp/mplayer-control
 bindsym XF86Search exec --no-startup-id echo "pt_step 1" > /tmp/mplayer-control
 #bindsym XF86HomePage exec --no-startup-id echo "pt_step -1" > /tmp/mplayer-control
 #bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1680x1050 -u orkung 192.168.56.2"
-bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1920x1080 -u orkung 192.168.56.2"
+bindsym KP_Delete exec --no-startup-id  "rdesktop -g 1920x1080 -u orkung 192.168.56.2"
+bindsym KP_Subtract exec --no-startup-id  "xbacklight -dec 20"
+bindsym KP_Add exec --no-startup-id  "xbacklight -inc 20"
+#bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1920x1080 -u orkung 192.168.56.2"
 
 #bindsym XF86HomePage exec --no-startup-id  "rdesktop -g 1366x768 -u orkung 192.168.56.2"
 # Kaynak: https://faq.i3wm.org/question/125/how-to-change-the-systems-volume/?sort=votes&page=2#sort-top
@@ -327,11 +337,14 @@ workspace 1 output HDMI2
 for_window [class="rdesktop"] border normal
 #for_window [class="VirtualBox"] border normal
 for_window [class="VirtualBox"] floating enable
+for_window [class="skypeforlinux"] floating enable
 for_window [class="plclient-bin"] floating enable
 for_window [class="Pgadmin3"] floating enable
 for_window [class="HipChat"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [class="spotify"] floating enable
+for_window [class="Firefox"] floating enable
+for_window [class="Spotify"] floating enable
 for_window [class="uxterm"] floating enable
 for_window [class="zathura"] floating enable
 #for_window [class="google-chrome"] floating enable
@@ -339,6 +352,7 @@ for_window [class="zathura"] floating enable
 for_window [class="Pavucontrol"] floating enable resize set 640 480
 for_window [class="TogglDesktop"] floating enable
 for_window [class="Toggl Desktop"] floating enable
+for_window [title="SSL Network Extender - Mozilla Firefox"] floating enable 
 
 #_______________________________________________________________________
 # => 1 dakika stdin'den bir sey gelmeyince ekrani kilitle (calismiyor)  |
@@ -356,6 +370,11 @@ bindsym $mod+Shift+m move workspace to output right
 #bindsym Mod4+r exec ~/bin/ingce.sh
 
 # Make the currently focused window a scratchpad
+bindsym Mod4+Shift+b move scratchpad
+# Show the first scratchpad window
+bindsym Mod4+b [title="Brain.fm - Google Chrome"] scratchpad show
+
+# Make the currently focused window a scratchpad
 bindsym Mod4+Shift+h move scratchpad
 # Show the first scratchpad window
 bindsym Mod4+h [instance="hipchat"] scratchpad show
@@ -366,16 +385,20 @@ bindsym Mod4+Shift+s move scratchpad
 bindsym Mod4+s [instance="spotify"] scratchpad show
 
 # Make the currently focused window a scratchpad
-bindsym Mod4+Shift+b move scratchpad
+bindsym Mod4+Shift+c move scratchpad
 # Show the first scratchpad window
-bindsym Mod4+b [instance="zathura"] scratchpad show
+bindsym Mod4+c [instance="zathura"] scratchpad show
 
+# Make the currently focused window a scratchpad
+bindsym Mod4+Shift+f move scratchpad
 
+# Show the first scratchpad window
+bindsym Mod4+f [title="SSL Network Extender - Mozilla Firefox"] scratchpad show
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
 # laptopu ve monitoru kapamayi toggle'a aliyorum.
-bindsym Mod4+m  exec --no-startup-id /home/orkung/bin/myxrandr_toggle.sh
-bindsym Mod4+l  exec --no-startup-id /home/orkung/bin/laptop.sh
+#bindsym Mod4+m  exec --no-startup-id /home/orkung/bin/myxrandr_toggle.sh
+#bindsym Mod4+l  exec --no-startup-id /home/orkung/bin/laptop.sh
 #bindsym Mod4+t bar mode toggle
 bindsym Mod4+t exec --no-startup-id /home/orkung/bin/xrandr_toggle.sh
 bindsym Mod4+p  exec --no-startup-id  pavucontrol
@@ -385,9 +408,9 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 bindsym XF86TouchpadToggle exec ~/bin/toggletouchpad.sh # toggle touchpad
 
-bindsym $mod+} exec i3-cycle right
-bindsym $mod+{ exec i3-cycle left
-bindsym $mod+Shift+{ exec i3-cycle up
-bindsym $mod+Shift+} exec i3-cycle down
-bind $mod+49 exec i3-cycle next
-bind $mod+Shift+49 exec i3-cycle prev
+#bindsym $mod+} exec i3-cycle right
+#bindsym $mod+{ exec i3-cycle left
+#bindsym $mod+Shift+{ exec i3-cycle up
+#bindsym $mod+Shift+} exec i3-cycle down
+#bind $mod+49 exec i3-cycle next
+#bind $mod+Shift+49 exec i3-cycle prev

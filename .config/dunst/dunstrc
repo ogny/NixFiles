@@ -225,10 +225,16 @@
 #    summary = "*script*"
 #    script = dunst_test.sh
 
-#[ignore]
-#    # This notification will not be displayed
-#    summary = "foobar"
-#    format = ""
+#[applet]
+#     # This notification will not be displayed
+#     appname: "pa-applet"
+#     #summary: pa-applet
+#     format = ""
+#     #script = ''
+[ignore]
+    # This notification will not be displayed
+    summary = "pa-applet"
+    format = ""
 
 #[signed_on]
 #    appname = Pidgin
@@ -245,9 +251,11 @@
 #    summary = *says*
 #    urgency = critical
 #
-[chat]
-    appname = hipchat
-    summary = *says*
-    urgency = normal
-#
-# vim: ft=cfg
+#[chat]
+#    appname = hipchat
+#    summary = *says*
+#    urgency = normal
+##
+## vim: ft=cfg
+#[dunst]
+#    appname = dunst

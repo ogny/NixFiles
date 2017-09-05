@@ -6,6 +6,7 @@
 "call vundle#begin()
 call plug#begin('~/.vim/plugged')
 "Plug 'liuchengxu/space-vim-dark'
+Plug 'Glench/Vim-Jinja2-Syntax'
 "Plug 'kana/vim-textobj-line'
 "Plug 'jmcantrell/vim-virtualenv'
 "Plug 'wkentaro/conque.vim'
@@ -75,6 +76,7 @@ Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+Plug 'lifepillar/vim-solarized8'
 "Plug 'ntpeters/vim-better-whitespace'
 "Plug 'chrisbra/csv.vim'
 ""Plug 'MattesGroeger/vim-bookmarks'
@@ -85,7 +87,9 @@ Plug 'xolox/vim-misc'
 ""Plug 'nathanaelkane/vim-indent-guides'
 ""Plug 'mattn/webapi-vim'
 ""Plug 'vim-scripts/nginx.vim'
-""Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi'
+"
+"Plug 'davidhalter/jedi-vim'
 ""Plug 'neilagabriel/vim-geeknote'
 ""Plug 'Wolfy87/vim-expand'
 ""Plug 'vivien/vim-addon-linux-coding-style'
@@ -107,6 +111,7 @@ call plug#end()
 " => genel ayarlar 							                                        |
 "_______________________________________________________________________|
 "colorscheme flattened_dark
+"colorscheme solarized8
 " signcolumn gizleme
 " :sign unplace *
 
@@ -228,6 +233,7 @@ set nofoldenable
 "
 "autocmd TextChanged,TextChangedI <buffer> silent write
 " Kaynak: http://stackoverflow.com/questions/6991638/how-to-auto-save-a-file-every-1-second-in-vim
+set completeopt=menu
 
 "_______________________________________________________________________
 " => Gorunum 								                                            |
@@ -660,8 +666,11 @@ nnoremap <leader>f :CtrlPF<Cr>
 " => Python-mode							                                          |
 "_______________________________________________________________________|
 "
-let g:pymode_rope = 0
-let g:pymode_syntax = 1
+"let g:pymode_rope = 1
+let g:pymode = 1
+"let g:pymode_syntax = 1
+"let g:pymode_python = 'python'
+"let g:pymode_rope_show_doc_bind = '<C-c>d'
 
 "_______________________________________________________________________
 " => Ultisnips								                                          |
@@ -960,7 +969,7 @@ if $TMUX == ''
 endif
 
 autocmd BufNewFile,BufRead /tmp/mutt-* set filetype=mail
-au FileType mail set tw=78 autoindent expandtab formatoptions=tcqn syntax=json
+au FileType mail set tw=79 autoindent expandtab formatoptions=tcqn syntax=json
 au FileType mail set list listchars=tab:»·,trail:·
 au FileType mail set comments=nb:>
 au FileType mail vmap D dO[...]^[]
@@ -1026,7 +1035,10 @@ let g:mc = "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>"
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
-" g:loaded_youcompleteme = 1
+
+let g:loaded_youcompleteme = 0
+"let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_python_binary_path = 'python'
 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
@@ -1064,10 +1076,10 @@ set runtimepath^=~/.vim/plugged/vim-howdoi
 map <leader>ho <Plug>Howdoi
 
 "let g:yankstack_map_keys = 1
-let g:yankstack_yank_keys = ['y', 'd']
-noremap <leader>p <Plug>yankstack_substitute_newer_paste
-call yankstack#setup()
-nmap Y y$
+"let g:yankstack_yank_keys = ['y', 'd']
+"noremap <leader>p <Plug>yankstack_substitute_newer_paste
+"call yankstack#setup()
+"nmap Y y$
 " other mappings involving y, d, c, etc
 
 nmap =j :%!python -m json.tool<CR>

@@ -19,7 +19,7 @@ export XAUTHORITY=~/.Xauthority
 #export GEM_PATH="/usr/lib/ruby/gems/2.1.0/gems"
 #export GEM_HOME="$HOME/.gem/ruby/2.1.0/gems
 #export GEM_PATH="$HOME/.gem/ruby/2.1.0/gems
-export PATH=$PATH:$HOME/.pyenv/bin:$HOME/.rvm/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/usr/sbin:$HOME/Git_Repolari/kisisel/private/server-side/parolalar:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/.pyenv/bin:$HOME/.rvm/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/usr/sbin:$HOME/Git_Repolari/kisisel/private/server-side/parolalar:/usr/local/go/bin:$GOPATH/bin:/usr/lib/postgresql/9.4/bin
 
 #PATH="$HOME/perl5/bin${PATH+:}${PATH}"
 
@@ -32,7 +32,8 @@ export LD_LIBRARY_PATH=/opt/ora/instantclient_12_1/
 export ORACLE_HOME=/opt/ora/instantclient_12_1/
 export C_FORCE_ROOT="true"
 #export /home/orkung/Git_Repolari/diger/powerline/powerline/config_files
-export DISPLAY=:0.0
+export DISPLAY=:0
+#export DISPLAY=:0.0
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
 #export NVM_DIR="/home/orkung/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -54,5 +55,7 @@ export CHEATCOLORS=true
 #export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #export FZF_DEFAULT_COMMAND="find * -path '*/\.*' -prune -o -path '~\/\.vim\/temp/\.*' -prune -o -path '~\/\.vim\/backups/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null"
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
+#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export AUTO_NTFY_DONE_IGNORE="vim tmux meld"
 export MYVIMRC="$HOME/.vimrc"
+export CLF_COLOR=1

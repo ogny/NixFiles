@@ -4,6 +4,9 @@
 Session.vim
 .netrwhist
 *~
+Devops/docker/dpic/webapp/deploy_pimspyTtnetApp_2.3.0
+Devops/docker/dpic/webapp/instantclient_12_1.zip
 .NERDTreeBookmarks
 dotfiles/.tmux/plugins/tmux-sessionist
+dotfiles/.tmux/plugins/tmux-resurrect
 dotfiles/.tmux/plugins/tmux-sidebar
