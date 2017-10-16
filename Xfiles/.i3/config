@@ -164,10 +164,8 @@ mode "resize" {
 #exec --no-startup-id xmodmap ~/.Xmodmap
 exec_always --no-startup-id xmodmap /home/orkung/.Xmodmap
 exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1 --output eDP1 --off
-#exec --no-startup-id ssh-agent -s > ~/ssh-agent.cf
-exec --no-startup-id ssh-agent  tmux
-exec --no-startup-id tmux attach-session -s is
-#exec --no-startup-id ssh-agent tmux
+exec --no-startup-id ssh-agent -s > ~/ssh-agent.cf
+exec --no-startup-id ssh-agent tmux
 #exec --no-startup-id "setxkbmap -option caps:escape"
 exec --no-startup-id xrdb -merge ~/.Xdefaults
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
@@ -219,6 +217,7 @@ exec --no-startup-id mymarkserv.sh
 #exec --no-startup-id ~/bin/myfeh.sh
 #exec --no-startup-id ~/bin/nitrogen_background.sh
 #exec --no-startup-id nitrogen
+exec --no-startup-id  redshift || redshift -l 41.01:28.94
 # Kaynak: https://answers.launchpad.net/redshift/+question/235109
 #exec libreoffice ~/alsat_serverlar_v21.xlsx
 #exec sudo vpnc

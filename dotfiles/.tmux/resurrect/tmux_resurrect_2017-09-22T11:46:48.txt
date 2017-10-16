@@ -1,0 +1,17 @@
+pane	diger	1	:zsh	0	:-	1	:/home/orkung	0	zsh	:
+pane	diger	1	:zsh	0	:-	2	:/home/orkung	1	zsh	:
+pane	diger	2	:mutt	0	:!	1	:/home/orkung	0	zsh	:
+pane	diger	2	:mutt	0	:!	2	:/home/orkung	1	mutt	:mutt -F /home/orkung/.mutt/account.com.outlook.sekomy
+pane	diger	3	:zsh	1	:*	1	:/home/orkung	0	zsh	:
+pane	diger	3	:zsh	1	:*	2	:/home/orkung	1	zathura	:zathura /home/orkung/Downloads/StreamingReplication-HotStandby-PostgreSQLveSunduklari-DevrimGunduz.pdf
+pane	diger	3	:zsh	1	:*	3	:/home/orkung	0	zathura	:zathura pgpool-II_for_beginners.pdf
+pane	is	2	:zsh	0	:-	1	:/home/orkung	0	zsh	:
+pane	is	2	:zsh	0	:-	2	:/home/orkung/postgres_cleanup_test	1	zsh	:
+pane	is	4	:root@10.134.50.250	1	:*	1	:/home/orkung	0	zsh	:
+pane	is	4	:root@10.134.50.250	1	:*	2	:/home/orkung	1	zsh	:
+window	diger	1	0	:-	15c7,239x19,0,0{59x19,0,0,85,179x19,60,0,86}
+window	diger	2	0	:!	eb13,239x19,0,0{32x19,0,0,2,206x19,33,0,3}
+window	diger	3	1	:*	7a3a,239x19,0,0{42x19,0,0,19,196x19,43,0[196x10,43,0,20,196x8,43,11,25]}
+window	is	2	0	:-	86c2,239x32,0,0{59x32,0,0,82,179x32,60,0,89}
+window	is	4	1	:*	48db,239x32,0,0{69x32,0,0,75,169x32,70,0,76}
+state	is	

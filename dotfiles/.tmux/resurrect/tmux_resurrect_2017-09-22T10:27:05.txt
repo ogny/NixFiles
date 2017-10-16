@@ -1,0 +1,12 @@
+pane	diger	2	:mutt	0	:-	1	:/home/orkung	0	zsh	:
+pane	diger	2	:mutt	0	:-	2	:/home/orkung	1	mutt	:mutt -F /home/orkung/.mutt/account.com.outlook.sekomy
+pane	diger	3	:zsh	1	:*Z	1	:/home/orkung	0	zsh	:
+pane	diger	3	:zsh	1	:*Z	2	:/home/orkung	0	zsh	:
+pane	diger	3	:zsh	1	:*Z	3	:/home/orkung	0	zathura	:zathura pgpool-II_for_beginners.pdf
+pane	diger	3	:zsh	1	:*Z	4	:/home/orkung	1	zsh	:
+pane	is	4	:root@10.134.50.250	1	:*	1	:/home/orkung	0	zsh	:
+pane	is	4	:root@10.134.50.250	1	:*	2	:/home/orkung	1	zsh	:
+window	diger	2	0	:-	e692,239x66,0,0{32x66,0,0,2,206x66,33,0,3}
+window	diger	3	1	:*Z	bc09,239x66,0,0{42x66,0,0,19,196x66,43,0[196x34,43,0,20,196x15,43,35,25,196x15,43,51,79]}
+window	is	4	1	:*	4bc4,239x15,0,0{59x15,0,0,75,179x15,60,0,76}
+state	diger	is

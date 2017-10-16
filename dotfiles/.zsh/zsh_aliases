@@ -94,7 +94,7 @@ gefs()
 }
 gecr()
 {
-  geeknote create --title "$1" --notebook $2
+  geeknote create --title "$1" --notebook gunluk
 }
 germ()
 {
@@ -110,7 +110,7 @@ function mman {
 function mytasks {
   geeknote create --title $1 --notebook is
   }
-alias gese="geeknote find --content-search --notebooks "kisisel" --search"
+alias gese="geeknote find --content-search --notebooks "genel" --search"
 alias hdmi="xrandr --output LVDS-1 --off"
 alias lvds="xrandr --output HDMI-1 --auto --left-of LVDS-1 --output LVDS-1 --auto"
 alias myf="find . -type f -iname"
@@ -187,7 +187,7 @@ function repolist() {
 apt-cache policy | awk '/http/ { printf "%s %s\n",$2,$3 }' | sort | uniq
 }
 function send2kindle() {
-echo "hi" | mutt  -e "set crypt_use_gpgme=no" -a "$1" -- orkungunay@kindle.com
+echo "$1" | mutt -s "$1" -e "set crypt_use_gpgme=no" -a "$1" -- orkungunay@kindle.com
 }
 function ntt() {
 mutt -e "set crypt_use_gpgme=no" -s "$1" orkungunayx@gmail.com << EOT 
@@ -203,3 +203,6 @@ alias datagrip="bash ~/Downloads/DataGrip-2017.1.4/bin/datagrip.sh"
 alias subl="~/Downloads/sublime_text_3/sublime_text"
 alias dm="docker-machine"
 #alias aypi=`ip addr | grep -E 'eth0.*state UP' -A2 | tail -n 1 | awk '{print $2}' | cut -f1 -d '/'`
+histrm() { 
+	LC_ALL=C sed --in-place '/$1/d' $HISTFILE 
+}
