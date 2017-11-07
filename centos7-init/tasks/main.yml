@@ -1,0 +1,47 @@
+---
+# tasks file for centos7-init
+- name: install necessary packages
+  yum: name={{item}} state=present
+  with_items:
+    - vim-enhanced 
+    - epel-release
+    - wget
+    - git
+
+- name: install the latest version of tmux
+  yum:
+    name: tmux
+    state: latest
+
+- blockinfile: |
+    dest=~/.tmux.conf
+    content="unbind '['
+        bind Escape copy-mode"
+
+- name: return motd to registered var
+  command: mkdir ~/.vim/autoload
+
+- name: get vim-plug extension
+  get_url:
+    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    dest: ~/.vim/autoload/
+
+- blockinfile: |
+    dest=~/.vimrc
+    content="if !has('compatible')
+    call plug#begin('~/.vim/plugged')
+    Plug 'scrooloose/nerdtree'
+    call plug#end()
+    endif
+    filetype plugin on
+    filetype plugin indent on
+    filetype indent on
+    set nocompatible
+    filetype on
+    syntax enable
+    nnoremap  <C-n> :bn<cr>
+    nnoremap  <C-p> :bp<cr>
+    set tabstop=4"
+
+- name: Install vim plugins
+  shell: vim -c ":PlugInstall" -c q -c q -c q

@@ -242,16 +242,16 @@ fj() {
   local dir
   dir=$(fasd -Rdl | fzf --no-sort +m) && mycd "$dir"
 }
-fo() {
-  local out file key
-  out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
-  key=$(head -1 <<< "$out")
-  ME/bin/ssh-find-agent.sh
-  file=$(head -2 <<< "$out" | tail -1)
-  if [ -n "$file" ]; then
-    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
-  fi
-}
+#fo() {
+#  local out file key
+#  out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
+#  key=$(head -1 <<< "$out")
+#  ME/bin/ssh-find-agent.sh
+#  file=$(head -2 <<< "$out" | tail -1)
+#  if [ -n "$file" ]; then
+#    [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+#  fi
+#}
 
 # ZSH keybinding example; ~/.zshrc
 fzf_history() {

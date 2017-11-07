@@ -179,7 +179,7 @@ exec --no-startup-id xbacklight
 exec --no-startup-id nohup unclutter -display :0 -root -idle 1 &
 #exec --no-startup-id clipmenud &
 exec --no-startup-id systemctl --user start clipmenud.service 
-exec --no-startup-id mymarkserv.sh
+#exec --no-startup-id mymarkserv.sh
 #exec --no-startup-id "cd ~/Git_Repolari/kisisel/private/gunluk/is_notlari/egem/toplanti_notlari/2017 ; nohup markserv -a 0.0.0.0 &"
 #exec --no-startup-id nohup watch -n 15 --precise hipchat_restart.sh &
 #exec --no-startup-id unclutter -root -idle 1 &
