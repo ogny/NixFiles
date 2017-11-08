@@ -13,35 +13,58 @@
     name: tmux
     state: latest
 
+- name: return create necessary directories
+  command: mkdir -p ~/.vim/autoload ~/.vim/syntax
+
+- name: copy existing example files
+  command: creates="~/.tmux.conf" cp /usr/share/doc/tmux-1.8/examples/screen-keys.conf ~/.tmux.conf
+
+- name: copy existing example files
+  file:
+    src: /usr/share/doc/tmux-1.8/examples/tmux.vim
+    dest: ~/.vim/syntax/tmux.vim
+    state: link
+    force: yes
+
 - blockinfile: |
     dest=~/.tmux.conf
     content="unbind '['
         bind Escape copy-mode"
 
-- name: return motd to registered var
-  command: mkdir ~/.vim/autoload
-
 - name: get vim-plug extension
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: ~/.vim/autoload/
+ 
+- name: create vimrc
+  file: 
+    path: ~/.vimrc
+    state: touch
 
-- blockinfile: |
-    dest=~/.vimrc
-    content="if !has('compatible')
-    call plug#begin('~/.vim/plugged')
-    Plug 'scrooloose/nerdtree'
-    call plug#end()
-    endif
-    filetype plugin on
-    filetype plugin indent on
-    filetype indent on
-    set nocompatible
-    filetype on
-    syntax enable
-    nnoremap  <C-n> :bn<cr>
-    nnoremap  <C-p> :bp<cr>
-    set tabstop=4"
+- name: ensure file exists
+  blockinfile:
+    path: ~/.vimrc
+    block: | 
+      if !has('compatible')
+      call plug#begin('~/.vim/plugged')
+      Plug 'scrooloose/nerdtree'
+      call plug#end()
+      endif
+      filetype plugin on
+      filetype plugin indent on
+      filetype indent on
+      set nocompatible
+      filetype on
+      syntax enable
+      nnoremap  <C-n> :bn<cr>
+      nnoremap  <C-p> :bp<cr>
+      set tabstop=4
+
+- name: delete wrong syntax
+  lineinfile:
+    path: ~/.vimrc
+    regexp: '^#'
+    state: absent
 
 - name: Install vim plugins
   shell: vim -c ":PlugInstall" -c q -c q -c q

@@ -1,5 +1,5 @@
 ---
-- hosts: sky-app-1
+- hosts: local
   remote_user: root
   roles:
-    - ~/Devops/ansible/myworks/centos7-init
+    - ~/Git_Repolari/kisisel/public/nixfiles/centos7-init
