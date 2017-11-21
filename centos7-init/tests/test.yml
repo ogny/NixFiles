@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  become: yes
-  become_method: sudo
+  become: no
+# become_method: sudo
   roles:
     - ~/Git_Repolari/kisisel/public/nixfiles/centos7-init

@@ -10,6 +10,8 @@
     - epel-release
     - wget
     - git
+  become: yes
+  become_method: sudo
 
 - name: install the latest version of tmux
   yum:
