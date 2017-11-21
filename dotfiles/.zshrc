@@ -18,7 +18,7 @@ fi
 autoload -Uz compinit promptinit
 compinit
 promptinit
-#prompt off
+prompt off
 #PS1=' %~
 #%# '
 bindkey -v
@@ -160,12 +160,16 @@ chpwd_functions+='chpwd_update_git_vars'
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)
 #PROMPT=$'%{${fg[cyan]}%}%B%~%b$(prompt_git_info)%{${fg[default]}%} '
 #PROMPT='%B%m%~%b$(git_super_status) %# '
-PROMPT=$'%{${fg[cyan]}%}%B%~%b$(git_super_status)
-%{${fg[default]}%}'
 #PS1=' %~
 #%# '
 #%#%{${fg[default]}%} '
 
+# base16 sonrasi kapattim
+#PROMPT=$'%{${fg[cyan]}%}%B%~%b$(git_super_status)
+#%{${fg[default]}%}'
+ 
+PROMPT=$'%~%b$(git_super_status)
+%{${fg[default]}%}'
 #vman() {
 #  vim -c "SuperMan $*"
 #

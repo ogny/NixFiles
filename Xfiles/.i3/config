@@ -167,7 +167,8 @@ exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1 --output eDP1 
 exec --no-startup-id ssh-agent -s > ~/ssh-agent.cf
 exec --no-startup-id ssh-agent tmux
 #exec --no-startup-id "setxkbmap -option caps:escape"
-exec --no-startup-id xrdb -merge ~/.Xdefaults
+exec --no-startup-id xrdb -load ~/.Xresources
+#exec --no-startup-id xrdb -merge ~/.Xdefaults
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id hipchat
 #exec --no-startup-id sudo vpnc sekom
@@ -234,9 +235,10 @@ exec --no-startup-id  redshift || redshift -l 41.01:28.94
 #bindsym Mod4+e exec urxvt -geometry 53x38
 #bindsym Mod4+w exec mrxvt
 #bindsym Mod4+w exec lxterminal
-bindsym Mod4+w exec mate-terminal
+bindsym Mod4+w exec xterm -fa "Monaco Linux:pixelsize=13"
+#bindsym Mod4+w exec xterm -fa "source code pro:pixelsize=13"
 #bindsym Mod4+w exec urxvt
-bindsym Mod4+e exec urxvt -geometry 53x38 -e tmux new-session
+bindsym Mod4+e exec mate-terminal
 bindsym Mod4+g exec google-chrome
 #bindsym Mod4+a exec pavucontrol
 bindsym Mod4+z exec "setxkbmap tr"
@@ -366,7 +368,6 @@ bindsym $mod+m move workspace to output left
 bindsym $mod+Shift+m move workspace to output right
 # bar toggle, hide or show
 #bindsym $mod+o bar mode toggle
-#bindsym Mod4+r exec ~/bin/ingce.sh
 
 # Make the currently focused window a scratchpad
 bindsym Mod4+Shift+b move scratchpad
@@ -390,9 +391,9 @@ bindsym Mod4+c [instance="zathura"] scratchpad show
 
 # Make the currently focused window a scratchpad
 bindsym Mod4+Shift+f move scratchpad
-
 # Show the first scratchpad window
 bindsym Mod4+f [title="SSL Network Extender - Mozilla Firefox"] scratchpad show
+
 # remove a floating window from scratchpad
 bindsym $mod+x floating disable; floating enable
 # laptopu ve monitoru kapamayi toggle'a aliyorum.
@@ -402,6 +403,7 @@ bindsym $mod+x floating disable; floating enable
 bindsym Mod4+t exec --no-startup-id /home/orkung/bin/xrandr_toggle.sh
 bindsym Mod4+p  exec --no-startup-id  pavucontrol
 bindsym Mod4+v exec --no-startup-id clipmenu
+bindsym Mod4+r exec --no-startup-id "setxkbmap -option caps:escape && xmodmap ~/.Xmodmap"
 bindsym Mod4+a exec --no-startup-id /home/orkung/Git_Repolari/kisisel/private/server-side/parolalar/dmenu-passwords.sh
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness

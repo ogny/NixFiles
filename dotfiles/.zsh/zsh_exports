@@ -1,5 +1,5 @@
 export XDG_CONFIG_HOME="$HOME/.config"
-export TERM=rxvt-256color
+export TERM=screen-256color
 #export VAGRANT_HOME=$HOME/.vagrant.d
 export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 ma nolist nonu' -\""
 export GPGKEY=17D9BD2F
@@ -59,3 +59,5 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export AUTO_NTFY_DONE_IGNORE="vim tmux meld"
 export MYVIMRC="$HOME/.vimrc"
 export CLF_COLOR=1
+BASE16_SHELL=$HOME/.config/base16-shell/ 
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
