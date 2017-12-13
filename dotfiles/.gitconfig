@@ -5,7 +5,7 @@
 [alias]
   showtool = "!f() { git difftool $1^ $1; }; f"
   added = difftool --cached
-	d  = difftool
+  d  = difftool
   s  = status -uno
   c  = checkout
   cl = clone
@@ -37,3 +37,6 @@
 
 [pager]
   difftool = true
+
+[icdiff]
+            options = --highlight --line-numbers

@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: staging-dpic-ttnet-1
   become: no
 # become_method: sudo
   roles:
