@@ -90,8 +90,8 @@ report.list.filter=status:pending
 
 # task ls
 report.ls.description=Minimal listing of all tasks matching the specified criteria
-report.ls.columns=id,project,priority,description
-report.ls.labels=ID,Project,Pri,Description
+report.ls.columns=id,project,priority,description,status
+report.ls.labels=ID,Project,Pri,Description,Status
 report.ls.sort=priority-,project+
 report.ls.filter=status:pending
 

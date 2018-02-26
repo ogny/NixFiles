@@ -87,14 +87,14 @@ alias mychef="tmux attach-session -t mychef"
 alias sserver="tmux attach-session -t SimpleServer"
 alias diger="tmux attach-session -t diger"
 alias mydig="dig +nocmd ANY +multiline +noall +answer"
-alias geed="geeknote edit --note"
+alias geed="geeknote edit --note \$A"
 gefs()
 {
-  geeknote find --notebooks "$1" --search |cut -d\  -f 8-
+  geeknote find --notebook "$1" --tag "$2" --search |cut -d\  -f 8-
 }
 gecr()
 {
-  geeknote create --title "$1" --notebook gunluk
+  geeknote create --notebook "$1" --tag "$2" --title "$3" --content "$4"
 }
 germ()
 {
@@ -179,7 +179,8 @@ function mycd() {
   cd $1
   touch ./.NERDTreeBookmarks
 }
-#sus () {
+
+# sus () {
 #  setopt localoptions rmstarsilent
 #  rm -rf /tmp/clipmenu.orkung/* && sudo /lib/systemd/systemd-sleep suspend
 #}
@@ -189,16 +190,21 @@ apt-cache policy | awk '/http/ { printf "%s %s\n",$2,$3 }' | sort | uniq
 function send2kindle() {
 echo "$1" | mutt -s "$1" -e "set crypt_use_gpgme=no" -a "$1" -- orkungunay@kindle.com
 }
+
+function nti() {
+mutt -e "set crypt_use_gpgme=no" -s "$1" orkungunayx@gmail.com 
+}
+
 function ntt() {
 mutt -e "set crypt_use_gpgme=no" -s "$1" orkungunayx@gmail.com << EOT 
 EOT
 }
+
 dis() {
   docker image ls |awk '{print " "$1":"$2" "}' |sort -n
 }
 alias dps="docker ps -a"
 alias ll="ls -alh"
-alias ttvpn="echo '8skcytAY' | sudo  openconnect -u 37951336 --passwd-on-stdin --juniper 'https://sslvpn.turktelekom.com.tr/dana-na/auth/url_332/welcome.cgi'"
 alias datagrip="bash ~/Downloads/DataGrip-2017.1.4/bin/datagrip.sh"
 alias subl="~/Downloads/sublime_text_3/sublime_text"
 alias dm="docker-machine"

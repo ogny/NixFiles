@@ -165,7 +165,7 @@ mode "resize" {
 exec_always --no-startup-id xmodmap /home/orkung/.Xmodmap
 exec --no-startup-id xrandr --output HDMI2 --auto --right-of eDP1 --output eDP1 --off
 exec --no-startup-id ssh-agent -s > ~/ssh-agent.cf
-exec --no-startup-id ssh-agent tmux
+#exec --no-startup-id ssh-agent tmux
 #exec --no-startup-id "setxkbmap -option caps:escape"
 exec --no-startup-id xrdb -load ~/.Xresources
 #exec --no-startup-id xrdb -merge ~/.Xdefaults
@@ -235,10 +235,10 @@ exec --no-startup-id  redshift || redshift -l 41.01:28.94
 #bindsym Mod4+e exec urxvt -geometry 53x38
 #bindsym Mod4+w exec mrxvt
 #bindsym Mod4+w exec lxterminal
-bindsym Mod4+w exec xterm -fa "Monaco Linux:pixelsize=13"
+bindsym Mod4+e exec xterm -fa "Monaco Linux:pixelsize=13"
 #bindsym Mod4+w exec xterm -fa "source code pro:pixelsize=13"
 #bindsym Mod4+w exec urxvt
-bindsym Mod4+e exec mate-terminal
+bindsym Mod4+w exec mate-terminal
 bindsym Mod4+g exec google-chrome
 #bindsym Mod4+a exec pavucontrol
 bindsym Mod4+z exec "setxkbmap tr"
@@ -354,6 +354,7 @@ for_window [class="Pavucontrol"] floating enable resize set 640 480
 for_window [class="TogglDesktop"] floating enable
 for_window [class="Toggl Desktop"] floating enable
 for_window [title="SSL Network Extender - Mozilla Firefox"] floating enable 
+for_window [class="TSSTracker.exe"] floating enable
 
 #_______________________________________________________________________
 # => 1 dakika stdin'den bir sey gelmeyince ekrani kilitle (calismiyor)  |

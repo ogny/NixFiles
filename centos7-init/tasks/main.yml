@@ -17,6 +17,8 @@
   yum:
     name: tmux
     state: latest
+  become: yes
+  become_method: sudo
 
 - name: return create necessary directories
   command: mkdir -p ~/.vim/autoload ~/.vim/syntax

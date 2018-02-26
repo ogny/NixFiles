@@ -1,45 +1,5 @@
-! Xftp.dpi {{{
-Xft.dpi:                96 
-Xft.hinting:            1
-Xft.hintstyle:          hintslight
-Xft.antialias:          1
-Xft.rgba:               rgb
-! }}}
-
-XTerm*faceName: xft:Monaco Linux:antialias=True:pixelsize=13
-!XTerm*faceName: xft:Monaco for Powerline:antialias=True:pixelsize=13
-!XTerm*faceName: xft:fonts-inconsolata:size=10
-!XTerm*faceSize: 10
-xterm*renderFont: true
-xterm*utf8: on
-
-! VT Font Menu: Unreadable
-xterm*faceSize1: 8
-! ! VT font menu: Tiny
-xterm*faceSize2: 10
-! ! VT font menu: Medium
-xterm*faceSize3: 12
-! ! VT font menu: Large
-xterm*faceSize4: 16
-! ! VT font menu: Huge
-xterm*faceSize5: 22
-
-xterm*VT100.Translations: #override \
-    Ctrl <Key> minus: smaller-vt-font() \n\
-    Ctrl <Key> plus: larger-vt-font() \n\
-    Ctrl <Key> 0: set-vt-font(d)
-
-! Only select text
-xterm*highlightSelection: true
-! Remove trailing spaces
-xterm*trimSelection: true
-
-xterm*scrollBar: false
-
-! Lines of output that you can scroll back over
-xterm*saveLines: 4096
-
 ! Base16 Default Dark
+
 ! Scheme: Chris Kempson (http://chriskempson.com)
 
 #define base00 #181818
