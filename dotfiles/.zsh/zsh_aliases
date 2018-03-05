@@ -88,13 +88,24 @@ alias sserver="tmux attach-session -t SimpleServer"
 alias diger="tmux attach-session -t diger"
 alias mydig="dig +nocmd ANY +multiline +noall +answer"
 alias geed="geeknote edit --note \$A"
-gefs()
+
+geft()
 {
-  geeknote find --notebook "$1" --tag "$2" --search |cut -d\  -f 8-
+  geeknote find --notebook "$1" --tag "$2" --search |cut -d\  -f 7-
 }
+gef()
+{
+  geeknote find --notebook "$1" --search |cut -d\  -f 7-
+}
+
 gecr()
 {
   geeknote create --notebook "$1" --tag "$2" --title "$3" --content "$4"
+}
+
+ge()
+{
+  geeknote create --notebook "$1" --title "$2" --content ""
 }
 germ()
 {
@@ -205,6 +216,7 @@ dis() {
 }
 alias dps="docker ps -a"
 alias ll="ls -alh"
+alias as="source ~/.zshrc"
 alias datagrip="bash ~/Downloads/DataGrip-2017.1.4/bin/datagrip.sh"
 alias subl="~/Downloads/sublime_text_3/sublime_text"
 alias dm="docker-machine"

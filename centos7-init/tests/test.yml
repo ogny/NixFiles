@@ -1,5 +1,5 @@
 ---
-- hosts: staging-dpic-ttnet-1
+- hosts: office
   become: no
 # become_method: sudo
   roles:

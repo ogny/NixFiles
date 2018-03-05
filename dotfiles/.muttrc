@@ -15,6 +15,7 @@ bind index G imap-fetch-mail
 
 set folder_format = " %N %f"
 set mailcap_path = ~/.mutt/mailcap.conf
+alternative_order text/plain text/html
 auto_view text/html
 #set signature="~/.mutt/signature"
 set imap_check_subscribed="yes"

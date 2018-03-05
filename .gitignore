@@ -10,4 +10,9 @@ Devops/docker/dpic/webapp/instantclient_12_1.zip
 dotfiles/.tmux/plugins/tmux-sessionist
 dotfiles/.tmux/plugins/tmux-resurrect
 dotfiles/.tmux/plugins/tmux-sidebar
+dotfiles/.tmux/plugins/tmux-copycat
+dotfiles/.tmux/plugins/tmux-mem-cpu-load
+dotfiles/.tmux/plugins/tmux-open
+dotfiles/.tmux/plugins/tmux-yank
+dotfiles/.tmux/plugins/vim-tmux
 centos7-init/tests/inventory
