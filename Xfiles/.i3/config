@@ -308,7 +308,7 @@ bar {
 #_______________________________________________________________________
 # => Arkaplan Rengi & Pencere Kenarliklari				|
 #_______________________________________________________________________|
-exec --no-startup-id xsetroot -solid "#002b36"
+exec --no-startup-id xsetroot -solid "#353b45"
 new_window 1pixel
 #new_window none
 new_float 1pixel

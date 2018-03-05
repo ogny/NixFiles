@@ -152,7 +152,11 @@ report.all.sort=due+,priority-,project+
 
 # task next
 report.next.description=Lists the most urgent tasks
-report.next.columns=id,project,priority,due,start.active,entry.age,description
-report.next.labels=ID,Project,Pri,Due,Active,Age,Description
+# report.next.columns=id,project,priority,due,start.active,entry.age,description
+# report.next.labels=ID,Project,Pri,Due,Active,Age,Description
+report.next.labels=ID,Active,Age,Deps,P,Project,Tag,Recur,S,Due,Until,Description,Urg,Est
+report.next.columns=id,start.age,entry.age,depends,priority,project,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency,estimate
 report.next.sort=due+,priority-,project+
 report.next.filter=status:pending
+uda.estimate.type=duration
+uda.estimate.label=Est

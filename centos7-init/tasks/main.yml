@@ -63,6 +63,13 @@
       set nocompatible
       filetype on
       syntax enable
+      set hidden
+      set paste
+      set tabstop=4
+      set shiftwidth=4
+      set softtabstop=4
+      set expandtab
+      set autoindent
       nnoremap  <C-n> :bn<cr>
       nnoremap  <C-p> :bp<cr>
       set tabstop=4

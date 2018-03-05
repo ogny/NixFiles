@@ -814,8 +814,13 @@ setlocal textwidth=79
 setlocal thesaurus=
 setlocal undofile
 setlocal undolevels=-123456
+<<<<<<< HEAD
 setlocal nowinfixheight
 setlocal nowinfixwidth
+=======
+setlocal winfixheight
+setlocal winfixwidth
+>>>>>>> 247053bb6c45d95ba29a011508cf98d8fb9491cd
 setlocal wrap
 setlocal wrapmargin=0
 let s:l = 1 - ((0 * winheight(0) + 28) / 57)
