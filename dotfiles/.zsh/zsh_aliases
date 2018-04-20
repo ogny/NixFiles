@@ -89,10 +89,16 @@ alias diger="tmux attach-session -t diger"
 alias mydig="dig +nocmd ANY +multiline +noall +answer"
 alias geed="geeknote edit --note \$A"
 
+gefs()
+{
+  geeknote find --notebook "$1" --tag "$2" --search |cut -d\  -f 8-
+}
+
 geft()
 {
   geeknote find --notebook "$1" --tag "$2" --search |cut -d\  -f 7-
 }
+
 gef()
 {
   geeknote find --notebook "$1" --search |cut -d\  -f 7-
@@ -107,10 +113,12 @@ ge()
 {
   geeknote create --notebook "$1" --title "$2" --content ""
 }
+
 germ()
 {
 geeknote remove --note "$1" --force
 }
+
 alias psc="ps xawf -eo pid,user,cgroup,args"
 alias sdo='sudo docker'
 alias dockviz="docker run --privileged -it --rm --volume /var/run/docker.sock:/var/run/docker.sock nate/dockviz"
