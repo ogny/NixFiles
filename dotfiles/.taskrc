@@ -73,7 +73,6 @@ report.ofis.filter=status:pending
 journal.time=on
 dateformat.annotation=d\/m\/Y H:N
 
-
 # task long
 report.long.description=Lists all task, all data, matching the specified criteria
 report.long.columns=id,project,priority,entry,start,due,recur,entry.age,tags,description
@@ -88,12 +87,6 @@ report.list.labels=ID,Project,Pri,Due,Active,Age,Description
 report.list.sort=due+,priority-,project+
 report.list.filter=status:pending
 
-# task ls
-report.ls.description=Minimal listing of all tasks matching the specified criteria
-report.ls.columns=id,project,priority,description,status
-report.ls.labels=ID,Project,Pri,Description,Status
-report.ls.sort=priority-,project+
-report.ls.filter=status:pending
 
 # task newest
 report.newest.description=Shows the newest tasks
@@ -160,3 +153,12 @@ report.next.sort=due+,priority-,project+
 report.next.filter=status:pending
 uda.estimate.type=duration
 uda.estimate.label=Est
+
+# task ls
+report.ls.description=Minimal listing of all tasks matching the specified criteria
+report.ls.labels=ID,Active,Age,Deps,P,Tag,Recur,S,Due,Until,Description,Urg,Est
+report.ls.columns=id,start.age,entry.age,depends,priority,tags,recur,scheduled.countdown,due.relative,until.remaining,description,urgency,estimate
+# report.ls.columns=id,project,priority,description,status
+# report.ls.labels=ID,Project,Pri,Description,Status
+report.ls.sort=priority-,project+
+report.ls.filter=status:pending

@@ -1,64 +1,65 @@
-export XDG_CONFIG_HOME="$HOME/.config"
-export VI_SERVER=$(vim --serverlist)
-export TERM=screen-256color
-#export VAGRANT_HOME=$HOME/.vagrant.d
-export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 ma nolist nonu' -\""
-export GPGKEY=17D9BD2F
-NPM_PACKAGES="${HOME}/.npm-packages"
-GPG_TTY=$(tty)
-export GPG_TTY
-# Kaynak: http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
-#export TERM=rxvt-unicode-256color
-#export SSH_AGENT_SOCK=`/home/orkung/Git_Repolari/diger/sshag/sshag.sh`
-export WORKON_HOME=~/.virtualenvs
-#export PIP_VIRTUALENV_BASE=/home/orkung/.virtualenvs
-export VIRTUAL_ENV=/home/orkung/.virtualenvs
-export LESS="-eirMX"
-export XAUTHORITY=~/.Xauthority
-#export GEM_PATH=/home/orkung/.chefdk/gem/ruby/2.1.0
-#export GEM_PATH="/opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems"
-#export GEM_PATH="/usr/lib/ruby/gems/2.1.0/gems"
-#export GEM_HOME="$HOME/.gem/ruby/2.1.0/gems
-#export GEM_PATH="$HOME/.gem/ruby/2.1.0/gems
-export PATH=$PATH:$HOME/.pyenv/bin:$HOME/.rvm/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/usr/sbin:$HOME/Git_Repolari/kisisel/private/server-side/parolalar:/usr/local/go/bin:$GOPATH/bin:/usr/lib/postgresql/9.4/bin
-
-#PATH="$HOME/perl5/bin${PATH+:}${PATH}"
-
-#export PATH="$HOME/bin:$HOME/.local/bin:/opt/chefdk/bin:$PATH"
-#export RB_USER_INSTALL='true'
-#export SSH_AUTH_SOCK=$(find /tmp -maxdepth 2 -type s -name "agent*" -user $USER -printf '%T@ %p\n' 2>/dev/null |sort -n|tail -1|cut -d' ' -f2)
-export FZF_COMPLETION_TRIGGER='//'
-export EDITOR=vim
-export LD_LIBRARY_PATH=/opt/ora/instantclient_12_1/
-export ORACLE_HOME=/opt/ora/instantclient_12_1/
-export C_FORCE_ROOT="true"
-#export /home/orkung/Git_Repolari/diger/powerline/powerline/config_files
-export DISPLAY=:0
-#export DISPLAY=:0.0
-export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
-#export NVM_DIR="/home/orkung/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
-export MAILCONF="$HOME/.mutt"
-#export BROWSER="/opt/google/chrome/chrome --disk-cache-dir=/tmp/ --user-data-dir=/opt/google/data_dir"
-export VIMRC="$HOME/.vimrc"
-export VIMRUNTIME=""
-export rvm_ignore_gemrc_issues=1
+export CLF_COLOR=1
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export AUTO_NTFY_DONE_IGNORE="vim tmux meld"
+BASE16_SHELL=$HOME/.config/base16-shell/ 
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 export NOEXEC_DISABLE=1
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export PYTHONIOENCODING="utf-8"
 export CHEATCOLORS=true
+export FZF_COMPLETION_TRIGGER='//'
+export EDITOR=vim
+export XDG_CONFIG_HOME="$HOME/.config"
+export VI_SERVER=$(vim --serverlist)
+export TERM=screen-256color
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 ma nolist nonu' -\""
+# Kaynak: http://zameermanji.com/blog/2012/12/30/using-vim-as-manpager/
+export WORKON_HOME=~/.virtualenvs
+export VIRTUAL_ENV=/home/orkung/.virtualenvs
+export LESS="-eirMX"
+export XAUTHORITY=~/.Xauthority
+export GOPATH=$HOME/go
+export PATH=$PATH:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/usr/bin:$HOME/bin:/usr/sbin:$HOME/Git_Repolari/kisisel/private/server-side/parolalar:/usr/local/go/bin:$GOPATH/bin:/usr/lib/postgresql/9.4/bin:/usr/local/pulse/
+export C_FORCE_ROOT="true"
+export DISPLAY=:0
+export MAILCONF="$HOME/.mutt"
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
+export VIMRC="$HOME/.vimrc"
+
+# export VAGRANT_HOME=$HOME/.vagrant.d
+# export GPGKEY=17D9BD2F
+#NPM_PACKAGES="${HOME}/.npm-packages"
+# GPG_TTY=$(tty)
+# export GPG_TTY
+# export TERM=rxvt-unicode-256color
+# export SSH_AGENT_SOCK=`/home/orkung/Git_Repolari/diger/sshag/sshag.sh`
+# export PIP_VIRTUALENV_BASE=/home/orkung/.virtualenvs
+# export GEM_PATH=/home/orkung/.chefdk/gem/ruby/2.1.0
+# export GEM_PATH="/opt/chefdk/embedded/lib/ruby/gems/2.1.0/gems"
+# export GEM_PATH="/usr/lib/ruby/gems/2.1.0/gems"
+# export GEM_HOME="$HOME/.gem/ruby/2.1.0/gems
+# export GEM_PATH="$HOME/.gem/ruby/2.1.0/gems
+# export PATH=$PATH:$HOME/.pyenv/bin:$HOME/.rvm/bin:$HOME/.local/bin:$NPM_PACKAGES/bin:/usr/local/bin:/opt/chefdk/bin:/usr/bin:$HOME/bin:/usr/sbin:$HOME/Git_Repolari/kisisel/private/server-side/parolalar:/usr/local/go/bin:$GOPATH/bin:/usr/lib/postgresql/9.4/bin
+# PATH="$HOME/perl5/bin${PATH+:}${PATH}"
+# export PATH="$HOME/bin:$HOME/.local/bin:/opt/chefdk/bin:$PATH"
+# export RB_USER_INSTALL='true'
+# export SSH_AUTH_SOCK=$(find /tmp -maxdepth 2 -type s -name "agent*" -user $USER -printf '%T@ %p\n' 2>/dev/null |sort -n|tail -1|cut -d' ' -f2)
+# export LD_LIBRARY_PATH=/opt/ora/instantclient_12_1/
+# export ORACLE_HOME=/opt/ora/instantclient_12_1/
+#export /home/orkung/Git_Repolari/diger/powerline/powerline/config_files
+#export DISPLAY=:0.0
+#export NVM_DIR="/home/orkung/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+# export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+#export BROWSER="/opt/google/chrome/chrome --disk-cache-dir=/tmp/ --user-data-dir=/opt/google/data_dir"
+# export VIMRUNTIME=""
+# export rvm_ignore_gemrc_issues=1
 #export ANSIBLE_INVENTORY=$HOME/Devops/ansible_hosts
 #export GOROOT=$HOME/Downloads/go
 #export GOPATH=$HOME/Downloads/work
 #export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #export FZF_DEFAULT_COMMAND="find * -path '*/\.*' -prune -o -path '~\/\.vim\/temp/\.*' -prune -o -path '~\/\.vim\/backups/\.*' -prune -o -type f -print -o -type l -print 2> /dev/null"
-export FZF_DEFAULT_COMMAND='ag -l -g ""'
 #export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-export AUTO_NTFY_DONE_IGNORE="vim tmux meld"
-export MYVIMRC="$HOME/.vimrc"
-export CLF_COLOR=1
-BASE16_SHELL=$HOME/.config/base16-shell/ 
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+# export MYVIMRC="$HOME/.vimrc"
