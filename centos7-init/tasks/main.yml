@@ -63,6 +63,7 @@
       if !has('compatible')
       call plug#begin('~/.vim/plugged')
       Plug 'scrooloose/nerdtree'
+      Plug 'ConradIrwin/vim-bracketed-paste'
       call plug#end()
       endif
       filetype plugin on
@@ -72,7 +73,6 @@
       filetype on
       syntax enable
       set hidden
-      set paste
       set tabstop=4
       set shiftwidth=4
       set softtabstop=4

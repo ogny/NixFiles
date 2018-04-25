@@ -6,6 +6,8 @@
 "endif
 """"" Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-obsession'
+Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -73,6 +75,7 @@ hi Search ctermfg=25 ctermbg=16
 hi Folded ctermfg=25 ctermbg=16
 hi StatusLine ctermfg=none ctermbg=none gui=none
 hi StatusLineNC ctermfg=none ctermbg=none gui=none
+hi EndOfBuffer ctermfg=black ctermbg=black
 hi NonText ctermfg=00
 hi clear SignColumn
 hi link markdownError Normal
@@ -128,8 +131,6 @@ set visualbell           " don't beep
 set noerrorbells         " don't beep
 set nobackup
 set swapfile
-set paste
-set pastetoggle=<F2>
 set go+=a
 set showmode
 set ruler
