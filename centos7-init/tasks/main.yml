@@ -38,6 +38,24 @@
     content="unbind '['
         bind Escape copy-mode"
 
+- name: copy Nerdtree extension
+  copy:
+    src: nerdtree
+    dest: ~/.vim/plugged/
+    owner: root
+    group: root
+    directory_mode: yes
+    mode: 0644
+
+- name: copy vim-bracketed-paste extension
+  copy:
+    src: vim-bracketed-paste
+    dest: ~/.vim/plugged/
+    directory_mode: yes
+    owner: root
+    group: root
+    mode: 0644
+
 - name: copy vim-plug extension
   copy:
     src: plug.vim
