@@ -7,7 +7,8 @@
 """"" Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-obsession'
-Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'dhruvasagar/vim-zoom'
+" Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -16,7 +17,7 @@ Plug 'gcmt/taboo.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'davidhalter/jedi'
 Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
 Plug 'mileszs/ack.vim'
 Plug 'flazz/vim-colorschemes'

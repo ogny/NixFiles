@@ -1,5 +1,5 @@
 ---
-- hosts: turksat
+- hosts: office
   become: no
 # become_method: sudo
   roles:

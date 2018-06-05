@@ -76,3 +76,5 @@ fi
 #else
 #  ~/Git_Repolari/diger/toggldesktop/src/ui/linux/TogglDesktop/build/release/TogglDesktop >/dev/null 2>&1
 #fi
+=======
+pkill -f hipchat && hipchat
