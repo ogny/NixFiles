@@ -259,3 +259,9 @@
 ## vim: ft=cfg
 #[dunst]
 #    appname = dunst
+
+[slack]
+    appname = dunst
+    summary = Slack Notification
+    format = ""
+# vim: ft=cfg

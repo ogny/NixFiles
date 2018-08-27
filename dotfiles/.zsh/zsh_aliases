@@ -232,3 +232,4 @@ alias dm="docker-machine"
 histrm() { 
 	LC_ALL=C sed --in-place '/$1/d' $HISTFILE 
 }
+alias transfer=transfer

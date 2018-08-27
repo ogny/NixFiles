@@ -14,6 +14,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'gcmt/taboo.vim'
+Plug 'itkq/fluentd-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'davidhalter/jedi'
 Plug 'Glench/Vim-Jinja2-Syntax'
@@ -169,6 +170,7 @@ nnoremap <C-w>q :tabclose!<CR>
 nnoremap <C-w>e :TabooOpen
 nnoremap <leader>re :set relativenumber!<CR>
 nnoremap <Leader>on :only<CR>
+nnoremap <Leader>en :enew<CR>
 map t i <ESC>r
 nmap ; o<Esc>
 nmap <CR> o<Esc>
@@ -507,3 +509,7 @@ hi StatusLineNC ctermfg=none ctermbg=none gui=none
 "  hi TabLineFill cterm=none gui=none
 "  hi TabLine ctermfg=none ctermbg=none
 "  hi TabLineSel ctermfg=none ctermbg=none
+" Copy selected text to system clipboard (requires gvim installed):
+vnoremap <C-c> "*Y :let @+=@*<CR>
+"map <C-v> "+P
+map <C-p> "+P
