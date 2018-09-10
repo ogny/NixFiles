@@ -67,7 +67,7 @@ zstyle ':completion:*:hosts' hosts _ssh_config
 [[ -r ~/.ssh/config ]] && _ssh_config+=($(cat ~/.ssh/config | sed -ne 's/Host[=\t ]//p'))
 zstyle ':completion:*:hosts' hosts $_ssh_config
 
-eval "$(dircolors -b)"
+#eval "$(dircolors -b)"
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -85,14 +85,14 @@ HISTCONTROL=ignoreboth
 
 
 # enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
+#if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
     #alias grep='grep --color=auto'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
-fi
+#fi
 
 # some more ls aliases
 #alias ll='ls -l'
@@ -129,7 +129,7 @@ sed -e 's/#.*//' -e 's/[ ^I]*$//' -e '/^$/ d' $1
 }
 #source $HOME/bin/sshag.sh >/dev/null 2>&1
 eval "$(fasd --init auto)"
-eval `dircolors /home/orkung/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
+#eval `dircolors /home/orkung/Git_Repolari/diger/dircolors-solarized/dircolors.256dark`
 #eval "$(pyenv init -)"
 alias x='ssh-agent startx'
 #compdef _task t='task'
