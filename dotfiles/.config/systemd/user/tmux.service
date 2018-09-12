@@ -1,0 +1,16 @@
+[Unit]
+Description=Tmux server
+
+[Service]
+Type=forking
+Environment=DISPLAY=:0
+Environment=HOME=/home/orkung
+ExecStart=/usr/bin/tmux new -s %H -d
+ExecStartPost=/usr/bin/tmux source-file /home/orkung/.tmux.conf
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=tmux
+ExecStop=/usr/bin/tmux kill-server
+
+[Install]
+WantedBy=multi-user.target
