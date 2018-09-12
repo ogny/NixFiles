@@ -296,9 +296,9 @@ PERL_MM_OPT="INSTALL_BASE=/home/orkung/perl5"; export PERL_MM_OPT;
 
 #bindkey '^S'
 stty -ixon
-source /home/orkung/Git_Repolari/diger/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/Git_Repolari/kisisel/public/nixfiles/dotfiles/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(git extract)
-source /home/orkung/Git_Repolari/diger/zsh-git-prompt/zshrc.sh
+source $HOME/Git_Repolari/kisisel/public/nixfiles/dotfiles/.zsh/plugins/zsh-git-prompt/zshrc.sh
 #source $HOME/.local/bin/virtualenvwrapper.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
