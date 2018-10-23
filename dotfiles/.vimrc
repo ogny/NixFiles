@@ -6,9 +6,13 @@
 "endif
 """"" Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'chase/vim-ansible-yaml'
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-zoom'
 " Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'airblade/vim-rooter'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -20,6 +24,7 @@ Plug 'davidhalter/jedi'
 Plug 'Glench/Vim-Jinja2-Syntax'
 " Plug 'xolox/vim-session'
 Plug 'xolox/vim-misc'
+Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/limelight.vim'
@@ -43,7 +48,7 @@ Plug 'tpope/vim-unimpaired'
 "Plug 'plasticboy/vim-markdown'
 Plug 'elzr/vim-json'
 Plug 'python-mode/python-mode'
-Plug 'Lokaltog/vim-easymotion'
+" Plug 'Lokaltog/vim-easymotion'
 " Plug 'klen/python-mode'
 " Plug 'kshenoy/vim-signature'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -77,15 +82,18 @@ hi Search ctermfg=25 ctermbg=16
 hi Folded ctermfg=25 ctermbg=16
 hi StatusLine ctermfg=none ctermbg=none gui=none
 hi StatusLineNC ctermfg=none ctermbg=none gui=none
-hi EndOfBuffer ctermfg=black ctermbg=black
-hi NonText ctermfg=00
+"hi EndOfBuffer ctermfg=black ctermbg=black
 hi clear SignColumn
 hi link markdownError Normal
 hi TabLineFill cterm=none gui=none
 hi TabLine ctermfg=none ctermbg=none
 hi TabLineSel ctermfg=none ctermbg=none
+
+" yaml indentation
+au FileType yml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
+au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 set fillchars+=vert:│
-" set winfixwidth
+"set winfixwidth
 set equalalways
 set expandtab "indentation contains tabs"
 
@@ -143,7 +151,8 @@ set guioptions-=e
 set sessionoptions+=tabpages,globals
 set guitablabel=%t
 set completeopt=menu " preview metodu iptal
-set clipboard+=unnamed
+set clipboard=unnamed
+"set clipboard+=unnamed
 set smartcase     " ignore case if search pattern is all lowercase, case-sensitive otherwise
 " Vim'de dosyalar alt satira gectiginde bos tab alanlari olusuyor, bunu
 " engelleyebilmek icin asagidakileri comment'ledim
@@ -202,7 +211,7 @@ vnoremap / /\v
 nnoremap <Leader>l :Limelight<CR>
 nnoremap <Leader>k :Limelight!<CR>
 nnoremap <Leader>h :nohl<CR>
-nnoremap <silent> <Leader>z :ZoomWin<CR>
+"nnoremap <silent> <Leader>z :ZoomWin<CR>
 nnoremap gV `[v`]`
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
@@ -212,8 +221,8 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <S-f> :set foldenable<CR>
 nnoremap <Leader>u :GitGutterToggle<CR>
 noremap <C-e> :FZF ~<CR>
-nnoremap <C-n> :BuffergatorMruCycleNext<cr>
-nnoremap <C-p> :BuffergatorMruCyclePrev<CR>
+nnoremap <S-m> :BuffergatorMruCycleNext<cr>
+nnoremap <S-p> :BuffergatorMruCyclePrev<CR>
 nnoremap <silent> <leader>x :Goyo<cr>
 map <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <leader>c :CloseBuffers<CR>
@@ -310,7 +319,7 @@ let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
-let g:limelight_default_coefficient = 1
+let g:limelight_default_coefficient = 0.7
 
 "" FZF                                                                |
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -l -g ""'
@@ -402,10 +411,16 @@ nnoremap ZZ :call syntastic_extras#quit_hook()<cr>
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+set grepprg=ag\ --nogroup\ --column
+set grepformat=%f:%l:%c:%m
+"set grepprg=ack
 cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
+
+" Automatically change the current directory
+"autocmd BufEnter * silent! lcd %:p:h
 
 "" vim-sessions
 let g:ag_working_path_mode="r"
@@ -475,7 +490,8 @@ let g:jedi#rename_command = "<leader>r"
 " turkish-deasciifier.
 vmap <Leader>tr :<c-u>call Turkish_Deasciify()<CR>
 vmap <Leader>rt :<c-u>call Turkish_Asciify()<CR>
-let g:turkish_deasciifier_path = '~/Git_Repolari/diger/turkish-deasciifier/turkish-deasciify'
+let g:turkish_deasciifier_path = '~/orkun/repos/diger/turkish-deasciifier/turkish-deasciify'
+
 
 " emrah'tan alinti
 " autocmd BufNewFile,BufRead *.py,*.tmpl,*.yml,*.yaml call CodingSet0()

@@ -242,10 +242,12 @@ fda() {
 #line_divider(){
 #  echo "${(l.$COLUMNS..—.)}"
 #}
+
 fj() {
   local dir
   dir=$(fasd -Rdl | fzf --no-sort +m) && mycd "$dir"
 }
+
 #fo() {
 #  local out file key
 #  out=$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)
