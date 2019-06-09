@@ -5,3 +5,4 @@ duzenlenecek.
 * Yeni bir pc/sunucu kurulduktan sonra buradaki dosyalar ihtiyac dahilinde 
 kopyalanip yapilandirilacak.
 *
+deneme
